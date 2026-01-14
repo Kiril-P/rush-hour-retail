@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://8lxv6rd4ox17"]
+
+[ext_resource type="Script" uid="uid://buod8h7pm28sr" path="res://scripts/customer_ai.gd" id="1_fu7rw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bwvtj"]
+radius = 0.15
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fu7rw"]
+albedo_color = Color(0, 0.22055057, 0.38316923, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xqo2o"]
+radius = 0.15
+height = 0.6
+
+[node name="Customer" type="CharacterBody3D"]
+script = ExtResource("1_fu7rw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_bwvtj")
+surface_material_override/0 = SubResource("StandardMaterial3D_fu7rw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_xqo2o")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

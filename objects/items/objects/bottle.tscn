@@ -69,7 +69,6 @@ radius = 0.35
 [node name="bottle" type="RigidBody3D"]
 collision_layer = 2
 script = ExtResource("1_i008h")
-product_data = ExtResource("2_re20t")
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

@@ -71,8 +71,18 @@ func handle_interaction(collider, hold_duration):
 			
 	elif collider:
 		var target_product = _find_product(collider)
+		
+		# --- SCANNING LOGIC ---
+		if target_product and target_product.has_meta("to_scan"):
+			_scan_item(target_product)
+			return
+
 		if target_product and not target_product.has_method("take_item"):
 			print("Interaction: Cannot pick up loose products with hands! Use a box.")
+			return
+
+		if collider.has_method("interact"):
+			collider.interact()
 			return
 			
 		if collider.has_method("pick_up"):
@@ -93,6 +103,22 @@ func _find_product(node):
 			return current
 		current = current.get_parent()
 	return null
+
+func _scan_item(item):
+	print("Interaction: Scanning ", item.product_data.item_name)
+	
+	# Add money
+	if GameManager:
+		GameManager.money += item.product_data.sell_price
+		GameManager.money_changed.emit(GameManager.money)
+	
+	# Notify register
+	if item.has_meta("register"):
+		var register = item.get_meta("register")
+		if register and register.has_method("_on_item_scanned"):
+			register._on_item_scanned(item)
+	
+	item.queue_free()
 
 func _place_on_shelf(shelf):
 	var item = picked_object

@@ -168,7 +168,7 @@ func _physics_process(delta):
 
 	# 5. HEAD BOB & CAMERA EFFECTS
 	# Scale bob frequency with speed
-	var bob_speed_multiplier = velocity.length() / SPEED
+	var _bob_speed_multiplier = velocity.length() / SPEED
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	var bob_pos = _head_bob(t_bob)
 	

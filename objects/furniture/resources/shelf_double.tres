@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FurnitureData" load_steps=3 format=3 uid="uid://ctjgeb2rlcob6"]
 
 [ext_resource type="PackedScene" uid="uid://bgxdvx2uvn2hh" path="res://objects/furniture/objects/shelf_double.tscn" id="1_kog8p"]
-[ext_resource type="Script" uid="uid://behj7vdco1nnd" path="res://scripts/furniture_data.gd" id="2_vq5kx"]
+[ext_resource type="Script" uid="uid://bk77po0kmmwx4" path="res://scripts/furniture_data.gd" id="2_vq5kx"]
 
 [resource]
 script = ExtResource("2_vq5kx")

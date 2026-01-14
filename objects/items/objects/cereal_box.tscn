@@ -64,7 +64,6 @@ size = Vector3(0.25, 0.3, 0.1)
 [node name="box" type="RigidBody3D"]
 collision_layer = 2
 script = ExtResource("1_bo5uo")
-product_data = ExtResource("2_3bx0p")
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

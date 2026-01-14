@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://n7pxkutnuopq"]
+[gd_scene load_steps=3 format=3 uid="uid://n7pxkutnuopq"]
 
+[ext_resource type="Script" uid="uid://x3ddgnup2nso" path="res://scripts/cash_register.gd" id="1_hoiu7"]
 [ext_resource type="PackedScene" uid="uid://e2etayfs231x" path="res://assets/kenney_mini-market/Models/GLB format/cash-register.glb" id="1_wynrt"]
 
-[node name="CashRegister" type="Node3D"]
+[node name="CashRegister" type="Node3D" groups=["register"]]
+script = ExtResource("1_hoiu7")
 
 [node name="cash-register2" parent="." instance=ExtResource("1_wynrt")]

@@ -1,9 +1,27 @@
 extends Node
 
 signal money_changed(new_amount)
+signal shop_state_changed(is_open)
+signal time_changed(hour, minute)
 
 var money: float = 1000.0
 var delivery_point: Marker3D
+
+# Shop State
+var is_open: bool = false:
+	set(value):
+		if value == true and is_open == false:
+			# Reset time to opening hour when starting a new day
+			if current_time >= CLOSING_HOUR or current_time < OPENING_HOUR:
+				current_time = OPENING_HOUR
+		is_open = value
+		shop_state_changed.emit(is_open)
+
+# Time System
+var current_time: float = 8.0 # Starts at 8:00 AM
+var time_speed: float = 0.5 # Minutes per real second
+const OPENING_HOUR = 8.0
+const CLOSING_HOUR = 22.0 # 10:00 PM
 
 # This is where we will store all available products for the shop
 # You can fill this list in the Inspector of the GameManager (Autoload) if needed, 
@@ -16,6 +34,25 @@ func _ready():
 	
 	# Automatically load all .tres files from the correct folder
 	_load_products_from_folder("res://objects/items/resources/")
+
+func _process(delta):
+	if is_open:
+		# Update time
+		current_time += (delta * time_speed) / 60.0
+		
+		# Emit time changed signal
+		var hour = int(current_time)
+		var minute = int((current_time - hour) * 60)
+		time_changed.emit(hour, minute)
+		
+		# Automatic Closing
+		if current_time >= CLOSING_HOUR:
+			is_open = false
+			print("GameManager: Shop automatically closed!")
+		
+		# Reset Day (optional, could just stop at midnight or next day)
+		if current_time >= 24.0:
+			current_time = 0.0
 
 func find_delivery_point():
 	delivery_point = get_tree().current_scene.find_child("DeliveryPoint")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FurnitureData" load_steps=3 format=3 uid="uid://uyq5ufjang8d"]
 
 [ext_resource type="PackedScene" uid="uid://caogonrcbkrbe" path="res://objects/furniture/objects/fence.tscn" id="1_l5rqf"]
-[ext_resource type="Script" uid="uid://behj7vdco1nnd" path="res://scripts/furniture_data.gd" id="2_rbtvj"]
+[ext_resource type="Script" uid="uid://bk77po0kmmwx4" path="res://scripts/furniture_data.gd" id="2_rbtvj"]
 
 [resource]
 script = ExtResource("2_rbtvj")

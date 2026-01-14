@@ -16,6 +16,29 @@ func _ready() -> void:
 func has_space() -> bool:
 	if not is_placed: return false
 	return itemsPlaced.has(null)
+
+func get_item_count() -> int:
+	var count = 0
+	for item in itemsPlaced:
+		if item != null:
+			count += 1
+	return count
+
+func take_random_item() -> Node:
+	var stocked_indices = []
+	for i in range(itemsPlaced.size()):
+		if itemsPlaced[i] != null:
+			stocked_indices.append(i)
+	
+	if stocked_indices.is_empty():
+		return null
+		
+	var random_index = stocked_indices.pick_random()
+	var item = itemsPlaced[random_index]
+	
+	# The _on_objects_child_exiting_tree will handle nulling the array
+	item.reparent(get_tree().current_scene) 
+	return item
 		
 func add_object(object):
 	if not has_space(): return false
