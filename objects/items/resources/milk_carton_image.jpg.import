@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcfsxasvnj4ws"
-path="res://.godot/imported/cereal_image.jpeg-e9a892d912a410e534571ba3e4be255c.ctex"
+uid="uid://sfyntvv6rlqq"
+path="res://.godot/imported/milk_carton_image.jpg-9824dd78067696eda79e17f568d0dae6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/resources/cereal_image.jpeg"
-dest_files=["res://.godot/imported/cereal_image.jpeg-e9a892d912a410e534571ba3e4be255c.ctex"]
+source_file="res://objects/items/resources/milk_carton_image.jpg"
+dest_files=["res://.godot/imported/milk_carton_image.jpg-9824dd78067696eda79e17f568d0dae6.ctex"]
 
 [params]
 

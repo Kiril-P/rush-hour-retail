@@ -2,7 +2,7 @@ extends Node
 
 signal money_changed(new_amount)
 
-var money: float = 100.0
+var money: float = 1000.0
 var delivery_point: Marker3D
 
 # This is where we will store all available products for the shop
@@ -15,23 +15,28 @@ func _ready():
 	find_delivery_point()
 	
 	# Automatically load all .tres files from the correct folder
-	_load_products_from_folder("res://objects/resources/")
+	_load_products_from_folder("res://objects/items/resources/")
 
 func find_delivery_point():
 	delivery_point = get_tree().current_scene.find_child("DeliveryPoint")
 
 func _load_products_from_folder(path: String):
+	print("GameManager: Loading products from: ", path)
 	var dir = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir() and file_name.ends_with(".tres"):
-				var res = load(path + file_name)
+				var full_path = path + file_name
+				var res = load(full_path)
 				if res is ProductData:
 					available_products.append(res)
+					print("GameManager: Found product: ", res.item_name)
 			file_name = dir.get_next()
 		print("Loaded ", available_products.size(), " products into the shop.")
+	else:
+		print("GameManager ERROR: Could not open directory: ", path)
 
 # Updated buy function that takes ProductData!
 func buy_product(data: ProductData):
@@ -51,12 +56,9 @@ func spawn_delivery(data: ProductData):
 		print("GameManager ERROR: DeliveryPoint marker not found in the scene!")
 		return
 		
-	# Check the path - you might have saved it in a folder!
+	# Check the path - we look for box.tscn in the objects folder
 	var possible_paths = [
-		"res://objects/box.tscn", # This is what I see in your world.tscn!
-		"res://shipping_box.tscn",
-		"res://objects/shipping_box.tscn",
-		"res://objects/items/shipping_box.tscn"
+		"res://objects/box.tscn",
 	]
 	
 	var box_scene = null

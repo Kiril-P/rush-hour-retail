@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://bwv78mqnyugg8"]
 
 [ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_i008h"]
-[ext_resource type="Resource" uid="uid://nfe40vdi2yce" path="res://objects/resources/bottle_data.tres" id="2_re20t"]
+[ext_resource type="Resource" uid="uid://nfe40vdi2yce" path="res://objects/items/resources/bottle_data.tres" id="2_re20t"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4p1rd"]
 load_path = "res://.godot/imported/colormap.png-b5306e27b4b6c22d599f29c934089e18.s3tc.ctex"

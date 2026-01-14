@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://b3l1h8lfv4e2f" path="res://assets/kenney_mini-market/Models/GLB format/wall.glb" id="3_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://bett03l5dnmqc" path="res://assets/kenney_mini-market/Models/GLB format/wall-window.glb" id="4_2o6r5"]
 [ext_resource type="PackedScene" uid="uid://c3e88omp8py3g" path="res://assets/kenney_mini-market/Models/GLB format/wall-corner.glb" id="5_70uel"]
-[ext_resource type="PackedScene" uid="uid://bgxdvx2uvn2hh" path="res://objects/furniture/shelf_double.tscn" id="9_ioo17"]
-[ext_resource type="PackedScene" uid="uid://b2pbcl3p66ffr" path="res://objects/furniture/shelf_single.tscn" id="9_wse8f"]
+[ext_resource type="PackedScene" uid="uid://bgxdvx2uvn2hh" path="res://objects/furniture/objects/shelf_double.tscn" id="9_ioo17"]
+[ext_resource type="PackedScene" uid="uid://b2pbcl3p66ffr" path="res://objects/furniture/objects/shelf_single.tscn" id="9_wse8f"]
 [ext_resource type="PackedScene" uid="uid://bmk6m5s4g0fne" path="res://objects/player.tscn" id="10_cbp6q"]
 [ext_resource type="PackedScene" uid="uid://e2etayfs231x" path="res://assets/kenney_mini-market/Models/GLB format/cash-register.glb" id="13_2u3nc"]
-[ext_resource type="PackedScene" uid="uid://dx8a0or2qqw3q" path="res://objects/furniture/display_bread.tscn" id="14_hiqwa"]
+[ext_resource type="PackedScene" uid="uid://dx8a0or2qqw3q" path="res://objects/furniture/objects/display_bread.tscn" id="14_hiqwa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wse8f"]
 sky_top_color = Color(0.4270979, 0.43584633, 0.5750366, 1)

@@ -2,7 +2,8 @@ extends Node3D
 
 @export var grid_map: GridMap
 @export var ghost_material: StandardMaterial3D 
-@export var buildable_items: Array[PackedScene] = []
+# CHANGE: Now accepts FurnitureData resources instead of raw scenes
+@export var buildable_items: Array[FurnitureData] = []
 
 @export var valid_color: Color = Color(0, 1, 0, 0.4) 
 @export var invalid_color: Color = Color(1, 0, 0, 0.4) 
@@ -20,7 +21,7 @@ var moving_item = null
 var original_transform: Transform3D
 
 # SNAP SETTINGS
-var snap_sizes = [0.0, 0.2, 0.5, 1.0] # 0.0 is no snap
+var snap_sizes = [0.0, 0.2, 0.5, 1.0] 
 var current_snap_index = 0
 
 func _process(_delta):
@@ -53,24 +54,27 @@ func cycle_items(dir: int):
 func delete_item(collider_node):
 	if moving_item: return
 	
-	# Try to find the shelf starting from the collider
 	var target = _find_shelf(collider_node)
 	
 	if target:
-		# GIVE MONEY BACK (e.g., $25 refund)
-		var refund = 25.0 
+		# CALCULATE REFUND
+		var refund = 25.0 # Default fallback
+		
+		# If the shelf has a reference to its data, give 50% back
+		if target.has_meta("furniture_data"):
+			var data = target.get_meta("furniture_data")
+			refund = data.price * 0.5
+		
 		GameManager.money += refund
 		GameManager.money_changed.emit(GameManager.money)
 		print("BuildComponent: Sold ", target.name, " for $", refund)
 		target.queue_free()
 	else:
-		print("BuildComponent: No shelf/furniture found at cursor. Looking at: ", 
-			collider_node.name if collider_node else "Nothing")
+		print("BuildComponent: No shelf found at cursor.")
 
 func _check_placement_validity():
 	if not ghost_item: return
 	
-	# 1. AIR & SURFACE CHECK: Raycast must be hitting something valid
 	if not ray_cast_3d.is_colliding():
 		can_place = false
 		_update_ghost_visuals()
@@ -78,16 +82,13 @@ func _check_placement_validity():
 		
 	var hit_collider = ray_cast_3d.get_collider()
 	
-	# SAFER COLLISION LAYER CHECK
 	if hit_collider != null:
 		var layers = hit_collider.get("collision_layer")
 		if layers != null and (int(layers) & 2):
-			# If hitting Layer 2 (Boxes/Items), don't allow building on top
 			can_place = false
 			_update_ghost_visuals()
 			return
 
-	# 2. COLLISION CHECK: Check if overlapping other objects
 	var aabb: AABB = _get_combined_aabb(ghost_item)
 	var space_state = get_world_3d().direct_space_state
 	
@@ -162,24 +163,39 @@ func place_item():
 	if moving_item:
 		_finalize_move()
 	else:
-		var scene = buildable_items[current_item_index]
-		if scene == null: return
+		# NEW: Check money before placing
+		var data = buildable_items[current_item_index]
+		if data == null: return
+		
+		if GameManager.money < data.price:
+			print("BuildComponent: Not enough money! ($", data.price, " needed)")
+			return
 			
-		var new_item = scene.instantiate()
+		# Deduct money
+		GameManager.money -= data.price
+		GameManager.money_changed.emit(GameManager.money)
+		
+		var new_item = data.scene.instantiate()
 		get_tree().current_scene.add_child(new_item)
 		new_item.global_transform = ghost_item.global_transform
+		
+		# Tag it with its data so we can calculate refund later
+		new_item.set_meta("furniture_data", data)
+		
 		if not new_item.is_in_group("shelf"):
 			new_item.add_to_group("shelf")
+		
+		print("BuildComponent: Purchased ", data.name, " for $", data.price)
 		spawn_ghost()
 
 func spawn_ghost():
 	_cleanup_ghost_logic()
 	if buildable_items.is_empty(): return
 	
-	var scene = buildable_items[current_item_index]
-	if scene == null: return
+	var data = buildable_items[current_item_index]
+	if data == null or data.scene == null: return
 		
-	ghost_item = scene.instantiate()
+	ghost_item = data.scene.instantiate()
 	get_tree().current_scene.add_child(ghost_item)
 	_strip_collisions(ghost_item)
 	_apply_material(ghost_item, ghost_material)

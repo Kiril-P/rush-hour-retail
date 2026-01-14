@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProductData" load_steps=4 format=3 uid="uid://ci0rw0d4cguc1"]
 
-[ext_resource type="Texture2D" uid="uid://dcfsxasvnj4ws" path="res://objects/resources/cereal_image.jpeg" id="1_yy5bc"]
-[ext_resource type="PackedScene" uid="uid://bw82olk8d2wkr" path="res://objects/items/cereal_box.tscn" id="2_dkwpq"]
+[ext_resource type="Texture2D" uid="uid://dcfsxasvnj4ws" path="res://objects/items/resources/cereal_image.jpeg" id="1_yy5bc"]
+[ext_resource type="PackedScene" uid="uid://bw82olk8d2wkr" path="res://objects/items/objects/cereal_box.tscn" id="2_dkwpq"]
 [ext_resource type="Script" uid="uid://djilegrvfndvm" path="res://scripts/product_data.gd" id="3_833k4"]
 
 [resource]

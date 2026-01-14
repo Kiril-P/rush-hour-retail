@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_gvql6"]
 [ext_resource type="Texture2D" uid="uid://cl5w0r06l4vkx" path="res://assets/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_mutgo"]
-[ext_resource type="Resource" uid="uid://d3b8v0yiip0gp" path="res://objects/resources/milk_data.tres" id="2_uq0me"]
+[ext_resource type="Resource" uid="uid://d3b8v0yiip0gp" path="res://objects/items/resources/milk_data.tres" id="2_uq0me"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfpnr"]
 resource_name = "colormap"

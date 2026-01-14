@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FurnitureData" load_steps=3 format=3 uid="uid://dchrxnf0duk40"]
+
+[ext_resource type="PackedScene" uid="uid://3lg5fndg73tg" path="res://objects/furniture/objects/bottle_return.tscn" id="1_5k3bp"]
+[ext_resource type="Script" uid="uid://behj7vdco1nnd" path="res://scripts/furniture_data.gd" id="2_fuun2"]
+
+[resource]
+script = ExtResource("2_fuun2")
+name = "Bottle Return"
+price = 150.0
+scene = ExtResource("1_5k3bp")

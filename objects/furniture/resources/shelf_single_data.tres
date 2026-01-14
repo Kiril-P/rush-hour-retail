@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FurnitureData" load_steps=3 format=3 uid="uid://deokxfuwgbfmh"]
+
+[ext_resource type="PackedScene" uid="uid://b2pbcl3p66ffr" path="res://objects/furniture/objects/shelf_single.tscn" id="1_yb288"]
+[ext_resource type="Script" uid="uid://behj7vdco1nnd" path="res://scripts/furniture_data.gd" id="2_xucae"]
+
+[resource]
+script = ExtResource("2_xucae")
+name = "Single Shelf"
+scene = ExtResource("1_yb288")

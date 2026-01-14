@@ -1,21 +1,22 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmk6m5s4g0fne"]
+[gd_scene load_steps=20 format=3 uid="uid://bmk6m5s4g0fne"]
 
 [ext_resource type="Script" uid="uid://d1g214mmacjey" path="res://scripts/player_controller.gd" id="1_0yo81"]
 [ext_resource type="Texture2D" uid="uid://cpm5rn02eksc7" path="res://objects/ui/crosshair_dot.png" id="2_44h1h"]
 [ext_resource type="Script" uid="uid://dhxxjmkaaejcg" path="res://scripts/build_component.gd" id="3_v7na6"]
 [ext_resource type="Material" uid="uid://c2bufmg42rjkd" path="res://materials/ghost_mat.tres" id="4_5jn8q"]
-[ext_resource type="PackedScene" uid="uid://b2pbcl3p66ffr" path="res://objects/furniture/shelf_single.tscn" id="5_5esnd"]
+[ext_resource type="Script" path="res://scripts/furniture_data.gd" id="5_5esnd"]
 [ext_resource type="Script" uid="uid://b144cxq3wyao5" path="res://scripts/interaction_component.gd" id="5_id26h"]
 [ext_resource type="Script" uid="uid://dd1j6v8srsiei" path="res://scripts/money_label.gd" id="6_6chtw"]
-[ext_resource type="PackedScene" uid="uid://bgxdvx2uvn2hh" path="res://objects/furniture/shelf_double.tscn" id="6_w1o2u"]
+[ext_resource type="Resource" uid="uid://c05ml1st261kr" path="res://objects/furniture/resources/cash_register.tres" id="6_w1o2u"]
 [ext_resource type="PackedScene" uid="uid://c7jeiyo6yd4rv" path="res://objects/ui/shop_ui.tscn" id="7_1ndue"]
-[ext_resource type="PackedScene" uid="uid://dx8a0or2qqw3q" path="res://objects/furniture/display_bread.tscn" id="7_s4hvt"]
-[ext_resource type="PackedScene" uid="uid://d331yg34nitel" path="res://objects/furniture/freezer.tscn" id="8_2sux5"]
-[ext_resource type="PackedScene" uid="uid://n7pxkutnuopq" path="res://objects/furniture/cash_register.tscn" id="9_iqfnf"]
-[ext_resource type="PackedScene" uid="uid://caogonrcbkrbe" path="res://objects/furniture/fence.tscn" id="10_bhqug"]
-[ext_resource type="PackedScene" uid="uid://dud3472v00ss0" path="res://objects/furniture/fence_door.tscn" id="11_cyhxw"]
-[ext_resource type="PackedScene" uid="uid://1o0hvhk25eit" path="res://objects/furniture/fruit_basket.tscn" id="12_wq66c"]
-[ext_resource type="PackedScene" uid="uid://3lg5fndg73tg" path="res://objects/furniture/bottle_return.tscn" id="13_183dw"]
+[ext_resource type="Resource" uid="uid://deokxfuwgbfmh" path="res://objects/furniture/resources/shelf_single_data.tres" id="7_s4hvt"]
+[ext_resource type="Resource" uid="uid://ctjgeb2rlcob6" path="res://objects/furniture/resources/shelf_double.tres" id="8_2sux5"]
+[ext_resource type="Resource" uid="uid://dvsic6lbnii2t" path="res://objects/furniture/resources/fruit_basket.tres" id="9_iqfnf"]
+[ext_resource type="Resource" uid="uid://bv4eq1t1jrhky" path="res://objects/furniture/resources/display_bread.tres" id="9_w1o2u"]
+[ext_resource type="Resource" uid="uid://dutntkkru5aso" path="res://objects/furniture/resources/freezer.tres" id="10_bhqug"]
+[ext_resource type="Resource" uid="uid://uyq5ufjang8d" path="res://objects/furniture/resources/fence.tres" id="11_cyhxw"]
+[ext_resource type="Resource" uid="uid://b7jht8ibcftws" path="res://objects/furniture/resources/fence_door.tres" id="12_wq66c"]
+[ext_resource type="Resource" uid="uid://dchrxnf0duk40" path="res://objects/furniture/resources/bottle_return.tres" id="13_183dw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_abyao"]
 radius = 0.2
@@ -75,11 +76,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.5)
 [node name="BuildComponent" type="Node3D" parent="."]
 script = ExtResource("3_v7na6")
 ghost_material = ExtResource("4_5jn8q")
-buildable_items = Array[PackedScene]([ExtResource("5_5esnd"), ExtResource("6_w1o2u"), ExtResource("7_s4hvt"), ExtResource("8_2sux5"), ExtResource("9_iqfnf"), ExtResource("10_bhqug"), ExtResource("11_cyhxw"), ExtResource("12_wq66c"), ExtResource("13_183dw")])
+buildable_items = Array[ExtResource("5_5esnd")]([ExtResource("6_w1o2u"), ExtResource("7_s4hvt"), ExtResource("8_2sux5"), ExtResource("9_w1o2u"), ExtResource("10_bhqug"), ExtResource("9_iqfnf"), ExtResource("11_cyhxw"), ExtResource("12_wq66c"), ExtResource("13_183dw")])
 
 [node name="InteractionComponent" type="Node3D" parent="." node_paths=PackedStringArray("ray_cast_3d")]
 script = ExtResource("5_id26h")
 ray_cast_3d = NodePath("../Camera3D/RayCast3D")
+throw_force = 6.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
