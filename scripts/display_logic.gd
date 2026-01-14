@@ -24,6 +24,16 @@ func get_item_count() -> int:
 			count += 1
 	return count
 
+func take_specific_item(data: ProductData) -> Node:
+	for i in range(itemsPlaced.size()):
+		var item = itemsPlaced[i]
+		if item != null and "product_data" in item and item.product_data == data:
+			item.reparent(get_tree().current_scene)
+			if item is CollisionObject3D:
+				item.collision_layer = 3
+			return item
+	return null
+
 func take_random_item() -> Node:
 	var stocked_indices = []
 	for i in range(itemsPlaced.size()):
@@ -38,6 +48,8 @@ func take_random_item() -> Node:
 	
 	# The _on_objects_child_exiting_tree will handle nulling the array
 	item.reparent(get_tree().current_scene) 
+	if item is CollisionObject3D:
+		item.collision_layer = 1
 	return item
 		
 func add_object(object):
@@ -46,7 +58,11 @@ func add_object(object):
 	# Move to the shelf's node
 	object.reparent(objects)
 	
-	# Lock physics
+	# Lock physics and change collision layer to 2 (Items)
+	# This allows player raycast (on mask 1) to go through them
+	if object is CollisionObject3D:
+		object.collision_layer = 2 
+		
 	if object is RigidBody3D:
 		object.freeze = true
 		object.linear_velocity = Vector3.ZERO

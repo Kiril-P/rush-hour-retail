@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmk6m5s4g0fne"]
+[gd_scene load_steps=21 format=3 uid="uid://bmk6m5s4g0fne"]
 
 [ext_resource type="Script" uid="uid://d1g214mmacjey" path="res://scripts/player_controller.gd" id="1_0yo81"]
 [ext_resource type="Texture2D" uid="uid://cpm5rn02eksc7" path="res://objects/ui/crosshair_dot.png" id="2_44h1h"]
@@ -6,7 +6,6 @@
 [ext_resource type="Material" uid="uid://c2bufmg42rjkd" path="res://materials/ghost_mat.tres" id="4_5jn8q"]
 [ext_resource type="Script" uid="uid://bk77po0kmmwx4" path="res://scripts/furniture_data.gd" id="5_5esnd"]
 [ext_resource type="Script" uid="uid://b144cxq3wyao5" path="res://scripts/interaction_component.gd" id="5_id26h"]
-[ext_resource type="Script" uid="uid://dd1j6v8srsiei" path="res://scripts/money_label.gd" id="6_6chtw"]
 [ext_resource type="Resource" uid="uid://c05ml1st261kr" path="res://objects/furniture/resources/cash_register.tres" id="6_w1o2u"]
 [ext_resource type="PackedScene" uid="uid://c7jeiyo6yd4rv" path="res://objects/ui/shop_ui.tscn" id="7_1ndue"]
 [ext_resource type="Resource" uid="uid://deokxfuwgbfmh" path="res://objects/furniture/resources/shelf_single_data.tres" id="7_s4hvt"]
@@ -17,7 +16,8 @@
 [ext_resource type="Resource" uid="uid://uyq5ufjang8d" path="res://objects/furniture/resources/fence.tres" id="11_cyhxw"]
 [ext_resource type="Resource" uid="uid://b7jht8ibcftws" path="res://objects/furniture/resources/fence_door.tres" id="12_wq66c"]
 [ext_resource type="Resource" uid="uid://dchrxnf0duk40" path="res://objects/furniture/resources/bottle_return.tres" id="13_183dw"]
-[ext_resource type="Script" uid="uid://b144uou550gnp" path="res://scripts/time_label.gd" id="18_s4hvt"]
+[ext_resource type="PackedScene" uid="uid://yw864doq0vnw" path="res://objects/game_ui.tscn" id="17_s4hvt"]
+[ext_resource type="PackedScene" uid="uid://cgp1wbfx4057b" path="res://objects/ui/stats_ui.tscn" id="19_2sux5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_abyao"]
 radius = 0.2
@@ -26,16 +26,6 @@ height = 0.8
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1o2u"]
 radius = 0.2
 height = 0.8
-
-[sub_resource type="LabelSettings" id="LabelSettings_w1o2u"]
-font_size = 50
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_s4hvt"]
-font_size = 50
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
 
 [node name="FpsPlayer" type="CharacterBody3D"]
 script = ExtResource("1_0yo81")
@@ -97,35 +87,8 @@ throw_force = 6.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ShopUI" parent="CanvasLayer" instance=ExtResource("7_1ndue")]
+visible = false
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("17_s4hvt")]
 
-[node name="MoneyLabel" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -410.0
-offset_right = -7.0
-offset_bottom = 88.0
-grow_horizontal = 0
-theme_override_constants/outline_size = 0
-theme_override_constants/shadow_outline_size = 1
-text = "Money: 1000.0$"
-label_settings = SubResource("LabelSettings_w1o2u")
-horizontal_alignment = 2
-script = ExtResource("6_6chtw")
-
-[node name="TimeLabel" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "10:00"
-label_settings = SubResource("LabelSettings_s4hvt")
-script = ExtResource("18_s4hvt")
+[node name="StatsUI" parent="CanvasLayer" instance=ExtResource("19_2sux5")]

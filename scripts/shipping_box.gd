@@ -3,23 +3,11 @@ extends RigidBody3D
 @export var product_data: ProductData 
 var max_capacity: int = 10 
 
-@onready var visual_node = %item_ingredient
-@onready var outline_mesh = %outline_mesh
-
 var contents: Array[PackedScene] = []
-var selected = false
-var outline_width = 0.05
 var player
 
 func _ready():
-	if outline_mesh:
-		outline_mesh.visible = false
-		
 	player = get_tree().get_first_node_in_group("player")
-	if player:
-		if player.is_connected("interact_object", _set_selected):
-			player.disconnect("interact_object", _set_selected)
-		player.connect("interact_object", _set_selected)
 
 	# Setup capacity and initial fill
 	if product_data:
@@ -32,25 +20,13 @@ func _ready():
 	update_ui()
 
 func _process(_delta: float) -> void:
-	var is_carried = get_parent().name == "InteractionComponent"
-	if outline_mesh:
-		outline_mesh.visible = selected and not is_carried
-	
-	if visual_node:
-		if selected and not is_carried:
-			visual_node.position.y = outline_width
-		else: 
-			visual_node.position.y = 0
+	pass
 
 func pick_up(new_parent):
 	reparent(new_parent)
-	selected = false
 
 func _set_selected(object):
-	if object == self or (object is Node and is_ancestor_of(object)):
-		selected = true
-	else:
-		selected = false
+	pass
 
 # --- BOX LOGIC ---
 

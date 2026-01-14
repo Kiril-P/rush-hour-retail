@@ -2,8 +2,8 @@ extends Node3D
 
 class_name CashRegister
 
-@export var customer_spacing: float = 1.0
-@export var item_placement_offset: Vector3 = Vector3(0.5, 0.8, 0) # Relative to register
+@export var customer_spacing: float = 0.5
+@export var item_placement_offset: Vector3 = Vector3(-0.25, 0.25, 0.1) # Relative to register
 
 var queue: Array[Node3D] = []
 var items_to_scan: Array[Node] = []
@@ -63,7 +63,14 @@ func place_items_for_scanning(items: Array[Node]):
 		if item is RigidBody3D:
 			item.freeze = true
 
-func _on_item_scanned(item):
+func _on_item_scanned(item, value: float = 0.0):
+	# Find which customer owned this item
+	# We can't easily know which customer, but usually it's the one at the head
+	if not queue.is_empty():
+		var customer = queue[0]
+		if customer.has_method("add_to_bill"):
+			customer.add_to_bill(value)
+
 	items_to_scan.erase(item)
 	if items_to_scan.is_empty():
 		all_items_scanned.emit()

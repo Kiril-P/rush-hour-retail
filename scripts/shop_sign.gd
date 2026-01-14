@@ -9,10 +9,26 @@ func _ready():
 
 func interact():
 	if not GameManager.is_open:
-		GameManager.is_open = true
-		print("Sign: Shop is now OPEN. Day started!")
+		if GameManager.current_time >= GameManager.CLOSING_HOUR:
+			# If shop is closed and it's late, show stats
+			_show_stats()
+		else:
+			# Start the day
+			GameManager.is_open = true
+			print("Sign: Shop is now OPEN. Day started!")
 	else:
 		print("Sign: You cannot close the shop manually! Wait for closing hours.")
+
+func _show_stats():
+	var canvas = get_tree().current_scene.find_child("CanvasLayer")
+	if canvas:
+		var stats_ui = canvas.find_child("StatsUI", true, false)
+		if stats_ui and stats_ui.has_method("show_stats"):
+			stats_ui.show_stats()
+		else:
+			print("Sign: StatsUI node not found in CanvasLayer!")
+	else:
+		print("Sign: CanvasLayer not found in scene!")
 
 func _on_shop_state_changed(_is_open):
 	update_sign()

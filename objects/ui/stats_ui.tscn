@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgp1wbfx4057b"]
+
+[ext_resource type="Script" uid="uid://dfneu3twbpypp" path="res://scripts/stats_ui.gd" id="1_7rmdw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2sux5"]
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="StatsUI" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7rmdw")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(300, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="DayLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "DAY !"
+label_settings = SubResource("LabelSettings_2sux5")
+horizontal_alignment = 1
+
+[node name="SalesLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "5 sale"
+horizontal_alignment = 1
+
+[node name="ItemsLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="CustomersLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="UnsatisfiedLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="NextDayButton" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.5
+offset_top = -62.0
+offset_right = 59.5
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start Next day"
+icon_alignment = 1

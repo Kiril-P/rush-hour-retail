@@ -11,4 +11,4 @@ icon = ExtResource("1_d11q1")
 buy_price = 2.0
 sell_price = 3.0
 item_scene = ExtResource("2_brlqv")
-amount_per_box = 6
+amount_per_box = 10

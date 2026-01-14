@@ -39,6 +39,7 @@ const LANDING_DIP = 0.05
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var collider = null
 var interact_button_pressed_time = 0.0
+var secondary_interact_pressed_time = 0.0
 var was_on_floor = true
 
 @onready var collision_shape_3d = $CollisionShape3D
@@ -46,6 +47,14 @@ var was_on_floor = true
 func _ready():
 	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	# Move to spawn point on start
+	await get_tree().process_frame
+	var spawn = get_tree().current_scene.find_child("PlayerSpawnPoint")
+	if spawn:
+		global_position = spawn.global_position
+		rotation.y = spawn.rotation.y
+		
 	build_component.ray_cast_3d = ray_cast_3d
 	build_component.build_preview_marker = $Camera3D/BuildPreviewMarker
 
@@ -78,7 +87,14 @@ func _input(event):
 	
 	if event.is_action_released("interact"):
 		var hold_duration = (Time.get_ticks_msec() - interact_button_pressed_time) / 1000.0
-		interaction_component.handle_interaction(collider, hold_duration)
+		interaction_component.handle_interaction(collider, hold_duration, false)
+	
+	if event.is_action_pressed("secondary_interact"):
+		secondary_interact_pressed_time = Time.get_ticks_msec()
+	
+	if event.is_action_released("secondary_interact"):
+		var hold_duration = (Time.get_ticks_msec() - secondary_interact_pressed_time) / 1000.0
+		interaction_component.handle_interaction(collider, hold_duration, true)
 func handle_build_input(event):
 	# Rotate (Now 45 degrees inverted)
 	if event.is_action_pressed("rotate_object"): 

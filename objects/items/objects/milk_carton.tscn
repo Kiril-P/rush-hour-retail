@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://blkbjodsybh6u"]
+[gd_scene load_steps=7 format=4 uid="uid://blkbjodsybh6u"]
 
 [ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_gvql6"]
 [ext_resource type="Texture2D" uid="uid://cl5w0r06l4vkx" path="res://assets/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_mutgo"]
-[ext_resource type="Resource" uid="uid://d3b8v0yiip0gp" path="res://objects/items/resources/milk_data.tres" id="2_uq0me"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfpnr"]
 resource_name = "colormap"
@@ -44,27 +43,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gvql6")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_8sq43"]
-_surfaces = [{
-"aabb": AABB(-0.10583702, -0.028867513, -0.10762405, 0.21167403, 0.32424888, 0.21662548),
-"attribute_data": PackedByteArray("AAAYP2ZASz8AABg/Y79SPwAAGD9VVlY/AAAYP1VWVj8AABg/Y79SPwAAGD9VVlY/AAAYP2ZASz8AABg/VVZWPwAAGD9jv1I/AAAYP2ZASz8AABg/VVZWPwAAGD9jv1I/AAAYP2ZASz8AABg/Y79SPwAAGD9VVlY/AAAYP1VWVj8AABg/VVZWPwAAGD9jv1I/AAAYP5qZeT8AABg/mpl5PwAAGD+amXk/AAAYP5qZeT8AABg/ZkBLPwAAGD9mQEs/AAAYP1VWVj8AABg/VVZWPwAAGD9VVlY/AAAYP1VWVj8AABg/ZkBLPwAAGD9mQEs/AABYP5qZOT8AAFg/mpk5PwAAWD9VVhY/AABYP1VWFj8AAFg/VVYWPwAAWD9VVhY/AABYP5qZOT8AAFg/mpk5PwAAWD9VVhY/AABYP5qZOT8AAFg/mpk5PwAAWD9VVhY/AABYP1VWFj8AAFg/mpk5PwAAWD+amTk/AABYP1VWFj8AABg/ZkBLPwAAGD9mQEs/AAAYP2bTSD8AABg/ZmZGPwAAGD9mZkY/AAAYP2bTSD8AABg/ZkBLPwAAGD9mQEs/AAAYP2bTSD8AABg/ZmZGPwAAGD9mZkY/AAAYP2bTSD8="),
-"format": 34359742487,
-"index_count": 84,
-"index_data": PackedByteArray("AAACAAEAAwAFAAQABgAIAAcACQALAAoADAAOAA0ADwARABAAEgAUABMAFAASABUAFgAYABcAGAAWABkAGgAcABsAHAAaAB0AHgAgAB8AIAAeACEAIgAkACMAJAAiACUAJgAoACcAKAAmACkAKgAsACsALAAqAC0ALgAwAC8AMAAuADEAMQAuADIAMgAuADMANAA2ADUANwA1ADYAOAA1ADcAOQA1ADgA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 58,
-"vertex_data": PackedByteArray("7O7NPDo8lz67Oc49Ca92O/lJYD6MEbU91kTRvQoeaT7/adw91kTRvQoeaT7/adw9Ca92O/lJYD6MEbU9ZM7RPUpkZz4lPN897O7NPDo8lz67Oc49ZM7RPUpkZz4lPN89Ca92O/lJYD6MEbU96u7NPDo8lz68Oc692ETRvQoeaT7+ady9e/gDPLt6aD6EG7K96u7NPDo8lz68Oc69e/gDPLt6aD6EG7K91kTRPQoeaT7/ady92ETRvQoeaT7+ady91kTRPQoeaT7/ady9e/gDPLt6aD6EG7K9E8HYvZB77LwUwdg9FMHYPZB77LwTwdg9E8HYPZB77LwUwdi9FMHYvZB77LwTwdi96u7NPDo8lz68Oc697O7NPDo8lz67Oc491kTRvQoeaT7/adw92ETRvQoeaT7+ady91kTRPQoeaT7/ady9ZM7RPUpkZz4lPN897O7NPDo8lz67Oc496u7NPDo8lz68Oc69E8HYvZB77LwUwdg9FMHYvZB77LwTwdi92ETRvQoeaT7+ady91kTRvQoeaT7/adw9ZM7RPUpkZz4lPN891kTRPQoeaT7/ady9E8HYPZB77LwUwdi9FMHYPZB77LwTwdg92ETRvQoeaT7+ady9FMHYvZB77LwTwdi9E8HYPZB77LwUwdi91kTRPQoeaT7/ady9ZM7RPUpkZz4lPN89FMHYPZB77LwTwdg9E8HYvZB77LwUwdg91kTRvQoeaT7/adw97O7NPDo8lz67Oc496u7NPDo8lz68Oc69zcxMPZCviz4wop29zcxMPQ6ikj442IG9zcxMPQ6ikj442IE9zcxMPZCviz4wop096u7NPDo8lz68Oc697O7NPDo8lz67Oc49zcxMPZCviz4wop29zcxMPQ6ikj442IG9zcxMPQ6ikj442IE9zcxMPZCviz4wop09lKPUUwAA/7+Uo9RTAAD/v5Sj1FMAAP+//38J1AAA/7//fwnUAAD/v/9/CdQAAP+/alzUUwAA/79qXNRTAAD/v2pc1FMAAP+/09OVIwAA/7/T05UjAAD/v9PTlSMAAP+/KiyVIwAA/78qLJUjAAD/vyoslSMAAP+/9av//wAA/7/1q///AAD/v/Wr//8AAP+/AIAAAAAA/78AgAAAAAD/vwCAAAAAAP+/AIAAAAAA/7/jRuHGAAD/v+NG4cYAAP+/40bhxgAA/7/jRuHGAAD/vxu54sYAAP+/G7nixgAA/78bueLGAAD/vxu54sYAAP+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//7///wCA////////AID///////8AgP///////wCA//////////8AAP+//////wAA/7//////AAD/v/////8AAP+//3//f////7//f/9/////v/9//3////+//3//f////78AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//7///wCA/3//P///AID/f/8///8AgP9//z///wCA/3//P///AID/f/8///8AgP9//z8=")
-}]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83r6x"]
-albedo_color = Color(0, 0, 0, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_a1o78"]
 size = Vector3(0.15, 0.275, 0.15)
 
 [node name="carton" type="RigidBody3D"]
-collision_layer = 2
+collision_layer = 4
 script = ExtResource("1_gvql6")
 
 [node name="item_ingredient" type="Node3D" parent="."]
@@ -73,11 +56,6 @@ unique_name_in_owner = true
 [node name="carton" type="MeshInstance3D" parent="item_ingredient"]
 mesh = SubResource("ArrayMesh_yr7xo")
 skeleton = NodePath("")
-
-[node name="outline_mesh" type="MeshInstance3D" parent="item_ingredient/carton"]
-unique_name_in_owner = true
-mesh = SubResource("ArrayMesh_8sq43")
-surface_material_override/0 = SubResource("StandardMaterial3D_83r6x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135, 0)
