@@ -50,45 +50,63 @@ func cycle_items(dir: int):
 	current_item_index = posmod(current_item_index + dir, buildable_items.size())
 	spawn_ghost()
 
-func delete_item(collider):
+func delete_item(collider_node):
 	if moving_item: return
-	var target = _find_shelf(collider)
+	
+	# Try to find the shelf starting from the collider
+	var target = _find_shelf(collider_node)
+	
 	if target:
+		# GIVE MONEY BACK (e.g., $25 refund)
+		var refund = 25.0 
+		GameManager.money += refund
+		GameManager.money_changed.emit(GameManager.money)
+		print("BuildComponent: Sold ", target.name, " for $", refund)
 		target.queue_free()
+	else:
+		print("BuildComponent: No shelf/furniture found at cursor. Looking at: ", 
+			collider_node.name if collider_node else "Nothing")
 
 func _check_placement_validity():
 	if not ghost_item: return
 	
-	# 1. AIR CHECK: Raycast must be hitting something
+	# 1. AIR & SURFACE CHECK: Raycast must be hitting something valid
 	if not ray_cast_3d.is_colliding():
 		can_place = false
 		_update_ghost_visuals()
 		return
+		
+	var hit_collider = ray_cast_3d.get_collider()
+	
+	# SAFER COLLISION LAYER CHECK
+	if hit_collider != null:
+		var layers = hit_collider.get("collision_layer")
+		if layers != null and (int(layers) & 2):
+			# If hitting Layer 2 (Boxes/Items), don't allow building on top
+			can_place = false
+			_update_ghost_visuals()
+			return
 
 	# 2. COLLISION CHECK: Check if overlapping other objects
 	var aabb: AABB = _get_combined_aabb(ghost_item)
 	var space_state = get_world_3d().direct_space_state
 	
-	# Create a Box Shape for the query
 	var query = PhysicsShapeQueryParameters3D.new()
 	var box_shape = BoxShape3D.new()
 	
-	# SHRINK the detection box slightly (by 2.5cm on each side) to allow tight placement
 	var shrink_amount = 0.05 
 	box_shape.size = aabb.size - Vector3(shrink_amount, 0.01, shrink_amount)
 	
 	query.shape = box_shape
-	# Move the center of the query to the ghost's center
 	var query_pos = ghost_item.global_position + Vector3(0, aabb.size.y / 2.0, 0)
 	query.transform = Transform3D(ghost_item.global_transform.basis, query_pos)
-	query.collision_mask = 1 # Static geometry / Furniture layer
+	query.collision_mask = 1 | 2 
 	
 	var result = space_state.intersect_shape(query)
 	var collision_found = false
 	
 	for r in result:
 		var collider = r.collider
-		# Ignore the floor, the ghost itself, and the item we are currently moving
 		if collider.is_in_group("floor") or "floor" in collider.name.to_lower():
 			continue
 		if collider == ghost_item or collider == moving_item:
@@ -114,7 +132,6 @@ func _get_combined_aabb(node: Node3D) -> AABB:
 	var found_mesh = false
 	for mesh in node.find_children("*", "MeshInstance3D"):
 		var local_aabb = mesh.get_mesh().get_aabb()
-		# Account for the mesh's own scale/transform
 		var world_aabb = mesh.get_transform() * local_aabb
 		if not found_mesh:
 			aabb = world_aabb
@@ -124,7 +141,6 @@ func _get_combined_aabb(node: Node3D) -> AABB:
 	return aabb if found_mesh else AABB(Vector3(-0.5,0,-0.5), Vector3(1,1,1))
 
 func update_ghost_position():
-	# If not colliding with anything, we don't move the ghost (it stays at last valid spot or marker)
 	if not ray_cast_3d.is_colliding():
 		ghost_item.global_position = build_preview_marker.global_position
 		return
@@ -152,7 +168,6 @@ func place_item():
 		var new_item = scene.instantiate()
 		get_tree().current_scene.add_child(new_item)
 		new_item.global_transform = ghost_item.global_transform
-		# Ensure it's in the right group for future move/delete
 		if not new_item.is_in_group("shelf"):
 			new_item.add_to_group("shelf")
 		spawn_ghost()

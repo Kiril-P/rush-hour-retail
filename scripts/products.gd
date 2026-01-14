@@ -1,6 +1,7 @@
 extends RigidBody3D
 
-@export var product_data: ProductData # THE ONLY SOURCE OF TRUTH NOW
+# REMOVED @export to avoid circular dependency loop
+var product_data: ProductData 
 
 @onready var visual_node = %item_ingredient
 @onready var outline_mesh = %outline_mesh

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dmm7qkacph8iq" path="res://scripts/shop_item_button.gd" id="1_2s3qv"]
 
 [node name="ShopItemButton" type="Button"]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(300, 300)
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_2s3qv")
@@ -20,10 +20,10 @@ theme_override_constants/separation = 10
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 30
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
@@ -31,9 +31,11 @@ stretch_mode = 5
 [node name="NameLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PriceLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
