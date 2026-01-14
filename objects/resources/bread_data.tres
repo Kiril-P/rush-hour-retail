@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ProductData" load_steps=4 format=3 uid="uid://bud0b828rbck3"]
+
+[ext_resource type="Texture2D" uid="uid://dmytbqtl2a8j1" path="res://objects/resources/bread_image.jpg" id="1_g5kos"]
+[ext_resource type="Script" uid="uid://djilegrvfndvm" path="res://scripts/product_data.gd" id="1_gst6m"]
+[ext_resource type="PackedScene" uid="uid://qnvrxjc6vt7s" path="res://objects/items/bread.tscn" id="2_627yq"]
+
+[resource]
+script = ExtResource("1_gst6m")
+item_name = "Bread"
+icon = ExtResource("1_g5kos")
+buy_price = 4.0
+sell_price = 7.0
+item_scene = ExtResource("2_627yq")
+amount_per_box = 3

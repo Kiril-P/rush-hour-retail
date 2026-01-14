@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1o0hvhk25eit"]
+
+[ext_resource type="PackedScene" uid="uid://cu74dokolrxse" path="res://assets/kenney_mini-market/Models/GLB format/display-fruit.glb" id="1_1u7my"]
+
+[node name="FruitBasket" type="Node3D"]
+
+[node name="display-fruit2" parent="." instance=ExtResource("1_1u7my")]

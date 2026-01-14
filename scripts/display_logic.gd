@@ -12,10 +12,13 @@ func _ready() -> void:
 	add_to_group("shelf")
 	for i in object_places.get_child_count():
 		itemsPlaced.append(null)
+
+func has_space() -> bool:
+	if not is_placed: return false
+	return itemsPlaced.has(null)
 		
 func add_object(object):
-	if not is_placed: return false
-	if not itemsPlaced.has(null): return false
+	if not has_space(): return false
 	
 	# Move to the shelf's node
 	object.reparent(objects)

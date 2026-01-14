@@ -1,0 +1,105 @@
+[gd_scene load_steps=19 format=3 uid="uid://bmk6m5s4g0fne"]
+
+[ext_resource type="Script" uid="uid://d1g214mmacjey" path="res://scripts/player_controller.gd" id="1_0yo81"]
+[ext_resource type="Texture2D" uid="uid://cpm5rn02eksc7" path="res://objects/ui/crosshair_dot.png" id="2_44h1h"]
+[ext_resource type="Script" uid="uid://dhxxjmkaaejcg" path="res://scripts/build_component.gd" id="3_v7na6"]
+[ext_resource type="Material" uid="uid://c2bufmg42rjkd" path="res://materials/ghost_mat.tres" id="4_5jn8q"]
+[ext_resource type="PackedScene" uid="uid://b2pbcl3p66ffr" path="res://objects/furniture/shelf_single.tscn" id="5_5esnd"]
+[ext_resource type="Script" uid="uid://b144cxq3wyao5" path="res://scripts/interaction_component.gd" id="5_id26h"]
+[ext_resource type="Script" uid="uid://dd1j6v8srsiei" path="res://scripts/money_label.gd" id="6_6chtw"]
+[ext_resource type="PackedScene" uid="uid://bgxdvx2uvn2hh" path="res://objects/furniture/shelf_double.tscn" id="6_w1o2u"]
+[ext_resource type="PackedScene" uid="uid://c7jeiyo6yd4rv" path="res://objects/ui/shop_ui.tscn" id="7_1ndue"]
+[ext_resource type="PackedScene" uid="uid://dx8a0or2qqw3q" path="res://objects/furniture/display_bread.tscn" id="7_s4hvt"]
+[ext_resource type="PackedScene" uid="uid://d331yg34nitel" path="res://objects/furniture/freezer.tscn" id="8_2sux5"]
+[ext_resource type="PackedScene" uid="uid://n7pxkutnuopq" path="res://objects/furniture/cash_register.tscn" id="9_iqfnf"]
+[ext_resource type="PackedScene" uid="uid://caogonrcbkrbe" path="res://objects/furniture/fence.tscn" id="10_bhqug"]
+[ext_resource type="PackedScene" uid="uid://dud3472v00ss0" path="res://objects/furniture/fence_door.tscn" id="11_cyhxw"]
+[ext_resource type="PackedScene" uid="uid://1o0hvhk25eit" path="res://objects/furniture/fruit_basket.tscn" id="12_wq66c"]
+[ext_resource type="PackedScene" uid="uid://3lg5fndg73tg" path="res://objects/furniture/bottle_return.tscn" id="13_183dw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_abyao"]
+radius = 0.2
+height = 0.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fiw5"]
+radius = 0.2
+height = 0.8
+
+[node name="FpsPlayer" type="CharacterBody3D"]
+script = ExtResource("1_0yo81")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_abyao")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3fiw5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9801987, 0.19801661, 0, -0.19801661, 0.9801987, 0, 0.2136867, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 3
+
+[node name="Control" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_44h1h")
+expand_mode = 1
+
+[node name="BuildPreviewMarker" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="CarryObjectMarker" type="Marker3D" parent="Camera3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.5)
+
+[node name="BuildComponent" type="Node3D" parent="."]
+script = ExtResource("3_v7na6")
+ghost_material = ExtResource("4_5jn8q")
+buildable_items = Array[PackedScene]([ExtResource("5_5esnd"), ExtResource("6_w1o2u"), ExtResource("7_s4hvt"), ExtResource("8_2sux5"), ExtResource("9_iqfnf"), ExtResource("10_bhqug"), ExtResource("11_cyhxw"), ExtResource("12_wq66c"), ExtResource("13_183dw")])
+
+[node name="InteractionComponent" type="Node3D" parent="." node_paths=PackedStringArray("ray_cast_3d")]
+script = ExtResource("5_id26h")
+ray_cast_3d = NodePath("../Camera3D/RayCast3D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ShopUI" parent="CanvasLayer" instance=ExtResource("7_1ndue")]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -98.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Money: 100$"
+script = ExtResource("6_6chtw")

@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ytv0th6lng4d"]
-
-[ext_resource type="PackedScene" uid="uid://b2pbcl3p66ffr" path="res://objects/furniture/shelf_single.tscn" id="1_wy8h5"]
-
-[node name="gridMapCollection" type="Node3D"]
-
-[node name="shelf_single" parent="." instance=ExtResource("1_wy8h5")]

@@ -24,6 +24,15 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("quit"): get_tree().quit()
 
+	# 1. HANDLE SHOP TOGGLE FIRST (so 'B' can close it)
+	if event.is_action_pressed("shop"):
+		$CanvasLayer/ShopUI.toggle()
+		return
+
+	# 2. DISABLE OTHER INPUTS IF SHOP IS OPEN
+	if $CanvasLayer/ShopUI.visible:
+		return
+
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * CAMERA_SENS)
 		camera_3d.rotate_x(-event.relative.y * CAMERA_SENS)
@@ -42,7 +51,6 @@ func _input(event):
 	if event.is_action_released("interact"):
 		var hold_duration = (Time.get_ticks_msec() - interact_button_pressed_time) / 1000.0
 		interaction_component.handle_interaction(collider, hold_duration)
-
 func handle_build_input(event):
 	# Rotate (Now 45 degrees inverted)
 	if event.is_action_pressed("rotate_object"): 
@@ -66,7 +74,24 @@ func handle_build_input(event):
 	if event.is_action_pressed("next_item"): build_component.cycle_items(1)
 	if event.is_action_pressed("prev_item"): build_component.cycle_items(-1)
 
+	# NEW: Toggle Snap with Ctrl
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_CTRL:
+			build_component.cycle_snap()
+
 func _physics_process(delta):
+	if $CanvasLayer/ShopUI.visible:
+		# Apply ONLY gravity so player falls to floor but cannot move
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		else:
+			velocity.y = 0
+		
+		velocity.x = 0
+		velocity.z = 0
+		move_and_slide()
+		return
+
 	if not is_on_floor(): velocity.y -= gravity * delta
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor(): velocity.y = JUMP_VELOCITY
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

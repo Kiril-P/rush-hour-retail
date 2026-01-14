@@ -19,12 +19,23 @@ var can_place: bool = true
 var moving_item = null
 var original_transform: Transform3D
 
+# SNAP SETTINGS
+var snap_sizes = [0.0, 0.2, 0.5, 1.0] # 0.0 is no snap
+var current_snap_index = 0
+
 func _process(_delta):
 	if is_building and ghost_item:
 		update_ghost_position()
 		_check_placement_validity()
 
-# --- NEW: Fixed Toggle with Cleanup ---
+func cycle_snap():
+	current_snap_index = (current_snap_index + 1) % snap_sizes.size()
+	var snap_val = snap_sizes[current_snap_index]
+	if snap_val == 0.0:
+		print("Snap Mode: OFF")
+	else:
+		print("Snap Mode: ", snap_val, "m")
+
 func toggle_build_mode():
 	is_building = !is_building
 	if is_building:
@@ -32,15 +43,13 @@ func toggle_build_mode():
 	else:
 		if moving_item:
 			cancel_move()
-		_cleanup_ghost_logic() # This removes the ghost from the screen
+		_cleanup_ghost_logic()
 
-# --- NEW: Added missing cycle_items ---
 func cycle_items(dir: int):
-	if moving_item: return # Don't swap items while moving something
+	if moving_item: return 
 	current_item_index = posmod(current_item_index + dir, buildable_items.size())
 	spawn_ghost()
 
-# --- NEW: Added missing delete_item ---
 func delete_item(collider):
 	if moving_item: return
 	var target = _find_shelf(collider)
@@ -49,36 +58,44 @@ func delete_item(collider):
 
 func _check_placement_validity():
 	if not ghost_item: return
+	
+	# 1. AIR CHECK: Raycast must be hitting something
+	if not ray_cast_3d.is_colliding():
+		can_place = false
+		_update_ghost_visuals()
+		return
+
+	# 2. COLLISION CHECK: Check if overlapping other objects
 	var aabb: AABB = _get_combined_aabb(ghost_item)
 	var space_state = get_world_3d().direct_space_state
 	
-	var center = ghost_item.global_position + Vector3(0, 0.5, 0)
-	var size = aabb.size * 0.4 
+	# Create a Box Shape for the query
+	var query = PhysicsShapeQueryParameters3D.new()
+	var box_shape = BoxShape3D.new()
 	
-	var check_points = [
-		center,
-		center + Vector3(size.x, 0, size.z),
-		center + Vector3(-size.x, 0, size.z),
-		center + Vector3(size.x, 0, -size.z),
-		center + Vector3(-size.x, 0, -size.z)
-	]
+	# SHRINK the detection box slightly (by 2.5cm on each side) to allow tight placement
+	var shrink_amount = 0.05 
+	box_shape.size = aabb.size - Vector3(shrink_amount, 0.01, shrink_amount)
 	
+	query.shape = box_shape
+	# Move the center of the query to the ghost's center
+	var query_pos = ghost_item.global_position + Vector3(0, aabb.size.y / 2.0, 0)
+	query.transform = Transform3D(ghost_item.global_transform.basis, query_pos)
+	query.collision_mask = 1 # Static geometry / Furniture layer
+	
+	var result = space_state.intersect_shape(query)
 	var collision_found = false
-	for point in check_points:
-		var query = PhysicsShapeQueryParameters3D.new()
-		var sphere = SphereShape3D.new()
-		sphere.radius = 0.2
-		query.shape = sphere
-		query.transform = Transform3D(Basis(), point)
-		query.collision_mask = 1 
-		
-		var result = space_state.intersect_shape(query)
-		for r in result:
-			var collider = r.collider
-			if collider == ghost_item or collider == moving_item or "Floor" in collider.name:
-				continue
-			collision_found = true
-			break
+	
+	for r in result:
+		var collider = r.collider
+		# Ignore the floor, the ghost itself, and the item we are currently moving
+		if collider.is_in_group("floor") or "floor" in collider.name.to_lower():
+			continue
+		if collider == ghost_item or collider == moving_item:
+			continue
+			
+		collision_found = true
+		break
 			
 	can_place = !collision_found
 	_update_ghost_visuals()
@@ -88,10 +105,7 @@ func _update_ghost_visuals():
 	ghost_material.albedo_color = valid_color if can_place else invalid_color
 	
 	if moving_item:
-		if not can_place:
-			_apply_material(moving_item, ghost_material)
-		else:
-			_apply_material(moving_item, null)
+		_apply_material(moving_item, ghost_material if not can_place else null)
 	else:
 		_apply_material(ghost_item, ghost_material)
 
@@ -100,17 +114,28 @@ func _get_combined_aabb(node: Node3D) -> AABB:
 	var found_mesh = false
 	for mesh in node.find_children("*", "MeshInstance3D"):
 		var local_aabb = mesh.get_mesh().get_aabb()
-		aabb = aabb.merge(local_aabb)
-		found_mesh = true
+		# Account for the mesh's own scale/transform
+		var world_aabb = mesh.get_transform() * local_aabb
+		if not found_mesh:
+			aabb = world_aabb
+			found_mesh = true
+		else:
+			aabb = aabb.merge(world_aabb)
 	return aabb if found_mesh else AABB(Vector3(-0.5,0,-0.5), Vector3(1,1,1))
 
 func update_ghost_position():
-	var target_pos = ray_cast_3d.get_collision_point() if ray_cast_3d.is_colliding() else build_preview_marker.global_position
+	# If not colliding with anything, we don't move the ghost (it stays at last valid spot or marker)
+	if not ray_cast_3d.is_colliding():
+		ghost_item.global_position = build_preview_marker.global_position
+		return
+
+	var target_pos = ray_cast_3d.get_collision_point()
+	var snap_val = snap_sizes[current_snap_index]
 	
-	if grid_map:
-		var local = grid_map.to_local(target_pos)
-		var map_pos = grid_map.local_to_map(local)
-		target_pos = grid_map.to_global(grid_map.map_to_local(map_pos))
+	if snap_val > 0.0:
+		target_pos.x = snapped(target_pos.x, snap_val)
+		target_pos.z = snapped(target_pos.z, snap_val)
+		target_pos.y = snapped(target_pos.y, 0.01) 
 	
 	ghost_item.global_position = target_pos
 	ghost_item.rotation_degrees.y = current_rotation_y
@@ -121,15 +146,25 @@ func place_item():
 	if moving_item:
 		_finalize_move()
 	else:
-		var new_item = buildable_items[current_item_index].instantiate()
+		var scene = buildable_items[current_item_index]
+		if scene == null: return
+			
+		var new_item = scene.instantiate()
 		get_tree().current_scene.add_child(new_item)
 		new_item.global_transform = ghost_item.global_transform
+		# Ensure it's in the right group for future move/delete
+		if not new_item.is_in_group("shelf"):
+			new_item.add_to_group("shelf")
 		spawn_ghost()
 
 func spawn_ghost():
 	_cleanup_ghost_logic()
 	if buildable_items.is_empty(): return
-	ghost_item = buildable_items[current_item_index].instantiate()
+	
+	var scene = buildable_items[current_item_index]
+	if scene == null: return
+		
+	ghost_item = scene.instantiate()
 	get_tree().current_scene.add_child(ghost_item)
 	_strip_collisions(ghost_item)
 	_apply_material(ghost_item, ghost_material)
@@ -180,7 +215,7 @@ func _apply_material(node, mat):
 func _find_shelf(node):
 	var current = node
 	while current:
-		if current is store_object: return current
+		if current.is_in_group("shelf") or current is store_object: return current
 		current = current.get_parent()
 	return null
 

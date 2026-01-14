@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://bw82olk8d2wkr"]
+[gd_scene load_steps=10 format=4 uid="uid://bw82olk8d2wkr"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/bread.gd" id="1_bo5uo"]
+[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_bo5uo"]
 [ext_resource type="Texture2D" uid="uid://cl5w0r06l4vkx" path="res://assets/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_mxk57"]
+[ext_resource type="Resource" uid="uid://ci0rw0d4cguc1" path="res://objects/resources/cereal_data.tres" id="2_3bx0p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfpnr"]
 resource_name = "colormap"
@@ -63,6 +64,7 @@ size = Vector3(0.25, 0.3, 0.1)
 [node name="box" type="RigidBody3D"]
 collision_layer = 2
 script = ExtResource("1_bo5uo")
+product_data = ExtResource("2_3bx0p")
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -71,7 +73,7 @@ unique_name_in_owner = true
 mesh = SubResource("ArrayMesh_bo5uo")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="item_ingredient/box"]
+[node name="outline_mesh" type="MeshInstance3D" parent="item_ingredient/box"]
 unique_name_in_owner = true
 mesh = SubResource("ArrayMesh_mxk57")
 surface_material_override/0 = SubResource("StandardMaterial3D_bo5uo")

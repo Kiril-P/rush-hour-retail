@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d331yg34nitel"]
+
+[ext_resource type="PackedScene" uid="uid://lu81skj04qrh" path="res://assets/kenney_mini-market/Models/GLB format/freezers-standing.glb" id="1_ne26x"]
+
+[node name="Freezer" type="Node3D"]
+
+[node name="freezers-standing2" parent="." instance=ExtResource("1_ne26x")]

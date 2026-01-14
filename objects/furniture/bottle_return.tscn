@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://3lg5fndg73tg"]
+
+[ext_resource type="PackedScene" uid="uid://dyd6y1xvysovq" path="res://assets/kenney_mini-market/Models/GLB format/bottle-return.glb" id="1_11s8q"]
+
+[node name="BottleReturn" type="Node3D"]
+
+[node name="bottle-return2" parent="." instance=ExtResource("1_11s8q")]

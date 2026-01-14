@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://bwv78mqnyugg8"]
+[gd_scene load_steps=10 format=4 uid="uid://bwv78mqnyugg8"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/bread.gd" id="1_i008h"]
+[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_i008h"]
+[ext_resource type="Resource" uid="uid://nfe40vdi2yce" path="res://objects/resources/bottle_data.tres" id="2_re20t"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4p1rd"]
 load_path = "res://.godot/imported/colormap.png-b5306e27b4b6c22d599f29c934089e18.s3tc.ctex"
@@ -68,6 +69,7 @@ radius = 0.35
 [node name="bottle" type="RigidBody3D"]
 collision_layer = 2
 script = ExtResource("1_i008h")
+product_data = ExtResource("2_re20t")
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -76,7 +78,7 @@ unique_name_in_owner = true
 mesh = SubResource("ArrayMesh_i008h")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="item_ingredient/bottle"]
+[node name="outline_mesh" type="MeshInstance3D" parent="item_ingredient/bottle"]
 unique_name_in_owner = true
 mesh = SubResource("ArrayMesh_ujrco")
 surface_material_override/0 = SubResource("StandardMaterial3D_ujrco")
