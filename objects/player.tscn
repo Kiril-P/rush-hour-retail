@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cpm5rn02eksc7" path="res://objects/ui/crosshair_dot.png" id="2_44h1h"]
 [ext_resource type="Script" uid="uid://dhxxjmkaaejcg" path="res://scripts/build_component.gd" id="3_v7na6"]
 [ext_resource type="Material" uid="uid://c2bufmg42rjkd" path="res://materials/ghost_mat.tres" id="4_5jn8q"]
-[ext_resource type="Script" path="res://scripts/furniture_data.gd" id="5_5esnd"]
+[ext_resource type="Script" uid="uid://bk77po0kmmwx4" path="res://scripts/furniture_data.gd" id="5_5esnd"]
 [ext_resource type="Script" uid="uid://b144cxq3wyao5" path="res://scripts/interaction_component.gd" id="5_id26h"]
 [ext_resource type="Script" uid="uid://dd1j6v8srsiei" path="res://scripts/money_label.gd" id="6_6chtw"]
 [ext_resource type="Resource" uid="uid://c05ml1st261kr" path="res://objects/furniture/resources/cash_register.tres" id="6_w1o2u"]
@@ -22,7 +22,7 @@
 radius = 0.2
 height = 0.8
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fiw5"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1o2u"]
 radius = 0.2
 height = 0.8
 
@@ -33,7 +33,7 @@ script = ExtResource("1_0yo81")
 mesh = SubResource("CapsuleMesh_abyao")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_3fiw5")
+shape = SubResource("CapsuleShape3D_w1o2u")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9801987, 0.19801661, 0, -0.19801661, 0.9801987, 0, 0.2136867, 0)
