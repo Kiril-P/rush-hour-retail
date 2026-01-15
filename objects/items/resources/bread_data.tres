@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_gst6m")
 item_name = "Bread"
+category = 3
 icon = ExtResource("1_g5kos")
 buy_price = 4.0
 sell_price = 7.0

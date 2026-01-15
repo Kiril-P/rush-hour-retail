@@ -8,3 +8,4 @@ script = ExtResource("2_dmj5o")
 name = "Freezer"
 price = 140.0
 scene = ExtResource("1_jw2dd")
+supported_categories = Array[int]([1, 2])

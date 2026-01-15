@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bmk6m5s4g0fne"]
 
 [ext_resource type="Script" uid="uid://d1g214mmacjey" path="res://scripts/player_controller.gd" id="1_0yo81"]
-[ext_resource type="Texture2D" uid="uid://cpm5rn02eksc7" path="res://objects/ui/crosshair_dot.png" id="2_44h1h"]
+[ext_resource type="Texture2D" uid="uid://bjghypgf57caw" path="res://assets/kenney_crosshair-pack/PNG/White/crosshair013.png" id="2_s4hvt"]
 [ext_resource type="Script" uid="uid://dhxxjmkaaejcg" path="res://scripts/build_component.gd" id="3_v7na6"]
 [ext_resource type="Material" uid="uid://c2bufmg42rjkd" path="res://materials/ghost_mat.tres" id="4_5jn8q"]
 [ext_resource type="Script" uid="uid://bk77po0kmmwx4" path="res://scripts/furniture_data.gd" id="5_5esnd"]
@@ -58,14 +58,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = -5.0
-offset_bottom = -5.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_44h1h")
-expand_mode = 1
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("2_s4hvt")
 
 [node name="BuildPreviewMarker" type="Marker3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

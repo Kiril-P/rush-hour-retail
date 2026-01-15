@@ -60,9 +60,14 @@ func delete_item(collider_node):
 		# CALCULATE REFUND
 		var refund = 25.0 # Default fallback
 		
-		# If the shelf has a reference to its data, give 50% back
-		if target.has_meta("furniture_data"):
-			var data = target.get_meta("furniture_data")
+		# Priority: furniture_data variable -> metadata
+		var data = null
+		if "furniture_data" in target and target.furniture_data:
+			data = target.furniture_data
+		elif target.has_meta("furniture_data"):
+			data = target.get_meta("furniture_data")
+			
+		if data:
 			refund = data.price * 0.5
 		
 		GameManager.money += refund
@@ -182,6 +187,9 @@ func place_item():
 		# Tag it with its data so we can calculate refund later
 		new_item.set_meta("furniture_data", data)
 		
+		# Also assign it to the script if it exists on the node or its children
+		_assign_furniture_data(new_item, data)
+		
 		if not new_item.is_in_group("shelf"):
 			new_item.add_to_group("shelf")
 		
@@ -222,6 +230,12 @@ func cancel_move():
 		moving_item.global_transform = original_transform
 		_finalize_move()
 
+func _assign_furniture_data(node, data):
+	if "furniture_data" in node:
+		node.furniture_data = data
+	for child in node.get_children():
+		_assign_furniture_data(child, data)
+
 func _cleanup_ghost_logic():
 	if ghost_item and ghost_item != moving_item:
 		ghost_item.queue_free()
@@ -246,7 +260,8 @@ func _apply_material(node, mat):
 func _find_shelf(node):
 	var current = node
 	while current:
-		if current.is_in_group("shelf") or current is store_object: return current
+		if current.is_in_group("shelf") or current is store_object or current is CashRegister: 
+			return current
 		current = current.get_parent()
 	return null
 

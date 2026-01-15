@@ -60,10 +60,22 @@ skeleton = NodePath("")
 [node name="ObjectPlaces" type="Node3D" parent="display-bread"]
 
 [node name="Marker3D" type="Marker3D" parent="display-bread/ObjectPlaces"]
-transform = Transform3D(0.85000014, 0, 0, 0, 0.84017503, -0.12886502, 0, 0.12886502, 0.84017503, -0.13559774, 0.1916748, 0.006115094)
+transform = Transform3D(-3.2105323e-08, 3.942038e-09, 0.74, 0.09018332, 0.73448414, 0, -0.73448414, 0.09018332, -3.2346428e-08, -0.17997193, 0.23407328, 0.1367458)
 
 [node name="Marker3D2" type="Marker3D" parent="display-bread/ObjectPlaces"]
-transform = Transform3D(0.85, 0, 0, 0, 0.8401749, -0.12886499, 0, 0.12886499, 0.8401749, 0.1177707, 0.1916748, 0.006115094)
+transform = Transform3D(-3.2105323e-08, 3.942038e-09, 0.74, 0.09018332, 0.73448414, 0, -0.73448414, 0.09018332, -3.2346428e-08, -0.1685871, 0.2817698, -0.12170307)
+
+[node name="Marker3D3" type="Marker3D" parent="display-bread/ObjectPlaces"]
+transform = Transform3D(-3.2105323e-08, 3.942038e-09, 0.74, 0.09018332, 0.73448414, 0, -0.73448414, 0.09018332, -3.2346428e-08, -0.015666768, 0.23407328, 0.1367458)
+
+[node name="Marker3D4" type="Marker3D" parent="display-bread/ObjectPlaces"]
+transform = Transform3D(-3.2105323e-08, 3.942038e-09, 0.74, 0.09018332, 0.73448414, 0, -0.73448414, 0.09018332, -3.2346428e-08, -0.004281938, 0.2817698, -0.12170307)
+
+[node name="Marker3D5" type="Marker3D" parent="display-bread/ObjectPlaces"]
+transform = Transform3D(-3.2105323e-08, 3.942038e-09, 0.74, 0.09018332, 0.73448414, 0, -0.73448414, 0.09018332, -3.2346428e-08, 0.1354671, 0.23407328, 0.1367458)
+
+[node name="Marker3D6" type="Marker3D" parent="display-bread/ObjectPlaces"]
+transform = Transform3D(-3.2105323e-08, 3.942038e-09, 0.74, 0.09018332, 0.73448414, 0, -0.73448414, 0.09018332, -3.2346428e-08, 0.14685193, 0.2817698, -0.12170307)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="display-bread"]
 shape = SubResource("ConcavePolygonShape3D_3ulig")

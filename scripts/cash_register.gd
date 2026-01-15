@@ -2,6 +2,8 @@ extends Node3D
 
 class_name CashRegister
 
+var furniture_data: FurnitureData
+
 @export var customer_spacing: float = 0.5
 @export var item_placement_offset: Vector3 = Vector3(-0.25, 0.25, 0.1) # Relative to register
 
@@ -12,6 +14,39 @@ signal all_items_scanned
 
 func _ready():
 	add_to_group("register")
+	# AUTO-ASSIGN DATA FOR PRE-PLACED ITEMS
+	if not furniture_data:
+		_find_my_data()
+
+func _find_my_data():
+	var my_path = scene_file_path
+	if my_path.begins_with("uid://"):
+		var res = load(my_path)
+		if res:
+			my_path = res.resource_path
+		
+	var resource_dir = "res://objects/furniture/resources/"
+	if not DirAccess.dir_exists_absolute(resource_dir):
+		return
+
+	var dir = DirAccess.open(resource_dir)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".tres"):
+				var data = load(resource_dir + file_name)
+				if data is FurnitureData and data.scene:
+					var data_scene_path = data.scene.resource_path
+					if data_scene_path.begins_with("uid://"):
+						var s_res = load(data_scene_path)
+						if s_res:
+							data_scene_path = s_res.resource_path
+						
+					if data_scene_path == my_path:
+						furniture_data = data
+						break
+			file_name = dir.get_next()
 
 func join_queue(customer: Node3D):
 	queue.append(customer)

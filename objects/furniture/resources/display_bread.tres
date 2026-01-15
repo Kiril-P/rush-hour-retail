@@ -7,3 +7,4 @@
 script = ExtResource("2_mw6gn")
 name = "Bread Display"
 scene = ExtResource("1_xirvm")
+supported_categories = Array[int]([3])

@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 enum State { ENTERING, SHOPPING, CHECKOUT, LEAVING }
 
-@export var movement_speed: float = 1.5
+@export var movement_speed: float = 1.0
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
 var current_state = State.ENTERING
@@ -23,7 +23,7 @@ var shopping_list: Array[ProductData] = []
 var items_found: int = 0
 var frustration: float = 0.0
 var max_frustration: float = 100.0
-var frustration_rate: float = 5.0 # per second when waiting
+var frustration_rate: float = 4.0 # per second when waiting
 var speech_bubble: Label3D
 
 var current_target_item: ProductData = null

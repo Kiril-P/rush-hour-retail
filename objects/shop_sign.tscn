@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgii3qc8xb22b"]
+
+[ext_resource type="Script" uid="uid://4eklrt0fx6ko" path="res://scripts/shop_sign.gd" id="1_0cl7t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k3n1d"]
+size = Vector3(1, 0.4, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2o6r5"]
+size = Vector3(1, 0.4, 0.1)
+
+[node name="ShopSign" type="StaticBody3D"]
+script = ExtResource("1_0cl7t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_k3n1d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2o6r5")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.055485964)

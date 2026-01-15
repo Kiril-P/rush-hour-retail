@@ -1,7 +1,15 @@
 extends Resource
 class_name ProductData
 
+enum Category {
+	SHELF,
+	COLD,
+	FROZEN,
+	PRODUCE
+}
+
 @export var item_name: String = "Product"
+@export var category: Category = Category.SHELF
 @export var icon: Texture2D
 @export var buy_price: float = 10.0
 @export var sell_price: float = 15.0

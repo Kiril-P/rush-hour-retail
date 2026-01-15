@@ -8,3 +8,4 @@ script = ExtResource("2_fuun2")
 name = "Bottle Return"
 price = 150.0
 scene = ExtResource("1_5k3bp")
+supported_categories = Array[int]([])

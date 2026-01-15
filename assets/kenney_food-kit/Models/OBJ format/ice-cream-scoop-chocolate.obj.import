@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c1w1kwwq83fj1"
+path="res://.godot/imported/ice-cream-scoop-chocolate.obj-29cd7be20fdeec8068bc48d0bf7f6083.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ice-cream-scoop-chocolate.obj-29cd7be20fdeec8068bc48d0bf7f6083.mesh"]
+
+source_file="res://assets/kenney_food-kit/Models/OBJ format/ice-cream-scoop-chocolate.obj"
+dest_files=["res://.godot/imported/ice-cream-scoop-chocolate.obj-29cd7be20fdeec8068bc48d0bf7f6083.mesh", "res://.godot/imported/ice-cream-scoop-chocolate.obj-29cd7be20fdeec8068bc48d0bf7f6083.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

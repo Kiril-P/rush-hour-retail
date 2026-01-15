@@ -8,3 +8,4 @@ script = ExtResource("2_rbtvj")
 name = "Fence"
 price = 20.0
 scene = ExtResource("1_l5rqf")
+supported_categories = Array[int]([])

@@ -6,6 +6,7 @@ signal interact_object
 @onready var ray_cast_3d = $Camera3D/RayCast3D
 @onready var build_component = $BuildComponent
 @onready var interaction_component = $InteractionComponent
+@onready var crosshair: TextureRect = $Camera3D/Control/TextureRect
 
 const SPEED = 1.8
 const SPRINT_SPEED = 3.5
@@ -217,3 +218,34 @@ func _process(_delta):
 	else: 
 		collider = null
 		interact_object.emit(null)
+	
+	_update_crosshair_visual(_delta)
+
+func _update_crosshair_visual(delta):
+	if not crosshair: return
+	
+	var is_interactable = false
+	if collider:
+		# Check for boxes/pickables
+		if collider.has_method("pick_up"):
+			is_interactable = true
+		# Check for static interactions (Sign, etc)
+		elif collider.has_method("interact"):
+			is_interactable = true
+		# Check for scanning or shelf interaction
+		elif interaction_component._find_product(collider) or interaction_component._find_shelf(collider):
+			is_interactable = true
+	
+	# If in build mode, we have a different "interaction"
+	if build_component and build_component.is_building:
+		is_interactable = true
+		
+	var target_color = Color.WHITE
+	var target_scale = Vector2(1.0, 1.0)
+	
+	if is_interactable:
+		target_color = Color(0.2, 1.0, 0.8) # Bright Cyan/Green
+		target_scale = Vector2(1.2, 1.2)
+	
+	crosshair.modulate = crosshair.modulate.lerp(target_color, delta * 20.0)
+	crosshair.scale = crosshair.scale.lerp(target_scale, delta * 20.0)

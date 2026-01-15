@@ -8,3 +8,4 @@ script = ExtResource("2_ys0ah")
 name = "Cash Register"
 price = 200.0
 scene = ExtResource("1_nn43q")
+supported_categories = Array[int]([])

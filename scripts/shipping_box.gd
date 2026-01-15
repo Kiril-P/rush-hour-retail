@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@export var product_data: ProductData 
+var product_data: ProductData 
 var max_capacity: int = 10 
 
 var contents: Array[PackedScene] = []

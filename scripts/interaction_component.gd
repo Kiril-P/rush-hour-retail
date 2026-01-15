@@ -63,7 +63,7 @@ func _handle_continuous(collider, is_secondary):
 	else:
 		# LEFT CLICK HOLD: Place on shelf
 		if picked_object and picked_object.has_method("take_item"):
-			if target_shelf.has_space():
+			if target_shelf.has_space() and target_shelf.can_accept_item(picked_object):
 				var item_scene = picked_object.take_item()
 				if item_scene:
 					var new_item = item_scene.instantiate()
