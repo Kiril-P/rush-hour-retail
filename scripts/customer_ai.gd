@@ -143,6 +143,7 @@ func _on_target_reached():
 	
 	match current_state:
 		State.SHOPPING:
+			# ... existing logic ...
 			is_waiting = true
 			await get_tree().create_timer(randf_range(1.0, 2.0)).timeout
 			
@@ -172,6 +173,9 @@ func _on_target_reached():
 			# Start a delayed pause check
 			_check_for_moving_pause()
 		State.CHECKOUT:
+			# TELEPORT/SNAP to exact spot
+			global_position = nav_agent.target_position
+			
 			if is_at_head_of_queue and not is_waiting:
 				_start_checkout_process()
 		State.LEAVING:
@@ -252,9 +256,18 @@ func go_to_checkout():
 	else:
 		leave_shop()
 
-func update_queue_position(target_pos: Vector3, is_head: bool):
+func update_queue_position(target_pos: Vector3, target_rot: Vector3, is_head: bool):
 	nav_agent.target_position = target_pos
 	is_at_head_of_queue = is_head
+	
+	# If they are already very close, just snap now
+	if global_position.distance_to(target_pos) < 0.2:
+		global_position = target_pos
+		global_rotation.y = target_rot.y
+	
+	# FORCE RESUME: If they were waiting, nudge them to move to the new spot
+	is_waiting = false 
+	print("Customer: Moving to queue spot ", target_pos)
 
 func _check_for_moving_pause():
 	if randf() < 0.4: # 40% chance

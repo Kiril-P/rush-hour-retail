@@ -9,11 +9,18 @@ var furniture_data: FurnitureData
 
 var queue: Array[Node3D] = []
 var items_to_scan: Array[Node] = []
+var queue_points_container: Node3D = null
 
 signal all_items_scanned
 
 func _ready():
 	add_to_group("register")
+	# Search for queue points container case-insensitively
+	for child in get_children():
+		if child.name.to_lower() == "queuepoints":
+			queue_points_container = child
+			break
+			
 	# AUTO-ASSIGN DATA FOR PRE-PLACED ITEMS
 	if not furniture_data:
 		_find_my_data()
@@ -60,9 +67,20 @@ func _update_queue_positions():
 	for i in range(queue.size()):
 		var customer = queue[i]
 		if customer.has_method("update_queue_position"):
-			# Position 0 is at the register, 1 is behind 0, etc.
-			var target_pos = global_position + (-global_transform.basis.z * (i * customer_spacing))
-			customer.update_queue_position(target_pos, i == 0)
+			var target_pos: Vector3
+			var target_rot: Vector3 = Vector3.ZERO
+			
+			# Check if we have manual markers
+			if queue_points_container and queue_points_container.get_child_count() > i:
+				var marker = queue_points_container.get_child(i)
+				target_pos = marker.global_position
+				target_rot = marker.global_rotation
+			else:
+				# Fallback to automatic math
+				target_pos = global_position + (-global_transform.basis.z * (i * customer_spacing))
+				target_rot = global_rotation
+				
+			customer.update_queue_position(target_pos, target_rot, i == 0)
 
 func place_items_for_scanning(items: Array[Node]):
 	# We'll use a local reference to avoid issues if the array changes

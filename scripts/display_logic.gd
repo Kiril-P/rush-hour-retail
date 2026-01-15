@@ -10,7 +10,16 @@ var supported_categories: Array[ProductData.Category]:
 	get:
 		if furniture_data:
 			return furniture_data.supported_categories
-		# Fallback for standard shelves if auto-linking fails
+		
+		# SMART FALLBACK BASED ON NODE NAME
+		var n = name.to_lower()
+		var p_n = get_parent().name.to_lower() if get_parent() else ""
+		
+		if "freezer" in n or "fridge" in n or "freezer" in p_n or "fridge" in p_n:
+			return [ProductData.Category.COLD, ProductData.Category.FROZEN]
+		if "basket" in n or "produce" in n or "bread" in n or "basket" in p_n or "produce" in p_n or "bread" in p_n:
+			return [ProductData.Category.PRODUCE]
+			
 		return [ProductData.Category.SHELF]
 
 var itemsPlaced = []
@@ -31,14 +40,17 @@ func _ready() -> void:
 
 func _find_my_data():
 	var my_path = scene_file_path
+	if not my_path or my_path == "": return
+	
 	if my_path.begins_with("uid://"):
 		var res = load(my_path)
-		if res:
-			my_path = res.resource_path
+		if res: my_path = res.resource_path
+	
+	# Strip "res://" and ".tscn" for more lenient matching
+	var clean_my_path = my_path.replace("res://", "").replace(".tscn", "")
 	
 	var resource_dir = "res://objects/furniture/resources/"
-	if not DirAccess.dir_exists_absolute(resource_dir):
-		return
+	if not DirAccess.dir_exists_absolute(resource_dir): return
 
 	var dir = DirAccess.open(resource_dir)
 	if dir:
@@ -48,15 +60,16 @@ func _find_my_data():
 			if file_name.ends_with(".tres"):
 				var data = load(resource_dir + file_name)
 				if data is FurnitureData and data.scene:
-					var data_scene_path = data.scene.resource_path
-					if data_scene_path.begins_with("uid://"):
-						var s_res = load(data_scene_path)
-						if s_res:
-							data_scene_path = s_res.resource_path
+					var data_path = data.scene.resource_path
+					if data_path.begins_with("uid://"):
+						var s_res = load(data_path)
+						if s_res: data_path = s_res.resource_path
 					
-					if data_scene_path == my_path:
+					var clean_data_path = data_path.replace("res://", "").replace(".tscn", "")
+					
+					if clean_data_path == clean_my_path:
 						furniture_data = data
-						print("DisplayLogic: Auto-linked ", name, " to ", file_name, " (", furniture_data.supported_categories, ")")
+						print("DisplayLogic: Linked ", name, " to ", file_name)
 						break
 			file_name = dir.get_next()
 

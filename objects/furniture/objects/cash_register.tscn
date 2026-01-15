@@ -7,3 +7,20 @@
 script = ExtResource("1_hoiu7")
 
 [node name="cash-register2" parent="." instance=ExtResource("1_wynrt")]
+
+[node name="QueuePoints" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="QueuePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6524837, 0.4022396, 0.024409145)
+
+[node name="Marker3D2" type="Marker3D" parent="QueuePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.652, 0.402, -0.5)
+
+[node name="Marker3D3" type="Marker3D" parent="QueuePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.652, 0.402, -1)
+
+[node name="Marker3D4" type="Marker3D" parent="QueuePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6524837, 0.4022396, -1.5219175)
+
+[node name="Marker3D5" type="Marker3D" parent="QueuePoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.652, 0.402, -2.0463266)

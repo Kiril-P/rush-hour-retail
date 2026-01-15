@@ -50,7 +50,6 @@ shadow_mesh = SubResource("ArrayMesh_b8wgm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 script = ExtResource("1_ap1e7")
-supported_categories = Array[int]([1, 2])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fv8yb")
