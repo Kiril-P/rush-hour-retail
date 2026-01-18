@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://yw864doq0vnw"]
+
+[ext_resource type="Script" uid="uid://bljbqpcofi6no" path="res://scripts/timer_label.gd" id="1_dalq0"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimerLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 43.0
+grow_horizontal = 2
+text = "
+"
+horizontal_alignment = 1
+script = ExtResource("1_dalq0")

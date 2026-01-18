@@ -4,7 +4,6 @@ signal interact_object
 
 @onready var camera_3d = $Camera3D
 @onready var ray_cast_3d = $Camera3D/RayCast3D
-@onready var build_component = $BuildComponent
 @onready var interaction_component = $InteractionComponent
 @onready var crosshair: TextureRect = $Camera3D/Control/TextureRect
 
@@ -55,33 +54,15 @@ func _ready():
 	if spawn:
 		global_position = spawn.global_position
 		rotation.y = spawn.rotation.y
-		
-	build_component.ray_cast_3d = ray_cast_3d
-	build_component.build_preview_marker = $Camera3D/BuildPreviewMarker
 
 func _input(event):
-	if event.is_action_pressed("quit"): get_tree().quit()
-
-	# 1. HANDLE SHOP TOGGLE FIRST (so 'B' can close it)
-	if event.is_action_pressed("shop"):
-		$CanvasLayer/ShopUI.toggle()
-		return
-
-	# 2. DISABLE OTHER INPUTS IF SHOP IS OPEN
-	if $CanvasLayer/ShopUI.visible:
-		return
+	if event.is_action_pressed("quit"): 
+		get_tree().quit()
 
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * CAMERA_SENS)
 		camera_3d.rotate_x(-event.relative.y * CAMERA_SENS)
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-
-	if event.is_action_pressed("build_mode"):
-		build_component.toggle_build_mode()
-	
-	if build_component.is_building:
-		handle_build_input(event)
-		return 
 
 	if event.is_action_pressed("interact"):
 		interact_button_pressed_time = Time.get_ticks_msec()
@@ -96,47 +77,8 @@ func _input(event):
 	if event.is_action_released("secondary_interact"):
 		var hold_duration = (Time.get_ticks_msec() - secondary_interact_pressed_time) / 1000.0
 		interaction_component.handle_interaction(collider, hold_duration, true)
-func handle_build_input(event):
-	# Rotate (Now 45 degrees inverted)
-	if event.is_action_pressed("rotate_object"): 
-		build_component.rotate_ghost()
-	
-	# Place / Confirm Move
-	if event.is_action_pressed("interact"): # Left Click
-		build_component.place_item()
-		
-	# Delete / Cancel Move
-	if event.is_action_pressed("secondary_interact"): # Right Click
-		if build_component.moving_item:
-			build_component.cancel_move()
-		else:
-			build_component.delete_item(collider)
-			
-	# Pick up to Move
-	if event.is_action_pressed("middle_click"):
-		build_component.pick_up_to_move(collider)
-
-	if event.is_action_pressed("next_item"): build_component.cycle_items(1)
-	if event.is_action_pressed("prev_item"): build_component.cycle_items(-1)
-
-	# NEW: Toggle Snap with Ctrl
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_CTRL:
-			build_component.cycle_snap()
 
 func _physics_process(delta):
-	if $CanvasLayer/ShopUI.visible:
-		# Apply ONLY gravity so player falls to floor but cannot move
-		if not is_on_floor():
-			velocity.y -= gravity * delta
-		else:
-			velocity.y = 0
-		
-		velocity.x = 0
-		velocity.z = 0
-		move_and_slide()
-		return
-
 	# 1. HANDLE STATES (Sprint/Crouch)
 	var current_speed = SPEED
 	if Input.is_action_pressed("crouch"):
@@ -229,16 +171,13 @@ func _update_crosshair_visual(delta):
 		# Check for boxes/pickables
 		if collider.has_method("pick_up"):
 			is_interactable = true
-		# Check for static interactions (Sign, etc)
+		# Check for static interactions (Checkout, etc)
 		elif collider.has_method("interact"):
 			is_interactable = true
-		# Check for scanning or shelf interaction
-		elif interaction_component._find_product(collider) or interaction_component._find_shelf(collider):
+		# Check for products
+		elif interaction_component._find_product(collider):
 			is_interactable = true
-	
-	# If in build mode, we have a different "interaction"
-	if build_component and build_component.is_building:
-		is_interactable = true
+
 		
 	var target_color = Color.WHITE
 	var target_scale = Vector2(1.0, 1.0)

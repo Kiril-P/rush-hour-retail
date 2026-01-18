@@ -7,9 +7,6 @@ extends Node3D
 var picked_object = null
 var player_node: CharacterBody3D
 
-var continuous_action_timer: float = 0.0
-const CONTINUOUS_DELAY: float = 0.4 # Snappy speed for stocking
-
 func _ready():
 	player_node = get_parent()
 	if ray_cast_3d == null:
@@ -22,101 +19,58 @@ func _process(delta):
 		if ray_cast_3d.is_colliding() and ray_cast_3d.get_collider() == picked_object:
 			ray_cast_3d.add_exception(picked_object)
 
-	# --- NEW SMARTER SPAM SYSTEM ---
-	var collider = player_node.collider if "collider" in player_node else null
-	var target_shelf = _find_shelf(collider) if collider else null
-	
-	if target_shelf:
-		# 1. Instant trigger on first press
-		if Input.is_action_just_pressed("interact"):
-			_handle_continuous(collider, false)
-			continuous_action_timer = CONTINUOUS_DELAY # Start the cooldown for holding
-		elif Input.is_action_just_pressed("secondary_interact"):
-			_handle_continuous(collider, true)
-			continuous_action_timer = CONTINUOUS_DELAY
-			
-		# 2. Handle the "Hold" timer
-		if Input.is_action_pressed("interact") or Input.is_action_pressed("secondary_interact"):
-			continuous_action_timer -= delta
-			if continuous_action_timer <= 0:
-				_handle_continuous(collider, Input.is_action_pressed("secondary_interact"))
-				continuous_action_timer = CONTINUOUS_DELAY
-	else:
-		# Reset timer if not looking at a shelf
-		continuous_action_timer = 0
-
-func _handle_continuous(collider, is_secondary):
-	var target_shelf = _find_shelf(collider)
-	if not target_shelf: return
-
-	if is_secondary:
-		# RIGHT CLICK HOLD: Retrieve from shelf
-		if picked_object and picked_object.has_method("can_add_item"):
-			# Into box
-			var item = target_shelf.take_random_item()
-			if item:
-				if picked_object.can_add_item(item):
-					picked_object.add_item()
-					item.queue_free()
-				else:
-					target_shelf.add_object(item)
-	else:
-		# LEFT CLICK HOLD: Place on shelf
-		if picked_object and picked_object.has_method("take_item"):
-			if target_shelf.has_space() and target_shelf.can_accept_item(picked_object):
-				var item_scene = picked_object.take_item()
-				if item_scene:
-					var new_item = item_scene.instantiate()
-					if "product_data" in new_item:
-						new_item.product_data = picked_object.product_data
-					get_tree().current_scene.add_child(new_item)
-					if not target_shelf.add_object(new_item):
-						new_item.queue_free()
-						picked_object.add_item()
-
 func handle_interaction(collider, hold_duration, is_secondary: bool = false):
+	# If holding an item
 	if picked_object:
-		var target_product = _find_product(collider)
-		var target_shelf = _find_shelf(collider)
-		
 		if is_secondary:
-			# RIGHT CLICK RELEASE: Drop (Retrieve is now purely in _process)
-			if not target_shelf and not target_product:
-				if hold_duration > 0.25: throw_object()
-				else: drop_object()
-			return
-
+			# RIGHT CLICK: Drop/Throw
+			if hold_duration > 0.25:
+				throw_object()
+			else:
+				drop_object()
 		else:
-			# LEFT CLICK RELEASE: Interact (Place is now purely in _process)
-			if not target_shelf and collider and collider.has_method("interact"):
-				collider.interact()
-			return
+			# LEFT CLICK while holding item
+			print("\n=== LEFT CLICK WHILE HOLDING ITEM ===")
+			print("Held item: ", picked_object.name if picked_object else "None")
+			print("Clicked on: ", collider.name if collider else "Nothing")
 			
+			# FIXED: Check collider AND parent nodes for interact method
+			var interact_node = _find_interactable(collider)
+			
+			if interact_node:
+				print("✓ Found interact() on: ", interact_node.name)
+				interact_node.interact()
+			else:
+				print("✗ No interact() method found")
+			print("===================================\n")
+	
+	# If not holding anything
 	elif collider:
-		var target_product = _find_product(collider)
-		var target_shelf = _find_shelf(collider)
-		
 		if not is_secondary:
-			# A. Scanning
-			if target_product and target_product.has_meta("to_scan"):
-				_scan_item(target_product)
-				return
-				
-			# B. Picking up from floor
+			# LEFT CLICK: Pick up items
 			if collider.has_method("pick_up"):
+				print("Picking up: ", collider.name)
 				pick_up_object(collider)
-			# C. Static Interact
-			elif collider.has_method("interact"):
-				collider.interact()
+			# Or interact with objects
+			else:
+				var interact_node = _find_interactable(collider)
+				if interact_node:
+					print("Interacting with: ", interact_node.name)
+					interact_node.interact()
 
-func _find_shelf(node):
+# NEW: Search node and parents for interact method
+func _find_interactable(node):
+	"""Search the node and its parents for interact() method"""
 	var current = node
-	while current != null:
-		if current is store_object or current.has_method("add_object"):
+	var depth = 0
+	while current != null and depth < 5:  # Max 5 levels up
+		if current.has_method("interact"):
 			return current
 		current = current.get_parent()
+		depth += 1
 	return null
 
+# Helper function to find if a node or its parent has product_data
 func _find_product(node):
 	var current = node
 	while current != null:
@@ -124,31 +78,6 @@ func _find_product(node):
 			return current
 		current = current.get_parent()
 	return null
-
-func _scan_item(item):
-	print("Interaction: Scanning ", item.product_data.item_name)
-	
-	# Notify register/customer (still keep delayed payment logic)
-	if item.has_meta("register"):
-		var register = item.get_meta("register")
-		if register and register.has_method("_on_item_scanned"):
-			register._on_item_scanned(item, item.product_data.sell_price)
-	
-	item.queue_free()
-
-func _place_on_shelf(shelf):
-	var item = picked_object
-	ray_cast_3d.remove_exception(item) 
-	player_node.remove_collision_exception_with(item)
-	
-	if item is RigidBody3D:
-		item.freeze = false
-		item.reparent(get_tree().current_scene)
-	
-	if shelf.add_object(item):
-		picked_object = null
-	else:
-		pick_up_object(item)
 
 func pick_up_object(object):
 	picked_object = object
