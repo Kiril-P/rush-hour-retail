@@ -13,6 +13,10 @@ const CROUCH_SPEED = 1.2
 const JUMP_VELOCITY = 3.0
 const CAMERA_SENS = 0.001
 
+# CART/BASKET SPEED MODIFIERS
+const CART_SPEED_MULT = 0.5   # 50% speed with cart
+const BASKET_SPEED_MULT = 0.8 # 80% speed with basket
+
 const BOB_FREQ = 3.0
 const BOB_AMP = 0.04
 var t_bob = 0.0
@@ -122,35 +126,48 @@ func _input(event):
 		interaction_component.handle_cart_action("remove_item")
 
 func _is_looking_at_cart() -> bool:
-	"""Check if player is looking at a cart"""
+	"""Check if player is looking at a cart or basket"""
 	if not collider:
 		return false
 	
-	# Check if collider or its parents is a cart
+	# Check if collider or its parents is a cart or basket
 	var current = collider
 	var depth = 0
 	while current != null and depth < 5:
-		if current is ShoppingCart:
+		if current is ShoppingCart or current is ShoppingBasket:
 			return true
 		current = current.get_parent()
 		depth += 1
 	
 	return false
 
-func _get_cart_in_view() -> ShoppingCart:
-	"""Get the cart player is looking at"""
+func _get_cart_in_view():
+	"""Get the cart or basket player is looking at"""
 	if not collider:
 		return null
 	
 	var current = collider
 	var depth = 0
 	while current != null and depth < 5:
-		if current is ShoppingCart:
+		if current is ShoppingCart or current is ShoppingBasket:
 			return current
 		current = current.get_parent()
 		depth += 1
 	
 	return null
+
+func _get_carry_speed_multiplier() -> float:
+	"""Get speed multiplier based on what player is carrying"""
+	var cart = interaction_component.get_active_cart()
+	
+	if cart:
+		# Check if it's a basket or cart
+		if cart.is_in_group("basket"):
+			return BASKET_SPEED_MULT  # 80% speed with basket
+		else:
+			return CART_SPEED_MULT    # 50% speed with cart
+	
+	return 1.0  # Normal speed
 
 func _physics_process(delta):
 	var current_speed = SPEED
@@ -162,6 +179,10 @@ func _physics_process(delta):
 		is_crouching = false
 	else:
 		is_crouching = false
+	
+	# APPLY CART/BASKET SPEED MODIFIERS
+	var speed_mult = _get_carry_speed_multiplier()
+	current_speed *= speed_mult
 
 	var target_height = CROUCH_HEIGHT if is_crouching else STAND_HEIGHT
 	var target_cam_y = CROUCH_CAM_Y if is_crouching else STAND_CAM_Y

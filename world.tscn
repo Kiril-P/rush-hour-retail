@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://but2djgsm07w3"]
+[gd_scene load_steps=30 format=3 uid="uid://but2djgsm07w3"]
 
 [ext_resource type="PackedScene" uid="uid://bkprfn81c207s" path="res://assets/kenney_mini-market/Models/GLB format/wall-door-rotate.glb" id="2_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://b3l1h8lfv4e2f" path="res://assets/kenney_mini-market/Models/GLB format/wall.glb" id="3_k3n1d"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://ci0rw0d4cguc1" path="res://objects/items/resources/cereal_data.tres" id="17_26xuy"]
 [ext_resource type="Resource" uid="uid://d3b8v0yiip0gp" path="res://objects/items/resources/milk_data.tres" id="19_bc84e"]
 [ext_resource type="PackedScene" uid="uid://6rffo40p1a8b" path="res://objects/items/shopping_cart.tscn" id="21_bc84e"]
+[ext_resource type="PackedScene" uid="uid://cxvg56wil781m" path="res://objects/items/shopping_basket.tscn" id="22_wukud"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wse8f"]
 sky_top_color = Color(0.4270979, 0.43584633, 0.5750366, 1)
@@ -386,4 +387,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0940108, 2.8875618)
 product_data = ExtResource("19_bc84e")
 
 [node name="ShoppingCart" parent="." instance=ExtResource("21_bc84e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.769726, 0.1745739, 1.47966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.769726, 0.07624841, 1.47966)
+
+[node name="ShoppingBasket" parent="." instance=ExtResource("22_wukud")]
