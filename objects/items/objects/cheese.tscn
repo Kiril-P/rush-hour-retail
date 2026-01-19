@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcou807q73qyx"]
+[gd_scene load_steps=4 format=3 uid="uid://bcou807q73qyx"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_yj1l2"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_wpvf7"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_yj1l2"]
 [ext_resource type="ArrayMesh" uid="uid://x88g0sbg8b84" path="res://assets/kenney_food-kit/Models/OBJ format/cheese.obj" id="2_yj1l2"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yj1l2"]
@@ -10,7 +9,7 @@ points = PackedVector3Array(-0.31925, 0.0101057, -0.0205177, 0.331578, 0.185622,
 [node name="cheese" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_yj1l2")
-product_data = ExtResource("2_wpvf7")
+item_name = "Cheese"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

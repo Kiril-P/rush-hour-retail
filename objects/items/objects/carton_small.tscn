@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ticdqyrsphst"]
+[gd_scene load_steps=4 format=3 uid="uid://ticdqyrsphst"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_e4gh0"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_e4gh0"]
 [ext_resource type="ArrayMesh" uid="uid://b38ur61gl7yof" path="res://assets/kenney_food-kit/Models/OBJ format/carton-small.obj" id="2_e4gh0"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_r30y2"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e4gh0"]
 points = PackedVector3Array(0.0720879, 0.00212051, -0.115, 0.00584708, 0.374999, 0.11744, 0.00584708, 0.393599, 0.0988113, -0.115, 0.00212061, -0.115, 0.114995, 0.00104911, 0.115, -0.115, 0.00212061, 0.114341, 0.00584708, 0.374999, -0.118099, 0.11101, 0.22451, -0.111674, -0.111136, 0.224368, -0.111136, -0.111136, 0.224368, 0.110477, 0.11101, 0.22451, 0.111015, 0.114336, 0.00215832, -0.115, 0.0815155, 0.318008, -0.0354137, -0.000331789, 0.393599, -0.099493, 0.0816088, 0.318148, 0.0347732, -0.000331789, 0.393599, 0.0988113, 0.00584708, 0.393599, -0.099493, -0.000331789, 0.374999, 0.11744, -0.000331789, 0.374999, -0.118099, 0.070407, 0.330789, -0.0239021, 0.0725039, 0.00101108, 0.115, 0.0944087, 0.279435, 0.0259651, 0.0760271, 0.324446, 0.0290132)
@@ -10,7 +9,7 @@ points = PackedVector3Array(0.0720879, 0.00212051, -0.115, 0.00584708, 0.374999,
 [node name="carton_small" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_e4gh0")
-product_data = ExtResource("2_r30y2")
+item_name = "Creme"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

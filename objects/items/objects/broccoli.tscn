@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnu3lpfp6yoc1"]
+[gd_scene load_steps=4 format=3 uid="uid://cnu3lpfp6yoc1"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_bvyra"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_bvyra"]
 [ext_resource type="ArrayMesh" uid="uid://besge233flwas" path="res://assets/kenney_food-kit/Models/OBJ format/broccoli.obj" id="2_bvyra"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_oab8q"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bvyra"]
 points = PackedVector3Array(0.0793222, 0.40161, -0.0478777, -0.180032, 0.179302, -0.104295, -0.180247, 0.179264, 0.104028, 0.039925, 0.0132545, 0.0398905, 0.104028, 0.179264, -0.180247, 0.181644, 0.198101, 0.105042, -0.0663268, 0.412436, 0.0470263, 0.10504, 0.198141, 0.181639, -0.112886, 0.268798, -0.157991, -0.0397673, 0.0159508, -0.0397333, -0.105264, 0.198157, 0.181412, 0.179921, 0.179298, -0.104401, 0.00933209, 0.413608, 0.0789769, -0.104271, 0.179298, -0.180052, -0.00962971, 0.413125, -0.079179, -0.12919, 0.324125, -0.0788352, 0.112524, 0.268795, -0.157981, 0.155899, 0.268173, 0.117644, -0.157977, 0.268806, 0.11251, 0.0394279, 0.0157038, -0.0397834, -0.0397685, 0.0159447, 0.039345, -0.00960035, 0.324266, 0.147841, 0.157953, 0.268928, -0.113139, -0.091784, 0.166627, 0.173585, 0.0660316, 0.41262, 0.0470694, 0.117665, 0.268166, 0.155879, 0.00927189, 0.32417, -0.148105, 0.173396, 0.166676, 0.0913286, 0.104142, 0.17923, 0.180087, -0.113138, 0.268928, 0.157953, -0.079611, 0.40145, -0.0478377, -0.157988, 0.26881, -0.112909)
@@ -10,7 +9,7 @@ points = PackedVector3Array(0.0793222, 0.40161, -0.0478777, -0.180032, 0.179302,
 [node name="broccoli" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_bvyra")
-product_data = ExtResource("2_oab8q")
+item_name = "Broccoli"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

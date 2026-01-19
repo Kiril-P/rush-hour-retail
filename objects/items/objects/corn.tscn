@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c64qt07c2sy0p"]
+[gd_scene load_steps=4 format=3 uid="uid://c64qt07c2sy0p"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_2pe2t"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_2pe2t"]
 [ext_resource type="ArrayMesh" uid="uid://b8lx0xuhdwd45" path="res://assets/kenney_food-kit/Models/OBJ format/corn.obj" id="2_2pe2t"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_003bd"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2pe2t"]
 points = PackedVector3Array(-0.0365743, 0.0151466, -0.0209929, 0.0286875, 0.30631, 0.0191185, 0.0293639, 0.309161, -0.0162159, -0.1808, 0.204261, -0.0168601, 0.0860851, 0.215146, -0.158524, 0.0697396, 0.231506, 0.135643, 0.167813, 0.182458, 0.0157488, -0.0881872, 0.171572, 0.141078, 0.0340398, 0.00838117, 0.0193336, -0.0773016, 0.242392, -0.13126, -0.0267789, 0.307715, 0.0193564, 0.0334345, 0.010615, -0.0209416, -0.0322476, 0.00618546, 0.0197053, -0.1808, 0.204261, 0.0157488, 0.167813, 0.182458, -0.0168601, -0.00649386, 0.00975551, -0.0360947, -0.0773016, 0.160655, 0.146543, 0.0697396, 0.242392, 0.135643, -0.0773016, 0.231475, -0.13126, 0.00358603, 0.0137883, 0.0395281, -0.0936471, 0.160655, 0.135613, -0.026468, 0.30542, -0.0209491, 0.0860851, 0.242392, 0.124714, 0.0970049, 0.215146, -0.147594, -0.00649386, 0.307381, -0.0312808, 0.0697396, 0.215146, -0.158524, 0.0860851, 0.231506, 0.124714, -0.066416, 0.231475, -0.136725, -0.0609561, 0.242392, -0.136725, 0.058854, 0.242392, 0.135643, -0.0609561, 0.166098, 0.146543, 0.00873578, 0.308028, 0.0295861)
@@ -10,7 +9,7 @@ points = PackedVector3Array(-0.0365743, 0.0151466, -0.0209929, 0.0286875, 0.3063
 [node name="corn" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_2pe2t")
-product_data = ExtResource("2_003bd")
+item_name = "Corn"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

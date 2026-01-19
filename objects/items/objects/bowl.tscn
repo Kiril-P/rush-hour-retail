@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfjnubhsfch6g"]
+[gd_scene load_steps=4 format=3 uid="uid://cfjnubhsfch6g"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_5w2da"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_2nv2j"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_5w2da"]
 [ext_resource type="ArrayMesh" uid="uid://c45wkmu0lq4sf" path="res://assets/kenney_food-kit/Models/OBJ format/bowl.obj" id="2_5w2da"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5w2da"]
@@ -10,7 +9,7 @@ points = PackedVector3Array(-0.152079, 0.0116737, -0.0855952, 0.2511, 0.212609, 
 [node name="bowl" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_5w2da")
-product_data = ExtResource("2_2nv2j")
+item_name = "Bowl"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

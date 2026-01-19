@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvc0liht7jdtq"]
+[gd_scene load_steps=4 format=3 uid="uid://dvc0liht7jdtq"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_pqjw5"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_phrgh"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_pqjw5"]
 [ext_resource type="ArrayMesh" uid="uid://b0rbgqpelq3ny" path="res://assets/kenney_food-kit/Models/OBJ format/cooking-spoon.obj" id="2_pqjw5"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pqjw5"]
@@ -10,7 +9,7 @@ points = PackedVector3Array(-0.202946, 0.0118028, -0.0887603, -0.207671, 0.00708
 [node name="cookingspoon" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_pqjw5")
-product_data = ExtResource("2_phrgh")
+item_name = "Cooking Spoon"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

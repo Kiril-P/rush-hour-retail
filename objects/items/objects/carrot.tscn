@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://begcvxe5gfg5q"]
+[gd_scene load_steps=4 format=3 uid="uid://begcvxe5gfg5q"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_288as"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_2fqd5"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_288as"]
 [ext_resource type="ArrayMesh" uid="uid://beydqb1mw8ofw" path="res://assets/kenney_food-kit/Models/OBJ format/carrot.obj" id="2_288as"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_288as"]
@@ -10,7 +9,7 @@ points = PackedVector3Array(0.129673, 0.721914, 0.0159913, -0.177285, 0.50592, -
 [node name="carrot" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_288as")
-product_data = ExtResource("2_2fqd5")
+item_name = "Carrot"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

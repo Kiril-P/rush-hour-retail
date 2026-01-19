@@ -1,16 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpa5hafafgnti"]
+[gd_scene load_steps=4 format=3 uid="uid://cpa5hafafgnti"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_3sow6"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_yhic2"]
 [ext_resource type="ArrayMesh" uid="uid://b4m65rqy7bgaw" path="res://assets/kenney_food-kit/Models/OBJ format/avocado.obj" id="2_yhic2"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_ypeui"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yhic2"]
 points = PackedVector3Array(0.0332009, 0.0459371, -0.0675576, 0.00110981, 0.122859, 0.083059, -0.00206815, 0.122762, 0.0825521, 0.00745721, 0.208423, -0.0414343, -0.0733108, 0.0421088, -0.0422578, 0.0729958, 0.0415534, 0.0422304, -0.00210108, 0.00289967, 0.0615054, -0.0724978, 0.122855, 0.0414162, 0.0399979, 0.207216, 0.0224469, 0.0720657, 0.122967, -0.042098, -0.0379279, 0.211117, 0.0226023, 0.0528175, 0.0034744, -0.0324971, -0.0723006, 0.116411, -0.044876, 0.00426914, 0.119516, -0.0827232, -0.053697, 0.00359154, 0.0320558, -0.00209566, 0.00324471, -0.0617054, 0.0723881, 0.123039, 0.0418795, -0.0727399, 0.0458561, 0.0447608, 0.00436309, 0.0453887, 0.0839545, -0.0377672, 0.21067, -0.0228927, -0.00529053, 0.045907, -0.0836497, 0.0727508, 0.0417711, -0.0424937, 0.00111112, 0.20941, 0.0446602, 0.0370454, 0.211277, -0.023042, 0.0530042, 0.0031123, 0.032189, -0.0535271, 0.00392125, -0.0323412, -0.0052076, 0.119438, -0.0822141, -0.00530913, 0.0456718, 0.083567, -0.0563427, 0.116413, 0.0540757, 0.0618203, 0.116418, 0.0509152, -0.00207495, 0.193136, -0.0513226, -0.0724978, 0.122855, -0.0417884)
 
 [node name="avocado" type="RigidBody3D"]
 collision_layer = 4
-script = ExtResource("1_3sow6")
-product_data = ExtResource("2_ypeui")
+script = ExtResource("1_yhic2")
+item_name = "Avocado"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

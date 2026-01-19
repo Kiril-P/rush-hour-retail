@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce6a81r4mi2u5"]
+[gd_scene load_steps=4 format=3 uid="uid://ce6a81r4mi2u5"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_4svyd"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_4svyd"]
 [ext_resource type="ArrayMesh" uid="uid://dx4jtpwj2ru5j" path="res://assets/kenney_food-kit/Models/OBJ format/bottle-oil.obj" id="2_4svyd"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_yh2do"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4svyd"]
 points = PackedVector3Array(0.0336227, 0.626735, 0.0336227, -0.07, 0.0345878, -0.07, -0.0618728, 0.0106496, -0.0618728, -0.07, 0.0345878, 0.0681778, 0.0681306, 0.0255491, -0.0607212, 0.0681306, 0.0255491, 0.0681306, -0.0354304, 0.626735, -0.0354304, 0.0676258, 0.420473, -0.069448, -0.069448, 0.420473, 0.0676258, 0.0731127, 0.429245, 0.0731127, -0.069448, 0.420473, -0.069448, -0.0354304, 0.626735, 0.0336227, 0.0336227, 0.626735, -0.0354304, 0.0606538, 0.00774719, 0.0606538, 0.0681778, 0.0345878, -0.07, -0.0618728, 0.0106496, 0.0600644, 0.0600644, 0.0106496, -0.0618728, -0.0607212, 0.0255491, 0.0681306)
@@ -10,7 +9,7 @@ points = PackedVector3Array(0.0336227, 0.626735, 0.0336227, -0.07, 0.0345878, -0
 [node name="bottleoil" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_4svyd")
-product_data = ExtResource("2_yh2do")
+item_name = "Bottle Oil"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

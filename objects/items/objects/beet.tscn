@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr7sot45vv1tb"]
+[gd_scene load_steps=4 format=3 uid="uid://cr7sot45vv1tb"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_tl6ie"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_mjsis"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_tl6ie"]
 [ext_resource type="ArrayMesh" uid="uid://dwcy2apimosqm" path="res://assets/kenney_food-kit/Models/OBJ format/beet.obj" id="2_tl6ie"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tl6ie"]
@@ -10,7 +9,7 @@ points = PackedVector3Array(0.014843, 0.0131692, 0.0109847, -0.0511056, 0.178931
 [node name="beet" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_tl6ie")
-product_data = ExtResource("2_mjsis")
+item_name = "Beet"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

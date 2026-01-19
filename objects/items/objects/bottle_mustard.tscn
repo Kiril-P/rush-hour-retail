@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://crluai0aux5hb"]
+[gd_scene load_steps=4 format=3 uid="uid://crluai0aux5hb"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_dosa6"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_dosa6"]
 [ext_resource type="ArrayMesh" uid="uid://cbv8bm1xw7dqn" path="res://assets/kenney_food-kit/Models/OBJ format/bottle-musterd.obj" id="2_dosa6"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_hvlbv"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dosa6"]
 points = PackedVector3Array(-0.00610114, 0.0293254, -0.0796798, 0.00529909, 0.27561, 0.0801426, -0.00595923, 0.27523, 0.0797617, -0.0128035, -0.00311983, 0.0696515, 0.0706606, 0.0249611, 0.0424305, 0.070208, 0.284726, -0.0400953, -0.0704664, 0.28419, -0.0398452, -0.071006, 0.0257873, 0.0422312, 0.0620434, -0.00311983, -0.0426164, -0.0128035, 0.39622, 0.00725952, 0.00537712, 0.282483, -0.079165, 0.0693155, 0.28361, 0.0416464, -0.0697891, 0.283343, 0.0415217, -0.0502416, -0.00311983, -0.0488573, 0.0121162, 0.39622, -0.011429, -0.067935, 0.0332087, -0.0440031, 0.00529909, 0.0326582, 0.0801426, 0.0675666, 0.0324379, -0.0442156, -0.00604706, 0.282222, -0.0789216, 0.0121162, 0.389966, 0.0135004, -0.0128035, 0.39622, -0.011429, 0.0245906, -0.00311983, 0.0634106, 0.00544101, 0.0285363, -0.0800607, -0.0564715, -0.00311983, 0.0446878, -0.00595923, 0.0334473, 0.0797617, 0.00588626, -0.00311983, -0.0738209, 0.0675666, 0.275717, -0.0442156, -0.067935, 0.275345, -0.0440031, -0.00606797, 0.288283, 0.0755518, 0.00539826, 0.288565, 0.0757807, -0.0128035, 0.389966, 0.0135004, 0.0554294, 0.274583, 0.0512186)
@@ -10,7 +9,7 @@ points = PackedVector3Array(-0.00610114, 0.0293254, -0.0796798, 0.00529909, 0.27
 [node name="bottlemustard" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_dosa6")
-product_data = ExtResource("2_hvlbv")
+item_name = "Bottle Mustard"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

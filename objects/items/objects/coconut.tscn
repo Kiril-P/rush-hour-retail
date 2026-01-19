@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtdoosuxecbau"]
+[gd_scene load_steps=4 format=3 uid="uid://dtdoosuxecbau"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_npkip"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_84qu0"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_npkip"]
 [ext_resource type="ArrayMesh" uid="uid://coyrrphg8wpwg" path="res://assets/kenney_food-kit/Models/OBJ format/coconut.obj" id="2_npkip"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_npkip"]
@@ -10,7 +9,7 @@ points = PackedVector3Array(0.00376625, 0.245089, -0.0641839, 0.00373648, 0.1354
 [node name="coconut" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_npkip")
-product_data = ExtResource("2_84qu0")
+item_name = "Coconut"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

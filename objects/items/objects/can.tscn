@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dccu527b0lxn"]
+[gd_scene load_steps=4 format=3 uid="uid://dccu527b0lxn"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_h6ysq"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_fa6t5"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_h6ysq"]
 [ext_resource type="ArrayMesh" uid="uid://bhb3n8sr3o12v" path="res://assets/kenney_food-kit/Models/OBJ format/can.obj" id="2_h6ysq"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h6ysq"]
@@ -10,7 +9,7 @@ points = PackedVector3Array(-0.009855, 0.00451876, -0.145922, 0.00957775, 0.3159
 [node name="can" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_h6ysq")
-product_data = ExtResource("2_fa6t5")
+item_name = "Can"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

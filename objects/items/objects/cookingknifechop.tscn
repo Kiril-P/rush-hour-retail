@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyggpfoag760f"]
+[gd_scene load_steps=4 format=3 uid="uid://cyggpfoag760f"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_5mesn"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_5mesn"]
 [ext_resource type="ArrayMesh" uid="uid://c7fln1yembhu2" path="res://assets/kenney_food-kit/Models/OBJ format/cooking-knife-chopping.obj" id="2_5mesn"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_ek2j4"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5mesn"]
 points = PackedVector3Array(0.199993, 0.0428525, -0.0165476, 0.199993, -0.00475724, -0.102262, -0.304762, 0.0142894, 0.12631, -0.266637, 0.0333268, -0.0831994, 0.0570981, 0.00476843, 0.107247, -0.304762, 0.00476843, -0.045119, -0.304762, 0.0333268, 0.116778, 0.304762, -0.00475724, -0.045119, -0.304762, 0.00476843, 0.107247, 0.304762, 0.0428525, -0.102262, 0.05, 0.0232143, 0.112102, 0.28567, 0.0428525, -0.0260565, 0.0476116, 0.0428525, -0.0927306, -0.266637, 0.00476843, -0.0831994, 0.0476116, -0.00475724, -0.0355878, 0.304762, -0.00475724, -0.102262, -0.304762, 0.0333268, -0.045119, 0.28567, -0.00475724, -0.0260565, 0.0430661, 0.0298177, 0.0910346, 0.0476116, -0.00475724, -0.0927306, 0.0476116, 0.0428525, -0.0355878, 0.199993, -0.00475724, -0.0165476, 0.304762, 0.0428525, -0.045119, -0.304762, 0.0238058, 0.12631, 0.228571, 0.0428525, -0.0165476, 0.228571, -0.00475724, -0.0165476)
@@ -10,7 +9,7 @@ points = PackedVector3Array(0.199993, 0.0428525, -0.0165476, 0.199993, -0.004757
 [node name="cookingknifechop" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_5mesn")
-product_data = ExtResource("2_ek2j4")
+item_name = "Chopping Knife"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

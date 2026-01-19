@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://blkbjodsybh6u"]
+[gd_scene load_steps=7 format=4 uid="uid://blkbjodsybh6u"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_gvql6"]
-[ext_resource type="Texture2D" uid="uid://cl5w0r06l4vkx" path="res://assets/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_mutgo"]
-[ext_resource type="Resource" uid="uid://d3b8v0yiip0gp" path="res://objects/items/resources/milk_data.tres" id="2_3x2rl"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_g06pf"]
+[ext_resource type="Texture2D" uid="uid://dhx3uroly2lu3" path="res://assets/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_mutgo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfpnr"]
 resource_name = "colormap"
@@ -49,8 +48,8 @@ size = Vector3(0.15, 0.275, 0.15)
 
 [node name="carton" type="RigidBody3D"]
 collision_layer = 4
-script = ExtResource("1_gvql6")
-product_data = ExtResource("2_3x2rl")
+script = ExtResource("1_g06pf")
+item_name = "Blue Milk"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

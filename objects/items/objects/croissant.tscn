@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4pyjv7halssa"]
+[gd_scene load_steps=4 format=3 uid="uid://b4pyjv7halssa"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_24vnp"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_24vnp"]
 [ext_resource type="ArrayMesh" uid="uid://ddp2bkcd21hxr" path="res://assets/kenney_food-kit/Models/OBJ format/croissant.obj" id="2_24vnp"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_bvog5"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_24vnp"]
 points = PackedVector3Array(-0.101679, 0.0523583, -0.156342, 0.179479, 0.0341373, 0.143997, 0.171911, 0.0568779, 0.174344, 0.164343, 0.0568779, -0.197045, -0.0849952, 0.191853, 0.0621301, -0.13328, 0.000290506, 0.0727894, 0.0675168, 0.192605, -0.0208623, 0.158306, 0, -0.197065, 0.0414759, 6.97662e-05, 0.218859, -0.0439449, 0.157814, -0.139468, 0.0547879, 0.116357, 0.199583, -0.158504, 0.0879225, 0.0781278, 0.0414759, 6.97662e-05, -0.218859, -0.158504, 0.0879225, -0.0781278, 0.158306, 0, 0.197065, 0.0547879, 0.116357, -0.199583, -0.0924966, 0.0672637, 0.159966, -0.13328, 0.000290506, -0.0727894, -0.0849952, 0.191853, -0.0621301, 0.0336885, 0.0518122, -0.230143, 0.0675168, 0.192605, 0.0208623, -0.0439449, 0.157814, 0.139468, 0.0336885, 0.0518122, 0.230143, 0.179479, 0.00380308, -0.143997, 0.171911, 0.0568779, -0.174344, 0.164343, 0.0568779, 0.197045, -0.0938222, 0.0456619, 0.162225, -0.152117, 0.0307419, 0.0784896, -0.10145, 0.180108, -0.0637574, -0.0668754, 0.0015586, -0.158061, -0.159383, 0.0609245, -0.0820773, -0.0668754, 0.0015586, 0.158061)
@@ -10,7 +9,7 @@ points = PackedVector3Array(-0.101679, 0.0523583, -0.156342, 0.179479, 0.0341373
 [node name="croissant" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_24vnp")
-product_data = ExtResource("2_bvog5")
+item_name = "Croissant"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

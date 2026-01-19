@@ -12,15 +12,6 @@ func _ready():
 	player_node = get_parent()
 	if ray_cast_3d == null:
 		push_error("InteractionComponent: ray_cast_3d is not assigned!")
-	
-	# print("\n=== INTERACTION COMPONENT READY ===")
-	# print("Player: ", player_node.name if player_node else "None")
-	# print("RayCast3D: ", ray_cast_3d)
-	#if ray_cast_3d:
-		# print("  Target Position: ", ray_cast_3d.target_position)
-		# print("  Collision Mask: ", ray_cast_3d.collision_mask)
-		# print("  ⚠️ RayCast should hit Layer 3 (value 4) for baskets!")
-	# print("===================================\n")
 
 func _process(delta):
 	if picked_object:
@@ -42,38 +33,6 @@ func _move_held_object_smoothly(delta):
 	picked_object.global_rotation = carry_marker.global_rotation
 
 func handle_interaction(collider, hold_duration, is_secondary: bool = false):
-	# print("\n============================================================")
-	# print("=== INTERACTION CLICK ===")
-	# print("Raw collider: ", collider)
-	# print("Collider name: ", collider.name if collider else "None")
-	# print("Collider type: ", collider.get_class() if collider else "None")
-	
-	# Check if it's a basket
-	if collider:
-		# print("\n--- BASKET CHECK ---")
-		var is_basket_directly = collider is ShoppingBasket
-		# print("Is ShoppingBasket type (direct): ", is_basket_directly)
-		
-		# Check parent chain
-		var current = collider
-		var depth = 0
-		var found_basket = false
-		while current != null and depth < 5:
-			# print("  [Depth ", depth, "] ", current.name, " (", current.get_class(), ")")
-			if current is ShoppingBasket:
-				# print("    ✓ FOUND ShoppingBasket!")
-				found_basket = true
-				break
-			current = current.get_parent()
-			depth += 1
-		
-		#if not found_basket:
-			# print("  ✗ No ShoppingBasket in parent chain")
-	
-	# print("\nHolding item: ", picked_object.name if picked_object else "None")
-	# print("Active cart: ", active_cart.name if active_cart else "None")
-	# print("============================================================")
-	
 	# RIGHT CLICK - Drop/Throw
 	if is_secondary:
 		if picked_object:
@@ -81,62 +40,54 @@ func handle_interaction(collider, hold_duration, is_secondary: bool = false):
 				throw_object()
 			else:
 				drop_object()
-		# print("============================================================\n")
 		return
 	
 	# LEFT CLICK - Find what we're clicking on
 	var interact_target = _find_interactable(collider)
-	# print("\n→ Final interact target: ", interact_target.name if interact_target else "None")
 	
 	# Check if it's a cart or basket
 	var is_cart = interact_target is ShoppingCart or interact_target is ShoppingBasket
-	# print("→ Is cart/basket: ", is_cart)
 	
 	# Check if it's an item IN a cart
 	var is_item_in_cart = _is_item_in_cart(interact_target)
-	# print("→ Is item in cart: ", is_item_in_cart)
 	
 	# PRIORITY 1: Clicking item IN cart → Take it out
 	if is_item_in_cart:
-		# print("→ CASE 1: Clicking item in cart")
 		_take_item_from_cart(interact_target)
-		# print("============================================================\n")
 		return
 	
 	# PRIORITY 2: Holding item + clicking cart → Just add item
 	if is_cart and picked_object:
-		# print("→ CASE 2: Holding item and clicking cart/basket - ADDING!")
 		_add_item_to_cart(interact_target)
-		# print("============================================================\n")
 		return
 	
 	# PRIORITY 3: Clicking cart (empty hands) → Grab/release cart
 	if is_cart:
-		# print("→ CASE 3: Clicking cart/basket with empty hands")
-		# print("  Calling interact() on: ", interact_target.name)
 		_handle_cart_interaction(interact_target)
-		# print("============================================================\n")
 		return
 	
-	# PRIORITY 4: Already holding item → Try to use it on target
+	# PRIORITY 4: Clicking checkout counter while holding item
+	if picked_object and interact_target and interact_target.is_in_group("checkout"):
+		print("→ CASE: Clicking checkout with item!")
+		if interact_target.has_method("interact"):
+			# Pass the held item to checkout counter!
+			if interact_target.interact(picked_object):
+				# Item was scanned successfully, clear our reference
+				picked_object = null
+		return
+	
+	# PRIORITY 5: Already holding item → Try to use it on target
 	if picked_object:
-		# print("→ CASE 4: Holding item, trying to interact with target")
 		if interact_target and interact_target.has_method("interact"):
 			interact_target.interact()
-		# print("============================================================\n")
 		return
 	
-	# PRIORITY 5: Not holding anything → Pick up or interact
+	# PRIORITY 6: Not holding anything → Pick up or interact
 	if interact_target:
-		# print("→ CASE 5: Not holding anything, interacting with target")
 		if interact_target.has_method("pick_up"):
 			pick_up_object(interact_target)
 		elif interact_target.has_method("interact"):
 			interact_target.interact()
-	#else:
-		# print("→ CASE 6: Nothing to interact with")
-	
-	# print("============================================================\n")
 
 func _is_item_in_cart(node) -> bool:
 	if not node:
@@ -178,36 +129,35 @@ func _take_item_from_cart(item):
 	
 	active_cart._restack_items()
 	
-	# print("  ✓ Took item from cart: ", item.name)
+	print("  ✓ Took item from cart: ", item.name)
 
 func _add_item_to_cart(cart):
-	# print("  → Adding item to cart/basket: ", picked_object.name)
+	print("  → Adding item to cart/basket: ", picked_object.name)
 	
 	if cart.add_item(picked_object):
 		picked_object = null
-		# print("  ✓ Item added successfully!")
-	#else:
-		# print("  ✗ Failed to add item")
+		print("  ✓ Item added successfully!")
+	else:
+		print("  ✗ Failed to add item")
 
 func _handle_cart_interaction(cart):
-	# print("  → Cart/basket interaction")
-	# print("  → Calling interact() on: ", cart.name)
+	print("  → Cart/basket interaction")
+	print("  → Calling interact() on: ", cart.name)
 	
 	if active_cart == cart:
-		# print("  → Releasing (same as active)")
+		print("  → Releasing (same as active)")
 		cart.release_handle()
 		active_cart = null
 	elif active_cart == null:
-		# print("  → Grabbing (no active cart)")
+		print("  → Grabbing (no active cart)")
 		if cart.grab_handle(player_node):
 			active_cart = cart
-			# print("  ✓ Now holding: ", cart.name)
-	#else:
-		# print("  → Already holding different cart/basket")
+			print("  ✓ Now holding: ", cart.name)
+	else:
+		print("  → Already holding different cart/basket")
 
 func handle_cart_action(action: String):
 	if not active_cart:
-		# print("ERROR: No active cart!")
 		return
 	
 	if action == "add_item":
@@ -227,35 +177,29 @@ func handle_cart_action(action: String):
 			item.global_transform = carry_marker.global_transform
 
 func _find_interactable(node):
-	# print("\n--- SEARCHING FOR INTERACTABLE ---")
-	# print("Starting from: ", node.name if node else "None")
-	
 	var current = node
 	var depth = 0
 	while current != null and depth < 5:
-		# print("  [", depth, "] Checking: ", current.name, " (", current.get_class(), ")")
-		
 		# Check for ShoppingCart OR ShoppingBasket
 		if current is ShoppingCart:
-			# print("    ✓ Found ShoppingCart")
 			return current
 		
 		if current is ShoppingBasket:
-			# print("    ✓ Found ShoppingBasket!")
+			return current
+		
+		# Check for checkout counter
+		if current.is_in_group("checkout"):
 			return current
 		
 		if current.has_method("interact"):
-			# print("    ✓ Has interact() method")
 			return current
 		
 		if current.has_method("pick_up"):
-			# print("    ✓ Has pick_up() method")
 			return current
 		
 		current = current.get_parent()
 		depth += 1
 	
-	# print("  ✗ Nothing found after ", depth, " levels")
 	return null
 
 func _find_product(node):
@@ -267,7 +211,7 @@ func _find_product(node):
 	return null
 
 func pick_up_object(object):
-	# print("  → Picking up object: ", object.name)
+	print("  → Picking up object: ", object.name)
 	picked_object = object
 	
 	if picked_object is RigidBody3D:
@@ -284,7 +228,7 @@ func pick_up_object(object):
 		picked_object.pick_up(self)
 	
 	picked_object.global_transform = carry_marker.global_transform
-	# print("  ✓ Picked up: ", object.name)
+	print("  ✓ Picked up: ", object.name)
 
 func drop_object():
 	if not picked_object: return

@@ -1,5 +1,8 @@
 extends Sprite3D
 
+## Shopping List Paper - Simple Version (NO ProductData!)
+## Works with item names (strings) instead of resources
+
 @export var toggle_key: String = "ui_cancel"
 @export var show_position: Vector3 = Vector3(-0.3, -0.2, -0.4)
 @export var hide_position: Vector3 = Vector3(-1, -0.2, -0.4)
@@ -12,8 +15,8 @@ var paper_ui: Control
 var title_label: Label
 var items_container: VBoxContainer
 
-# Track which items have been collected (for checkmarks)
-var collected_items: Array = []
+# Track which items have been collected (just item names now!)
+var collected_items: Array[String] = []
 
 func _ready():
 	target_position = hide_position
@@ -27,6 +30,7 @@ func _ready():
 	if GameManager:
 		GameManager.list_completed.connect(_on_list_completed)
 		GameManager.list_generated.connect(_on_list_generated)
+		GameManager.item_collected.connect(_on_item_collected)  # NEW: Connect to item collected signal
 
 func _find_ui_elements():
 	viewport = get_node_or_null("SubViewport")
@@ -36,7 +40,7 @@ func _find_ui_elements():
 		if paper_ui:
 			title_label = paper_ui.get_node_or_null("MarginContainer/VBoxContainer/Title")
 			
-			# Without ScrollContainer (since you removed it)
+			# Without ScrollContainer
 			items_container = paper_ui.get_node_or_null("MarginContainer/VBoxContainer/ItemsContainer")
 			
 			# Create if missing
@@ -70,11 +74,12 @@ func _on_list_completed(_list_number):
 	# List completed, new one will be generated
 	pass
 
-func mark_item_collected(product: ProductData):
+func _on_item_collected(item_name: String):
 	"""Called by GameManager when an item is collected"""
-	if not collected_items.has(product):
-		collected_items.append(product)
+	if not collected_items.has(item_name):
+		collected_items.append(item_name)
 		_update_list_display()
+		print("✓ Marked collected on paper: ", item_name)
 
 func _update_list_display():
 	if not GameManager or not items_container:
@@ -89,20 +94,19 @@ func _update_list_display():
 		title_label.text = "SHOPPING LIST #%d" % GameManager.current_list_number
 	
 	# Get the FULL original list (including collected items)
-	# We need to track what was collected vs what's still needed
 	var all_items_on_list = []
 	
 	# Items still needed
-	for item in GameManager.current_shopping_list:
-		all_items_on_list.append({"product": item, "collected": false})
+	for item_name in GameManager.current_shopping_list:
+		all_items_on_list.append({"item_name": item_name, "collected": false})
 	
 	# Items already collected
-	for item in collected_items:
-		all_items_on_list.append({"product": item, "collected": true})
+	for item_name in collected_items:
+		all_items_on_list.append({"item_name": item_name, "collected": true})
 	
 	# Display all items (collected + remaining)
 	for entry in all_items_on_list:
-		var product = entry.product
+		var item_name = entry.item_name  # Now it's just a string!
 		var is_collected = entry.collected
 		
 		# Create HBox for checkbox + text
@@ -119,9 +123,9 @@ func _update_list_display():
 			checkbox.add_theme_color_override("font_color", Color.BLACK)
 		checkbox.add_theme_font_size_override("font_size", 32)
 		
-		# Item name
+		# Item name - NOW JUST USE THE STRING DIRECTLY!
 		var item_label = Label.new()
-		item_label.text = product.item_name
+		item_label.text = item_name  # Changed from: product.item_name
 		item_label.add_theme_font_size_override("font_size", 28)
 		
 		if is_collected:

@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ra3llhd1cawr"]
+[gd_scene load_steps=4 format=3 uid="uid://ra3llhd1cawr"]
 
-[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_cercw"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_cercw"]
 [ext_resource type="ArrayMesh" uid="uid://c0otgrxf80vp2" path="res://assets/kenney_food-kit/Models/OBJ format/cauliflower.obj" id="2_cercw"]
-[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_tg7ao"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cercw"]
 points = PackedVector3Array(-0.0368986, 0.102464, -0.174997, 0.191478, 0.131352, 0.0768561, 0.191478, 0.105725, 0.0768561, -0.154047, 0.0954954, 0.128778, -0.0647511, 0.304286, -0.09604, 0.0248726, 0.285081, 0.134528, 0.133798, 0.240219, -0.0704347, 0.0789135, 0.00368525, -0.0490111, -0.192903, 0.112147, -0.0768561, -0.026298, 0.0929121, 0.205003, 0.159421, 0.118539, -0.134488, -0.128827, 0.265846, 0.038408, -0.0798348, 0.00460621, -0.0486626, -0.0007127, 0.0160322, 0.121686, -0.0391282, 0.169731, -0.19216, 0.0633257, 0.310708, 0.0960802, 0.069722, 0.201749, 0.172936, 0.0248726, 0.0993034, -0.205003, -0.00710902, 0.265846, -0.147331, 0.121005, 0.285051, -0.00638126, -0.192903, 0.112147, 0.0768561, -0.135223, 0.150557, 0.134488, -0.135223, 0.195357, -0.134488, 0.191478, 0.105725, -0.076816, -0.0802069, 0.00390482, 0.0488915, 0.165817, 0.131352, 0.128107, 0.0786421, 0.00419682, 0.048844, -0.180073, 0.182575, -0.0512107, 0.121005, 0.272237, 0.0832374, 0.185044, 0.169731, -0.0576321, -0.122393, 0.285051, 0.00634113, -0.15211, 0.12046, -0.127151)
@@ -10,7 +9,7 @@ points = PackedVector3Array(-0.0368986, 0.102464, -0.174997, 0.191478, 0.131352,
 [node name="cauliflower" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_cercw")
-product_data = ExtResource("2_tg7ao")
+item_name = "Cauliflower"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true
