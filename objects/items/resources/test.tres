@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ProductData" load_steps=2 format=3 uid="uid://di7cqdkrksp0u"]
+
+[ext_resource type="Script" uid="uid://djilegrvfndvm" path="res://scripts/product_data.gd" id="1_6u8rw"]
+
+[resource]
+script = ExtResource("1_6u8rw")
+item_name = "Product"
+category = 0
+metadata/_custom_type_script = "uid://djilegrvfndvm"

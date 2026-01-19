@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn12wo42fmdxx"]
+
+[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_4l5e3"]
+[ext_resource type="ArrayMesh" uid="uid://dcrvtw46olgo2" path="res://assets/kenney_food-kit/Models/OBJ format/cutting-board.obj" id="2_4l5e3"]
+[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_5og3g"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4l5e3"]
+points = PackedVector3Array(-0.296508, -0.00650029, -0.390415, 0.302222, 0.0715873, 0.364404, 0.289153, 0.0715873, 0.403461, 0.302222, -0.00650029, 0.364404, -0.296508, -0.00650029, 0.390415, -0.270428, 0.0715873, -0.416508, 0.289153, -0.00650029, -0.403461, -0.296508, 0.0715873, 0.390415, 0.289153, 0.0715873, -0.403461, 0.263131, -0.00650029, 0.416508, -0.270428, 0.0715873, 0.416508, -0.296508, 0.0715873, -0.390415, 0.302222, -0.00650029, -0.364404, 0.263131, -0.00650029, -0.416508, -0.270428, -0.00650029, 0.416508, -0.270428, -0.00650029, -0.416508, 0.302222, 0.0715873, -0.364404, 0.263131, 0.0715873, 0.416508, 0.263131, 0.0715873, -0.416508, 0.289153, -0.00650029, 0.403461)
+
+[node name="cuttingboard" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_4l5e3")
+product_data = ExtResource("2_5og3g")
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="cuttingboard" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_4l5e3")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_4l5e3")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://begcvxe5gfg5q"]
+
+[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_288as"]
+[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_2fqd5"]
+[ext_resource type="ArrayMesh" uid="uid://beydqb1mw8ofw" path="res://assets/kenney_food-kit/Models/OBJ format/carrot.obj" id="2_288as"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_288as"]
+points = PackedVector3Array(0.129673, 0.721914, 0.0159913, -0.177285, 0.50592, -0.018096, -0.177285, 0.50592, 0.0159913, 0.0159913, -0.00561368, -0.0294469, 0.0159913, 0.517243, -0.177285, 0.0159913, 0.50592, 0.17518, 0.17518, 0.50592, -0.018096, -0.00671059, 0.00578064, 0.0387276, -0.018096, 0.665013, -0.131778, -0.018096, 0.665013, 0.129673, -0.0294469, 0.00578064, -0.0294469, 0.17518, 0.50592, 0.0159913, -0.018096, 0.50592, -0.177285, -0.018096, 0.50592, 0.17518, 0.0387276, 0.0398924, 0.0273422, -0.131778, 0.596861, 0.0159913, 0.129673, 0.721914, -0.018096, -0.0294469, 0.00578064, 0.0273422, 0.0273422, 0.00578064, -0.0294469, 0.0159913, 0.665013, 0.129673, 0.0159913, 0.665013, -0.131778, 0.0159913, 0.50592, -0.177285, -0.131778, 0.596861, -0.018096, -0.00671059, 0.017175, -0.0408324, 0.0159913, 0.017175, 0.0387276, 0.0387276, 0.0284981, -0.018096, -0.177285, 0.517243, -0.018096, 0.0159913, 0.517243, 0.17518, -0.177285, 0.517243, 0.0159913, 0.17518, 0.517243, -0.018096, -0.018096, 0.517243, -0.177285, -0.018096, 0.517243, 0.17518)
+
+[node name="carrot" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_288as")
+product_data = ExtResource("2_2fqd5")
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="carrot" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_288as")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_288as")

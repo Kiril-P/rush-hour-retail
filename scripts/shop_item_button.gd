@@ -9,9 +9,6 @@ var product_data: ProductData
 func setup(data: ProductData):
 	product_data = data
 	name_label.text = data.item_name
-	price_label.text = "$" + str(data.buy_price)
-	if data.icon:
-		icon_rect.texture = data.icon
 
 func _pressed():
 	print("ShopButton: Clicked on ", product_data.item_name)

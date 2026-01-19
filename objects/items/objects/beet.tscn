@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr7sot45vv1tb"]
+
+[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_tl6ie"]
+[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_mjsis"]
+[ext_resource type="ArrayMesh" uid="uid://dwcy2apimosqm" path="res://assets/kenney_food-kit/Models/OBJ format/beet.obj" id="2_tl6ie"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tl6ie"]
+points = PackedVector3Array(0.014843, 0.0131692, 0.0109847, -0.0511056, 0.178931, -0.0132056, -0.0511056, 0.178931, 0.0120512, 0.0373278, 0.267406, -0.0132056, 0.0120512, 0.204202, 0.0499611, -0.0132056, 0.0568772, -0.0468911, -0.0426767, 0.0695126, 0.028899, 0.0457467, 0.0653184, -0.0258389, 0.0120512, 0.204202, -0.0511056, -0.0384722, 0.267406, 0.0120512, 0.0373278, 0.0568772, 0.0331035, 0.0499611, 0.187373, 0.0120512, -0.0426767, 0.0568772, -0.0300434, -0.0132056, 0.204202, -0.0511056, -0.00899114, 0.0610978, 0.0499611, -0.0132056, 0.204202, 0.0499611, -0.0124282, 0.0062122, -0.00847308, -0.0384722, 0.267406, -0.0132056, 0.0373278, 0.267406, 0.0120512, 0.02048, 0.0568772, -0.0426767, 0.0499611, 0.187373, -0.0132056, 0.0113682, 0.00521127, -0.00853562, 0.0457467, 0.0653184, 0.0246747, 0.0120512, 0.242108, 0.0373278, -0.0132056, 0.242108, -0.0384722, 0.00784671, 0.0568772, 0.0499611, -0.00441372, 0.00926412, 0.0148481, -0.0355123, 0.0433897, 0.0188359, -0.0132056, 0.242108, 0.0373278, 0.0120512, 0.242108, -0.0384722, -0.0300434, 0.0568772, 0.0373278, -0.000572219, 0.00775804, -0.0161808)
+
+[node name="beet" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_tl6ie")
+product_data = ExtResource("2_mjsis")
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="beet" type="MeshInstance3D" parent="item_ingredient"]
+mesh = ExtResource("2_tl6ie")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_tl6ie")

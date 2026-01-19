@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtdoosuxecbau"]
+
+[ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_npkip"]
+[ext_resource type="Resource" uid="uid://di7cqdkrksp0u" path="res://objects/items/resources/test.tres" id="2_84qu0"]
+[ext_resource type="ArrayMesh" uid="uid://coyrrphg8wpwg" path="res://assets/kenney_food-kit/Models/OBJ format/coconut.obj" id="2_npkip"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_npkip"]
+points = PackedVector3Array(0.00376625, 0.245089, -0.0641839, 0.00373648, 0.1354, 0.119933, -0.0037296, 0.1354, 0.119935, 0.00376625, 0.00331077, -0.064184, -0.120195, 0.120482, -0.00748346, 0.120181, 0.120459, 0.00750563, -0.00375916, 0.00331532, 0.0641815, -0.00375936, 0.245091, 0.0641849, 0.00750873, 0.120482, -0.120185, 0.102123, 0.207412, -0.00376838, -0.102133, 0.207402, -0.003769, -0.0865047, 0.131718, 0.0865132, -0.0865047, 0.131718, -0.0865132, -0.102133, 0.0409976, -0.003769, 0.0865136, 0.116706, -0.0865152, 0.102123, 0.0409876, 0.00376838, 0.0865136, 0.131694, 0.0865152, -0.0680269, 0.0410812, -0.0755884, 0.0680216, 0.0410672, 0.0755774, -0.0680269, 0.0410812, 0.0755884, 0.0680216, 0.207333, -0.0755774, 0.0680216, 0.207333, 0.0755774, -0.0680269, 0.207319, -0.0755884, -0.0680272, 0.207319, 0.0755888, 0.0680216, 0.0410672, -0.0755774, 0.0641998, 0.245075, 0.00373889, 0.0641998, 0.00332507, 0.00373889, -0.0642074, 0.00334217, -0.00376202, -0.0642074, 0.245058, -0.00376202, 0.00377253, 0.0409913, 0.102126, -0.00376562, 0.207409, -0.102127, -0.00376562, 0.0409906, -0.102127)
+
+[node name="coconut" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_npkip")
+product_data = ExtResource("2_84qu0")
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="coconut" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 0, 0, 0)
+mesh = ExtResource("2_npkip")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_npkip")

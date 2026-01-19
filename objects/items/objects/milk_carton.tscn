@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://blkbjodsybh6u"]
+[gd_scene load_steps=8 format=4 uid="uid://blkbjodsybh6u"]
 
 [ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_gvql6"]
 [ext_resource type="Texture2D" uid="uid://cl5w0r06l4vkx" path="res://assets/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_mutgo"]
+[ext_resource type="Resource" uid="uid://d3b8v0yiip0gp" path="res://objects/items/resources/milk_data.tres" id="2_3x2rl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfpnr"]
 resource_name = "colormap"
@@ -11,11 +12,11 @@ texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gvql6"]
 _surfaces = [{
-"aabb": AABB(-0.076969504, 0, -0.076969504, 0.15393901, 0.28639263, 0.15393901),
+"aabb": AABB(-0.0769695, 0, -0.0769695, 0.153939, 0.286393, 0.153939),
 "format": 34359742465,
 "index_count": 84,
 "index_data": PackedByteArray("AAABAAIAAgABAAMAAAADAAEABAAAAAIAAgAHAAQACQACAAMABwACAAkAAwAKAAkACQAKAAgACAAKAAMACAALAAkACQALAAcABwALAAgAAwAFAAgACAAFAAcABQADAAAABwAFAAYABAAHAAYABAAGAAUAAAAEAAUABAAAAAwAAAAEAAwADQAMAAAADAANAAAADgANAAAADQAOAAAADwAOAAAADgAPAAAA"),
-"lods": [0.026555378, PackedByteArray("AAABAAIAAAADAAEAAgABAAMABAAAAAIAAAAEAAUABQADAAAABAAGAAUABAAHAAYABwAFAAYAAgAHAAQAAwAFAAgACAAFAAcACQACAAMABwACAAkACAAKAAMAAwAKAAkACQAKAAgABwALAAgACAALAAkACQALAAcA")],
+"lods": [0.0265554, PackedByteArray("AAABAAIAAAADAAEAAgABAAMABAAAAAIAAAAEAAUABQADAAAABAAGAAUABAAHAAYABwAFAAYAAgAHAAQAAwAFAAgACAAFAAcACQACAAMABwACAAkACAAKAAMAAwAKAAkACQAKAAgABwALAAgACAALAAkACQALAAcA")],
 "name": "colormap",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -27,12 +28,12 @@ blend_shape_mode = 0
 [sub_resource type="ArrayMesh" id="ArrayMesh_yr7xo"]
 resource_name = "shelf-boxes_carton"
 _surfaces = [{
-"aabb": AABB(-0.076969504, 0, -0.076969504, 0.15393901, 0.28639263, 0.15393901),
+"aabb": AABB(-0.0769695, 0, -0.0769695, 0.153939, 0.286393, 0.153939),
 "attribute_data": PackedByteArray("AAAYP2ZASz8AABg/Y79SPwAAGD9VVlY/AAAYP1VWVj8AABg/Y79SPwAAGD9VVlY/AAAYP2ZASz8AABg/VVZWPwAAGD9jv1I/AAAYP2ZASz8AABg/VVZWPwAAGD9jv1I/AAAYP2ZASz8AABg/Y79SPwAAGD9VVlY/AAAYP1VWVj8AABg/VVZWPwAAGD9jv1I/AAAYP5qZeT8AABg/mpl5PwAAGD+amXk/AAAYP5qZeT8AABg/ZkBLPwAAGD9mQEs/AAAYP1VWVj8AABg/VVZWPwAAGD9VVlY/AAAYP1VWVj8AABg/ZkBLPwAAGD9mQEs/AABYP5qZOT8AAFg/mpk5PwAAWD9VVhY/AABYP1VWFj8AAFg/VVYWPwAAWD9VVhY/AABYP5qZOT8AAFg/mpk5PwAAWD9VVhY/AABYP5qZOT8AAFg/mpk5PwAAWD9VVhY/AABYP1VWFj8AAFg/mpk5PwAAWD+amTk/AABYP1VWFj8AABg/ZkBLPwAAGD9mQEs/AAAYP2bTSD8AABg/ZmZGPwAAGD9mZkY/AAAYP2bTSD8AABg/ZkBLPwAAGD9mQEs/AAAYP2bTSD8AABg/ZmZGPwAAGD9mZkY/AAAYP2bTSD8="),
 "format": 34359742487,
 "index_count": 84,
 "index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFAAVABIAFgAXABgAGAAZABYAGgAbABwAHAAdABoAHgAfACAAIAAhAB4AIgAjACQAJAAlACIAJgAnACgAKAApACYAKgArACwALAAtACoALgAvADAAMAAxAC4AMQAyAC4AMgAzAC4ANAA1ADYANwA2ADUAOAA3ADUAOQA4ADUA"),
-"lods": [0.026555378, PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFAAVABIAFgAXABgAGAAZABYAGgAbABwAHAAdABoAHgAfACAAIAAhAB4AIgAjACQAJAAlACIAJgAnACgAKAApACYAKgArACwALAAtACoA")],
+"lods": [0.0265554, PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFAAVABIAFgAXABgAGAAZABYAGgAbABwAHAAdABoAHgAfACAAIAAhAB4AIgAjACQAJAAlACIAJgAnACgAKAApACYAKgArACwALAAtACoA")],
 "material": SubResource("StandardMaterial3D_rfpnr"),
 "name": "colormap",
 "primitive": 3,
@@ -49,6 +50,7 @@ size = Vector3(0.15, 0.275, 0.15)
 [node name="carton" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_gvql6")
+product_data = ExtResource("2_3x2rl")
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://bw82olk8d2wkr"]
+[gd_scene load_steps=8 format=4 uid="uid://bw82olk8d2wkr"]
 
 [ext_resource type="Script" uid="uid://dxkevkkxp3l32" path="res://scripts/products.gd" id="1_bo5uo"]
 [ext_resource type="Texture2D" uid="uid://cl5w0r06l4vkx" path="res://assets/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_mxk57"]
+[ext_resource type="Resource" uid="uid://ci0rw0d4cguc1" path="res://objects/items/resources/cereal_data.tres" id="2_rml67"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfpnr"]
 resource_name = "colormap"
@@ -47,6 +48,7 @@ size = Vector3(0.25, 0.3, 0.1)
 [node name="box" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_bo5uo")
+product_data = ExtResource("2_rml67")
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true
