@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://but2djgsm07w3"]
+[gd_scene load_steps=29 format=3 uid="uid://but2djgsm07w3"]
 
 [ext_resource type="PackedScene" uid="uid://bkprfn81c207s" path="res://assets/kenney_mini-market/Models/GLB format/wall-door-rotate.glb" id="2_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://b3l1h8lfv4e2f" path="res://assets/kenney_mini-market/Models/GLB format/wall.glb" id="3_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://bett03l5dnmqc" path="res://assets/kenney_mini-market/Models/GLB format/wall-window.glb" id="4_2o6r5"]
 [ext_resource type="PackedScene" uid="uid://c3e88omp8py3g" path="res://assets/kenney_mini-market/Models/GLB format/wall-corner.glb" id="5_70uel"]
 [ext_resource type="PackedScene" uid="uid://n7pxkutnuopq" path="res://objects/furniture/objects/cash_register.tscn" id="8_wse8f"]
+[ext_resource type="Script" uid="uid://djilegrvfndvm" path="res://scripts/product_data.gd" id="9_26xuy"]
 [ext_resource type="PackedScene" uid="uid://bgxdvx2uvn2hh" path="res://objects/furniture/objects/shelf_double.tscn" id="10_2o6r5"]
 [ext_resource type="PackedScene" uid="uid://bmk6m5s4g0fne" path="res://objects/player.tscn" id="10_cbp6q"]
 [ext_resource type="Script" uid="uid://b7cdkpb43b83t" path="res://scripts/checkout_counter.gd" id="10_hiqwa"]
@@ -19,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://bud0b828rbck3" path="res://objects/items/resources/bread_data.tres" id="15_cbp6q"]
 [ext_resource type="Resource" uid="uid://ci0rw0d4cguc1" path="res://objects/items/resources/cereal_data.tres" id="17_26xuy"]
 [ext_resource type="Resource" uid="uid://d3b8v0yiip0gp" path="res://objects/items/resources/milk_data.tres" id="19_bc84e"]
+[ext_resource type="PackedScene" uid="uid://6rffo40p1a8b" path="res://objects/items/shopping_cart.tscn" id="21_bc84e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wse8f"]
 sky_top_color = Color(0.4270979, 0.43584633, 0.5750366, 1)
@@ -343,6 +345,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00875, -3.3584712, -2.67125
 
 [node name="shelf_double" parent="objects" instance=ExtResource("10_2o6r5")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.4916697, -3.3584712, -3.0900807)
+allowed_products = Array[ExtResource("9_26xuy")]([ExtResource("17_26xuy")])
+
+[node name="shelf_double2" parent="objects" instance=ExtResource("10_2o6r5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.317698, -3.3584712, -3.0900807)
+allowed_products = Array[ExtResource("9_26xuy")]([ExtResource("15_cbp6q"), ExtResource("19_bc84e")])
+
+[node name="shelf_double3" parent="objects" instance=ExtResource("10_2o6r5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.4916697, -3.3584712, -1.3923488)
+allowed_products = Array[ExtResource("9_26xuy")]([ExtResource("19_bc84e")])
+
+[node name="shelf_double4" parent="objects" instance=ExtResource("10_2o6r5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.9282846, -3.3584712, -0.96553516)
+allowed_products = Array[ExtResource("9_26xuy")]([ExtResource("13_udxuc")])
 
 [node name="PlayerSpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.588054, 0.05826384, 8.051458)
@@ -369,3 +384,6 @@ product_data = ExtResource("17_26xuy")
 [node name="carton" parent="." instance=ExtResource("14_udxuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0940108, 2.8875618)
 product_data = ExtResource("19_bc84e")
+
+[node name="ShoppingCart" parent="." instance=ExtResource("21_bc84e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.769726, 0.1745739, 1.47966)

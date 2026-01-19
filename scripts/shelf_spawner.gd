@@ -1,36 +1,50 @@
 extends Node3D
-class_name ShelfSpawnerSmart
+class_name ShelfSpawnerCategory
 
-## Smart Spawner - Matches Item Models to Their ProductData
-## Automatically pairs models with correct data based on names!
+## Category-Based Spawner
+## Picks ONE random item from allowed list, then fills entire shelf with it
+## Perfect for realistic store layout!
 
-@export var item_scenes: Array[PackedScene] = []  # Add all your item scenes here
+## Example Usage:
+## - Freezer: allowed_products = [Chicken, Ice Cream, Frozen Pizza]
+##   → Spawns ALL chicken or ALL ice cream (not mixed!)
+## - Cereal Shelf: allowed_products = [Cereal Box, Oats, Granola]
+##   → Entire shelf has same cereal brand
+## - Drink Shelf: allowed_products = [Water, Soda, Juice]
+##   → All water bottles or all soda (not mixed!)
+
+@export var item_scene: PackedScene  # The generic item model (or leave empty for matching)
+@export var allowed_products: Array[ProductData] = []  # What CAN spawn here
 @export var max_items: int = 6
 @export var spawn_on_ready: bool = true
 
 var spawn_markers: Array[Marker3D] = []
 var spawned_items: Array = []
+var chosen_product: ProductData = null  # The ONE product for this shelf
 
 func _ready():
-	print("\n========== SMART SHELF SPAWNER ==========")
+	print("\n========== CATEGORY SHELF SPAWNER ==========")
 	print("Shelf: ", name)
 	
 	_find_spawn_markers()
 	
 	if spawn_markers.is_empty():
-		print("ERROR: No spawn markers found!")
+		print("ERROR: No spawn markers!")
 		return
 	
-	if item_scenes.is_empty():
-		print("ERROR: No item scenes assigned in Inspector!")
+	if allowed_products.is_empty():
+		print("ERROR: No allowed products assigned!")
+		print("→ In Inspector, add ProductData to 'Allowed Products'")
 		return
 	
 	print("✓ ", spawn_markers.size(), " spawn points")
-	print("✓ ", item_scenes.size(), " item scenes")
+	print("✓ Allowed products: ", allowed_products.size())
+	for product in allowed_products:
+		print("  - ", product.item_name)
 	
 	if spawn_on_ready:
 		await get_tree().create_timer(0.5).timeout
-		spawn_random_items()
+		spawn_category_items()
 	
 	print("=========================================\n")
 
@@ -44,57 +58,41 @@ func _find_markers_recursive(node: Node):
 			spawn_markers.append(child)
 		_find_markers_recursive(child)
 
-func spawn_random_items():
-	if not GameManager or GameManager.available_products.is_empty():
-		print("ERROR: GameManager or products not ready!")
+func spawn_category_items():
+	"""Pick ONE random product and fill entire shelf with it"""
+	
+	if allowed_products.is_empty():
+		print("ERROR: No allowed products!")
 		return
 	
 	clear_items()
 	
-	var num_to_spawn = min(max_items, spawn_markers.size())
+	# PICK ONE RANDOM PRODUCT from allowed list
+	chosen_product = allowed_products[randi() % allowed_products.size()]
 	
-	print("Spawning ", num_to_spawn, " items...")
+	print("\n>>> SHELF CATEGORY: ", chosen_product.item_name)
+	print("Filling entire shelf with this product...")
+	
+	var num_to_spawn = min(max_items, spawn_markers.size())
 	
 	for i in range(num_to_spawn):
 		var marker = spawn_markers[i]
-		
-		# Pick random scene
-		var random_scene = item_scenes[randi() % item_scenes.size()]
-		
-		# Find matching ProductData for this scene
-		var matching_product = _find_matching_product(random_scene)
-		
-		if matching_product:
-			_spawn_item_at_marker(random_scene, matching_product, marker)
-		else:
-			print("  WARNING: No matching product for ", random_scene.resource_path)
+		_spawn_item_at_marker(chosen_product, marker)
+	
+	print("✓ Spawned ", spawned_items.size(), " × ", chosen_product.item_name)
 
-func _find_matching_product(scene: PackedScene) -> ProductData:
-	"""Find ProductData that matches the scene name"""
+func _spawn_item_at_marker(product: ProductData, marker: Marker3D):
+	var item = null
 	
-	var scene_name = scene.resource_path.get_file().get_basename().to_lower()
-	
-	# Try to match by name similarity
-	for product in GameManager.available_products:
-		var product_name = product.item_name.to_lower().replace(" ", "_")
-		
-		# Check if scene name contains product name or vice versa
-		if product_name in scene_name or scene_name in product_name:
-			return product
-		
-		# Also try without underscores/spaces
-		var clean_scene = scene_name.replace("_", "").replace("-", "")
-		var clean_product = product_name.replace("_", "").replace("-", "")
-		
-		if clean_product in clean_scene or clean_scene in clean_product:
-			return product
-	
-	# If no match found, return random product as fallback
-	print("  No name match found for ", scene_name, ", using random product")
-	return GameManager.available_products[randi() % GameManager.available_products.size()]
-
-func _spawn_item_at_marker(item_scene: PackedScene, product: ProductData, marker: Marker3D):
-	var item = item_scene.instantiate()
+	# If item_scene is provided, use it
+	if item_scene:
+		item = item_scene.instantiate()
+	# Otherwise try to use product's item_scene
+	elif product.item_scene:
+		item = product.item_scene.instantiate()
+	else:
+		print("ERROR: No item scene available!")
+		return
 	
 	# Assign ProductData
 	if "product_data" in item:
@@ -106,37 +104,22 @@ func _spawn_item_at_marker(item_scene: PackedScene, product: ProductData, marker
 	item.global_rotation = marker.global_rotation
 	
 	spawned_items.append(item)
-	
-	var scene_name = item_scene.resource_path.get_file()
-	print("  ✓ ", scene_name, " → ", product.item_name)
 
 func clear_items():
 	for item in spawned_items:
 		if is_instance_valid(item):
 			item.queue_free()
 	spawned_items.clear()
+	chosen_product = null
 
-## Manual matching (if auto-match doesn't work)
-## Override this function to manually define scene → product mappings
+func respawn():
+	"""Clear and choose new category"""
+	clear_items()
+	await get_tree().create_timer(0.1).timeout
+	spawn_category_items()
 
-func _get_manual_product(scene_path: String) -> ProductData:
-	"""Manual override for matching scenes to products"""
-	
-	# Example mappings - adjust to your file names:
-	var mappings = {
-		"milk_carton": "Milk Carton",
-		"bread": "Bread",
-		"cereal": "Cereal Box",
-		"water": "Water Bottle",
-	}
-	
-	var scene_name = scene_path.get_file().get_basename().to_lower()
-	
-	for key in mappings.keys():
-		if key in scene_name:
-			var product_name = mappings[key]
-			for product in GameManager.available_products:
-				if product.item_name == product_name:
-					return product
-	
-	return null
+func get_current_category() -> String:
+	"""Get the name of current product filling this shelf"""
+	if chosen_product:
+		return chosen_product.item_name
+	return "None"
