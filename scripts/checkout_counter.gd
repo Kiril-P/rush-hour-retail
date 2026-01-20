@@ -1,16 +1,12 @@
 extends StaticBody3D
 
-## Checkout Counter - With Feedback!
-## Green flash for correct items, red flash for wrong items
+## Checkout Counter - Subtle Smooth Flash!
 
 @onready var game_manager = get_node("/root/GameManager")
 @onready var detection_area: Area3D = null
 
-# Screen flash overlay
-var screen_flash: ColorRect = null
-
 func _ready():
-	print("Checkout Counter Ready - With Feedback System")
+	print("Checkout Counter Ready - Subtle Flash Version")
 	
 	# Add to group so interaction system can find us
 	add_to_group("checkout")
@@ -25,41 +21,9 @@ func _ready():
 	
 	if not detection_area:
 		push_warning("Checkout counter needs an Area3D child for item detection!")
-	
-	# Create screen flash overlay
-	_create_screen_flash()
-
-func _create_screen_flash():
-	"""Creates a full-screen overlay for feedback flashes"""
-	# Get the viewport
-	var viewport = get_viewport()
-	if not viewport:
-		return
-	
-	# Create ColorRect for flash
-	screen_flash = ColorRect.new()
-	screen_flash.name = "ScreenFlash"
-	screen_flash.color = Color(0, 0, 0, 0)  # Transparent by default
-	screen_flash.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Don't block clicks
-	
-	# Make it cover full screen
-	screen_flash.set_anchors_preset(Control.PRESET_FULL_RECT)
-	screen_flash.z_index = 100  # On top of everything
-	
-	# Add to viewport's canvas layer
-	var canvas_layer = CanvasLayer.new()
-	canvas_layer.layer = 100  # High layer to be on top
-	canvas_layer.name = "FlashLayer"
-	canvas_layer.add_child(screen_flash)
-	
-	# Add to tree
-	viewport.add_child(canvas_layer)
-	
-	print("✓ Screen flash overlay created")
 
 func _on_body_entered(body):
 	"""Handles items THROWN into the checkout area"""
-	# Check if it's an item
 	if body.is_in_group("pickable"):
 		print("📦 Item thrown into checkout area!")
 		_scan_item(body)
@@ -71,15 +35,15 @@ func interact(item_held = null):
 	# If player is holding an item, scan it!
 	if item_held:
 		print("📦 Player is holding an item!")
-		_scan_item(item_held)
-		return true
+		var result = _scan_item(item_held)
+		return result  # Return true only if correct item!
 	else:
 		print("⚠️ Player clicked checkout but not holding an item!")
-		_flash_screen(Color.GRAY, 0.2, 0.3)  # Gray flash for empty hands
+		_flash_screen_smooth(Color.GRAY, 0.15)
 		return false
 
-func _scan_item(item):
-	"""Scans an item - checks if correct FIRST!"""
+func _scan_item(item) -> bool:
+	"""Scans an item - returns true if correct, false if wrong"""
 	# Get item name directly from the item
 	var item_name = ""
 	
@@ -89,8 +53,8 @@ func _scan_item(item):
 		item_name = item.item_name
 	else:
 		print("⚠️ Item has no name!")
-		_flash_screen(Color.GRAY, 0.2, 0.3)
-		return
+		_flash_screen_smooth(Color.GRAY, 0.15)
+		return false
 	
 	print("\n🛒 SCANNING: ", item_name)
 	
@@ -98,8 +62,8 @@ func _scan_item(item):
 	if game_manager.check_item_correct(item_name):
 		print("✅ CORRECT ITEM!")
 		
-		# GREEN FLASH - Item is correct!
-		_flash_screen(Color.GREEN, 0.3, 0.5)
+		# SUBTLE GREEN FLASH - Item is correct!
+		_flash_screen_smooth(Color.GREEN, 0.25)
 		
 		# Tell game manager (adds score, updates list, etc.)
 		game_manager.collect_correct_item(item_name)
@@ -107,29 +71,52 @@ func _scan_item(item):
 		# Remove the item from the world
 		item.queue_free()
 		
+		return true  # Item was correct!
+		
 	else:
 		print("❌ WRONG ITEM!")
 		
-		# RED FLASH - Item is wrong!
-		_flash_screen(Color.RED, 0.5, 0.7)
+		# SUBTLE RED FLASH - Item is wrong!
+		_flash_screen_smooth(Color.RED, 0.35)
 		
 		# Tell game manager (penalty, reset combo)
 		game_manager.collect_wrong_item(item_name)
 		
-		# DON'T remove item! Player keeps it
-		# They can drop it or bring another item
+		# DON'T remove item! Return false so interaction component keeps it
+		return false  # Item was wrong!
 
-func _flash_screen(color: Color, intensity: float = 0.5, duration: float = 0.5):
-	"""Flash the screen with a color"""
-	if not screen_flash:
-		print("⚠️ Screen flash not available!")
-		return
+func _flash_screen_smooth(flash_color: Color, max_intensity: float = 0.3):
+	"""Creates a smooth, subtle screen flash with fade in and fade out"""
+	# Create flash overlay
+	var flash = ColorRect.new()
+	flash.color = flash_color
+	flash.color.a = 0.0  # Start transparent
+	flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
-	# Set flash color with intensity as alpha
-	var flash_color = color
-	flash_color.a = intensity
-	screen_flash.color = flash_color
+	# Make it cover the whole screen
+	flash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	
-	# Create tween to fade out
+	# Add to HUD layer
+	var canvas = CanvasLayer.new()
+	canvas.layer = 100  # On top of everything
+	get_tree().root.add_child(canvas)
+	canvas.add_child(flash)
+	
+	# Smooth tween with fade IN then fade OUT
 	var tween = create_tween()
-	tween.tween_property(screen_flash, "color:a", 0.0, duration)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	
+	# Fade IN quickly (0.1s)
+	tween.tween_property(flash, "color:a", max_intensity, 0.1)
+	
+	# Hold briefly (0.05s)
+	tween.tween_interval(0.05)
+	
+	# Fade OUT smoothly (0.4s)
+	tween.tween_property(flash, "color:a", 0.0, 0.4)
+	
+	# Remove after animation
+	tween.tween_callback(func():
+		canvas.queue_free()
+	)

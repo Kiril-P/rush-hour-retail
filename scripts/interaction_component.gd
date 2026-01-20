@@ -71,9 +71,14 @@ func handle_interaction(collider, hold_duration, is_secondary: bool = false):
 		print("→ CASE: Clicking checkout with item!")
 		if interact_target.has_method("interact"):
 			# Pass the held item to checkout counter!
-			if interact_target.interact(picked_object):
-				# Item was scanned successfully, clear our reference
+			var was_correct = interact_target.interact(picked_object)
+			
+			# ONLY clear picked_object if item was CORRECT!
+			if was_correct:
 				picked_object = null
+				print("  ✓ Item was correct, cleared from hand")
+			else:
+				print("  ✗ Item was wrong, keeping in hand")
 		return
 	
 	# PRIORITY 5: Already holding item → Try to use it on target
