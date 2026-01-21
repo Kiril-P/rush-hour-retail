@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3onl7raor30x"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_yh0i6"]
+[ext_resource type="ArrayMesh" uid="uid://cgu0ta7t7lbkr" path="res://assets/kenney_food-kit/Models/OBJ format/glass.obj" id="2_yh0i6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yh0i6"]
+points = PackedVector3Array(0.0036291282, 0.2784331, 0.08974335, -0.004862424, 0.27914506, -0.08906934, 0.06758439, 0.023245092, -0.037787464, -0.0006055534, 0, 0.07631438, -0.07709949, 0.27854007, 0.04730611, 0.07652703, 0.27964848, 0.047696304, 0.0775717, 0.28150514, -0.0471933, -0.078143634, 0.28039616, -0.046802785, -0.06527301, 0.0045988006, 0.039356925, 0.06458898, 0.003474305, 0.039690927, 0.0035902206, 0.007943551, -0.07515593, -0.06615588, 0.002715241, -0.038745183, 0.0036864856, 0.28027344, -0.0898099, 0.076131836, 0.20646901, 0.04319584, -0.07711413, 0.22752544, 0.043068737, 0.06223402, 0.008498512, -0.041322418, -0.004805104, 0.27730593, 0.08900357, -0.0047669453, 0.009046696, -0.074535385, 0.076131836, 0.20646901, -0.042037047, 0.06758439, 0.023245092, 0.03892873, -0.06859197, 0.044843666, 0.038796768, -0.06859197, 0.044843666, -0.037655503, 0.0035674311, 0.021230161, 0.075885884, -0.0006055534, 0.23658448, -0.089229554, -0.0006055534, 0.2534138, 0.090138756, -0.0006055534, 0.078423016, -0.08068628, -0.0006055534, 0.018694066, 0.0774601, 0.07131502, 0.112961285, -0.041713517, 0.007864138, 0.0069295787, 0.07263272)
+
+[node name="glass" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_yh0i6")
+item_name = "Glass"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="glass" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_yh0i6")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_yh0i6")

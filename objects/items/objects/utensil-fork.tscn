@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://br2gqri60dwsa"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_e0wwc"]
+[ext_resource type="ArrayMesh" uid="uid://jlmi026tcmv" path="res://assets/kenney_food-kit/Models/OBJ format/utensil-fork.obj" id="2_e0wwc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e0wwc"]
+points = PackedVector3Array(-0.24416986, -0.0014893487, -0.043489344, -0.25313976, -0.0014893487, -0.037528157, 0.1190867, 0.019361537, -0.028590607, -0.25011677, 0.0014905152, 0.039908074, 0.23227605, -0.0014893487, -0.03156697, 0.14589731, 0.019361537, 0.027994158, 0.2352495, -0.0014893487, 0.030970521, -0.24416986, -0.0014893487, 0.042892896, 0.25313976, 0.0014905152, -0.0047627725, 0.19357164, 0.010423985, -0.03156697, -0.1190867, -0.0014893487, 0.042892896, 0.1190867, 0.019361537, 0.027994158, -0.1190867, -0.0014893487, -0.043489344, 0.14589731, 0.019361537, -0.028590607, 0.17568138, 0.01340385, 0.030970521, 0.25313976, 0.0014905152, 0.0041578677, -0.25313976, -0.0014893487, 0.03693171, 0.24714331, 0.0014905152, -0.013700324, 0.23822296, -0.0014893487, -0.025614241)
+
+[node name="utensilfork" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_e0wwc")
+item_name = "Fork"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="utensilfork" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_e0wwc")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_e0wwc")

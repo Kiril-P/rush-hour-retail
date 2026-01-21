@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtcg3617xxhag"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_wjrxl"]
+[ext_resource type="ArrayMesh" uid="uid://cby3sbp0wrjr6" path="res://assets/kenney_food-kit/Models/OBJ format/salad.obj" id="2_wjrxl"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wjrxl"]
+points = PackedVector3Array(-0.15367152, 0.01268501, -0.08646969, 0.2511, 0.21364617, 0.1422941, 0.16761388, 0.26223916, 0.09195968, -0.24380064, 0.21264662, 0.14921217, 0.010797323, 0.21337262, -0.2836693, 0.14022891, 0.0041468735, 0.07774593, -0.006760836, 0.055090938, 0.23583996, 0.2030874, 0.046253618, -0.11362497, -0.24380064, 0.21264662, -0.14921217, 0.2511, 0.21364617, -0.1422941, 0.010797323, 0.21337262, 0.2836693, -0.02564132, 0.2806689, 0.10118447, -0.015281652, 0.038741007, -0.21594755, -0.19718494, 0.047141515, 0.12120697, 0.0020025969, 0.26223916, -0.19325946, 0.24913742, 0.14242701, 0.14117299, -0.24511515, 0.13366967, -0.14121853, -0.16365913, 0.26223916, -0.10118447, -0.015184559, 0.0049444484, 0.15461959, 0.01058253, 0.004054391, -0.15565342, -0.006746743, 0.13372123, -0.2791212, -0.24511515, 0.13366967, 0.14121853, 0.16761388, 0.26223916, -0.09195968, 0.24913742, 0.14242701, -0.14117299, 0.2030874, 0.046253618, 0.11362497, -0.00674671, 0.13372125, 0.27912015, -0.16365913, 0.26223916, 0.10118447, -0.2059624, 0.05575855, -0.12128733, -0.13520733, 0.005177114, 0.085743666, 0.0020025969, 0.26223916, 0.19325946, 0.14022891, 0.0041468735, -0.07774593, 0.019204076, 0.047551397, -0.2241456)
+
+[node name="salad" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_wjrxl")
+item_name = "Salad"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="salad" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_wjrxl")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_wjrxl")

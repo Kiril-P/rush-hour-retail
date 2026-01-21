@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyu4utexci6ax"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_a8dq4"]
+[ext_resource type="ArrayMesh" uid="uid://dl4vgwv6yinen" path="res://assets/kenney_food-kit/Models/OBJ format/pot.obj" id="2_a8dq4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a8dq4"]
+points = PackedVector3Array(-0.30478147, 0.3545713, -0.023692185, 0.29723045, 0.3531077, 0.03519885, 0.24782442, 0.3515242, 0.17457785, -0.21855271, 0.00364169, -0.16052778, -0.120695435, 0.03952983, 0.29872295, 0.25513238, 0.038162146, -0.20102502, 0.0669457, 0.3406802, -0.40464, 0.267494, 0.03826212, 0.18829615, -0.071711555, 0.339914, 0.4026776, -0.27171972, 0.038663957, 0.17529595, -0.07426372, 0.29352927, -0.4175238, 0.0691565, 0.29352927, 0.4175238, 0.11687876, 0.03820063, -0.30149662, 0.101925485, 0.00450364, 0.2457532, -0.2576576, 0.03953754, -0.1991899, 0.22172472, 0.3584519, -0.21811959, -0.23942864, 0.3588707, 0.20653494, -0.23942864, 0.3588707, -0.20653494, 0.2634351, 0.0033165624, -0.02464604, 0.31652212, 0.03882875, -0.037464455, -0.32059592, 0.03923603, 0.024931643, -0.120695435, 0.03952983, -0.29872295, -0.21855278, 0.003641634, 0.16052784, 0.11687876, 0.03820063, 0.30149662, 0.10192596, 0.0045028217, -0.24575432, 0.22172472, 0.3584519, 0.21811959, -0.07426372, 0.29352927, 0.4175238, 0.0691565, 0.29352927, -0.4175238, 0.29723045, 0.3531077, -0.03519885, 0.0669457, 0.3406802, 0.40464, 0.31652212, 0.03882875, 0.037464455, -0.30478147, 0.3545713, 0.023692185)
+
+[node name="pot" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_a8dq4")
+item_name = "Pot"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="pot" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_a8dq4")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_a8dq4")

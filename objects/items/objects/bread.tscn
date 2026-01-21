@@ -1,8 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://qnvrxjc6vt7s"]
 
 [ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_e2rda"]
-[ext_resource type="Texture2D" uid="uid://dhx3uroly2lu3" path="res://assets/ui/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_fcb2s"]
-
+[ext_resource type="Texture2D" uid="uid://6ulb6fayuvbw" path="res://assets/ui/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_fcb2s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mri5"]
 resource_name = "colormap"

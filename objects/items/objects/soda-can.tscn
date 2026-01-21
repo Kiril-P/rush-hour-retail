@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl8sog8ioefxf"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_1jvti"]
+[ext_resource type="ArrayMesh" uid="uid://2x25ahj4jp1a" path="res://assets/kenney_food-kit/Models/OBJ format/soda-can.obj" id="2_1jvti"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1jvti"]
+points = PackedVector3Array(0.10227329, 0.027034476, 0.01751737, -0.108638115, 0.033589717, -0.008837478, -0.087035336, 0.03452609, -0.06097306, -0.031596534, 0.35338256, 0.007332324, 0.059358332, 0.2802436, -0.08760453, 0.01215331, 0.2806286, 0.10700635, -0.0036602244, 0.02677988, 0.10777423, -0.109143965, 0.28605315, 0.0016268957, 0.09504236, 0.32066768, 0.011962615, 0.012107868, 0.0073553463, -0.08762202, -0.071879216, 0.2802921, -0.08239648, -0.07704056, 0.2801725, 0.08030692, 0.08035789, 0.033603404, -0.07708824, 0.07566344, 0.032537933, 0.08094826, -0.008857928, 0.033600874, -0.108629644, -0.07789034, 0.026826281, 0.07589353, 0.0067876945, 0.32089037, -0.09718699, 0.0707, 0.32403025, 0.07069999, 0.10701753, 0.28592047, 0.0068892087, 0.0016332876, 0.0061424654, 0.09153527, -0.088395275, 0.0058146184, -0.008908781, -0.07128506, 0.32106978, 0.069288254, 0.09153938, 0.0061349664, 0.0016121764, 0.069288254, 0.3211024, -0.07128506, -0.07070607, 0.31986928, -0.07068535, 0.0068978346, 0.28075463, -0.109132424, 0.08073864, 0.2807292, 0.07544753, -0.07763589, 0.02731771, -0.07761469, 0.08030692, 0.2801725, -0.07704056, 0.10646414, 0.033790164, -0.014084097, -0.008874426, 0.32257143, 0.096322194, -0.09718699, 0.3208904, 0.0067876917)
+
+[node name="sodacan" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_1jvti")
+item_name = "Soda Can"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="sodacan" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_1jvti")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_1jvti")

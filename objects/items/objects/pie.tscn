@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://chnpdpj7fliw6"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_s15fv"]
+[ext_resource type="ArrayMesh" uid="uid://4qmwp1trqr7x" path="res://assets/kenney_food-kit/Models/OBJ format/pie.obj" id="2_s15fv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m05jy"]
+points = PackedVector3Array(-0.21093722, 0.0055, -0.02256012, 0.31579706, 0.17686121, 0.034613527, 0.27061954, 0.17720199, 0.17403874, -0.31947872, 0.17668508, -0.023057407, 0.07639773, 0.12038858, -0.38697183, 0.0711768, 0.0055, 0.20318252, -0.06861664, 0.12038858, 0.38697183, 0.18251824, 0.006227983, -0.111900836, -0.11278177, 0.17751917, -0.30285504, -0.26027814, 0.176211, 0.19502188, -0.0751662, 0.005818818, -0.20241743, 0.21801847, 0.039385136, 0.15797682, 0.25834423, 0.17698437, -0.19680874, -0.09277485, 0.12038858, -0.36272925, -0.22262868, 0.050599247, 0.15826793, 0.073359236, 0.15409124, 0.37199914, -0.22262868, 0.050599247, -0.15826793, 0.26551354, 0.038921606, -0.011342577, -0.07516614, 0.0058188913, 0.20241725, 0.07639773, 0.12038858, 0.38697183, -0.2602775, 0.1762108, -0.19502142, -0.112781964, 0.17751932, 0.30285558, 0.21801841, 0.039385147, -0.15797679, 0.0711768, 0.0055, -0.20318252, -0.27989295, 0.07317216, 0.011292584, 0.073359236, 0.15409124, -0.37199914, 0.18251888, 0.0062276917, 0.11190122, -0.06861664, 0.12038858, -0.38697183, 0.31579623, 0.17686097, -0.034613438, 0.11825026, 0.17618275, 0.29822153, -0.17707866, 0.0055, 0.12411601, 0.11825055, 0.17618296, -0.29822224)
+
+[node name="pie" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_s15fv")
+item_name = "Pie"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="pie" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_s15fv")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_m05jy")

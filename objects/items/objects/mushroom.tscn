@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://duen75fhf2nge"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_2rrtn"]
+[ext_resource type="ArrayMesh" uid="uid://bk7gt5vo5pul6" path="res://assets/kenney_food-kit/Models/OBJ format/mushroom.obj" id="2_2rrtn"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2rrtn"]
+points = PackedVector3Array(0.009227169, 0.1371025, 0.032541655, 0.0028248227, -0.001144439, -0.025165232, 0.0005414188, 0.100476645, -0.07011813, -0.060916554, 0.10053038, 0.0351205, 0.053185172, 0.06754687, 0.036607884, 0.062381122, 0.098522894, -0.035324804, -0.060916554, 0.10053038, -0.0351205, -0.015467502, -0.001144439, 0.018311111, 0.0027383165, 0.09843852, 0.070469595, 0.0005414188, 0.13756065, -0.037144423, -0.056669142, 0.06754687, -0.034327958, 0.018846288, -0.001144439, 0.016002506, 0.062381122, 0.098522894, 0.035324804, -0.031966947, 0.13700876, 0.019500507, -0.056669142, 0.06754687, 0.034327958, 0.031087289, 0.13745159, -0.019615345, 0.053185172, 0.06754687, -0.036607884, -0.0040379353, 0.06754687, 0.06408172, -0.0040379353, 0.06754687, -0.06408172, -0.015467502, -0.001144439, -0.018311111, -0.03196743, 0.13700977, -0.0195008, 0.03108802, 0.13745321, 0.019615814, 0.018846288, -0.001144439, -0.016002506, 0.009700127, 0.06754687, -0.061787456, 0.005120773, 0.06754687, 0.06408172, 0.0028248227, -0.001144439, 0.025165232, -0.0038202656, 0.09815145, 0.06976293, -0.0016247815, 0.13712463, 0.036905367, -0.0038201683, 0.09815082, -0.06976137, 0.035637643, 0.13342537, -0.019726021, -0.060701236, 0.0916614, 0.034997456, 0.0027383342, 0.098438755, -0.07047017)
+
+[node name="mushroom" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_2rrtn")
+item_name = "Mushroom"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="mushroom" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_2rrtn")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_2rrtn")

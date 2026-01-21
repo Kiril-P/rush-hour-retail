@@ -1,22 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkytk2xrdvs2l"]
 
-[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_r8rc1"]
-[ext_resource type="ArrayMesh" uid="uid://cxt8i7vbyhui7" path="res://assets/kenney_food-kit/Models/OBJ format/carton.obj" id="2_r8rc1"]
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_i66di"]
+[ext_resource type="ArrayMesh" uid="uid://cxt8i7vbyhui7" path="res://assets/kenney_food-kit/Models/OBJ format/carton.obj" id="2_upc8k"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r8rc1"]
 points = PackedVector3Array(-0.115, 0.00690715, -0.115, -0.110675, 0.0175533, 0.115, 0.124012, -0.00462776, 0.124012, 0.115, 0.0175533, -0.110675, -0.114391, 0.420688, -0.114391, -0.00716444, 0.57634, 0.124012, 0.115, 0.416689, -0.110675, -0.00716444, 0.57634, -0.119687, -0.110675, 0.416689, 0.115, 0.115, 0.416689, 0.115, 0.105262, 0.510757, -0.035289, -0.00716444, 0.595187, 0.105262, -0.00716444, 0.595187, -0.100913, 0.0958874, 0.520151, 0.0490131, 0.114637, 0.492027, 0.0302634, 0.0021627, 0.595187, -0.100913, 0.0021627, 0.595187, 0.105262, 0.114637, 0.492027, -0.0259141, 0.0958874, 0.520151, -0.0446638, -0.101785, 0.43381, 0.114774, 0.105262, 0.510757, 0.0396383)
 
-[node name="carton" type="RigidBody3D"]
+[node name="PurpleMilk" type="RigidBody3D"]
 collision_layer = 4
-script = ExtResource("1_r8rc1")
+script = ExtResource("1_i66di")
 item_name = "Purple Milk"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="carton" type="MeshInstance3D" parent="item_ingredient"]
+[node name="PurpleMilk" type="MeshInstance3D" parent="item_ingredient"]
 transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
-mesh = ExtResource("2_r8rc1")
+mesh = ExtResource("2_upc8k")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

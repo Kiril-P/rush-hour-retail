@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://evo6uk31ij7n"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_lhi85"]
+[ext_resource type="ArrayMesh" uid="uid://cxdunb6lo6ew0" path="res://assets/kenney_food-kit/Models/OBJ format/watermelon.obj" id="2_lhi85"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lhi85"]
+points = PackedVector3Array(-0.011828805, 0.049813777, -0.15662079, 0.002621305, 0.2743125, 0.2205276, 0.009808322, 0.26681623, 0.21852873, 0.124738924, 0.3960559, -0.119500704, -0.21485831, 0.3177734, 0.0026079456, 0.21221513, 0.12969384, 0.0025963977, -0.11930663, 0.058763806, 0.12449918, 0.11097745, 0.4042216, 0.11822168, -0.11277612, 0.39669472, -0.12717202, 0.117699906, 0.05823477, 0.12486946, -0.1482451, 0.1231427, -0.14821492, 0.009798682, 0.20214686, -0.22030398, -0.11951293, 0.3960879, 0.12471795, 0.15417054, 0.13703334, -0.14889891, 0.05342589, 0.0057220464, -0.048151743, -0.17112896, 0.057029616, -0.0045747864, -0.011157243, 0.4554, -0.01116535, -0.16332221, 0.22367467, 0.15412551, 0.15405244, 0.30293337, 0.15404989, 0.21266003, 0.32489768, 0.0026038731, -0.004549012, 0.1299792, 0.21156426, -0.004558393, 0.3174377, -0.21409404, -0.15604055, 0.28129953, -0.15605353, -0.21561992, 0.14350006, 0.0026207424, 0.15399256, 0.28850037, -0.15596144, 0.15396963, 0.15156996, 0.15396708, -0.048139963, 0.005733987, 0.05346051, -0.16342202, 0.40410122, 0.002592662, 0.009822237, 0.40373695, 0.16115162, 0.16852847, 0.0577154, -0.011755224, -0.004550882, 0.40380922, -0.16319375, 0.16110295, 0.403774, 0.009771282)
+
+[node name="watermelon" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_lhi85")
+item_name = "Watermelon"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="watermelon" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 0, 0, 0)
+mesh = ExtResource("2_lhi85")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lhi85")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp7sk6y53ldrj"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_lc2if"]
+[ext_resource type="ArrayMesh" uid="uid://dy0dbtpmw2fny" path="res://assets/kenney_food-kit/Models/OBJ format/peanut-butter.obj" id="2_lc2if"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lc2if"]
+points = PackedVector3Array(-0.0028292753, 0.2283664, -0.11462304, 0.0060721943, 0.22832258, 0.11332287, -0.00729434, 0.22811438, 0.113027886, -0.0028841111, 0.0012856578, -0.10370591, 0.114074714, 0.026459012, 0.0016043363, -0.11567138, 0.030575864, 0.0016337889, 0.0016284742, 0.0037880577, 0.10520478, 0.109031044, 0.2911382, 0.010553911, -0.11086606, 0.29191616, 0.0061211386, 0.07932357, 0.29410332, -0.080562815, -0.073925525, 0.2900772, -0.082797416, -0.0747321, 0.29164156, 0.08246352, 0.0824053, 0.031197207, 0.08240646, 0.08252411, 0.035536025, -0.08376337, -0.08376309, 0.035536695, 0.082524784, -0.08340006, 0.036027316, -0.08339984, 0.0770642, 0.28997132, 0.081498116, -0.101651385, 0.0042078476, 0.010589321, 0.10520414, 0.0037871725, 0.0016291898, 0.0061249346, 0.035329487, -0.11545896, 0.113123186, 0.22369848, -0.011755092, -0.08340006, 0.22396782, -0.08339984, 0.0016256408, 0.026483454, 0.11407543, 0.0061204317, 0.2919166, -0.11086635, 0.0105745, 0.29112533, 0.10902253, -0.08376309, 0.22430141, 0.082524784, -0.114965774, 0.2241285, -0.007313713, -0.07487654, 0.0038782954, -0.07485381, 0.08252411, 0.22430187, -0.08376337, 0.11361679, 0.22402741, 0.010565325, 0.07385137, 0.0034189278, -0.075113125, -0.07510865, 0.003428112, 0.073870294)
+
+[node name="peanutbutter" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_lc2if")
+item_name = "Peanutbutter"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="peanutbutter" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_lc2if")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lc2if")

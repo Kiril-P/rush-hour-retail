@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj2gl75kei5m5"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_decr6"]
+[ext_resource type="ArrayMesh" uid="uid://dgdjw5mklicqv" path="res://assets/kenney_food-kit/Models/OBJ format/glass-wine.obj" id="2_decr6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_decr6"]
+points = PackedVector3Array(0.09684277, -0.003967464, 0.008602783, -0.053871, -0.003967464, 0.080031045, 0.04923791, -0.003967464, -0.086594515, 0.045864947, 0.47108826, -0.08040734, -0.048885252, 0.48106843, 0.07290678, 0.05908691, 0.32888538, 0.09402029, -0.061816797, -0.003967464, -0.07072157, -0.048547164, 0.46514046, -0.07822621, 0.112102896, 0.33090377, 0.00068650395, 0.046920158, 0.0084011555, 0.07616608, -0.09353007, -0.003967464, 0.016539257, -0.056069404, 0.34371266, 0.09450004, -0.056235243, 0.3512362, -0.093396544, -0.10600711, 0.35040218, -0.006455931, 0.059180047, 0.3290134, -0.09279865, -0.08651458, 0.48515305, -0.0066276183, 0.046558853, 0.48957074, 0.07556359, 0.046691373, 0.49027795, -0.07439245, 0.08988125, 0.48529702, 0.00068650395, -0.105727434, 0.35014126, 0.007828605, 0.08892028, -0.003967464, -0.023082528, -0.09353007, -0.003967464, -0.015146054, 0.0651295, -0.003967464, 0.0641581, 0.0531897, 0.33833408, 0.09646094, -0.084476136, 0.3288925, -0.049566235, 0.01750134, -0.003967464, -0.086594515, 0.05323442, 0.35314655, -0.09517104, -0.062806524, 0.32871926, 0.086658046, -0.049373865, 0.4833028, -0.072213404, 0.109562516, 0.32904175, -0.006472032, 0.057160404, -0.003967464, -0.078637846, 0.008947684, 0.46234927, 0.081251055)
+
+[node name="glasswine" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_decr6")
+item_name = "Wine Glass"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="glasswine" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_decr6")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_decr6")

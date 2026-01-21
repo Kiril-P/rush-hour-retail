@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8mgyg7wfpk27"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_hcfp3"]
+[ext_resource type="ArrayMesh" uid="uid://ceblp4ny8aykf" path="res://assets/kenney_food-kit/Models/OBJ format/frying-pan.obj" id="2_hcfp3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hcfp3"]
+points = PackedVector3Array(-0.27553585, 0.04207963, 0.022210319, 0.32797423, 0.10308045, 0.0022328084, 0.31131834, 0.07141887, -0.008077353, 0.036268212, 0.12166666, -0.7175111, -0.26360527, 0.103977285, 0.19486761, 0.17413883, 6.938894e-18, 0.0854444, 0.036268212, 0.056777775, -0.7175111, 0.113674305, 0.10386141, 0.30382535, -0.16636942, 0, 0.09967218, -0.26912025, 0.10227671, -0.1832931, -0.18060832, 0, -0.11330005, 0.18627572, 0.0006467952, -0.100203775, -0.044696808, 0.056777775, -0.7012508, -0.10165966, 0.026612854, 0.23915087, -0.028490465, 0.12166666, -0.37675554, -0.044696808, 0.12166666, -0.7012508, 0.16851711, 0.026844101, 0.19086672, 0.26728478, 0.10326583, 0.18893975, -0.120363764, 0.103405654, 0.298964, -0.32249373, 0.103399105, 0.019093143, -0.25372952, 0.07108899, -0.18414484, 0.07481663, 0, 0.17063329, 0.26427552, 0.027851662, -0.010317964, 0.11054162, 0.07202462, 0.2894989, -0.25523406, 0.07201852, 0.1825588, 0.27395797, 0.1017978, -0.16841018, 0.24193238, 0.056777775, 0.17361422, 0.036268212, 0.12166666, -0.39291424, -0.23597944, 0.02857262, -0.09967645, -0.21969774, 0.026969505, 0.14449434, 0.108352594, 0.026921468, 0.23467432, -0.069803156, 0.007623873, -0.21056339)
+
+[node name="fryingpan" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_hcfp3")
+item_name = "FryingPan"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="fryingpan" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_hcfp3")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_hcfp3")

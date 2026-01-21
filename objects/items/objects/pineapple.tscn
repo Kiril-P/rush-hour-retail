@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4gje1pfkwxj4"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_ijua3"]
+[ext_resource type="ArrayMesh" uid="uid://dwwv0aeq1acsj" path="res://assets/kenney_food-kit/Models/OBJ format/pineapple.obj" id="2_ijua3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ijua3"]
+points = PackedVector3Array(0.02371455, 0.011299022, -0.040960412, 0.010391207, 0.31810182, 0.12837143, -0.0045523774, 0.31810182, 0.12837143, 0.010391207, 0.47534284, -0.12614284, -0.12434286, 0.34056482, 0.0011142939, 0.122685716, 0.33310843, 0.008588284, -0.004324259, 0.03201836, 0.07840874, -0.053251747, 0.040039726, -0.047824405, 0.010391207, 0.39299414, 0.113398544, 0.05801695, 0.0419486, 0.06342522, -0.11684689, 0.43787324, 0.016062275, 0.06444014, 0.07778811, -0.053849466, -0.059014168, 0.085254505, 0.0695621, -0.0045523774, 0.2582161, -0.11864395, 0.115189746, 0.40790695, 0.016062275, -0.073203325, 0.04273047, 0.014884917, 0.122685716, 0.2432564, 0.0011142939, 0.07943244, 0.0403971, 0.0011142939, -0.0045523774, 0.47534284, -0.12614284, 0.0096795475, 0.0395167, -0.06897826, -0.12434286, 0.34056482, 0.016062275, -0.0045523774, 0.2432564, 0.12837143, 0.06939638, 0.11536759, 0.06801129, -0.039738026, 0.0093290545, 0.03649207, -0.058705404, 0.106446214, -0.0601709, 0.045240615, 0.008970551, 0.03654807, 0.010391207, 0.36298093, -0.12614284, 0.010391207, 0.47534284, -0.11116996, -0.11684689, 0.2507128, 0.0011142939, 0.122685716, 0.31810182, 0.016062275, -0.0045523774, 0.36298093, -0.12614284, -0.03252747, 0.010370909, -0.034100726)
+
+[node name="pineapple" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_ijua3")
+item_name = "Pineapple"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="pineapple" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0, 0)
+mesh = ExtResource("2_ijua3")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_ijua3")

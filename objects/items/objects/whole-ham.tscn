@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtio0o4ei3bne"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_erd5q"]
+[ext_resource type="ArrayMesh" uid="uid://cj5lj76qchnns" path="res://assets/kenney_food-kit/Models/OBJ format/wholer-ham.obj" id="2_erd5q"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_erd5q"]
+points = PackedVector3Array(0.068837635, 0.29045036, 0.37208128, -0.005308449, 0.012706188, 0.16683303, 0.0065438114, 0.013492682, 0.16612288, -0.0849128, 0.21717098, -0.40808654, -0.1663181, 0.2901735, 0.27203158, 0.112509266, 0.26986352, -0.18424925, -0.1663181, 0.10474135, 0.27203158, -0.0053111915, 0.3823313, 0.17886403, 0.14319077, 0.116886534, 0.33469918, 0.086170085, 0.1777814, -0.40808654, 0.16226912, 0.29919666, 0.2514043, -0.0056093256, 0.10357707, 0.40073565, 0.14944316, 0.10820818, 0.047584128, -0.07176061, 0.09876259, -0.18424925, -0.08119261, 0.24153444, 0.40296474, -0.04542143, 0.30933297, -0.18424925, -0.005575426, 0.35315183, 0.34870443, -0.00552301, 0.018415377, 0.29640454, 0.046678714, 0.30933297, -0.18424925, -0.14446387, 0.11042026, 0.023202492, 0.073017895, 0.09876259, -0.18424925, 0.163278, 0.09512075, 0.25297362, -0.14354302, 0.28394467, 0.023055254, -0.07176061, 0.16459829, -0.39489052, 0.08225636, 0.24142939, 0.40200394, 0.086170085, 0.21717098, -0.40808654, -0.14260621, 0.116505146, 0.33628315, 0.14855374, 0.2861747, 0.047299698, 0.13224085, 0.27897593, 0.35104713, 0.018459609, 0.3820556, 0.25006604, -0.005340775, 0.023704879, 0.05991742, -0.14260621, 0.27844724, 0.33628315)
+
+[node name="wholeham" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_erd5q")
+item_name = "Whole Ham"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="wholeham" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_erd5q")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_erd5q")

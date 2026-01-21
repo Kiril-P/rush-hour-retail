@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bw82olk8d2wkr" path="res://objects/items/objects/cereal_box.tscn" id="13_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://b2w7uv2xlmm2a" path="res://objects/delivery_truck.tscn" id="13_70uel"]
 [ext_resource type="PackedScene" uid="uid://dx8a0or2qqw3q" path="res://objects/furniture/objects/display_bread.tscn" id="14_hiqwa"]
-[ext_resource type="PackedScene" uid="uid://blkbjodsybh6u" path="res://objects/items/objects/milk_carton.tscn" id="14_udxuc"]
+[ext_resource type="PackedScene" uid="uid://blkbjodsybh6u" path="res://objects/items/objects/BlueMilk.tscn" id="14_udxuc"]
 [ext_resource type="PackedScene" uid="uid://6rffo40p1a8b" path="res://objects/items/shopping_cart.tscn" id="21_bc84e"]
 [ext_resource type="PackedScene" uid="uid://cxvg56wil781m" path="res://objects/items/shopping_basket.tscn" id="22_wukud"]
 [ext_resource type="PackedScene" uid="uid://mr8fmdycvje3" path="res://objects/items/objects/banana.tscn" id="23_wjb0r"]
@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://bm7hbrspjjwdi" path="res://objects/items/objects/can_small.tscn" id="33_gggvi"]
 [ext_resource type="PackedScene" uid="uid://begcvxe5gfg5q" path="res://objects/items/objects/carrot.tscn" id="34_w44yn"]
 [ext_resource type="PackedScene" uid="uid://ra3llhd1cawr" path="res://objects/items/objects/cauliflower.tscn" id="35_my276"]
-[ext_resource type="PackedScene" uid="uid://bkytk2xrdvs2l" path="res://objects/items/objects/carton.tscn" id="36_yx0jh"]
+[ext_resource type="PackedScene" uid="uid://bkytk2xrdvs2l" path="res://objects/items/objects/PurpleMilk.tscn" id="36_yx0jh"]
 [ext_resource type="PackedScene" uid="uid://ticdqyrsphst" path="res://objects/items/objects/carton_small.tscn" id="37_1ew0l"]
 [ext_resource type="PackedScene" uid="uid://bcou807q73qyx" path="res://objects/items/objects/cheese.tscn" id="38_yx0jh"]
 [ext_resource type="PackedScene" uid="uid://cfn3nqypipclx" path="res://objects/items/objects/cherries.tscn" id="39_1ew0l"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://1ldib7cr2ftd" path="res://objects/items/objects/cup.tscn" id="46_nx736"]
 [ext_resource type="PackedScene" uid="uid://c64qt07c2sy0p" path="res://objects/items/objects/corn.tscn" id="47_55kwu"]
 [ext_resource type="PackedScene" uid="uid://b4pyjv7halssa" path="res://objects/items/objects/croissant.tscn" id="48_f3o6s"]
+
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wse8f"]
 sky_top_color = Color(0.427098, 0.435846, 0.575037, 1)

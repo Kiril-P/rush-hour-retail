@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://diydp86hhxcxa"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_jtdmr"]
+[ext_resource type="ArrayMesh" uid="uid://c6rx6mauqn01a" path="res://assets/kenney_food-kit/Models/OBJ format/honey.obj" id="2_jtdmr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jtdmr"]
+points = PackedVector3Array(0.0049290773, 0.014333859, 0.13358109, -0.009898426, 0.1479357, -0.15849894, -0.009862009, 0.15782541, -0.15791582, 0.15851018, 0.147935, -0.0098680975, -0.0837296, 0.31054398, 0.08863671, -0.09440288, 0.0037552032, -0.0894212, 0.08864539, 0.31050575, 0.083708644, 0.09439655, 0.0037655488, -0.08944633, 0.083708644, 0.31050575, -0.08864539, -0.08864539, 0.31050575, -0.083708644, -0.15844749, 0.13309416, 0.004932097, 0.09439655, 0.0037655488, 0.08944633, -0.09440288, 0.0037552032, 0.0894212, 0.0049142553, 0.17258653, 0.1578743, 0.11352679, 0.13316925, 0.11352679, 0.113816954, 0.20954815, -0.113816954, -0.11352679, 0.13316925, 0.11352679, -0.11358542, 0.16768698, -0.11358542, 0.119203664, 0.3117968, -0.0098947445, 0.0049235364, 0.03921347, -0.14333993, -0.11920263, 0.31183568, -0.009897242, -0.0099248225, 0.31178072, -0.11919121, 0.14333993, 0.03921347, 0.0049235364, 0.0099248225, 0.31178072, 0.11919121, -0.14333993, 0.03921347, -0.0049235364, -0.108630195, 0.038834862, -0.108630195, -0.15363888, 0.20240451, 0.004937062, 0.10856232, 0.08380819, -0.10856232, 0.15363783, 0.20240422, 0.004937028, 0.107984066, 0.20689747, 0.107984066, -0.0049350597, 0.06371203, 0.14861047, -0.0049559814, 0.0035860783, -0.12935422)
+
+[node name="honey" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_jtdmr")
+item_name = "Honey"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="honey" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_jtdmr")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_jtdmr")

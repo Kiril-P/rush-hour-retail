@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://vhr4awwfd3dh"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_4xrv8"]
+[ext_resource type="ArrayMesh" uid="uid://c8f8x8ktnmj76" path="res://assets/kenney_food-kit/Models/OBJ format/frappe.obj" id="2_4xrv8"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4xrv8"]
+points = PackedVector3Array(0.11315037, 0.3081217, 0.032696668, 0.055563048, 0.011568291, 0.055563048, 0.010808744, 0.04369005, -0.09213379, -0.0038580417, 0.32330114, 0.12134974, 0.01165953, 0.5032627, -0.012072441, -0.0686444, 0.04785646, 0.06823381, 0.0034413424, 0.32318798, -0.121550314, 0.09156951, 0.3083582, -0.08464993, -0.06854015, 0.04816379, -0.06854015, -0.085618876, 0.3312766, 0.085207574, 0.08947674, 0.048722673, -0.018113824, -0.08551565, 0.33117795, -0.08551565, 0.08545629, 0.33151433, 0.08545629, -0.121550314, 0.32318798, 0.0034413424, -0.012072441, 0.5032627, 0.01165953, 0.017730802, 0.04841426, 0.089614384, -0.07554704, 0.019963067, -0.010951799, 0.05537424, 0.012374514, -0.055785503, 0.12134724, 0.32329965, -0.0038579663, 0.06848397, 0.04711872, 0.06848397, -0.092136025, 0.04368504, 0.010809011, -0.055785503, 0.012374514, 0.05537424, 0.068233676, 0.047856856, -0.06864427, -0.05570725, 0.012708506, -0.05570725, -0.012072441, 0.5032627, -0.012072441, 0.01165953, 0.5032627, 0.01165953, -0.0918265, 0.30825967, 0.084097184, 0.032696668, 0.3081217, 0.11315037, -0.113096, 0.3078817, -0.032972515, -0.032972515, 0.3078817, -0.113096, 0.089614384, 0.04841426, 0.017730802, 0.085207574, 0.3312766, -0.085618876)
+
+[node name="frappe" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_4xrv8")
+item_name = "Frappe"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="frappe" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_4xrv8")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_4xrv8")

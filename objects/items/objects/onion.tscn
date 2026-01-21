@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxwungsmbqvqf"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_agmxs"]
+[ext_resource type="ArrayMesh" uid="uid://b6c40diwrva4l" path="res://assets/kenney_food-kit/Models/OBJ format/onion.obj" id="2_agmxs"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_agmxs"]
+points = PackedVector3Array(-0.012424104, 0.095151246, -0.11385159, 0.0025021643, 0.09875061, 0.11820093, 0.006221213, 0.09521506, 0.11740896, 0.01731678, 0.23981704, -0.009214171, 0.103975385, 0.087434456, -0.06197478, -0.08892688, 0.037351865, 0.051473483, 0.036637947, 0.0037527136, -0.024598015, 0.103951156, 0.08744326, 0.06199198, -0.08849046, 0.14396007, 0.051222764, -0.10325206, 0.08722915, -0.06231357, 0.0063076117, 0.030420888, 0.096519455, -0.00504848, 0.029937983, -0.09695699, -0.016012417, 0.24339063, -0.00920514, -0.035459355, 0.0034529192, -0.024658876, 0.0025040817, 0.14751261, -0.09950747, 0.08407784, 0.15094768, 0.050058283, 0.08550298, 0.030729938, 0.050913062, 0.0025035455, 0.14750612, 0.09951051, -0.088535175, 0.14396958, -0.051193308, 0.084097244, 0.15095371, -0.050038178, -0.08469873, 0.0301925, -0.05117149, 0.08552286, 0.030707855, -0.050893243, -0.10322813, 0.08723785, 0.062330954, 0.0025257904, 0.0034600305, 0.043692064, -0.0048158825, 0.24170296, 0.01641758, 0.0062694363, 0.087423354, -0.11839227, -0.0050108284, 0.0872267, 0.11904371, -0.08466436, 0.030230679, 0.051206, 0.013175481, 0.2395591, 0.012538409, -0.03545264, 0.0034755168, 0.024709456, -0.005047421, 0.029955663, 0.09699415, -0.103696756, 0.098451994, 0.05882122)
+
+[node name="onion" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_agmxs")
+item_name = "Onion"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="onion" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_agmxs")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_agmxs")
