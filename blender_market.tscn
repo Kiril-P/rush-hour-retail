@@ -112,10 +112,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
 [node name="SM_wall_panel_window_small_008" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="15"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
 
-[node name="Cube_028" parent="Supermarket/freezer" index="5"]
-surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
-
-[node name="Cube_034" parent="Supermarket/freezer" index="11"]
+[node name="Cube_028" parent="Supermarket/freezer" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
 
 [node name="FpsPlayer" parent="." instance=ExtResource("2_xmco6")]
