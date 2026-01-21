@@ -3,7 +3,7 @@ extends Sprite3D
 ## Shopping List Paper - Simple Version (NO ProductData!)
 ## Works with item names (strings) instead of resources
 
-@export var toggle_key: String = "ui_cancel"
+@export var toggle_key: String = "toggle_shopping_list"
 @export var show_position: Vector3 = Vector3(-0.3, -0.2, -0.4)
 @export var hide_position: Vector3 = Vector3(-1, -0.2, -0.4)
 

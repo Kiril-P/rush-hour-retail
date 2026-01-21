@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://5h0iwlmcv8yb"
+path="res://.godot/imported/display-fruit.obj-f1bc8e4b8315323ba992b403f6e1bbcb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/display-fruit.obj-f1bc8e4b8315323ba992b403f6e1bbcb.mesh"]
+
+source_file="res://assets/ui/kenney_mini-market/Models/OBJ format/display-fruit.obj"
+dest_files=["res://.godot/imported/display-fruit.obj-f1bc8e4b8315323ba992b403f6e1bbcb.mesh", "res://.godot/imported/display-fruit.obj-f1bc8e4b8315323ba992b403f6e1bbcb.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

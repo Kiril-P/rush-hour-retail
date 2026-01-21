@@ -61,10 +61,6 @@ var available_items: Dictionary = {
 }
 
 func _ready():
-	# AUTO-START FOR TESTING
-	await get_tree().create_timer(1.0).timeout
-	start_game()
-	
 	print("\n=== GAME MANAGER WITH POINTS ===")
 	print("Available items: ", available_items.size())
 	for item_name in available_items.keys():

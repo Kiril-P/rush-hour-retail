@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dud3472v00ss0"]
 
-[ext_resource type="PackedScene" uid="uid://cxye4imrihxyk" path="res://assets/kenney_mini-market/Models/GLB format/fence-door-rotate.glb" id="1_ystef"]
+[ext_resource type="PackedScene" uid="uid://cxye4imrihxyk" path="res://assets/ui/kenney_mini-market/Models/GLB format/fence-door-rotate.glb" id="1_ystef"]
+
 
 [node name="FenceDoor" type="Node3D"]
 

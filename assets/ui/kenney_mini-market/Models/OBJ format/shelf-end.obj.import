@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://de7w755vnmemy"
+path="res://.godot/imported/shelf-end.obj-f5be4300b83895f2824e33673cd9fe31.mesh"
+
+[deps]
+
+files=["res://.godot/imported/shelf-end.obj-f5be4300b83895f2824e33673cd9fe31.mesh"]
+
+source_file="res://assets/ui/kenney_mini-market/Models/OBJ format/shelf-end.obj"
+dest_files=["res://.godot/imported/shelf-end.obj-f5be4300b83895f2824e33673cd9fe31.mesh", "res://.godot/imported/shelf-end.obj-f5be4300b83895f2824e33673cd9fe31.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

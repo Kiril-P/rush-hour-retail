@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://dx8a0or2qqw3q"]
 
-[ext_resource type="Texture2D" uid="uid://cl5w0r06l4vkx" path="res://assets/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_53esd"]
+[ext_resource type="Texture2D" uid="uid://dhx3uroly2lu3" path="res://assets/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_53esd"]
 [ext_resource type="Script" uid="uid://cj47ghcpvoxw4" path="res://scripts/display_logic.gd" id="1_sr0fn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mri5"]

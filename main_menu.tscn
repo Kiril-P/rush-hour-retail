@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjkrklmt4uiy"]
+
+[ext_resource type="Script" uid="uid://cbt7qmdk1rh14" path="res://scripts/main_menu.gd" id="1_menu_script"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu_script")
+
+[node name="GameSceneContainer" type="Node3D" parent="."]
+
+[node name="MenuCamera" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.173648, 0.984808, 0, 0.984808, 0.173648, -1, 7.5904e-09, -4.30473e-08, 21.6702, 6, 0.228061)
+
+[node name="MenuUI" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="MenuUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.101960786)
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 122.84
+offset_bottom = 122.839966
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="VBoxContainer" parent="MenuUI/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="StartButton" type="Button" parent="MenuUI/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "START GAME"
+
+[node name="QuitButton" type="Button" parent="MenuUI/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "QUIT"
+
+[connection signal="pressed" from="MenuUI/CenterContainer/Buttons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MenuUI/CenterContainer/Buttons/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,250 @@
+[gd_scene load_steps=12 format=3 uid="uid://f7yvm33ua7up"]
+
+[ext_resource type="PackedScene" uid="uid://dlj827880cv68" path="res://Supermarket.blend" id="1_ylb1v"]
+[ext_resource type="PackedScene" uid="uid://bmk6m5s4g0fne" path="res://objects/player.tscn" id="2_xmco6"]
+[ext_resource type="Script" uid="uid://b2djlqvqw8krd" path="res://scripts/inside_area.gd" id="6_inside_area"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ylb1v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylb1v"]
+transparency = 1
+albedo_color = Color(0.878431, 0.941176, 1, 0.235294)
+metallic = 0.2
+roughness = 0.05
+refraction_enabled = true
+refraction_scale = 0.02
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ylb1v"]
+sky_top_color = Color(0.427098, 0.435846, 0.575037, 1)
+sky_horizon_color = Color(0.633035, 0.637132, 0.652584, 1)
+ground_bottom_color = Color(0.143929, 0.151568, 0.0741868, 1)
+ground_horizon_color = Color(0.633035, 0.637132, 0.652584, 1)
+energy_multiplier = 1.5
+
+[sub_resource type="Sky" id="Sky_ic0uy"]
+sky_material = SubResource("ProceduralSkyMaterial_ylb1v")
+
+[sub_resource type="Environment" id="Environment_xmco6"]
+background_mode = 2
+sky = SubResource("Sky_ic0uy")
+ambient_light_source = 2
+ambient_light_color = Color(0.662745, 0.694118, 0.772549, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+tonemap_exposure = 1.2
+tonemap_white = 4.0
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_levels/2 = 1.0
+glow_levels/5 = 0.0
+glow_normalized = true
+glow_intensity = 0.4
+glow_bloom = 0.05
+glow_hdr_threshold = 0.8
+fog_enabled = true
+fog_light_color = Color(0.4, 0.45, 0.5, 1)
+fog_density = 0.0001
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.001
+volumetric_fog_albedo = Color(0.5, 0.5, 0.6, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.1
+adjustment_saturation = 1.2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ylb1v"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 80.0
+dof_blur_near_enabled = true
+dof_blur_near_distance = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_inside"]
+size = Vector3(40, 10, 40)
+
+[node name="BlenderMarket" type="Node3D"]
+
+[node name="FloorFallback" type="StaticBody3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorFallback"]
+shape = SubResource("WorldBoundaryShape3D_ylb1v")
+
+[node name="Supermarket" parent="." instance=ExtResource("1_ylb1v")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="SM_wall_panel_window_big-col" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_big_002" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_big_003" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_big_004" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_big_005" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_big_006" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_big_007" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_small" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_small_001" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_small_002" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="9"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_small_003" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="10"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_small_004" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="11"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_small_005" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="12"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_small_006" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="13"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_small_007" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="14"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_wall_panel_window_small_008" parent="Supermarket/SM_wall_panel_front_002/SM_wall_panel_front" index="15"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="Cube_028" parent="Supermarket/freezer" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="Cube_034" parent="Supermarket/freezer" index="11"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="FpsPlayer" parent="." instance=ExtResource("2_xmco6")]
+transform = Transform3D(-0.005270858, 0, 0.9999861, 0, 1, 0, -0.9999861, 0, -0.005270858, 25.656078, 0.6257074, 0.36274672)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0.464502, -0.511717, 0.722761, -0.185036, 0.742055, 0.644295, -11.4446, 27.8034, 30.1387)
+light_color = Color(1, 0.960784, 0.862745, 1)
+light_energy = 5.0
+shadow_enabled = true
+directional_shadow_max_distance = 150.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xmco6")
+camera_attributes = SubResource("CameraAttributesPractical_ylb1v")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+size = Vector3(40, 10, 40)
+box_projection = true
+enable_shadows = true
+
+[node name="InsideArea" type="Area3D" parent="."]
+script = ExtResource("6_inside_area")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InsideArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_inside")
+
+[node name="light" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3338482, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.102836, 4.902376, -0.58806777)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.0585284, 4.902376, -0.58806777)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.102836, 4.902376, 5.6301727)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.0585284, 4.902376, 5.6301727)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.102836, 4.902376, 11.193581)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.0585284, 4.902376, 11.193581)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.102836, 4.902376, -5.8033643)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.0585284, 4.902376, -5.8033643)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 12.206303, 5.9945164, 0.024241209)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.102836, 4.902376, -10.800652)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.0585284, 4.902376, -10.800652)
+light_color = Color(1, 0.941176, 0.87451, 1)
+light_energy = 3.464
+light_volumetric_fog_energy = 3.01
+spot_range = 17.868
+spot_angle = 99.12
+
+[editable path="Supermarket"]

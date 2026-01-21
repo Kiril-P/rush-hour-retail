@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://n7pxkutnuopq"]
 
-[ext_resource type="PackedScene" uid="uid://e2etayfs231x" path="res://assets/kenney_mini-market/Models/GLB format/cash-register.glb" id="1_wynrt"]
+[ext_resource type="PackedScene" uid="uid://e2etayfs231x" path="res://assets/ui/kenney_mini-market/Models/GLB format/cash-register.glb" id="1_wynrt"]
+
 
 [node name="CashRegister" type="StaticBody3D" groups=["register"]]
 

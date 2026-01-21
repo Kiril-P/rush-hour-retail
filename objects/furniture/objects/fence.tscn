@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://caogonrcbkrbe"]
 
-[ext_resource type="PackedScene" uid="uid://b6s0uu4qo0oc3" path="res://assets/kenney_mini-market/Models/GLB format/fence.glb" id="1_8768r"]
+[ext_resource type="PackedScene" uid="uid://b6s0uu4qo0oc3" path="res://assets/ui/kenney_mini-market/Models/GLB format/fence.glb" id="1_8768r"]
+
 
 [node name="Fence" type="Node3D"]
 

@@ -1,12 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://bmk6m5s4g0fne"]
 
 [ext_resource type="Script" uid="uid://d1g214mmacjey" path="res://scripts/player_controller.gd" id="1_0yo81"]
-[ext_resource type="Texture2D" uid="uid://bjghypgf57caw" path="res://assets/kenney_crosshair-pack/PNG/White/crosshair013.png" id="2_s4hvt"]
+[ext_resource type="Texture2D" uid="uid://bjghypgf57caw" path="res://assets/ui/crosshair013.png" id="2_s4hvt"]
 [ext_resource type="Script" uid="uid://dxc5wqclhtl3l" path="res://scripts/shopping_list_paper.gd" id="3_i825w"]
 [ext_resource type="Script" uid="uid://b144cxq3wyao5" path="res://scripts/interaction_component.gd" id="5_id26h"]
-[ext_resource type="PackedScene" uid="uid://c7jeiyo6yd4rv" path="res://objects/ui/shop_ui.tscn" id="7_1ndue"]
 [ext_resource type="PackedScene" uid="uid://yw864doq0vnw" path="res://objects/timer_ui.tscn" id="17_s4hvt"]
-[ext_resource type="PackedScene" uid="uid://cgp1wbfx4057b" path="res://objects/ui/stats_ui.tscn" id="19_2sux5"]
+[ext_resource type="PackedScene" uid="uid://dp6b7v8v8v8v" path="res://objects/pause_menu.tscn" id="7_s4hvt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_abyao"]
 radius = 0.2
@@ -113,9 +112,7 @@ throw_force = 6.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ShopUI" parent="CanvasLayer" instance=ExtResource("7_1ndue")]
-visible = false
-
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("17_s4hvt")]
 
-[node name="StatsUI" parent="CanvasLayer" instance=ExtResource("19_2sux5")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("7_s4hvt")]
+visible = false

@@ -6,6 +6,7 @@ signal interact_object
 @onready var ray_cast_3d = $Camera3D/RayCast3D
 @onready var interaction_component = $InteractionComponent
 @onready var crosshair: TextureRect = $Camera3D/Control/TextureRect
+@onready var pause_menu = $CanvasLayer/PauseMenu
 
 const SPEED = 1.8
 const SPRINT_SPEED = 3.5
@@ -61,8 +62,10 @@ func _ready():
 	print("====================\n")
 
 func _input(event):
-	if event.is_action_pressed("quit"): 
-		get_tree().quit()
+	if event.is_action_pressed("ui_cancel"): 
+		if pause_menu:
+			pause_menu.pause()
+			get_viewport().set_input_as_handled()
 
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * CAMERA_SENS)

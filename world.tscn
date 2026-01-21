@@ -1,9 +1,9 @@
 [gd_scene load_steps=55 format=3 uid="uid://but2djgsm07w3"]
 
-[ext_resource type="PackedScene" uid="uid://bkprfn81c207s" path="res://assets/kenney_mini-market/Models/GLB format/wall-door-rotate.glb" id="2_ic0uy"]
-[ext_resource type="PackedScene" uid="uid://b3l1h8lfv4e2f" path="res://assets/kenney_mini-market/Models/GLB format/wall.glb" id="3_k3n1d"]
-[ext_resource type="PackedScene" uid="uid://bett03l5dnmqc" path="res://assets/kenney_mini-market/Models/GLB format/wall-window.glb" id="4_2o6r5"]
-[ext_resource type="PackedScene" uid="uid://c3e88omp8py3g" path="res://assets/kenney_mini-market/Models/GLB format/wall-corner.glb" id="5_70uel"]
+[ext_resource type="PackedScene" uid="uid://bkprfn81c207s" path="res://assets/ui/kenney_mini-market/Models/GLB format/wall-door-rotate.glb" id="2_ic0uy"]
+[ext_resource type="PackedScene" uid="uid://b3l1h8lfv4e2f" path="res://assets/ui/kenney_mini-market/Models/GLB format/wall.glb" id="3_k3n1d"]
+[ext_resource type="PackedScene" uid="uid://bett03l5dnmqc" path="res://assets/ui/kenney_mini-market/Models/GLB format/wall-window.glb" id="4_2o6r5"]
+[ext_resource type="PackedScene" uid="uid://c3e88omp8py3g" path="res://assets/ui/kenney_mini-market/Models/GLB format/wall-corner.glb" id="5_70uel"]
 [ext_resource type="PackedScene" uid="uid://dxmipqq6ur3gd" path="res://objects/items/objects/cake.tscn" id="6_w4lh7"]
 [ext_resource type="PackedScene" uid="uid://b6duiyic1i10e" path="res://objects/items/objects/cupcake.tscn" id="7_k3lar"]
 [ext_resource type="PackedScene" uid="uid://cn12wo42fmdxx" path="res://objects/items/objects/cuttingboard.tscn" id="8_olr1q"]
@@ -12,13 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://bmk6m5s4g0fne" path="res://objects/player.tscn" id="10_cbp6q"]
 [ext_resource type="Script" uid="uid://b7cdkpb43b83t" path="res://scripts/checkout_counter.gd" id="10_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://d331yg34nitel" path="res://objects/furniture/objects/freezer.tscn" id="10_k3n1d"]
-[ext_resource type="PackedScene" uid="uid://bwv78mqnyugg8" path="res://objects/items/objects/bottle.tscn" id="11_70uel"]
+[ext_resource type="PackedScene" path="res://objects/items/objects/bottle.tscn" id="11_70uel"]
 [ext_resource type="PackedScene" uid="uid://qnvrxjc6vt7s" path="res://objects/items/objects/bread.tscn" id="12_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://bw82olk8d2wkr" path="res://objects/items/objects/cereal_box.tscn" id="13_2u3nc"]
 [ext_resource type="PackedScene" uid="uid://b2w7uv2xlmm2a" path="res://objects/delivery_truck.tscn" id="13_70uel"]
 [ext_resource type="PackedScene" uid="uid://dx8a0or2qqw3q" path="res://objects/furniture/objects/display_bread.tscn" id="14_hiqwa"]
 [ext_resource type="PackedScene" uid="uid://blkbjodsybh6u" path="res://objects/items/objects/milk_carton.tscn" id="14_udxuc"]
-[ext_resource type="Resource" uid="uid://bud0b828rbck3" path="res://objects/items/resources/bread_data.tres" id="15_cbp6q"]
+[ext_resource type="Resource" path="res://objects/items/resources/bread_data.tres" id="15_cbp6q"]
 [ext_resource type="PackedScene" uid="uid://6rffo40p1a8b" path="res://objects/items/shopping_cart.tscn" id="21_bc84e"]
 [ext_resource type="PackedScene" uid="uid://cxvg56wil781m" path="res://objects/items/shopping_basket.tscn" id="22_wukud"]
 [ext_resource type="PackedScene" uid="uid://mr8fmdycvje3" path="res://objects/items/objects/banana.tscn" id="23_wjb0r"]
@@ -47,6 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://1ldib7cr2ftd" path="res://objects/items/objects/cup.tscn" id="46_nx736"]
 [ext_resource type="PackedScene" uid="uid://c64qt07c2sy0p" path="res://objects/items/objects/corn.tscn" id="47_55kwu"]
 [ext_resource type="PackedScene" uid="uid://b4pyjv7halssa" path="res://objects/items/objects/croissant.tscn" id="48_f3o6s"]
+
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wse8f"]
 sky_top_color = Color(0.427098, 0.435846, 0.575037, 1)

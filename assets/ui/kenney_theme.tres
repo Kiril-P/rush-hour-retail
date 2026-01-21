@@ -1,0 +1,45 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b6b7v8v8v8v8v"]
+
+[ext_resource type="FontFile" uid="uid://b8hbe5hp7pwt6" path="res://assets/ui/kenney/Font/Kenney Future.ttf" id="1_font"]
+[ext_resource type="Texture2D" uid="uid://cxryf6epql037" path="res://assets/ui/kenney/Blue/Default/button_rectangle_flat.png" id="2_normal"]
+[ext_resource type="Texture2D" uid="uid://dcobf1d27mt7i" path="res://assets/ui/kenney/Blue/Default/button_rectangle_depth_gloss.png" id="3_hover"]
+[ext_resource type="Texture2D" uid="uid://cueeeayageubq" path="res://assets/ui/kenney/Blue/Default/button_rectangle_depth_flat.png" id="4_pressed"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_normal"]
+texture = ExtResource("2_normal")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 190, 49)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hover"]
+texture = ExtResource("3_hover")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(0, 0, 190, 49)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pressed"]
+texture = ExtResource("4_pressed")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 190, 45)
+
+[resource]
+default_font = ExtResource("1_font")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.8, 1, 0.9, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_normal")
+Button/styles/focus = SubResource("StyleBoxTexture_hover")
+Button/styles/hover = SubResource("StyleBoxTexture_hover")
+Button/styles/normal = SubResource("StyleBoxTexture_normal")
+Button/styles/pressed = SubResource("StyleBoxTexture_pressed")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0.4, 0.8, 0.5)
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/font_sizes/font_size = 24

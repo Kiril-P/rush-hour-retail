@@ -11,17 +11,19 @@ config_version=5
 [application]
 
 config/name="supermarketgamegithub"
-run/main_scene="uid://but2djgsm07w3"
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
 GameManager="*res://scripts/game_manager.gd"
+MusicManager="*res://scripts/music_manager.gd"
 
 [display]
 
 window/size/mode=3
 window/size/resizable=false
+mouse_cursor/custom_image="res://assets/ui/cursor_default.png"
 
 [global_group]
 
