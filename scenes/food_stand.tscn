@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://drayu72idmc6r"]
+[gd_scene load_steps=33 format=4 uid="uid://drayu72idmc6r"]
 
 [ext_resource type="Script" uid="uid://7ypl17cat0nc" path="res://scripts/shelf_spawner.gd" id="1_xbiw3"]
 [ext_resource type="PackedScene" uid="uid://cpa5hafafgnti" path="res://objects/items/objects/avocado.tscn" id="2_alynp"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://c36apc761syna" path="res://objects/items/objects/strawberry.tscn" id="24_3dt6w"]
 [ext_resource type="PackedScene" uid="uid://7fea8hnjesrt" path="res://objects/items/objects/tomato.tscn" id="25_8wmkk"]
 [ext_resource type="PackedScene" uid="uid://evo6uk31ij7n" path="res://objects/items/objects/watermelon.tscn" id="26_2dwdm"]
+[ext_resource type="PackedScene" uid="uid://c64qt07c2sy0p" path="res://objects/items/objects/corn.tscn" id="27_w3i3n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iyheu"]
 resource_name = "food_stand"
@@ -98,7 +99,7 @@ data = PackedVector3Array(-1, -1, 0.9803021, -1, 0.967464, -1, -1, 0.48673218, 0
 
 [node name="FoodStand" type="Node3D"]
 script = ExtResource("1_xbiw3")
-allowed_products = Array[PackedScene]([ExtResource("2_alynp"), ExtResource("3_w3i3n"), ExtResource("4_eeag6"), ExtResource("5_2rvhu"), ExtResource("6_iulke"), ExtResource("7_wjwqj"), ExtResource("8_usxca"), ExtResource("9_56nx6"), ExtResource("10_wqej6"), ExtResource("11_38rx8"), ExtResource("12_0oln2"), ExtResource("13_w06rq"), ExtResource("14_r1ply"), ExtResource("15_abbs5"), ExtResource("16_ron7d"), ExtResource("17_ynu1t"), ExtResource("18_f8dd2"), ExtResource("19_lj6on"), ExtResource("20_6cw18"), ExtResource("21_1d738"), ExtResource("22_hga3p"), ExtResource("23_qkg1b"), ExtResource("24_3dt6w"), ExtResource("25_8wmkk"), ExtResource("26_2dwdm")])
+allowed_products = Array[PackedScene]([ExtResource("2_alynp"), ExtResource("3_w3i3n"), ExtResource("4_eeag6"), ExtResource("5_2rvhu"), ExtResource("6_iulke"), ExtResource("7_wjwqj"), ExtResource("8_usxca"), ExtResource("9_56nx6"), ExtResource("10_wqej6"), ExtResource("11_38rx8"), ExtResource("12_0oln2"), ExtResource("13_w06rq"), ExtResource("14_r1ply"), ExtResource("15_abbs5"), ExtResource("16_ron7d"), ExtResource("17_ynu1t"), ExtResource("18_f8dd2"), ExtResource("19_lj6on"), ExtResource("20_6cw18"), ExtResource("21_1d738"), ExtResource("22_hga3p"), ExtResource("23_qkg1b"), ExtResource("24_3dt6w"), ExtResource("25_8wmkk"), ExtResource("26_2dwdm"), ExtResource("27_w3i3n")])
 
 [node name="food_stand" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.161, 0, 0, 0, 0.284, 0, 0, 0)

@@ -9,7 +9,7 @@ points = PackedVector3Array(-0.11952235, 0.03416224, -0.06889839, 0.12172626, 0.
 [node name="donut" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_uuvka")
-item_name = "Donut"
+item_name = "Plain Donut"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

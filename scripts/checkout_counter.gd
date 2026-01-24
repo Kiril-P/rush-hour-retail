@@ -11,16 +11,6 @@ func _ready():
 	# Add to group so interaction system can find us
 	add_to_group("checkout")
 	
-	# Find the Area3D child for detection (throwing items into it)
-	for child in get_children():
-		if child is Area3D:
-			detection_area = child
-			detection_area.body_entered.connect(_on_body_entered)
-			print("✓ Found detection area: ", child.name)
-			break
-	
-	if not detection_area:
-		push_warning("Checkout counter needs an Area3D child for item detection!")
 
 func _on_body_entered(body):
 	"""Handles items THROWN into the checkout area"""

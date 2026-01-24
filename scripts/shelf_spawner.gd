@@ -1,19 +1,20 @@
 extends Node3D
 
-## Simple Shelf Spawner - WITH DROP PHYSICS!
-## Items can drop onto shelf naturally, or spawn frozen
+## Shelf Spawner - Random Selection from Master Pool
+## Each shelf picks random items from the full pool
 
-@export var allowed_products: Array[PackedScene] = []
+@export var allowed_products: Array[PackedScene] = []  # Master list of ALL possible items
 @export var spawn_on_ready: bool = true
-@export var fill_entire_shelf: bool = true
+@export var items_per_shelf: int = 4  # How many DIFFERENT items to pick for THIS shelf
 
 @export_group("Positioning")
-@export var spawn_height_offset: float = 0  # Height above marker to spawn
-@export var drop_items: bool = true  # Let items fall naturally?
-@export var drop_time: float = 1  # How long to let them fall
+@export var spawn_height_offset: float = 0
+@export var drop_items: bool = true
+@export var drop_time: float = 1
 
 var spawn_points: Array[Marker3D] = []
 var spawned_items: Array = []
+var selected_products: Array[PackedScene] = []  # Products chosen for THIS shelf
 
 func _ready():
 	_find_spawn_points()
@@ -29,10 +30,11 @@ func _find_spawn_points():
 		if child is Marker3D:
 			spawn_points.append(child)
 	
-	print("\n========== SIMPLE SHELF SPAWNER ==========")
+	print("\n========== SHELF SPAWNER ==========")
 	print("Shelf: ", name)
 	print("✓ ", spawn_points.size(), " spawn points")
-	print("✓ Allowed products: ", allowed_products.size())
+	print("✓ Master pool: ", allowed_products.size(), " items")
+	print("✓ Will select: ", items_per_shelf, " items for this shelf")
 	print("✓ Drop physics: ", "ENABLED" if drop_items else "DISABLED")
 	
 	if spawn_points.is_empty():
@@ -44,7 +46,7 @@ func _find_spawn_points():
 	print("==========================================\n")
 
 func spawn_items():
-	"""Spawn items at all spawn points"""
+	"""Spawn items - pick random selection from master pool"""
 	if allowed_products.is_empty():
 		print("No products to spawn on shelf: ", name)
 		return
@@ -56,35 +58,56 @@ func spawn_items():
 	# Clear any existing items
 	clear_items()
 	
-	if fill_entire_shelf:
-		var chosen_product = allowed_products[randi() % allowed_products.size()]
-		
-		print("\n>>> SPAWNING: ", chosen_product.resource_path.get_file())
-		
-		for marker in spawn_points:
-			_spawn_item_at_marker(chosen_product, marker)
-		
-		# If dropping, wait for items to settle
-		if drop_items:
-			await get_tree().create_timer(drop_time).timeout
-			_freeze_all_items()
-		
-		print("✓ Spawned ", spawned_items.size(), " items")
-		print("=========================================\n")
-	else:
-		print("\n>>> SPAWNING: Mixed Products")
-		
-		for marker in spawn_points:
-			var random_product = allowed_products[randi() % allowed_products.size()]
-			_spawn_item_at_marker(random_product, marker)
-		
-		# If dropping, wait for items to settle
-		if drop_items:
-			await get_tree().create_timer(drop_time).timeout
-			_freeze_all_items()
-		
-		print("✓ Spawned ", spawned_items.size(), " items")
-		print("=========================================\n")
+	# Select random items from master pool for THIS shelf
+	_select_items_for_shelf()
+	
+	print("\n>>> SPAWNING: Random Selection")
+	print("  Selected ", selected_products.size(), " items for this shelf")
+	
+	# Create spawn list - each selected product at least once, then fill randomly
+	var spawn_list = []
+	
+	# Add each selected product once (guaranteed)
+	for product in selected_products:
+		spawn_list.append(product)
+	
+	# Fill remaining spots with random selections from selected products
+	var remaining_spots = spawn_points.size() - selected_products.size()
+	for i in range(remaining_spots):
+		var random_product = selected_products[randi() % selected_products.size()]
+		spawn_list.append(random_product)
+	
+	# Shuffle for random positions
+	spawn_list.shuffle()
+	
+	# Spawn items at each marker
+	for i in range(min(spawn_points.size(), spawn_list.size())):
+		_spawn_item_at_marker(spawn_list[i], spawn_points[i])
+	
+	# If dropping, wait for items to settle
+	if drop_items:
+		await get_tree().create_timer(drop_time).timeout
+		_freeze_all_items()
+	
+	print("✓ Spawned ", spawned_items.size(), " items")
+	print("=========================================\n")
+
+func _select_items_for_shelf():
+	"""Randomly select items_per_shelf items from the master pool"""
+	selected_products.clear()
+	
+	# Make sure we don't try to select more items than exist
+	var num_to_select = min(items_per_shelf, allowed_products.size())
+	
+	# Create a copy of allowed_products to pick from
+	var available = allowed_products.duplicate()
+	
+	# Randomly pick items
+	for i in range(num_to_select):
+		if available.size() > 0:
+			var random_index = randi() % available.size()
+			selected_products.append(available[random_index])
+			available.remove_at(random_index)  # Don't pick same item twice
 
 func _spawn_item_at_marker(product_scene: PackedScene, marker: Marker3D):
 	"""Spawn item - can drop or spawn frozen"""
@@ -116,9 +139,8 @@ func _spawn_item_at_marker(product_scene: PackedScene, marker: Marker3D):
 			item.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
 			item.linear_velocity = Vector3.ZERO
 			item.angular_velocity = Vector3.ZERO
-			item.linear_damp = 2.0  # Some air resistance
+			item.linear_damp = 2.0
 			item.angular_damp = 2.0
-			# Gravity will pull it down naturally
 		else:
 			# Spawn frozen
 			item.freeze = true

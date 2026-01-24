@@ -9,7 +9,7 @@ points = PackedVector3Array(-0.24628358, 0.052101586, -0.05903651, -0.25566015, 
 [node name="skewervegetables" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_ybpv8")
-item_name = "Cup"
+item_name = "Skewer with Vegetables"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

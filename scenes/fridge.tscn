@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bmihwq7hpd1cm"]
+[gd_scene load_steps=24 format=4 uid="uid://bmihwq7hpd1cm"]
 
 [ext_resource type="Script" uid="uid://7ypl17cat0nc" path="res://scripts/shelf_spawner.gd" id="1_ipvyg"]
 [ext_resource type="PackedScene" uid="uid://dxmipqq6ur3gd" path="res://objects/items/objects/cake.tscn" id="2_sp1gv"]
@@ -11,6 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://cm6emdqspvv2d" path="res://objects/items/objects/pizza.tscn" id="9_3xuj1"]
 [ext_resource type="PackedScene" uid="uid://chnpdpj7fliw6" path="res://objects/items/objects/pie.tscn" id="10_mq0tr"]
 [ext_resource type="PackedScene" uid="uid://dtio0o4ei3bne" path="res://objects/items/objects/whole-ham.tscn" id="11_s2lay"]
+[ext_resource type="PackedScene" uid="uid://xg4pja178mbv" path="res://objects/items/objects/meat-raw.tscn" id="12_tfbev"]
+[ext_resource type="PackedScene" uid="uid://c7nl3rdbixllk" path="res://objects/items/objects/meat-sausage.tscn" id="13_v6xy7"]
+[ext_resource type="PackedScene" uid="uid://vhr4awwfd3dh" path="res://objects/items/objects/frappe.tscn" id="14_j2m7l"]
+[ext_resource type="PackedScene" uid="uid://lhq8k6oykei5" path="res://objects/items/objects/fish.tscn" id="15_nx6c0"]
+[ext_resource type="PackedScene" uid="uid://jcy5rexrlghw" path="res://objects/items/objects/skewer.tscn" id="16_yoh4r"]
+[ext_resource type="PackedScene" uid="uid://cokm3w22joqc6" path="res://objects/items/objects/skewer-vegetable.tscn" id="17_6s3sb"]
+[ext_resource type="PackedScene" uid="uid://bo5yc3rfgat15" path="res://objects/items/objects/mussel.tscn" id="18_v6xy7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwcwd"]
 resource_name = "Fridge"
@@ -84,7 +91,7 @@ data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1,
 
 [node name="fridge" type="StaticBody3D"]
 script = ExtResource("1_ipvyg")
-allowed_products = Array[PackedScene]([ExtResource("2_sp1gv"), ExtResource("3_buvrw"), ExtResource("4_husjh"), ExtResource("5_c4248"), ExtResource("6_i0i1l"), ExtResource("7_npr5r"), ExtResource("8_cx14s"), ExtResource("8_cx14s"), ExtResource("9_3xuj1"), ExtResource("10_mq0tr"), ExtResource("11_s2lay")])
+allowed_products = Array[PackedScene]([ExtResource("2_sp1gv"), ExtResource("3_buvrw"), ExtResource("4_husjh"), ExtResource("5_c4248"), ExtResource("6_i0i1l"), ExtResource("7_npr5r"), ExtResource("8_cx14s"), ExtResource("9_3xuj1"), ExtResource("10_mq0tr"), ExtResource("11_s2lay"), ExtResource("12_tfbev"), ExtResource("13_v6xy7"), ExtResource("14_j2m7l"), ExtResource("15_nx6c0"), ExtResource("16_yoh4r"), ExtResource("17_6s3sb"), ExtResource("18_v6xy7")])
 
 [node name="fridge" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.015, 0, 0, 0, 0.189, 0, 0, 0)

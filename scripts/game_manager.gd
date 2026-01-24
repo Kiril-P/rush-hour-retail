@@ -1,6 +1,7 @@
 extends Node
 
 ## Game Manager - With Points & Score System!
+## Only generates shopping lists from items that actually spawned!
 
 signal time_changed(seconds_remaining)
 signal game_over()
@@ -18,27 +19,27 @@ var current_list_number: int = 1
 var current_shopping_list: Array[String] = []
 
 # Stats
-var total_score: int = 0  # NEW: Total score!
+var total_score: int = 0
 var total_items_collected: int = 0
 var total_lists_completed: int = 0
 var current_combo: int = 0
 var best_combo: int = 0
 
 # Available Items - Names and POINTS (not prices!)
+# NOTE: Remove items you don't want from this list!
 var available_items: Dictionary = {
 	"Bread": 10,
 	"Avocado": 15,
 	"Banana": 10,
 	"Beet": 10,
+	"Blue Milk": 10,
 	"Bottle Ketchup": 10,
 	"Bottle Mustard": 10,
 	"Bottle Oil": 15,
-	"Bowl": 20,
 	"Broccoli": 10,
 	"Cabbage": 10,
 	"Cake": 25,
 	"Can": 10,
-	"Small Can": 10,
 	"Carrot": 10,
 	"Purple Milk": 15,
 	"Creme": 15,
@@ -47,24 +48,92 @@ var available_items: Dictionary = {
 	"Cheese": 15,
 	"Cherries": 10,
 	"Coconut": 15,
-	"Cooking Fork": 10,
-	"Cooking Knife": 10,
-	"Chopping Knife": 10,
-	"Cooking Spatula": 10,
-	"Cooking Spoon": 10,
 	"Corn": 10,
 	"Croissant": 15,
-	"Cup": 10,
 	"Cupcake": 15,
 	"Cuttingboard": 10,
-	"Blue Milk": 15,
+	"Chopping Knife": 100,
+	"Chocolate Donut": 5,
+	"Sprinkle Donut": 5,
+	"Plain Donut": 5,
+	"Egg": 300,
+	"Eggplant": 10,
+	"Fish": 20,
+	"Frappe": 20,
+	"Frying Pan": 20,
+	"Glass": 20,
+	"Wine Glass": 20,
+	"Grapes": 20,
+	"Honey": 20,
+	"Leek": 20,
+	"Lemon": 20,
+	"Baguette Loaf": 20,
+	"Meat": 20,
+	"Sausage": 20,
+	"Mushroom": 20,
+	"Mussel": 20,
+	"Onion": 20,
+	"Orange": 20,
+	"Paprika": 20,
+	"Peanutbutter": 20,
+	"Pear": 20,
+	"Pepper": 20,
+	"Pie": 20,
+	"Pineapple": 20,
+	"Pizza": 20,
+	"Pot": 20,
+	"Pumpkin": 20,
+	"Radish": 20,
+	"Redwine": 20,
+	"Salad": 20,
+	"Sandwich": 20,
+	"Skewer with Vegetables": 20,
+	"Skewer": 20,
+	"Soda Bottle": 20,
+	"Soda Can": 20,
+	"Strawberry": 20,
+	"Taco": 20,
+	"Tomato": 20,
+	"Turkey": 20,
+	"Watermelon": 20,
+	"Whitewine": 20,
+	"Whole Ham": 20,
+	
 }
+
+# NEW: Track which items actually spawned in the world
+var spawned_items_in_world: Array[String] = []
 
 func _ready():
 	print("\n=== GAME MANAGER WITH POINTS ===")
 	print("Available items: ", available_items.size())
 	for item_name in available_items.keys():
 		print("  - ", item_name, " (", available_items[item_name], " points)")
+	print("================================\n")
+	
+	# Scan for spawned items after a short delay (let shelves spawn first)
+	await get_tree().create_timer(2.0).timeout
+	_scan_spawned_items()
+
+func _scan_spawned_items():
+	"""Scan the scene to see which items actually spawned"""
+	spawned_items_in_world.clear()
+	
+	print("\n=== SCANNING SPAWNED ITEMS ===")
+	
+	# Find all items in the scene
+	var items = get_tree().get_nodes_in_group("item")
+	
+	for item in items:
+		# Get the item's product name
+		if item.has_method("get_product_name"):
+			var product_name = item.get_product_name()
+			if not spawned_items_in_world.has(product_name):
+				spawned_items_in_world.append(product_name)
+	
+	print("Found ", spawned_items_in_world.size(), " unique items spawned:")
+	for item_name in spawned_items_in_world:
+		print("  ✓ ", item_name)
 	print("================================\n")
 
 func _process(delta):
@@ -100,17 +169,19 @@ func generate_shopping_list():
 	# List size increases with each completed list
 	var list_size = min(2 + current_list_number, 10)
 	
-	# Get array of available item names
-	var item_names = available_items.keys()
+	# Get items that ACTUALLY SPAWNED (or fallback to all items)
+	var items_to_pick_from = spawned_items_in_world if spawned_items_in_world.size() > 0 else available_items.keys()
 	
+	# Generate list from spawned items only!
 	for i in range(list_size):
-		if item_names.size() > 0:
-			var random_item = item_names[randi() % item_names.size()]
+		if items_to_pick_from.size() > 0:
+			var random_item = items_to_pick_from[randi() % items_to_pick_from.size()]
 			current_shopping_list.append(random_item)
 	
 	print("\nGenerated shopping list #", current_list_number, " with ", list_size, " items:")
 	for item in current_shopping_list:
-		print("  - ", item, " (", available_items[item], " points)")
+		var points = available_items[item] if available_items.has(item) else 10
+		print("  - ", item, " (", points, " points)")
 	
 	list_generated.emit()
 
@@ -150,7 +221,7 @@ func collect_correct_item(item_name: String):
 		best_combo = current_combo
 	
 	# Time bonus per item
-	add_time_bonus(2.0)
+	add_time_bonus(5.0)
 	
 	print("✓ CORRECT! ", item_name)
 	print("  Points: ", total_points, " (", points, " × ", "%.1f" % combo_multiplier, ")")

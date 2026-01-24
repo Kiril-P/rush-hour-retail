@@ -1,44 +1,12 @@
-[gd_scene load_steps=48 format=3 uid="uid://f7yvm33ua7up"]
+[gd_scene load_steps=19 format=4 uid="uid://f7yvm33ua7up"]
 
 [ext_resource type="PackedScene" uid="uid://dlj827880cv68" path="res://Supermarket.blend" id="1_ylb1v"]
 [ext_resource type="PackedScene" uid="uid://bmihwq7hpd1cm" path="res://scenes/fridge.tscn" id="2_i354j"]
 [ext_resource type="PackedScene" uid="uid://cxvhdu4h0xrce" path="res://scenes/CheckoutCounter.tscn" id="2_rwwr0"]
 [ext_resource type="PackedScene" uid="uid://bmk6m5s4g0fne" path="res://objects/player.tscn" id="2_xmco6"]
 [ext_resource type="PackedScene" uid="uid://cawx2yoe16l5o" path="res://scenes/shelf.tscn" id="4_1i6nv"]
-[ext_resource type="PackedScene" uid="uid://blkbjodsybh6u" path="res://objects/items/objects/BlueMilk.tscn" id="5_tgnal"]
-[ext_resource type="PackedScene" uid="uid://ddre21myavxwm" path="res://objects/items/objects/bottle_ketchup.tscn" id="6_00kll"]
 [ext_resource type="Script" uid="uid://b2djlqvqw8krd" path="res://scripts/inside_area.gd" id="6_inside_area"]
-[ext_resource type="PackedScene" uid="uid://1ldib7cr2ftd" path="res://objects/items/objects/cup.tscn" id="6_tgnal"]
-[ext_resource type="PackedScene" uid="uid://crluai0aux5hb" path="res://objects/items/objects/bottle_mustard.tscn" id="7_lrs2g"]
-[ext_resource type="PackedScene" uid="uid://ce6a81r4mi2u5" path="res://objects/items/objects/bottle_oil.tscn" id="8_rlft1"]
-[ext_resource type="PackedScene" uid="uid://cfjnubhsfch6g" path="res://objects/items/objects/bowl.tscn" id="9_uhftk"]
-[ext_resource type="PackedScene" uid="uid://dccu527b0lxn" path="res://objects/items/objects/can.tscn" id="10_85gsg"]
-[ext_resource type="PackedScene" uid="uid://cswj7sj6uk5bm" path="res://objects/items/objects/dimsum.tscn" id="10_h7dl3"]
-[ext_resource type="PackedScene" uid="uid://bm7hbrspjjwdi" path="res://objects/items/objects/can_small.tscn" id="11_2xux8"]
-[ext_resource type="PackedScene" uid="uid://ticdqyrsphst" path="res://objects/items/objects/carton_small.tscn" id="12_h7dl3"]
-[ext_resource type="PackedScene" uid="uid://bw82olk8d2wkr" path="res://objects/items/objects/cereal_box.tscn" id="13_powdi"]
-[ext_resource type="PackedScene" uid="uid://dbs8xhtebeibb" path="res://objects/items/objects/cookingfork.tscn" id="14_ajtvt"]
-[ext_resource type="PackedScene" uid="uid://b5dc6nlt2rrrh" path="res://objects/items/objects/cookingknife.tscn" id="15_concy"]
-[ext_resource type="PackedScene" uid="uid://dvc0liht7jdtq" path="res://objects/items/objects/cookingspoon.tscn" id="16_concy"]
-[ext_resource type="PackedScene" uid="uid://cyggpfoag760f" path="res://objects/items/objects/cookingknifechop.tscn" id="17_e8ftr"]
-[ext_resource type="PackedScene" uid="uid://d2ooqjtt2tcon" path="res://objects/items/objects/cookingspatula.tscn" id="18_5e1ea"]
-[ext_resource type="PackedScene" uid="uid://cn12wo42fmdxx" path="res://objects/items/objects/cuttingboard.tscn" id="20_dbmyq"]
-[ext_resource type="PackedScene" uid="uid://b8mgyg7wfpk27" path="res://objects/items/objects/fryingpan.tscn" id="22_l70on"]
-[ext_resource type="PackedScene" uid="uid://b3onl7raor30x" path="res://objects/items/objects/glass.tscn" id="23_82vwm"]
-[ext_resource type="PackedScene" uid="uid://cj2gl75kei5m5" path="res://objects/items/objects/glasswine.tscn" id="24_4n4sl"]
-[ext_resource type="PackedScene" uid="uid://diydp86hhxcxa" path="res://objects/items/objects/honey.tscn" id="25_7cae4"]
-[ext_resource type="PackedScene" uid="uid://dlns6k50hmwa" path="res://objects/items/objects/pan.tscn" id="26_hm4bc"]
-[ext_resource type="PackedScene" uid="uid://dp7sk6y53ldrj" path="res://objects/items/objects/peanutbutter.tscn" id="27_hm4bc"]
-[ext_resource type="PackedScene" uid="uid://s0m5h7gq1tlr" path="res://objects/items/objects/plate.tscn" id="28_6qcle"]
-[ext_resource type="PackedScene" uid="uid://dyu4utexci6ax" path="res://objects/items/objects/pot.tscn" id="29_8633q"]
-[ext_resource type="PackedScene" uid="uid://bkytk2xrdvs2l" path="res://objects/items/objects/PurpleMilk.tscn" id="30_scnpt"]
-[ext_resource type="PackedScene" uid="uid://cqk2mi18ip3qg" path="res://objects/items/objects/redwine.tscn" id="31_3cmuu"]
-[ext_resource type="PackedScene" uid="uid://dl8sog8ioefxf" path="res://objects/items/objects/soda-can.tscn" id="32_c1tm6"]
-[ext_resource type="PackedScene" uid="uid://bp2tpg0ygyu1i" path="res://objects/items/objects/soda-bottle.tscn" id="33_fxug3"]
-[ext_resource type="PackedScene" uid="uid://br2gqri60dwsa" path="res://objects/items/objects/utensil-fork.tscn" id="34_ispcq"]
-[ext_resource type="PackedScene" uid="uid://d055i067u5w63" path="res://objects/items/objects/utensil-knife.tscn" id="35_r68aq"]
-[ext_resource type="PackedScene" uid="uid://8e4ussnam4fy" path="res://objects/items/objects/utensil-spoon.tscn" id="36_r68aq"]
-[ext_resource type="PackedScene" uid="uid://dih1ot0qa7gtc" path="res://objects/items/objects/whitewine.tscn" id="37_w4pp4"]
+[ext_resource type="PackedScene" uid="uid://esk83ins6kn0" path="res://scenes/freezer.tscn" id="8_lrs2g"]
 [ext_resource type="PackedScene" uid="uid://drayu72idmc6r" path="res://scenes/food_stand.tscn" id="40_3w37c"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ylb1v"]
@@ -50,6 +18,45 @@ metallic = 0.2
 roughness = 0.05
 refraction_enabled = true
 refraction_scale = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibhie"]
+resource_name = "Floor"
+cull_mode = 2
+albedo_color = Color(0.35442123, 0.35442123, 0.35442123, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6vusa"]
+_surfaces = [{
+"aabb": AABB(-60, -3.01, -82.15368, 120, 3.01, 164.30736),
+"format": 34359742465,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAAFAAEAAQAIAAIAAgAJAAAAAgAIAAkAAQAKAAgABQAKAAEAAAALAAUABQALAAoAAAAJAAsACgADAAgACQAHAAsACwAGAAoACgAGAAMACwAHAAYACAADAAQACAAEAAkABAADAAYACQAEAAcABAAGAAcA"),
+"lods": [0.030759623, PackedByteArray("AAABAAIAAQADAAIAAgAEAAAAAgADAAQAAAAFAAEAAAAEAAUAAQAGAAMABAADAAYABQAGAAEABAAGAAcABQAHAAYABAAHAAUA")],
+"name": "Floor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AABwwgAAAACvTqRCAABwQgAAAACvTqTCAABwQgAAAACvTqRCAABwQtejQMCvTqRCAABwwtejQMCvTqRCAABwwgAAAACvTqTCAABwQtejQMCvTqTCAABwwtejQMCvTqTCAABwQgrXI7yvTqRCAABwwgrXI7yvTqRCAABwQgrXI7yvTqTCAABwwgrXI7yvTqTC")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yiwd8"]
+resource_name = "Supermarket_Plane_006"
+_surfaces = [{
+"aabb": AABB(-60, -3.01, -82.15368, 120, 3.01, 164.30736),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AAAAAAAAgD8AAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8AAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAAAAAAAAAA=="),
+"format": 34359742487,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAGAAGABkAGAAFAAYABAAYABkABAAZAAcACAAaAAoACAAbABoAGwALABoAGwAJAAsAEAAcABIAEAAdABwAHQARABwAHQATABEAFAAeABYAFAAfAB4AHwAVAB4AHwAXABUADAANAA4ADAAPAA0A"),
+"lods": [0.030759623, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAGAAcACAAJAAoACQALAAoADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA")],
+"material": SubResource("StandardMaterial3D_ibhie"),
+"name": "Floor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("AABwwgAAAACvTqRCAABwQgAAAACvTqTCAABwQgAAAACvTqRCAABwwgAAAACvTqTCAABwQgAAAACvTqRCAABwQtejQMCvTqRCAABwwtejQMCvTqRCAABwwgAAAACvTqRCAABwwgAAAACvTqRCAABwwtejQMCvTqRCAABwwgAAAACvTqTCAABwwtejQMCvTqTCAABwwtejQMCvTqRCAABwQtejQMCvTqTCAABwwtejQMCvTqTCAABwQtejQMCvTqRCAABwQgAAAACvTqTCAABwQtejQMCvTqRCAABwQgAAAACvTqRCAABwQtejQMCvTqTCAABwwgAAAACvTqTCAABwQtejQMCvTqTCAABwQgAAAACvTqTCAABwwtejQMCvTqTCAABwQgrXI7yvTqRCAABwwgrXI7yvTqRCAABwwgrXI7yvTqTCAABwwgrXI7yvTqRCAABwQgrXI7yvTqRCAABwQgrXI7yvTqTCAABwQgrXI7yvTqTCAABwwgrXI7yvTqTC/3///////7//f///////v/9///////+//3///////7//f/9/////P/9//3////8//3//f////z//f/9/////PwAA/3////+/AAD/f////78AAP9/////vwAA/3////+//38AAP///z//fwAA////P/9/AAD///8//38AAP///z////9/////v////3////+/////f////7////9/////v/////////8//////////z//////////P/////////8//3//f////z//f/9/////PwAA/3////+/AAD/f////7////9/////v////3////+//////////z//////////Pw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_6vusa")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ylb1v"]
 sky_top_color = Color(0.427098, 0.435846, 0.575037, 1)
@@ -160,6 +167,11 @@ transform = Transform3D(1, 0, 0, 0, 0.80309415, 0, 0, 0, 1.4169592, -38.072533, 
 
 [node name="Cube_028" parent="Supermarket/freezer" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_ylb1v")
+
+[node name="SM_floor2" type="MeshInstance3D" parent="Supermarket"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.810035)
+mesh = SubResource("ArrayMesh_yiwd8")
+skeleton = NodePath("")
 
 [node name="fridge2" parent="Supermarket" instance=ExtResource("2_i354j")]
 transform = Transform3D(-2.1855696e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855696e-07, -55.949383, 3.094877, -75.96267)
@@ -413,606 +425,6 @@ light_volumetric_fog_energy = 3.01
 spot_range = 17.868
 spot_angle = 99.12
 
-[node name="Shelf" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 3.9969811, 0.7005311, -13.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf20" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.2308507, 0.7005311, -12.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf22" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 3.9969811, 0.7005311, -12.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf23" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.2308507, 0.7005311, -13.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf25" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.751783, 0.7005311, -13.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf26" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.751783, 0.7005311, -12.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf27" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.5030594, 0.7005311, -13.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf28" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.5030594, 0.7005311, -12.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf29" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.25786114, 0.7005311, -13.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf30" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.25786114, 0.7005311, -12.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf43" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.2308507, 0.7005311, -10.4668865)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf44" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.2308507, 0.7005311, -10.033058)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf45" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.751783, 0.7005311, -10.4668865)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf47" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.5030594, 0.7005311, -10.4668865)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf49" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.25786114, 0.7005311, -10.4668865)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf51" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.0030189, 0.7005311, -10.4668865)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf52" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.0030189, 0.7005311, -10.033058)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf59" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.9914894, 0.7005311, -10.4668865)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf60" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.9914894, 0.7005311, -10.033058)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf81" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 3.9969811, 0.7005311, -15.482994)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf82" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.2308507, 0.7005311, -15.482994)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf83" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.751783, 0.7005311, -15.482994)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf84" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.5030594, 0.7005311, -15.482994)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf85" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.25786114, 0.7005311, -15.482994)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf61" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 3.9969811, 0.7005311, -10.4668865)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf62" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 3.9969811, 0.7005311, -10.033058)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf66" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.751783, 0.7005311, -10.033058)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf68" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.5030594, 0.7005311, -10.033058)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf70" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.25786114, 0.7005311, -10.033058)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf73" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.248217, 0.7005311, -10.4668865)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf74" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.248217, 0.7005311, -10.033058)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf75" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.4969406, 0.7005311, -10.4668865)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf76" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.4969406, 0.7005311, -10.033058)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf77" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.742139, 0.7005311, -10.4668865)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf78" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.742139, 0.7005311, -10.033058)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf11" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 3.9969811, 0.7005311, -8.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf24" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.2308507, 0.7005311, -7.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf17" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.25786114, 0.7005311, -8.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf18" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.0030189, 0.7005311, -8.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf32" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.0030189, 0.7005311, -7.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf34" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.248217, 0.7005311, -8.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf40" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.248217, 0.7005311, -7.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf48" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.9914894, 0.7005311, -8.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf50" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.9914894, 0.7005311, -7.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf56" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 3.9969811, 0.7005311, -7.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf58" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.2308507, 0.7005311, -8.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf64" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.751783, 0.7005311, -8.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf72" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.751783, 0.7005311, -7.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf79" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.5030594, 0.7005311, -8.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf80" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.5030594, 0.7005311, -7.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf92" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.25786114, 0.7005311, -7.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf95" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.4969406, 0.7005311, -8.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf96" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.4969406, 0.7005311, -7.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf97" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.742139, 0.7005311, -8.006998)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf98" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.742139, 0.7005311, -7.57317)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf100" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 3.9969811, 0.7005311, -5.466886)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf101" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.2308507, 0.7005311, -5.466886)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf102" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.2308507, 0.7005311, -5.0330577)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf104" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.5030594, 0.7005311, -5.466886)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf105" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.25786114, 0.7005311, -5.466886)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf106" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.0030189, 0.7005311, -5.466886)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf107" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.0030189, 0.7005311, -5.0330577)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf108" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.248217, 0.7005311, -5.466886)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf110" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.742139, 0.7005311, -5.466886)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf111" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.9914894, 0.7005311, -5.466886)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf112" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.9914894, 0.7005311, -5.0330577)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf114" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 3.9969811, 0.7005311, -5.0330577)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf116" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.751783, 0.7005311, -5.466886)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf117" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.751783, 0.7005311, -5.0330577)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf119" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.5030594, 0.7005311, -5.0330577)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf121" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.25786114, 0.7005311, -5.0330577)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf124" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.248217, 0.7005311, -5.0330577)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf125" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.4969406, 0.7005311, -5.466886)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf126" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.4969406, 0.7005311, -5.0330577)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf128" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.742139, 0.7005311, -5.0330577)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf218" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 3.9969811, 0.7005311, 4.923126)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf219" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.2308507, 0.7005311, 4.923126)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf220" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.2308507, 0.7005311, 5.3569546)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf221" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.751783, 0.7005311, 4.923126)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf222" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.5030594, 0.7005311, 4.923126)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf224" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.0030189, 0.7005311, 4.923126)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf225" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.0030189, 0.7005311, 5.3569546)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf226" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.248217, 0.7005311, 4.923126)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf227" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.4969406, 0.7005311, 4.923126)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf228" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.742139, 0.7005311, 4.923126)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf229" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.9914894, 0.7005311, 4.923126)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf230" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.9914894, 0.7005311, 5.3569546)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf232" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 3.9969811, 0.7005311, 5.3569546)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf235" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.751783, 0.7005311, 5.3569546)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf237" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.5030594, 0.7005311, 5.3569546)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf238" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.25786114, 0.7005311, 4.923126)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf239" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.25786114, 0.7005311, 5.3569546)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf242" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.248217, 0.7005311, 5.3569546)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf244" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.4969406, 0.7005311, 5.3569546)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf246" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.742139, 0.7005311, 5.3569546)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf248" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.2308507, 0.7005311, 7.423481)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf249" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.2308507, 0.7005311, 7.8573093)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf252" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.25786114, 0.7005311, 7.423481)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf254" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.0030189, 0.7005311, 7.8573093)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf256" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.248217, 0.7005311, 7.8573093)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf258" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.742139, 0.7005311, 7.423481)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf259" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.9914894, 0.7005311, 7.423481)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf260" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.9914894, 0.7005311, 7.8573093)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf261" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 3.9969811, 0.7005311, 7.423481)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf262" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 3.9969811, 0.7005311, 7.8573093)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf264" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.751783, 0.7005311, 7.423481)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf265" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.751783, 0.7005311, 7.8573093)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf266" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.5030594, 0.7005311, 7.423481)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf267" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.5030594, 0.7005311, 7.8573093)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf269" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.25786114, 0.7005311, 7.8573093)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf270" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.0030189, 0.7005311, 7.423481)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf271" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.248217, 0.7005311, 7.423481)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf272" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.4969406, 0.7005311, 7.423481)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf273" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.4969406, 0.7005311, 7.8573093)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf275" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.742139, 0.7005311, 7.8573093)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf277" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 3.9969811, 0.7005311, 9.9635935)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf278" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.2308507, 0.7005311, 9.9635935)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf279" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.2308507, 0.7005311, 10.397422)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf282" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.25786114, 0.7005311, 9.9635935)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf283" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.0030189, 0.7005311, 9.9635935)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf284" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.0030189, 0.7005311, 10.397422)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf285" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.248217, 0.7005311, 9.9635935)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf286" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.4969406, 0.7005311, 9.9635935)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf287" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.742139, 0.7005311, 9.9635935)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf288" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.9914894, 0.7005311, 9.9635935)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf289" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.9914894, 0.7005311, 10.397422)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf291" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 3.9969811, 0.7005311, 10.397422)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf293" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.751783, 0.7005311, 9.9635935)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf294" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.751783, 0.7005311, 10.397422)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf295" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.5030594, 0.7005311, 9.9635935)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf296" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.5030594, 0.7005311, 10.397422)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf298" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.25786114, 0.7005311, 10.397422)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf301" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.248217, 0.7005311, 10.397422)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf303" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.4969406, 0.7005311, 10.397422)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf305" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.742139, 0.7005311, 10.397422)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf306" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 3.9969811, 0.7005311, 12.71966)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf307" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.2308507, 0.7005311, 12.71966)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf308" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.2308507, 0.7005311, 13.153488)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf309" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.751783, 0.7005311, 12.71966)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf310" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.5030594, 0.7005311, 12.71966)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf311" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.25786114, 0.7005311, 12.71966)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf321" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 3.9969811, 0.7005311, 13.153488)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf324" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.751783, 0.7005311, 13.153488)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf326" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.5030594, 0.7005311, 13.153488)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf328" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.25786114, 0.7005311, 13.153488)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf336" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 3.9969811, 0.7005311, 15.530137)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf337" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.2308507, 0.7005311, 15.530137)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf339" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.751783, 0.7005311, 15.530137)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf340" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.5030594, 0.7005311, 15.530137)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
-[node name="Shelf341" parent="." instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.25786114, 0.7005311, 15.530137)
-allowed_products = Array[PackedScene]([ExtResource("5_tgnal"), ExtResource("6_00kll"), ExtResource("7_lrs2g"), ExtResource("8_rlft1"), ExtResource("9_uhftk"), ExtResource("10_85gsg"), ExtResource("11_2xux8"), ExtResource("12_h7dl3"), ExtResource("13_powdi"), ExtResource("14_ajtvt"), ExtResource("15_concy"), ExtResource("16_concy"), ExtResource("17_e8ftr"), ExtResource("18_5e1ea"), ExtResource("6_tgnal"), ExtResource("20_dbmyq"), ExtResource("10_h7dl3"), ExtResource("22_l70on"), ExtResource("23_82vwm"), ExtResource("24_4n4sl"), ExtResource("25_7cae4"), ExtResource("26_hm4bc"), ExtResource("27_hm4bc"), ExtResource("28_6qcle"), ExtResource("29_8633q"), ExtResource("30_scnpt"), ExtResource("31_3cmuu"), ExtResource("32_c1tm6"), ExtResource("33_fxug3"), ExtResource("34_ispcq"), ExtResource("35_r68aq"), ExtResource("36_r68aq"), ExtResource("37_w4pp4")])
-
 [node name="CheckoutCounter" parent="." instance=ExtResource("2_rwwr0")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, 0.019335195, 2.377056)
 
@@ -1186,5 +598,530 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4831505, 0.24017061, -1.76
 
 [node name="FoodStand64" parent="." instance=ExtResource("40_3w37c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.4831505, 0.24017061, -2.4772792)
+
+[node name="Shelf2" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.70165104, 15.608341)
+
+[node name="Shelf3" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.70165104, 15.608341)
+
+[node name="Shelf4" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.70165104, 15.608341)
+
+[node name="Shelf5" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.70165104, 15.608341)
+
+[node name="Shelf6" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.70165104, 15.608341)
+
+[node name="Shelf8" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.70165104, 12.736047)
+
+[node name="Shelf9" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.70165104, 12.736047)
+
+[node name="Shelf10" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.70165104, 12.736047)
+
+[node name="Shelf12" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.70165104, 12.736047)
+
+[node name="Shelf13" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.70165104, 12.736047)
+
+[node name="Shelf14" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.70165104, 13.15209)
+
+[node name="Shelf15" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.70165104, 13.15209)
+
+[node name="Shelf16" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.70165104, 13.15209)
+
+[node name="Shelf19" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.70165104, 13.15209)
+
+[node name="Shelf21" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.70165104, 13.15209)
+
+[node name="Shelf31" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.70165104, 10.17404)
+
+[node name="Shelf33" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.70165104, 10.17404)
+
+[node name="Shelf35" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.70165104, 10.17404)
+
+[node name="Shelf36" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.70165104, 10.17404)
+
+[node name="Shelf37" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.70165104, 10.17404)
+
+[node name="Shelf38" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.70165104, 10.590083)
+
+[node name="Shelf39" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.70165104, 10.590083)
+
+[node name="Shelf41" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.70165104, 10.590083)
+
+[node name="Shelf42" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.70165104, 10.590083)
+
+[node name="Shelf46" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.70165104, 10.590083)
+
+[node name="Shelf53" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.70165104, 7.6423664)
+
+[node name="Shelf54" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.70165104, 7.6423664)
+
+[node name="Shelf55" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.70165104, 7.6423664)
+
+[node name="Shelf57" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.70165104, 7.6423664)
+
+[node name="Shelf63" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.70165104, 7.6423664)
+
+[node name="Shelf65" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.70165104, 8.05841)
+
+[node name="Shelf67" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.70165104, 8.05841)
+
+[node name="Shelf69" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.70165104, 8.05841)
+
+[node name="Shelf71" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.70165104, 8.05841)
+
+[node name="Shelf86" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.70165104, 8.05841)
+
+[node name="Shelf87" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.70165104, 5.0623565)
+
+[node name="Shelf88" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.70165104, 5.0623565)
+
+[node name="Shelf89" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.70165104, 5.0623565)
+
+[node name="Shelf90" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.70165104, 5.0623565)
+
+[node name="Shelf91" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.70165104, 5.0623565)
+
+[node name="Shelf93" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.70165104, 5.4783998)
+
+[node name="Shelf94" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.70165104, 5.4783998)
+
+[node name="Shelf99" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.70165104, 5.4783998)
+
+[node name="Shelf103" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.70165104, 5.4783998)
+
+[node name="Shelf109" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.70165104, 5.4783998)
+
+[node name="Shelf113" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.70165104, 10.17404)
+
+[node name="Shelf115" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.70165104, 10.17404)
+
+[node name="Shelf118" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.70165104, 10.17404)
+
+[node name="Shelf120" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.70165104, 10.17404)
+
+[node name="Shelf122" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.70165104, 10.17404)
+
+[node name="Shelf123" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.70165104, 10.590083)
+
+[node name="Shelf127" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.70165104, 10.590083)
+
+[node name="Shelf129" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.70165104, 10.590083)
+
+[node name="Shelf130" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.70165104, 10.590083)
+
+[node name="Shelf131" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.70165104, 10.590083)
+
+[node name="Shelf132" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.70165104, 7.6423664)
+
+[node name="Shelf133" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.70165104, 7.6423664)
+
+[node name="Shelf134" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.70165104, 7.6423664)
+
+[node name="Shelf135" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.70165104, 7.6423664)
+
+[node name="Shelf136" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.70165104, 7.6423664)
+
+[node name="Shelf137" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.70165104, 8.05841)
+
+[node name="Shelf138" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.70165104, 8.05841)
+
+[node name="Shelf139" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.70165104, 8.05841)
+
+[node name="Shelf140" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.70165104, 8.05841)
+
+[node name="Shelf141" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.70165104, 8.05841)
+
+[node name="Shelf142" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.70165104, 5.0623565)
+
+[node name="Shelf143" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.70165104, 5.0623565)
+
+[node name="Shelf144" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.70165104, 5.0623565)
+
+[node name="Shelf145" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.70165104, 5.0623565)
+
+[node name="Shelf146" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.70165104, 5.0623565)
+
+[node name="Shelf147" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.70165104, 5.4783998)
+
+[node name="Shelf148" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.70165104, 5.4783998)
+
+[node name="Shelf149" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.70165104, 5.4783998)
+
+[node name="Shelf150" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.70165104, 5.4783998)
+
+[node name="Shelf151" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.70165104, 5.4783998)
+
+[node name="Shelf7" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -0.7509153, 0.70165104, 15.608341)
+
+[node name="Shelf11" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.70165104, -5.4301357)
+
+[node name="Shelf17" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.70165104, -5.4301357)
+
+[node name="Shelf18" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.70165104, -5.4301357)
+
+[node name="Shelf20" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.70165104, -5.4301357)
+
+[node name="Shelf22" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.70165104, -5.4301357)
+
+[node name="Shelf23" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.70165104, -8.30243)
+
+[node name="Shelf24" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.70165104, -8.30243)
+
+[node name="Shelf25" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.70165104, -8.30243)
+
+[node name="Shelf26" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.70165104, -8.30243)
+
+[node name="Shelf27" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.70165104, -8.30243)
+
+[node name="Shelf28" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.70165104, -7.886387)
+
+[node name="Shelf29" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.70165104, -7.886387)
+
+[node name="Shelf30" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.70165104, -7.886387)
+
+[node name="Shelf32" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.70165104, -7.886387)
+
+[node name="Shelf34" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.70165104, -7.886387)
+
+[node name="Shelf40" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.70165104, -10.864437)
+
+[node name="Shelf43" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.70165104, -10.864437)
+
+[node name="Shelf44" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.70165104, -10.864437)
+
+[node name="Shelf45" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.70165104, -10.864437)
+
+[node name="Shelf47" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.70165104, -10.864437)
+
+[node name="Shelf48" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.70165104, -10.448394)
+
+[node name="Shelf49" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.70165104, -10.448394)
+
+[node name="Shelf50" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.70165104, -10.448394)
+
+[node name="Shelf51" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.70165104, -10.448394)
+
+[node name="Shelf52" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.70165104, -10.448394)
+
+[node name="Shelf56" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.70165104, -13.396111)
+
+[node name="Shelf58" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.70165104, -13.396111)
+
+[node name="Shelf59" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.70165104, -13.396111)
+
+[node name="Shelf60" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.70165104, -13.396111)
+
+[node name="Shelf64" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.70165104, -13.396111)
+
+[node name="Shelf66" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.70165104, -12.980067)
+
+[node name="Shelf68" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.70165104, -12.980067)
+
+[node name="Shelf70" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.70165104, -12.980067)
+
+[node name="Shelf72" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.70165104, -12.980067)
+
+[node name="Shelf92" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.70165104, -12.980067)
+
+[node name="Shelf101" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.70165104, -15.560078)
+
+[node name="Shelf102" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.70165104, -15.560078)
+
+[node name="Shelf104" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.70165104, -15.560078)
+
+[node name="Shelf105" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.70165104, -15.560078)
+
+[node name="Shelf110" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.70165104, -15.560078)
+
+[node name="Shelf114" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.70165104, -10.864437)
+
+[node name="Shelf116" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.70165104, -10.864437)
+
+[node name="Shelf119" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.70165104, -10.864437)
+
+[node name="Shelf121" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.70165104, -10.864437)
+
+[node name="Shelf124" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.70165104, -10.864437)
+
+[node name="Shelf125" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.70165104, -10.448394)
+
+[node name="Shelf128" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.70165104, -10.448394)
+
+[node name="Shelf152" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.70165104, -10.448394)
+
+[node name="Shelf153" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.70165104, -10.448394)
+
+[node name="Shelf154" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.70165104, -10.448394)
+
+[node name="Shelf175" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.70165104, -5.484195)
+
+[node name="Shelf176" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.70165104, -5.484195)
+
+[node name="Shelf177" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.70165104, -5.484195)
+
+[node name="Shelf178" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.70165104, -5.484195)
+
+[node name="Shelf179" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.70165104, -5.484195)
+
+[node name="Shelf180" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.70165104, -5.068152)
+
+[node name="Shelf181" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.70165104, -5.068152)
+
+[node name="Shelf182" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.70165104, -5.068152)
+
+[node name="Shelf183" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.70165104, -5.068152)
+
+[node name="Shelf184" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.70165104, -5.068152)
+
+[node name="Shelf185" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.70165104, -8.064204)
+
+[node name="Shelf186" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.70165104, -8.064204)
+
+[node name="Shelf187" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.70165104, -8.064204)
+
+[node name="Shelf188" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.70165104, -8.064204)
+
+[node name="Shelf189" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.70165104, -8.064204)
+
+[node name="Shelf190" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.70165104, -7.6481624)
+
+[node name="Shelf191" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.70165104, -7.6481624)
+
+[node name="Shelf192" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.70165104, -7.6481624)
+
+[node name="Shelf193" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.70165104, -7.6481624)
+
+[node name="Shelf194" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.70165104, -7.6481624)
+
+[node name="Shelf62" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.70165104, -5.012999)
+
+[node name="Shelf73" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.70165104, -5.012999)
+
+[node name="Shelf74" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.70165104, -5.012999)
+
+[node name="Shelf75" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.70165104, -5.012999)
+
+[node name="Shelf76" parent="." instance=ExtResource("4_1i6nv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.70165104, -5.012999)
+
+[node name="freezer" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.23386112, 15.457581)
+
+[node name="freezer2" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.23386112, 15.457581)
+
+[node name="freezer3" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.23386112, 15.457581)
+
+[node name="freezer4" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.23386112, 15.457581)
+
+[node name="freezer5" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.23386112, 15.457581)
+
+[node name="freezer6" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.23386112, 15.457581)
+
+[node name="freezer7" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.23386112, 13.194097)
+
+[node name="freezer8" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.23386112, 13.194097)
+
+[node name="freezer9" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.23386112, 13.194097)
+
+[node name="freezer10" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.23386112, 13.194097)
+
+[node name="freezer11" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.23386112, 13.194097)
+
+[node name="freezer12" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.23386112, 13.194097)
+
+[node name="freezer13" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.23386112, -13.194196)
+
+[node name="freezer14" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.23386112, -13.194196)
+
+[node name="freezer15" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.23386112, -13.194196)
+
+[node name="freezer16" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.23386112, -13.194196)
+
+[node name="freezer17" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.23386112, -13.194196)
+
+[node name="freezer18" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.23386112, -13.194196)
+
+[node name="freezer19" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.23386112, -15.457679)
+
+[node name="freezer20" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.23386112, -15.457679)
+
+[node name="freezer21" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.23386112, -15.457679)
+
+[node name="freezer22" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.23386112, -15.457679)
+
+[node name="freezer23" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.23386112, -15.457679)
+
+[node name="freezer24" parent="." instance=ExtResource("8_lrs2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.23386112, -15.457679)
 
 [editable path="Supermarket"]

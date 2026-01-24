@@ -9,7 +9,7 @@ points = PackedVector3Array(0.03539117, 0.019437686, -0.0016283024, -0.14285396,
 [node name="grapes" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_m8ark")
-item_name = "Cup"
+item_name = "Grapes"
 
 [node name="item_ingredient" type="Node3D" parent="."]
 unique_name_in_owner = true

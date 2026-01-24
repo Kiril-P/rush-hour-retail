@@ -1,6 +1,31 @@
-[gd_scene load_steps=8 format=4 uid="uid://cawx2yoe16l5o"]
+[gd_scene load_steps=33 format=4 uid="uid://cawx2yoe16l5o"]
 
 [ext_resource type="Script" uid="uid://7ypl17cat0nc" path="res://scripts/shelf_spawner.gd" id="1_eyi4x"]
+[ext_resource type="PackedScene" uid="uid://blkbjodsybh6u" path="res://objects/items/objects/BlueMilk.tscn" id="2_nl3ju"]
+[ext_resource type="PackedScene" uid="uid://ddre21myavxwm" path="res://objects/items/objects/bottle_ketchup.tscn" id="3_rm377"]
+[ext_resource type="PackedScene" uid="uid://crluai0aux5hb" path="res://objects/items/objects/bottle_mustard.tscn" id="4_7omqp"]
+[ext_resource type="PackedScene" uid="uid://ce6a81r4mi2u5" path="res://objects/items/objects/bottle_oil.tscn" id="5_h1dwa"]
+[ext_resource type="PackedScene" uid="uid://qnvrxjc6vt7s" path="res://objects/items/objects/bread.tscn" id="6_pb500"]
+[ext_resource type="PackedScene" uid="uid://dccu527b0lxn" path="res://objects/items/objects/can.tscn" id="7_4qg5k"]
+[ext_resource type="PackedScene" uid="uid://ticdqyrsphst" path="res://objects/items/objects/carton_small.tscn" id="8_ilsen"]
+[ext_resource type="PackedScene" uid="uid://bw82olk8d2wkr" path="res://objects/items/objects/cereal_box.tscn" id="9_8cv5b"]
+[ext_resource type="PackedScene" uid="uid://cyggpfoag760f" path="res://objects/items/objects/cookingknifechop.tscn" id="10_xn73h"]
+[ext_resource type="PackedScene" uid="uid://b4pyjv7halssa" path="res://objects/items/objects/croissant.tscn" id="11_7uudr"]
+[ext_resource type="PackedScene" uid="uid://drpfkduxtl14e" path="res://objects/items/objects/donut.tscn" id="12_j5mx7"]
+[ext_resource type="PackedScene" uid="uid://cm5acb4i11wj3" path="res://objects/items/objects/donut-chocolate.tscn" id="13_qpfdg"]
+[ext_resource type="PackedScene" uid="uid://bmo2a7q583qpx" path="res://objects/items/objects/donut-sprinkles.tscn" id="14_oreud"]
+[ext_resource type="PackedScene" uid="uid://b8mgyg7wfpk27" path="res://objects/items/objects/fryingpan.tscn" id="15_famq6"]
+[ext_resource type="PackedScene" uid="uid://b3onl7raor30x" path="res://objects/items/objects/glass.tscn" id="16_xascu"]
+[ext_resource type="PackedScene" uid="uid://cj2gl75kei5m5" path="res://objects/items/objects/glasswine.tscn" id="17_mon7c"]
+[ext_resource type="PackedScene" uid="uid://diydp86hhxcxa" path="res://objects/items/objects/honey.tscn" id="18_pv0c1"]
+[ext_resource type="PackedScene" uid="uid://blofj0ag1qgok" path="res://objects/items/objects/loaf-baguette.tscn" id="19_w0qxd"]
+[ext_resource type="PackedScene" uid="uid://dp7sk6y53ldrj" path="res://objects/items/objects/peanutbutter.tscn" id="20_qpfdg"]
+[ext_resource type="PackedScene" uid="uid://dyu4utexci6ax" path="res://objects/items/objects/pot.tscn" id="21_oreud"]
+[ext_resource type="PackedScene" uid="uid://bkytk2xrdvs2l" path="res://objects/items/objects/PurpleMilk.tscn" id="22_famq6"]
+[ext_resource type="PackedScene" uid="uid://cqk2mi18ip3qg" path="res://objects/items/objects/redwine.tscn" id="23_xascu"]
+[ext_resource type="PackedScene" uid="uid://dl8sog8ioefxf" path="res://objects/items/objects/soda-can.tscn" id="24_pv0c1"]
+[ext_resource type="PackedScene" uid="uid://bp2tpg0ygyu1i" path="res://objects/items/objects/soda-bottle.tscn" id="25_w0qxd"]
+[ext_resource type="PackedScene" uid="uid://dih1ot0qa7gtc" path="res://objects/items/objects/whitewine.tscn" id="26_e46ch"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0dtwf"]
 resource_name = "shelf"
@@ -104,6 +129,7 @@ data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1,
 [node name="Shelf" type="StaticBody3D"]
 transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0, 0, 0)
 script = ExtResource("1_eyi4x")
+allowed_products = Array[PackedScene]([ExtResource("2_nl3ju"), ExtResource("3_rm377"), ExtResource("4_7omqp"), ExtResource("5_h1dwa"), ExtResource("6_pb500"), ExtResource("7_4qg5k"), ExtResource("8_ilsen"), ExtResource("9_8cv5b"), ExtResource("10_xn73h"), ExtResource("11_7uudr"), ExtResource("12_j5mx7"), ExtResource("13_qpfdg"), ExtResource("14_oreud"), ExtResource("15_famq6"), ExtResource("16_xascu"), ExtResource("17_mon7c"), ExtResource("18_pv0c1"), ExtResource("19_w0qxd"), ExtResource("20_qpfdg"), ExtResource("21_oreud"), ExtResource("22_famq6"), ExtResource("23_xascu"), ExtResource("24_pv0c1"), ExtResource("25_w0qxd"), ExtResource("26_e46ch")])
 
 [node name="shelf" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.9420587, 0, 0, 0, 0.135806, 0, 0, 0, 0.99332184, -0.001522541, -0.8752186, 0.016348839)
