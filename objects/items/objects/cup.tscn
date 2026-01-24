@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6h2sor4ywslj"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_mdep2"]
+[ext_resource type="ArrayMesh" uid="uid://bpto8lw28tpe3" path="res://assets/kenney_food-kit/Models/OBJ format/cup.obj" id="2_mdep2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mdep2"]
+points = PackedVector3Array(-0.0853314, 0.196994, 0.070668, 0.114664, 0.197804, 0.000147847, 0.113406, 0.187902, -0.00019744, -0.0057927, 0.113106, -0.174323, 0.0031321, 0.00187769, 0.088935, -0.0884367, 0.00378707, -0.00490645, 0.0623628, 0.00643184, -0.064918, -0.0815378, 0.197736, -0.0800426, 0.00758894, 0.197737, 0.111571, 0.0648155, 0.00271013, 0.0614894, 0.0816894, 0.195745, -0.0790757, 0.0209692, 0.0551099, -0.155863, 0.0798946, 0.198971, 0.0817539, -0.112812, 0.19778, 0.00461018, -0.0611705, 0.00547112, -0.0652936, -0.0629621, 0.0159792, 0.0658647, 0.0913516, 0.0114542, -0.000193078, 0.0209728, 0.157636, -0.155886, -0.00565655, 0.00318434, -0.0880508, 0.0210546, 0.0996846, -0.174319, -0.00126629, 0.195691, -0.113937, -0.0213, 0.0875691, -0.156299, -0.00580147, 0.198294, 0.112382, -0.00576408, 0.0551186, -0.155867, -0.0102173, 0.157625, -0.15589, -0.0814394, 0.197619, 0.0802457, -0.0669516, 0.00333417, 0.0565317, -0.111795, 0.174821, -0.00013852, 0.0867978, 0.00278553, 0.00855482, -0.0657807, 0.00931549, -0.0611525, -0.0887905, 0.00340743, 0.00394185, 0.0674483, 0.0224007, -0.0610813)
+
+[node name="cup" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_mdep2")
+item_name = "Cup"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="cup" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_mdep2")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_mdep2")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dijaygoaq8a38"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_pqjw5"]
+[ext_resource type="ArrayMesh" uid="uid://b0rbgqpelq3ny" path="res://assets/kenney_food-kit/Models/OBJ format/cooking-spoon.obj" id="2_pqjw5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pqjw5"]
+points = PackedVector3Array(-0.202946, 0.0118028, -0.0887603, -0.207671, 0.00708455, -0.0793136, 0.33516, 0.00236352, -0.00377528, 0.311539, 0.0259631, 0.0339588, -0.33516, 0.0165183, 0.0481288, 0.311539, 0.0259631, -0.0368211, -0.278469, -0.00235474, -0.027392, -0.188774, 0.0165183, 0.0906213, 0.311539, 0.00236352, 0.0339588, -0.33516, 0.0165183, -0.0462678, 0.311539, 0.00236352, -0.0368211, -0.188774, -0.00235474, 0.0528521, 0.169877, 0.0259631, 0.0339588, -0.184049, -0.00235474, -0.0509911, -0.320987, 0.00708455, 0.0434054, 0.169877, 0.0259631, -0.0320978, -0.202946, 0.00708455, 0.0811746, -0.250124, 0.0165183, -0.0745903, -0.320987, 0.00708455, -0.0415444, 0.33516, 0.0259631, 0.00563628, -0.278469, -0.00235474, 0.0245296, -0.184049, 0.0118028, -0.0887603, -0.146321, -0.00235474, 0.029253, -0.146321, -0.00235474, -0.027392, -0.188774, 0.00708455, 0.0811746, -0.184049, 0.00708455, -0.0793136, -0.198222, 0.0165183, 0.0906213, 0.330436, 0.0259631, -0.013222, 0.325712, 0.00236352, 0.0198063, -0.212395, -0.00235474, 0.0481288, -0.202946, -0.00235474, -0.0509911, -0.311539, 0.00708455, -0.0462678)
+
+[node name="cookingspoon" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_pqjw5")
+item_name = "Cooking Spoon"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="cookingspoon" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.6, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_pqjw5")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.6, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_pqjw5")

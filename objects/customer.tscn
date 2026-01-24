@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://8lxv6rd4ox17"]
 
-[ext_resource type="Script" uid="uid://buod8h7pm28sr" path="res://scripts/customer_ai.gd" id="1_fu7rw"]
+[ext_resource type="Script" uid="uid://nb28je07b6vi" path="res://scripts/customer_ai.gd" id="1_fu7rw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bwvtj"]
 radius = 0.15
@@ -14,6 +14,7 @@ radius = 0.15
 height = 0.6
 
 [node name="Customer" type="CharacterBody3D"]
+motion_mode = 1
 script = ExtResource("1_fu7rw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

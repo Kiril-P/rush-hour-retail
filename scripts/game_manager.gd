@@ -240,7 +240,6 @@ func collect_wrong_item(item_name: String):
 	# Reset combo
 	var lost_combo = current_combo
 	current_combo = 0
-	
 	# Time penalty
 	time_remaining -= 5.0
 	if time_remaining < 0:

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxwewgfe3yp8m"]
+
+[ext_resource type="Script" uid="uid://cbb3laxp8pyh0" path="res://scripts/simple_item.gd" id="1_vljqf"]
+[ext_resource type="ArrayMesh" uid="uid://wagh5ru8ucw5" path="res://assets/kenney_food-kit/Models/OBJ format/cooking-spatula.obj" id="2_vljqf"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vljqf"]
+points = PackedVector3Array(-0.119533, 0.0074864, 0.0868416, -0.318821, 0.0722387, 0.091824, -0.119533, 0.0074864, -0.0825248, 0.323802, 0.0224309, -0.0327, 0.318821, 0.0224309, 0.0370167, -0.318821, 0.0722387, -0.0924897, -0.124446, 0.0174494, -0.0974722, 0.318821, -0.00247661, 0.0370167, 0.30104, 0.000149444, -0.0304247, -0.134474, 0.0224309, 0.0968065, -0.343791, 0.0722387, 0.0768766, 0.343791, 0.0224309, 0.00712186, -0.30388, 0.0672498, -0.0974722, -0.30388, 0.0672498, 0.0968065, -0.343791, 0.0722387, -0.0775423, -0.124446, 0.0124679, 0.0968065, 0.298899, -0.00247661, 0.0370167, -0.323802, 0.0672498, 0.0968065, -0.323802, 0.0672498, -0.0974722, 0.343791, 0.0224309, -0.00778755, -0.134474, 0.0224309, -0.0974722, -0.244046, 0.0523053, -0.0974722, -0.244046, 0.0523053, 0.0968065, 0.321, 0, -0.00729335, -0.109572, 0.0074864, -0.0825248, 0.328715, 0.0224309, 0.0270518, -0.328715, 0.0722387, -0.0924897, -0.328715, 0.0722387, 0.091824)
+
+[node name="cookingspatula" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_vljqf")
+item_name = "Cooking Spatula"
+
+[node name="item_ingredient" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="cookingspatula" type="MeshInstance3D" parent="item_ingredient"]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+mesh = ExtResource("2_vljqf")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_vljqf")
