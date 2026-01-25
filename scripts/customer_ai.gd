@@ -20,12 +20,35 @@ enum CustomerType {
 	WITH_CART
 }
 
+enum CustomerState {
+	IDLE,
+	WALKING,
+	STOPPING,
+	LEAVING,
+	FALLING,  # Being knocked back
+	AGGRESSIVE,  # Chasing player
+	ATTACKING  # Attacking player
+}
+
 @export var customer_type: CustomerType = CustomerType.WITHOUT_CART
 @export var movement_speed: float = 1.5
 @export var rotation_speed: float = 5.0
 @export var min_stop_time: float = 2.0
 @export var max_stop_time: float = 10.0
 @export var stops_before_leaving: int = 4
+
+@export_group("Knockback Settings")
+@export var knockback_force: float = 2.0  # Reduced - just a small push to trigger fall animation
+@export var knockback_duration: float = 0.3  # Shorter duration
+@export var fall_recovery_time: float = 1.5
+
+@export_group("Aggression Settings")
+@export var aggression_chance: float = 0.4  # 40% chance to get angry when punched
+@export var chase_speed: float = 3.0  # Faster than normal walk
+@export var attack_range: float = 1.5  # Distance to attack player
+@export var attack_knockback: float = 10.0  # Knockback force to player
+@export var calm_down_time: float = 15.0  # Time before calming down if lose player
+@export var lose_player_distance: float = 20.0  # Distance where they lose track of player
 
 @export_group("Visual Adjustments")
 @export var ground_height_offset: float = 0.0  # Adjust if floating/clipping
@@ -40,25 +63,37 @@ const CHARACTER_VARIANTS = [
 		"name": "Black Guy",
 		"model": "res://assets/customer_char/black guy/LowPolyCharacter_BLACK.fbx",
 		"idle": "res://assets/customer_char/black guy/Happy Idle.fbx",
-		"walk": "res://assets/customer_char/black guy/Happy Walk.fbx"
+		"walk": "res://assets/customer_char/black guy/Happy Walk.fbx",
+		"walk_cart": "res://assets/customer_char/black guy/shopping_cart_walk.fbx",
+		"fall": "res://assets/customer_char/black guy/Sweep Fall.fbx",
+		"run": "res://assets/customer_char/black guy/Injured Run.fbx"
 	},
 	{
 		"name": "Gustave",
 		"model": "res://assets/customer_char/gustave/LowPolyCharacter_GUSTAVE.fbx",
 		"idle": "res://assets/customer_char/gustave/Breathing Idle.fbx",
-		"walk": "res://assets/customer_char/gustave/Walking.fbx"
+		"walk": "res://assets/customer_char/gustave/Walking.fbx",
+		"walk_cart": "res://assets/customer_char/gustave/shopping_cart_walk.fbx",
+		"fall": "res://assets/customer_char/gustave/Sweep Fall.fbx",
+		"run": "res://assets/customer_char/gustave/Injured Run.fbx"
 	},
 	{
 		"name": "Jew Hat",
 		"model": "res://assets/customer_char/jew hat/LowPolyCharacter2_JEW.fbx",
 		"idle": "res://assets/customer_char/jew hat/Dwarf Idle.fbx",
-		"walk": "res://assets/customer_char/jew hat/Dwarf Walk.fbx"
+		"walk": "res://assets/customer_char/jew hat/Dwarf Walk.fbx",
+		"walk_cart": "res://assets/customer_char/jew hat/shopping_cart_walk.fbx",
+		"fall": "res://assets/customer_char/jew hat/Sweep Fall.fbx",
+		"run": "res://assets/customer_char/jew hat/Injured Run.fbx"
 	},
 	{
 		"name": "Woman",
 		"model": "res://assets/customer_char/woman/LowPolyCharacter_WOMAN.fbx",
 		"idle": "res://assets/customer_char/woman/Dwarf Idle.fbx",
-		"walk": "res://assets/customer_char/woman/Female Tough Walk.fbx"
+		"walk": "res://assets/customer_char/woman/Female Tough Walk.fbx",
+		"walk_cart": "res://assets/customer_char/woman/shopping_cart_walk.fbx",
+		"fall": "res://assets/customer_char/woman/Sweep Fall.fbx",
+		"run": "res://assets/customer_char/woman/Injured Run.fbx"
 	}
 ]
 
@@ -89,7 +124,24 @@ var shelf_to_face: Node3D = null
 var selected_variant_index: int = -1
 var idle_anim_name: String = ""
 var walk_anim_name: String = ""
+var walk_cart_anim_name: String = ""  # Animation for walking with shopping cart
+var fall_anim_name: String = ""  # Animation for falling/being knocked back
+var run_anim_name: String = ""  # Animation for aggressive running
 var shopping_cart: RigidBody3D = null
+
+# Knockback state variables
+var is_knocked_back: bool = false
+var knockback_velocity: Vector3 = Vector3.ZERO
+var knockback_timer: float = 0.0
+var recovery_timer: float = 0.0
+var previous_state: String = "IDLE"
+
+# Aggression state variables
+var is_aggressive: bool = false
+var target_player: CharacterBody3D = null
+var aggression_timer: float = 0.0
+var has_attacked: bool = false
+var anger_particle: Node3D = null
 
 static var cached_shelf_markers: Array = []
 static var cached_exit_markers: Array = []
@@ -98,6 +150,7 @@ static var markers_cached: bool = false
 func _ready():
 	# Add to customer group for avoidance detection
 	add_to_group("customer")
+	add_to_group("punchable")  # For player interaction
 	
 	spawn_position = global_position
 	
@@ -145,12 +198,9 @@ func _setup_character_model():
 	selected_variant_index = randi() % CHARACTER_VARIANTS.size()
 	var variant = CHARACTER_VARIANTS[selected_variant_index]
 	
-	print("=== SETTING UP CHARACTER: ", variant["name"], " ===")
-	
 	# Try to load pre-configured scene first (if it exists)
 	var scene_path = CHARACTER_VARIANT_SCENES[selected_variant_index]
 	if ResourceLoader.exists(scene_path):
-		print("Loading pre-configured scene: ", scene_path)
 		var character_scene = load(scene_path)
 		character_model = character_scene.instantiate()
 		add_child(character_model)
@@ -172,7 +222,6 @@ func _setup_character_model():
 		return
 	
 	# Load the character model FBX (contains mesh and skeleton)
-	print("Loading model: ", variant["model"])
 	var model_scene = load(variant["model"])
 	if not model_scene:
 		push_error("Failed to load character model!")
@@ -195,9 +244,6 @@ func _setup_character_model():
 		push_error("No AnimationPlayer found in model!")
 		return
 	
-	print("Found Skeleton with ", skeleton.get_bone_count(), " bones")
-	print("Found AnimationPlayer")
-	
 	# Configure AnimationPlayer
 	animation_player.active = true
 	animation_player.process_mode = Node.PROCESS_MODE_INHERIT
@@ -207,21 +253,19 @@ func _setup_character_model():
 	if armature:
 		var relative_path = animation_player.get_path_to(armature)
 		animation_player.root_node = relative_path
-		print("Set AnimationPlayer root to: ", relative_path)
 	
 	# Load and merge animations from separate FBX files
-	print("Loading idle animation: ", variant["idle"])
 	_load_animation_from_fbx(variant["idle"], "idle", skeleton)
-	
-	print("Loading walk animation: ", variant["walk"])
 	_load_animation_from_fbx(variant["walk"], "walk", skeleton)
+	_load_animation_from_fbx(variant["walk_cart"], "walk_cart", skeleton)
+	_load_animation_from_fbx(variant["fall"], "fall", skeleton)
+	_load_animation_from_fbx(variant["run"], "run", skeleton)
 	
 	# Wait a frame for everything to be set up
 	await get_tree().process_frame
 	
 	# Find the animations we just loaded
 	var anim_list = animation_player.get_animation_list()
-	print("Available animations: ", anim_list)
 	
 	# Detect idle and walk animations (skip RESET)
 	for anim_name in anim_list:
@@ -231,10 +275,14 @@ func _setup_character_model():
 		var lower = anim_name.to_lower()
 		if "idle" in lower and idle_anim_name == "":
 			idle_anim_name = anim_name
-			print("Set idle animation: ", idle_anim_name)
+		elif "walk_cart" in lower and walk_cart_anim_name == "":
+			walk_cart_anim_name = anim_name
 		elif ("walk" in lower or "locomotion" in lower) and walk_anim_name == "":
 			walk_anim_name = anim_name
-			print("Set walk animation: ", walk_anim_name)
+		elif ("fall" in lower or "sweep" in lower) and fall_anim_name == "":
+			fall_anim_name = anim_name
+		elif ("run" in lower or "injured" in lower) and run_anim_name == "":
+			run_anim_name = anim_name
 	
 	# Fallback to first available animations
 	if idle_anim_name == "" and anim_list.size() > 0:
@@ -245,14 +293,22 @@ func _setup_character_model():
 	
 	if walk_anim_name == "":
 		for anim in anim_list:
-			if not "RESET" in anim.to_upper() and anim != idle_anim_name:
+			if not "RESET" in anim.to_upper() and anim != idle_anim_name and anim != walk_cart_anim_name:
 				walk_anim_name = anim
 				break
 	
 	if walk_anim_name == "":
 		walk_anim_name = idle_anim_name
 	
-	print("Final animations - idle: '", idle_anim_name, "', walk: '", walk_anim_name, "'")
+	# Fallback for cart animation
+	if walk_cart_anim_name == "":
+		walk_cart_anim_name = walk_anim_name  # Use regular walk if no cart animation
+	
+	if fall_anim_name == "":
+		fall_anim_name = idle_anim_name  # Fallback to idle if no fall animation
+	
+	if run_anim_name == "":
+		run_anim_name = walk_anim_name  # Fallback to walk if no run animation
 	
 	# Set animations to loop
 	if animation_player.has_animation(idle_anim_name):
@@ -269,10 +325,30 @@ func _setup_character_model():
 			if anim:
 				anim.loop_mode = Animation.LOOP_LINEAR
 	
+	if animation_player.has_animation(walk_cart_anim_name):
+		var lib = animation_player.get_animation_library("")
+		if lib:
+			var anim = lib.get_animation(walk_cart_anim_name)
+			if anim:
+				anim.loop_mode = Animation.LOOP_LINEAR
+	
+	if animation_player.has_animation(fall_anim_name):
+		var lib = animation_player.get_animation_library("")
+		if lib:
+			var anim = lib.get_animation(fall_anim_name)
+			if anim:
+				anim.loop_mode = Animation.LOOP_NONE  # Fall animation shouldn't loop
+	
+	if animation_player.has_animation(run_anim_name):
+		var lib = animation_player.get_animation_library("")
+		if lib:
+			var anim = lib.get_animation(run_anim_name)
+			if anim:
+				anim.loop_mode = Animation.LOOP_LINEAR  # Run animation should loop
+	
 	# Start playing idle animation
 	if animation_player.has_animation(idle_anim_name):
 		animation_player.play(idle_anim_name)
-		print("Started playing: ", idle_anim_name)
 		last_animation = idle_anim_name
 	
 	# Hide placeholder
@@ -344,8 +420,8 @@ func _load_animation_from_fbx(fbx_path: String, anim_prefix: String, target_skel
 			# Duplicate the animation so we can modify it
 			var anim_copy = animation.duplicate()
 			
-			# Remove root motion from walk animations (keep character in place)
-			if anim_prefix == "walk":
+			# Remove root motion from walk and run animations (keep character in place)
+			if anim_prefix == "walk" or anim_prefix == "walk_cart" or anim_prefix == "run":
 				_remove_root_motion(anim_copy)
 			
 			# Get or create the animation library in our main AnimationPlayer
@@ -359,7 +435,6 @@ func _load_animation_from_fbx(fbx_path: String, anim_prefix: String, target_skel
 			# Add the animation
 			if not main_library.has_animation(new_anim_name):
 				main_library.add_animation(new_anim_name, anim_copy)
-				print("  Added animation: ", new_anim_name, " (", animation.get_track_count(), " tracks)")
 	
 	temp_instance.queue_free()
 
@@ -386,8 +461,6 @@ func _remove_root_motion(animation: Animation):
 						var current_pos = animation.track_get_key_value(track_idx, key_idx)
 						var new_pos = Vector3(first_pos.x, current_pos.y, first_pos.z)
 						animation.track_set_key_value(track_idx, key_idx, new_pos)
-					
-					print("  Removed root motion from Hips track (kept vertical bob)")
 				break
 
 func _print_node_hierarchy(node: Node, indent: int):
@@ -400,7 +473,7 @@ func _print_node_hierarchy(node: Node, indent: int):
 		_print_node_hierarchy(child, indent + 1)
 
 func _play_animation(anim_type: String):
-	"""Play the specified animation type (idle or walk)"""
+	"""Play the specified animation type (idle or walk or fall or run)"""
 	# If using pre-configured character model, use its methods
 	if character_model and character_model is CustomerCharacterModel:
 		if anim_type == "idle":
@@ -419,7 +492,15 @@ func _play_animation(anim_type: String):
 		"idle":
 			target_anim = idle_anim_name
 		"walk":
-			target_anim = walk_anim_name
+			# Use shopping cart animation if customer has a cart
+			if customer_type == CustomerType.WITH_CART and shopping_cart and is_instance_valid(shopping_cart):
+				target_anim = walk_cart_anim_name
+			else:
+				target_anim = walk_anim_name
+		"fall":
+			target_anim = fall_anim_name
+		"run":
+			target_anim = run_anim_name
 	
 	if target_anim == "":
 		return
@@ -464,6 +545,12 @@ func _physics_process(delta):
 			_state_stopping(delta)
 		"LEAVING":
 			_state_leaving(delta)
+		"FALLING":
+			_state_falling(delta)
+		"AGGRESSIVE":
+			_state_aggressive(delta)
+		"ATTACKING":
+			_state_attacking(delta)
 
 func _state_idle(delta):
 	_play_animation("idle")
@@ -531,6 +618,94 @@ func _state_leaving(delta):
 	
 	if customer_type == CustomerType.WITH_CART and shopping_cart:
 		_update_cart_position()
+
+func _state_falling(delta):
+	"""Handle knockback/falling state - minimal movement, focus on animation"""
+	_play_animation("fall")
+	
+	# Apply knockback velocity (but decay it very quickly)
+	if knockback_timer > 0:
+		knockback_timer -= delta
+		velocity = knockback_velocity
+		move_and_slide()
+		
+		# Rapidly reduce knockback to almost nothing
+		knockback_velocity = knockback_velocity.lerp(Vector3.ZERO, delta * 10.0)
+	else:
+		# Knockback finished, stop all movement immediately
+		velocity = Vector3.ZERO
+		knockback_velocity = Vector3.ZERO
+		move_and_slide()
+		
+		recovery_timer -= delta
+		if recovery_timer <= 0:
+			# Recovery complete, return to previous state
+			is_knocked_back = false
+			current_state = previous_state
+			
+			# If they were navigating, resume navigation
+			if current_state == "WALKING" or current_state == "LEAVING":
+				if nav_agent.target_position != Vector3.ZERO:
+					# Re-enable navigation
+					nav_agent.set_velocity(Vector3.ZERO)
+
+func _state_aggressive(delta):
+	"""Chase the player aggressively"""
+	_play_animation("run")
+	
+	# Find player if we don't have a reference
+	if not target_player or not is_instance_valid(target_player):
+		var players = get_tree().get_nodes_in_group("player")
+		if players.size() > 0:
+			target_player = players[0]
+		else:
+			# No player found, calm down
+			_become_calm()
+			return
+	
+	# Check distance to player
+	var distance_to_player = global_position.distance_to(target_player.global_position)
+	
+	# Too far away? Calm down
+	if distance_to_player > lose_player_distance:
+		aggression_timer += delta
+		if aggression_timer > calm_down_time:
+			_become_calm()
+			return
+	else:
+		aggression_timer = 0  # Reset timer if player is nearby
+	
+	# Close enough to attack?
+	if distance_to_player < attack_range and not has_attacked:
+		current_state = "ATTACKING"
+		has_attacked = true
+		_attack_player()
+		return
+	
+	# Update navigation to chase player
+	nav_agent.target_position = target_player.global_position
+	
+	if not nav_agent.is_navigation_finished():
+		var next_path_pos = nav_agent.get_next_path_position()
+		var direction = (next_path_pos - global_position).normalized()
+		
+		# Move faster when aggressive
+		var desired_velocity = direction * chase_speed
+		nav_agent.velocity = desired_velocity
+		
+		# Face player
+		if direction.length() > 0.1:
+			var target_rotation = atan2(direction.x, direction.z)
+			rotation.y = lerp_angle(rotation.y, target_rotation, delta * rotation_speed * 1.5)
+
+func _state_attacking(delta):
+	"""Playing attack animation"""
+	_play_animation("run")  # Keep running animation
+	
+	# Attack happens instantly when entering this state
+	# After a short delay, become calm
+	await get_tree().create_timer(0.5).timeout
+	_become_calm()
 
 func _pick_random_destination():
 	if cached_shelf_markers.is_empty():
@@ -721,3 +896,186 @@ func cart_taken_by_player():
 			return
 	
 	nav_agent.target_position = exit.global_position
+
+func apply_knockback(from_position: Vector3, force_multiplier: float = 1.0):
+	"""Apply knockback to customer from a punch/push"""
+	if is_knocked_back:
+		return  # Already knocked back
+	
+	# Save current state to return to later
+	previous_state = current_state
+	
+	# Enter falling state
+	current_state = "FALLING"
+	is_knocked_back = true
+	
+	# Calculate knockback direction (away from punch source)
+	var knockback_dir = (global_position - from_position).normalized()
+	knockback_dir.y = 0  # Keep it horizontal
+	
+	# Apply force
+	knockback_velocity = knockback_dir * knockback_force * force_multiplier
+	knockback_timer = knockback_duration
+	recovery_timer = fall_recovery_time
+	
+	# Play hit sound
+	_play_hit_sound()
+	
+	# Spawn impact particles
+	_spawn_impact_particles()
+	
+	# Chance to become aggressive after recovering
+	if randf() < aggression_chance:
+		# Will become aggressive after falling
+		previous_state = "AGGRESSIVE"
+
+func _become_aggressive():
+	"""Transition to aggressive/chasing state"""
+	is_aggressive = true
+	current_state = "AGGRESSIVE"
+	has_attacked = false
+	aggression_timer = 0.0
+	
+	# Drop shopping cart if we have one
+	if shopping_cart and is_instance_valid(shopping_cart):
+		shopping_cart.set_owner_customer(null)
+		shopping_cart = null
+	
+	# Find player
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		target_player = players[0]
+	
+	# Play angry sound
+	_play_angry_sound()
+	
+	# Spawn anger particle effect
+	_spawn_anger_particles()
+
+func _become_calm():
+	"""Return to normal shopping behavior"""
+	is_aggressive = false
+	has_attacked = false
+	target_player = null
+	aggression_timer = 0.0
+	
+	# Remove anger particles
+	if anger_particle:
+		anger_particle.queue_free()
+		anger_particle = null
+	
+	# Return to walking state and pick a new destination
+	current_state = "WALKING"
+	_pick_random_destination()
+
+func _attack_player():
+	"""Attack the player - push them back and stun them"""
+	if not target_player or not is_instance_valid(target_player):
+		_become_calm()
+		return
+	
+	# Calculate direction to push player
+	var push_dir = (target_player.global_position - global_position).normalized()
+	push_dir.y = 0
+	
+	# Tell player they got hit
+	if target_player.has_method("take_customer_attack"):
+		target_player.take_customer_attack(push_dir * attack_knockback, global_position)
+
+func _play_hit_sound():
+	"""Play the MLG hitmarker sound effect"""
+	var audio_player = AudioStreamPlayer3D.new()
+	add_child(audio_player)
+	
+	var hit_sound = load("res://assets/sfx/MLG Hitmarker Sound Effect.mp3")
+	if hit_sound:
+		audio_player.stream = hit_sound
+		audio_player.volume_db = 0
+		audio_player.max_distance = 20.0
+		audio_player.play()
+		
+		# Auto-delete after playing
+		await audio_player.finished
+		audio_player.queue_free()
+
+func _play_angry_sound():
+	"""Play angry Roblox sound effect"""
+	var audio_player = AudioStreamPlayer3D.new()
+	add_child(audio_player)
+	
+	var angry_sound = load("res://assets/sfx/Roblox Angry Sound Effect.mp3")
+	if angry_sound:
+		audio_player.stream = angry_sound
+		audio_player.volume_db = 5
+		audio_player.max_distance = 25.0
+		audio_player.play()
+		
+		# Auto-delete after playing
+		await audio_player.finished
+		audio_player.queue_free()
+
+func _spawn_impact_particles():
+	"""Spawn impact particles at hit location"""
+	# Create simple particle burst
+	var particles = CPUParticles3D.new()
+	add_child(particles)
+	particles.position = Vector3(0, 1, 0)  # At chest height
+	
+	# Configure particles
+	particles.emitting = true
+	particles.one_shot = true
+	particles.explosiveness = 1.0
+	particles.amount = 20
+	particles.lifetime = 0.5
+	particles.emission_shape = CPUParticles3D.EMISSION_SHAPE_SPHERE
+	particles.emission_sphere_radius = 0.2
+	
+	# Particle properties
+	particles.direction = Vector3(0, 1, 0)
+	particles.spread = 180
+	particles.initial_velocity_min = 2.0
+	particles.initial_velocity_max = 4.0
+	particles.gravity = Vector3(0, -9.8, 0)
+	particles.scale_amount_min = 0.1
+	particles.scale_amount_max = 0.2
+	
+	# Color (orange/red impact effect)
+	var gradient = Gradient.new()
+	gradient.add_point(0.0, Color(1, 0.5, 0, 1))  # Orange
+	gradient.add_point(1.0, Color(1, 0, 0, 0))     # Fade to transparent red
+	particles.color_ramp = gradient
+	
+	# Auto-delete after particles finish
+	await get_tree().create_timer(particles.lifetime + 0.1).timeout
+	particles.queue_free()
+
+func _spawn_anger_particles():
+	"""Spawn exclamation mark / anger effect above customer's head"""
+	# Create particle effect that stays active
+	var particles = CPUParticles3D.new()
+	add_child(particles)
+	particles.position = Vector3(0, 2, 0)  # Above head
+	anger_particle = particles
+	
+	# Configure continuous anger particles
+	particles.emitting = true
+	particles.amount = 8
+	particles.lifetime = 0.8
+	particles.emission_shape = CPUParticles3D.EMISSION_SHAPE_SPHERE
+	particles.emission_sphere_radius = 0.3
+	
+	# Particle properties - floating upward
+	particles.direction = Vector3(0, 1, 0)
+	particles.spread = 20
+	particles.initial_velocity_min = 0.5
+	particles.initial_velocity_max = 1.0
+	particles.gravity = Vector3(0, 0.5, 0)  # Slight upward float
+	particles.scale_amount_min = 0.15
+	particles.scale_amount_max = 0.25
+	
+	# Red angry color
+	var gradient = Gradient.new()
+	gradient.add_point(0.0, Color(1, 0, 0, 1))      # Bright red
+	gradient.add_point(0.5, Color(1, 0.3, 0, 1))    # Orange-red
+	gradient.add_point(1.0, Color(0.8, 0, 0, 0))    # Fade out
+	particles.color_ramp = gradient

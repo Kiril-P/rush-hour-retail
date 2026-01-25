@@ -69,6 +69,11 @@ var last_position = Vector3.ZERO
 var shake_amount: float = 0.0
 var shake_decay: float = 5.0
 
+# Player Stun System
+var is_stunned: bool = false
+var stun_duration: float = 0.0
+var stun_vignette_amount: float = 0.0
+
 @onready var collision_shape_3d = $CollisionShape3D
 @onready var ground_check_ray: RayCast3D = null  # Will create in _ready
 
@@ -114,6 +119,13 @@ func _input(event):
 
 	# Left click
 	if event.is_action_pressed("interact"):
+		# Check if looking at a customer
+		if ray_cast_3d.is_colliding():
+			var hit = ray_cast_3d.get_collider()
+			if hit and hit is CustomerAI:
+				_punch_customer(hit)
+				return  # Don't do regular interaction if we punched
+		
 		interact_button_pressed_time = Time.get_ticks_msec()
 	
 	if event.is_action_released("interact"):
@@ -208,6 +220,22 @@ func _physics_process(delta):
 	if GameManager:
 		current_mouse_sens = GameManager.mouse_sensitivity
 		current_base_fov = GameManager.target_fov
+	
+	# Update stun effect
+	_update_stun_effect(delta)
+	
+	# If stunned, don't process normal movement
+	if is_stunned:
+		# Apply gravity while stunned
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		
+		# Reduce knockback velocity
+		velocity.x = lerp(velocity.x, 0.0, delta * 5.0)
+		velocity.z = lerp(velocity.z, 0.0, delta * 5.0)
+		
+		move_and_slide()
+		return
 
 	# Crouching and Sprinting logic
 	is_crouching = Input.is_action_pressed("crouch")
@@ -425,6 +453,13 @@ func _update_crosshair_visual(delta):
 	if not crosshair: 
 		return
 	
+	# Check if looking at a customer (punchable!)
+	var looking_at_customer = false
+	if ray_cast_3d.is_colliding():
+		var hit = ray_cast_3d.get_collider()
+		if hit and hit is CustomerAI:
+			looking_at_customer = true
+	
 	# Use cached result (only calculated when collider changes!)
 	var is_interactable = cached_interactable
 	if is_interactable == null:
@@ -434,8 +469,12 @@ func _update_crosshair_visual(delta):
 	var target_color = Color.WHITE
 	var target_scale = Vector2(1.0, 1.0)
 	
-	if is_interactable:
-		target_color = Color(0.2, 1.0, 0.8)
+	# Priority: Customer (punchable) overrides regular interactable
+	if looking_at_customer:
+		target_color = Color(1.0, 0.3, 0.3)  # Red for punch
+		target_scale = Vector2(1.3, 1.3)
+	elif is_interactable:
+		target_color = Color(0.2, 1.0, 0.8)  # Cyan for interact
 		target_scale = Vector2(1.2, 1.2)
 	
 	crosshair.modulate = crosshair.modulate.lerp(target_color, delta * 20.0)
@@ -507,3 +546,65 @@ func _is_near_ground() -> bool:
 	if ground_check_ray and ground_check_ray.is_colliding():
 		return true
 	return false
+
+func _punch_customer(customer: CustomerAI):
+	"""Punch/push a customer, applying knockback"""
+	if not customer or not is_instance_valid(customer):
+		return
+	
+	# Can't punch while stunned
+	if is_stunned:
+		return
+	
+	# Apply knockback from player's position
+	customer.apply_knockback(global_position, 1.0)
+	
+	# Screen shake for impact feedback (use existing shake system)
+	shake_amount += 0.3
+	
+	# TODO: Add hitmarker visual in a future update
+
+func take_customer_attack(knockback_velocity: Vector3, from_position: Vector3):
+	"""Called when an aggressive customer attacks the player"""
+	if is_stunned:
+		return  # Already stunned
+	
+	# Apply knockback
+	velocity = knockback_velocity
+	
+	# Stun the player
+	is_stunned = true
+	stun_duration = 1.0
+	
+	# Heavy screen shake
+	shake_amount += 0.8
+	
+	# Play hit sound
+	_play_player_hit_sound()
+
+func _play_player_hit_sound():
+	"""Play sound when player gets hit"""
+	var audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	
+	var hit_sound = load("res://assets/sfx/MLG Hitmarker Sound Effect.mp3")
+	if hit_sound:
+		audio_player.stream = hit_sound
+		audio_player.volume_db = 5
+		audio_player.play()
+		
+		# Auto-delete after playing
+		await audio_player.finished
+		audio_player.queue_free()
+
+func _update_stun_effect(delta):
+	"""Handle stun timer and effects"""
+	if is_stunned:
+		stun_duration -= delta
+		stun_vignette_amount = lerp(stun_vignette_amount, 1.0, delta * 10.0)
+		
+		if stun_duration <= 0:
+			is_stunned = false
+			stun_duration = 0
+	else:
+		stun_vignette_amount = lerp(stun_vignette_amount, 0.0, delta * 5.0)
