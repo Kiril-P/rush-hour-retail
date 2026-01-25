@@ -1,7 +1,19 @@
 extends CharacterBody3D
 class_name CustomerAI
 
-## AI Customer - With visual adjustment markers!
+## AI Customer - With animated character models!
+## 
+## This system loads character models from res://assets/customer_char/ with animations.
+## Each customer randomly selects one of 4 character variants on spawn.
+## Character models are FBX files with embedded animations (idle, walk, extra).
+## 
+## The system automatically:
+## - Loads the character mesh and skeleton from the idle FBX
+## - Merges walk animation from the walk FBX
+## - Detects and plays idle/walk animations based on movement state
+## - Scales models appropriately (use character_scale export to adjust)
+## 
+## Visual adjustments can be made via exported variables or CartAttachPoint marker.
 
 enum CustomerType {
 	WITHOUT_CART,
@@ -20,13 +32,53 @@ enum CustomerType {
 @export var cart_distance_forward: float = 0.8  # How far in front
 @export var cart_height_offset: float = 0.0  # Height adjustment for cart
 @export var cart_side_offset: float = 0.0  # Left/right offset
+@export var character_scale: float = 0.01  # FBX models often need 0.01 or 1.0
+
+# Character variant data - Each character has a model file + separate animation files
+const CHARACTER_VARIANTS = [
+	{
+		"name": "Black Guy",
+		"model": "res://assets/customer_char/black guy/LowPolyCharacter_BLACK.fbx",
+		"idle": "res://assets/customer_char/black guy/Happy Idle.fbx",
+		"walk": "res://assets/customer_char/black guy/Happy Walk.fbx"
+	},
+	{
+		"name": "Gustave",
+		"model": "res://assets/customer_char/gustave/LowPolyCharacter_GUSTAVE.fbx",
+		"idle": "res://assets/customer_char/gustave/Breathing Idle.fbx",
+		"walk": "res://assets/customer_char/gustave/Walking.fbx"
+	},
+	{
+		"name": "Jew Hat",
+		"model": "res://assets/customer_char/jew hat/LowPolyCharacter2_JEW.fbx",
+		"idle": "res://assets/customer_char/jew hat/Dwarf Idle.fbx",
+		"walk": "res://assets/customer_char/jew hat/Dwarf Walk.fbx"
+	},
+	{
+		"name": "Woman",
+		"model": "res://assets/customer_char/woman/LowPolyCharacter_WOMAN.fbx",
+		"idle": "res://assets/customer_char/woman/Dwarf Idle.fbx",
+		"walk": "res://assets/customer_char/woman/Female Tough Walk.fbx"
+	}
+]
+
+# Fallback scene paths (if you create .tscn files later)
+const CHARACTER_VARIANT_SCENES = [
+	"res://scenes/characters/customer_black_guy.tscn",
+	"res://scenes/characters/customer_gustave.tscn",
+	"res://scenes/characters/customer_jew_hat.tscn",
+	"res://scenes/characters/customer_woman.tscn"
+]
 
 # Or use a marker for precise control!
 @onready var cart_attach_point: Node3D = $CartAttachPoint if has_node("CartAttachPoint") else null
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var placeholder_mesh = $MeshInstance3D if has_node("MeshInstance3D") else null
 
-var shopping_cart: ShoppingCart = null
+var character_model: Node3D
+var animation_player: AnimationPlayer
+var last_animation: String = ""
 var spawn_position: Vector3
 var current_stops: int = 0
 var is_stopping: bool = false
@@ -34,6 +86,10 @@ var stop_timer: float = 0.0
 var current_state: String = "IDLE"
 var current_target: Vector3
 var shelf_to_face: Node3D = null
+var selected_variant_index: int = -1
+var idle_anim_name: String = ""
+var walk_anim_name: String = ""
+var shopping_cart: RigidBody3D = null
 
 static var cached_shelf_markers: Array = []
 static var cached_exit_markers: Array = []
@@ -44,6 +100,9 @@ func _ready():
 	add_to_group("customer")
 	
 	spawn_position = global_position
+	
+	# Setup character model
+	_setup_character_model()
 	
 	# Apply ground height offset
 	global_position.y += ground_height_offset
@@ -80,6 +139,300 @@ func _ready():
 	await get_tree().physics_frame
 	_pick_random_destination()
 
+func _setup_character_model():
+	"""Load character model and apply animations from separate FBX files"""
+	# Pick a random character variant
+	selected_variant_index = randi() % CHARACTER_VARIANTS.size()
+	var variant = CHARACTER_VARIANTS[selected_variant_index]
+	
+	print("=== SETTING UP CHARACTER: ", variant["name"], " ===")
+	
+	# Try to load pre-configured scene first (if it exists)
+	var scene_path = CHARACTER_VARIANT_SCENES[selected_variant_index]
+	if ResourceLoader.exists(scene_path):
+		print("Loading pre-configured scene: ", scene_path)
+		var character_scene = load(scene_path)
+		character_model = character_scene.instantiate()
+		add_child(character_model)
+		character_model.scale = Vector3.ONE * character_scale
+		character_model.position.y = -0.9 * character_scale
+		
+		animation_player = _find_animation_player(character_model)
+		if animation_player:
+			var anims = animation_player.get_animation_list()
+			for anim in anims:
+				if not "RESET" in anim.to_upper():
+					if idle_anim_name == "":
+						idle_anim_name = anim
+					elif walk_anim_name == "":
+						walk_anim_name = anim
+		
+		if placeholder_mesh:
+			placeholder_mesh.visible = false
+		return
+	
+	# Load the character model FBX (contains mesh and skeleton)
+	print("Loading model: ", variant["model"])
+	var model_scene = load(variant["model"])
+	if not model_scene:
+		push_error("Failed to load character model!")
+		return
+	
+	character_model = model_scene.instantiate()
+	add_child(character_model)
+	character_model.scale = Vector3.ONE * character_scale
+	character_model.position.y = -0.9 * character_scale
+	
+	# Find skeleton and animation player
+	var skeleton = _find_skeleton(character_model)
+	animation_player = _find_animation_player(character_model)
+	
+	if not skeleton:
+		push_error("No Skeleton3D found in model!")
+		return
+	
+	if not animation_player:
+		push_error("No AnimationPlayer found in model!")
+		return
+	
+	print("Found Skeleton with ", skeleton.get_bone_count(), " bones")
+	print("Found AnimationPlayer")
+	
+	# Configure AnimationPlayer
+	animation_player.active = true
+	animation_player.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	# Set root node for animations
+	var armature = skeleton.get_parent()
+	if armature:
+		var relative_path = animation_player.get_path_to(armature)
+		animation_player.root_node = relative_path
+		print("Set AnimationPlayer root to: ", relative_path)
+	
+	# Load and merge animations from separate FBX files
+	print("Loading idle animation: ", variant["idle"])
+	_load_animation_from_fbx(variant["idle"], "idle", skeleton)
+	
+	print("Loading walk animation: ", variant["walk"])
+	_load_animation_from_fbx(variant["walk"], "walk", skeleton)
+	
+	# Wait a frame for everything to be set up
+	await get_tree().process_frame
+	
+	# Find the animations we just loaded
+	var anim_list = animation_player.get_animation_list()
+	print("Available animations: ", anim_list)
+	
+	# Detect idle and walk animations (skip RESET)
+	for anim_name in anim_list:
+		if "RESET" in anim_name.to_upper():
+			continue
+		
+		var lower = anim_name.to_lower()
+		if "idle" in lower and idle_anim_name == "":
+			idle_anim_name = anim_name
+			print("Set idle animation: ", idle_anim_name)
+		elif ("walk" in lower or "locomotion" in lower) and walk_anim_name == "":
+			walk_anim_name = anim_name
+			print("Set walk animation: ", walk_anim_name)
+	
+	# Fallback to first available animations
+	if idle_anim_name == "" and anim_list.size() > 0:
+		for anim in anim_list:
+			if not "RESET" in anim.to_upper():
+				idle_anim_name = anim
+				break
+	
+	if walk_anim_name == "":
+		for anim in anim_list:
+			if not "RESET" in anim.to_upper() and anim != idle_anim_name:
+				walk_anim_name = anim
+				break
+	
+	if walk_anim_name == "":
+		walk_anim_name = idle_anim_name
+	
+	print("Final animations - idle: '", idle_anim_name, "', walk: '", walk_anim_name, "'")
+	
+	# Set animations to loop
+	if animation_player.has_animation(idle_anim_name):
+		var lib = animation_player.get_animation_library("")
+		if lib:
+			var anim = lib.get_animation(idle_anim_name)
+			if anim:
+				anim.loop_mode = Animation.LOOP_LINEAR
+	
+	if animation_player.has_animation(walk_anim_name):
+		var lib = animation_player.get_animation_library("")
+		if lib:
+			var anim = lib.get_animation(walk_anim_name)
+			if anim:
+				anim.loop_mode = Animation.LOOP_LINEAR
+	
+	# Start playing idle animation
+	if animation_player.has_animation(idle_anim_name):
+		animation_player.play(idle_anim_name)
+		print("Started playing: ", idle_anim_name)
+		last_animation = idle_anim_name
+	
+	# Hide placeholder
+	if placeholder_mesh:
+		placeholder_mesh.visible = false
+
+func _find_animation_player(node: Node) -> AnimationPlayer:
+	"""Recursively find AnimationPlayer in the node hierarchy"""
+	if node is AnimationPlayer:
+		return node
+	
+	for child in node.get_children():
+		var result = _find_animation_player(child)
+		if result:
+			return result
+	
+	return null
+
+func _find_skeleton(node: Node) -> Skeleton3D:
+	"""Recursively find Skeleton3D in the node hierarchy"""
+	if node is Skeleton3D:
+		return node
+	
+	for child in node.get_children():
+		var result = _find_skeleton(child)
+		if result:
+			return result
+	
+	return null
+
+func _load_animation_from_fbx(fbx_path: String, anim_prefix: String, target_skeleton: Skeleton3D):
+	"""Load animation from a separate FBX file and add it to the AnimationPlayer"""
+	var anim_scene = load(fbx_path)
+	if not anim_scene:
+		push_error("Failed to load animation FBX: ", fbx_path)
+		return
+	
+	# Instantiate the animation FBX temporarily
+	var temp_instance = anim_scene.instantiate()
+	var temp_anim_player = _find_animation_player(temp_instance)
+	
+	if not temp_anim_player:
+		push_error("No AnimationPlayer in animation FBX: ", fbx_path)
+		temp_instance.queue_free()
+		return
+	
+	# Get the animation library
+	var library_names = temp_anim_player.get_animation_library_list()
+	
+	for lib_name in library_names:
+		var temp_library = temp_anim_player.get_animation_library(lib_name)
+		if not temp_library:
+			continue
+		
+		var anim_list = temp_library.get_animation_list()
+		
+		for anim_name in anim_list:
+			# Skip RESET animations
+			if "RESET" in anim_name.to_upper():
+				continue
+			
+			var animation = temp_library.get_animation(anim_name)
+			if not animation:
+				continue
+			
+			# Create a new name for this animation
+			var new_anim_name = anim_prefix + "_" + anim_name
+			
+			# Duplicate the animation so we can modify it
+			var anim_copy = animation.duplicate()
+			
+			# Remove root motion from walk animations (keep character in place)
+			if anim_prefix == "walk":
+				_remove_root_motion(anim_copy)
+			
+			# Get or create the animation library in our main AnimationPlayer
+			var main_library = null
+			if animation_player.has_animation_library(""):
+				main_library = animation_player.get_animation_library("")
+			else:
+				main_library = AnimationLibrary.new()
+				animation_player.add_animation_library("", main_library)
+			
+			# Add the animation
+			if not main_library.has_animation(new_anim_name):
+				main_library.add_animation(new_anim_name, anim_copy)
+				print("  Added animation: ", new_anim_name, " (", animation.get_track_count(), " tracks)")
+	
+	temp_instance.queue_free()
+
+func _remove_root_motion(animation: Animation):
+	"""Remove forward/sideways motion from animation (keep vertical movement for bobbing)"""
+	# Find the Hips/Root bone track and remove X/Z position animation
+	for track_idx in range(animation.get_track_count()):
+		var track_path = animation.track_get_path(track_idx)
+		var track_path_str = str(track_path)
+		
+		# Check if this is the root/hips position track
+		if "Hips" in track_path_str or "hips" in track_path_str:
+			var track_type = animation.track_get_type(track_idx)
+			
+			# Type 1 = Position3D track
+			if track_type == Animation.TYPE_POSITION_3D:
+				# Get the first keyframe position as the "in-place" position
+				if animation.track_get_key_count(track_idx) > 0:
+					var first_pos = animation.track_get_key_value(track_idx, 0)
+					
+					# Set all keyframes to have the same X and Z (remove forward movement)
+					# But keep Y animation for natural bobbing
+					for key_idx in range(animation.track_get_key_count(track_idx)):
+						var current_pos = animation.track_get_key_value(track_idx, key_idx)
+						var new_pos = Vector3(first_pos.x, current_pos.y, first_pos.z)
+						animation.track_set_key_value(track_idx, key_idx, new_pos)
+					
+					print("  Removed root motion from Hips track (kept vertical bob)")
+				break
+
+func _print_node_hierarchy(node: Node, indent: int):
+	"""Debug helper to print node hierarchy"""
+	var indent_str = ""
+	for i in range(indent):
+		indent_str += "  "
+	print(indent_str, node.name, " (", node.get_class(), ")")
+	for child in node.get_children():
+		_print_node_hierarchy(child, indent + 1)
+
+func _play_animation(anim_type: String):
+	"""Play the specified animation type (idle or walk)"""
+	# If using pre-configured character model, use its methods
+	if character_model and character_model is CustomerCharacterModel:
+		if anim_type == "idle":
+			character_model.play_idle()
+		elif anim_type == "walk":
+			character_model.play_walk()
+		return
+	
+	# Otherwise use direct AnimationPlayer control (fallback/old method)
+	if not animation_player:
+		return
+	
+	var target_anim = ""
+	
+	match anim_type:
+		"idle":
+			target_anim = idle_anim_name
+		"walk":
+			target_anim = walk_anim_name
+	
+	if target_anim == "":
+		return
+	
+	# Only change animation if different from current
+	if target_anim != last_animation:
+		if animation_player.has_animation(target_anim):
+			animation_player.play(target_anim)
+			last_animation = target_anim
+		else:
+			if get_tree().get_frame() % 120 == 0:  # Don't spam console
+				print("Animation not found: ", target_anim)
+
 func _validate_cached_markers() -> bool:
 	"""Check if cached markers are still valid (not freed after scene reload)"""
 	if cached_shelf_markers.is_empty() or cached_exit_markers.is_empty():
@@ -113,9 +466,11 @@ func _physics_process(delta):
 			_state_leaving(delta)
 
 func _state_idle(delta):
+	_play_animation("idle")
 	current_state = "WALKING"
 
 func _state_walking(delta):
+	_play_animation("walk")
 	if nav_agent.is_navigation_finished():
 		if current_stops < stops_before_leaving:
 			_start_stopping()
@@ -139,6 +494,7 @@ func _state_walking(delta):
 		_update_cart_position()
 
 func _state_stopping(delta):
+	_play_animation("idle")
 	velocity = Vector3.ZERO
 	move_and_slide()
 	
@@ -156,6 +512,7 @@ func _state_stopping(delta):
 		_pick_random_destination()
 
 func _state_leaving(delta):
+	_play_animation("walk")
 	if nav_agent.is_navigation_finished():
 		_despawn()
 		return

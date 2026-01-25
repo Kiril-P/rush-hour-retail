@@ -16,8 +16,10 @@ height = 0.6
 [node name="Customer" type="CharacterBody3D"]
 motion_mode = 1
 script = ExtResource("1_fu7rw")
+ground_height_offset = 2.0
 cart_distance_forward = -0.5
 cart_height_offset = -0.45
+character_scale = 0.6
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_bwvtj")

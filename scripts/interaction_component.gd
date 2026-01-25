@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var carry_marker = %CarryObjectMarker
 @export var ray_cast_3d: RayCast3D 
-@export var throw_force: float = 8.0 
+@export var throw_force: float = 30.0
 
 var picked_object = null
 var player_node: CharacterBody3D

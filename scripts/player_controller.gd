@@ -27,7 +27,7 @@ const BASKET_SPEED_MULT = 0.8 # 80% speed with basket
 
 const BOB_FREQ = 3.0
 const BOB_AMP = 0.04
-var t_bob = 0.0
+var t_bob = 0.02
 
 const CROUCH_HEIGHT = 0.4
 const STAND_HEIGHT = 0.8
