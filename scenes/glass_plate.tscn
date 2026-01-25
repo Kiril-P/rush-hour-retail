@@ -86,6 +86,7 @@ points = PackedVector3Array(-1.3048437, -0.11659999, -1.5714256, -1.1999719, 0.1
 
 [node name="GlassPlate" type="RigidBody3D"]
 mass = 0.5
+sleeping = true
 script = ExtResource("1_qnvon")
 item_name = "Glass"
 

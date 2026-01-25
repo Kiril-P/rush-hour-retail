@@ -4,7 +4,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bwvtj"]
 radius = 0.15
-height = 0.6
+height = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fu7rw"]
 albedo_color = Color(0, 0.22055057, 0.38316923, 1)
@@ -16,6 +16,8 @@ height = 0.6
 [node name="Customer" type="CharacterBody3D"]
 motion_mode = 1
 script = ExtResource("1_fu7rw")
+cart_distance_forward = -0.5
+cart_height_offset = -0.45
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_bwvtj")
@@ -25,3 +27,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fu7rw")
 shape = SubResource("CapsuleShape3D_xqo2o")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5

@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.011828805, 0.049813777, -0.15662079, 0.002621305,
 
 [node name="watermelon" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_lhi85")
 item_name = "Watermelon"
 

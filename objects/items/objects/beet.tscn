@@ -8,6 +8,7 @@ points = PackedVector3Array(0.014843, 0.0131692, 0.0109847, -0.0511056, 0.178931
 
 [node name="beet" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_tl6ie")
 item_name = "Beet"
 

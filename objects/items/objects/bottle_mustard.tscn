@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.00610114, 0.0293254, -0.0796798, 0.00529909, 0.27
 
 [node name="bottlemustard" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_dosa6")
 item_name = "Bottle Mustard"
 

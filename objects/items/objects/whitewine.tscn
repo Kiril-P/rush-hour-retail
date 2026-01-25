@@ -8,6 +8,7 @@ points = PackedVector3Array(0.08415053, 0.33210525, 0.00931451, -0.096365005, 0.
 
 [node name="whitewine" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_hewqd")
 item_name = "Whitewine"
 

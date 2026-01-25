@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.296508, -0.00650029, -0.390415, 0.302222, 0.07158
 
 [node name="cuttingboard" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_4l5e3")
 item_name = "Cutting board"
 

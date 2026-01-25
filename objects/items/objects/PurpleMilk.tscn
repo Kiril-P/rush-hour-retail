@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.115, 0.00690715, -0.115, -0.110675, 0.0175533, 0.
 
 [node name="PurpleMilk" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_i66di")
 item_name = "Purple Milk"
 

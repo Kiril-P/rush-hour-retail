@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.22961253, 0.06544125, -0.18277843, 0.21102938, 0.
 
 [node name="sandwich" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_btfvi")
 item_name = "Sandwich"
 

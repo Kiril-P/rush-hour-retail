@@ -8,6 +8,7 @@ points = PackedVector3Array(0.000700247, 0.107005, -0.0823548, 0.0206347, 0.0377
 
 [node name="cherries" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_mv2wd")
 item_name = "Cherries"
 

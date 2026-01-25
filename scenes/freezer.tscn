@@ -131,37 +131,37 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_l6884")
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34485984, 0.0912877, -0.23180248)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34485984, 0.01782152, -0.23180248)
 
 [node name="Marker3D2" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12982506, 0.14869007, -0.15548518)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12982506, 0.07522389, -0.15548518)
 
 [node name="Marker3D3" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33522445, 0.14869007, -0.04963296)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33522445, 0.07522389, -0.04963296)
 
 [node name="Marker3D4" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07937825, 0.14869007, 0.053412102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07937825, 0.07522389, 0.053412102)
 
 [node name="Marker3D5" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31636173, 0.14869007, 0.15988135)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31636173, 0.07522389, 0.15988135)
 
 [node name="Marker3D6" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17690098, 0.23281273, -0.18176003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17690098, -0.028258592, -0.18176003)
 
 [node name="Marker3D7" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39193577, 0.2902151, -0.123698115)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39193577, 0.02914378, -0.123698115)
 
 [node name="Marker3D8" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18653637, 0.2902151, -0.017845891)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18653637, 0.02914378, -0.017845891)
 
 [node name="Marker3D9" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44238257, 0.2902151, 0.08519918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44238257, 0.02914378, 0.08519918)
 
 [node name="Marker3D10" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2053991, 0.2902151, 0.19166842)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2053991, 0.02914378, 0.19166842)
 
 [node name="GlassPlate" parent="." instance=ExtResource("12_a2q53")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49198788, 0.1536129, -0.06993691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49198788, 0.33348906, 0.009380959)
 
 [node name="GlassPlate2" parent="." instance=ExtResource("12_a2q53")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010065675, 0.1536129, -0.06993691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010065675, 0.33348906, 0.009380959)

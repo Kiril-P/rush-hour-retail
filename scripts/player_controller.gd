@@ -8,8 +8,8 @@ signal interact_object
 @onready var crosshair: TextureRect = $Camera3D/Control/TextureRect
 @onready var pause_menu = $CanvasLayer/PauseMenu
 
-const SPEED = 1.8
-const SPRINT_SPEED = 3.5
+const SPEED = 2
+const SPRINT_SPEED = 4
 const CROUCH_SPEED = 1.2
 const JUMP_VELOCITY = 3.0
 const CAMERA_SENS = 0.001
@@ -37,17 +37,37 @@ const SPRINT_FOV = 85.0
 const LEAN_AMOUNT = 0.015
 const LANDING_DIP = 0.05
 
+# ANTI-STUCK MECHANICS
+const COYOTE_TIME = 0.15  # Seconds after leaving ground where jump still works
+const JUMP_BUFFER_TIME = 0.1  # Seconds before landing where jump input is remembered
+const UNSTUCK_CHECK_TIME = 0.5  # How long stuck before allowing emergency jump
+const GROUND_PROXIMITY = 0.5  # Distance from ground to allow jumping
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var collider = null
 var interact_button_pressed_time = 0.0
 var secondary_interact_pressed_time = 0.0
 var was_on_floor = true
 
+# Anti-stuck variables
+var time_left_ground = 0.0  # Time since we left the ground
+var jump_buffer = 0.0  # Time since jump was pressed
+var time_stuck = 0.0  # Time spent not moving with input
+var last_position = Vector3.ZERO
+
 @onready var collision_shape_3d = $CollisionShape3D
+@onready var ground_check_ray: RayCast3D = null  # Will create in _ready
 
 func _ready():
 	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	# Create ground proximity raycast for anti-stuck jumping
+	ground_check_ray = RayCast3D.new()
+	add_child(ground_check_ray)
+	ground_check_ray.target_position = Vector3(0, -GROUND_PROXIMITY, 0)
+	ground_check_ray.enabled = true
+	ground_check_ray.collide_with_areas = false
 	
 	await get_tree().process_frame
 	var spawn = get_tree().current_scene.find_child("PlayerSpawnPoint")
@@ -55,10 +75,13 @@ func _ready():
 		global_position = spawn.global_position
 		rotation.y = spawn.rotation.y
 	
+	last_position = global_position
+	
 	print("\n=== PLAYER READY ===")
 	print("Checking input actions...")
 	print("'cart_add_item' exists: ", InputMap.has_action("cart_add_item"))
 	print("'cart_remove_item' exists: ", InputMap.has_action("cart_remove_item"))
+	print("Anti-stuck mechanics enabled: Coyote time, Jump buffer, Ground proximity check")
 	print("====================\n")
 
 func _input(event):
@@ -71,6 +94,10 @@ func _input(event):
 		rotate_y(-event.relative.x * CAMERA_SENS)
 		camera_3d.rotate_x(-event.relative.y * CAMERA_SENS)
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+	
+	# Jump buffering - remember jump input for a short time
+	if event.is_action_pressed("ui_accept"):
+		jump_buffer = JUMP_BUFFER_TIME
 
 	# Left click
 	if event.is_action_pressed("interact"):
@@ -191,16 +218,58 @@ func _physics_process(delta):
 	var target_cam_y = CROUCH_CAM_Y if is_crouching else STAND_CAM_Y
 	collision_shape_3d.shape.height = lerp(collision_shape_3d.shape.height, target_height, delta * 12.0)
 	
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-		was_on_floor = false
-	else:
+	# Update coyote time and jump buffer
+	if is_on_floor():
+		time_left_ground = COYOTE_TIME
 		if not was_on_floor:
 			_apply_landing_effects()
 			was_on_floor = true
+	else:
+		time_left_ground -= delta
+		was_on_floor = false
+	
+	if jump_buffer > 0:
+		jump_buffer -= delta
+	
+	# Check if player is stuck
+	_check_if_stuck(delta)
+	
+	# Apply gravity
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	
+	# IMPROVED JUMP LOGIC - Multiple conditions to prevent getting stuck
+	var can_jump = false
+	var jump_reason = ""
+	
+	if not is_crouching:
+		# Standard jump
+		if is_on_floor() and (Input.is_action_just_pressed("ui_accept") or jump_buffer > 0):
+			can_jump = true
+			jump_reason = "normal"
 		
-		if Input.is_action_just_pressed("ui_accept") and not is_crouching:
-			velocity.y = JUMP_VELOCITY
+		# Coyote time jump
+		elif time_left_ground > 0 and Input.is_action_just_pressed("ui_accept"):
+			can_jump = true
+			jump_reason = "coyote"
+		
+		# Ground proximity jump (for when stuck between objects)
+		elif _is_near_ground() and (Input.is_action_just_pressed("ui_accept") or jump_buffer > 0):
+			can_jump = true
+			jump_reason = "proximity"
+		
+		# Emergency unstuck jump
+		elif time_stuck > UNSTUCK_CHECK_TIME and (Input.is_action_just_pressed("ui_accept") or jump_buffer > 0):
+			can_jump = true
+			jump_reason = "unstuck"
+			print("🚨 Emergency unstuck jump activated!")
+	
+	if can_jump:
+		velocity.y = JUMP_VELOCITY
+		jump_buffer = 0  # Consume the buffer
+		time_stuck = 0  # Reset stuck timer
+		if jump_reason != "normal":
+			print("Jump assist: ", jump_reason)
 
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -281,3 +350,23 @@ func _find_cart_parent(node) -> ShoppingCart:
 		current = current.get_parent()
 		depth += 1
 	return null
+
+func _check_if_stuck(delta):
+	"""Detect if player is stuck (has input but not moving)"""
+	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var has_input = input_dir.length() > 0.1
+	var position_delta = global_position.distance_to(last_position)
+	var is_stuck = has_input and position_delta < 0.01 and not is_on_floor()
+	
+	if is_stuck:
+		time_stuck += delta
+	else:
+		time_stuck = 0
+	
+	last_position = global_position
+
+func _is_near_ground() -> bool:
+	"""Check if player is close to ground using raycast"""
+	if ground_check_ray and ground_check_ray.is_colliding():
+		return true
+	return false

@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.21093722, 0.0055, -0.02256012, 0.31579706, 0.1768
 
 [node name="pie" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_s15fv")
 item_name = "Pie"
 

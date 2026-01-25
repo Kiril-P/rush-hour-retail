@@ -8,6 +8,7 @@ points = PackedVector3Array(0.07542084, 0.015591976, 0.18857175, -0.08211304, 0.
 
 [node name="pumpkin" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_vdwtr")
 item_name = "Pumpkin"
 

@@ -14,9 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://drayu72idmc6r" path="res://scenes/food_stand.tscn" id="40_3w37c"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_lrs2g"]
-vertices = PackedVector3Array(15.489194, 0.2896421, -18.828176, 15.489194, 0.2896421, 18.921824, 21.989193, 0.2896421, 18.921824, 21.989193, 0.2896421, -18.828176, 2.739194, 0.5396421, -11.5781765, 2.989194, 0.5396421, -12.0781765, -0.5108061, 0.5396421, -12.0781765, -0.7608061, 0.5396421, -11.3281765, -0.7608061, 0.5396421, -13.8281765, -10.260806, 0.5396421, -15.0781765, -8.760806, 0.5396421, -11.5781765, -2.010806, 0.5396421, -11.3281765, -10.260806, 0.5396421, -11.5781765, 4.739194, 0.5396421, -14.0781765, 4.739194, 0.5396421, -14.8281765, 6.239194, 0.5396421, -14.0781765, 11.239194, 0.5396421, -15.0781765, 6.489194, 0.5396421, -8.0781765, 7.989194, 0.5396421, -8.0781765, 8.239194, 0.5396421, -8.8281765, 6.239194, 0.5396421, -9.0781765, 6.489194, 0.5396421, -12.3281765, 8.989194, 0.5396421, -8.8281765, 11.239194, 0.5396421, -12.0781765, 11.239194, 0.5396421, -9.3281765, 11.989194, 0.5396421, -9.5781765, 11.989194, 0.5396421, -11.8281765, 6.489194, 0.5396421, -11.3281765, 6.239194, 0.5396421, -9.5781765, 9.489194, 0.5396421, -6.8281765, 11.239194, 0.5396421, -6.5781765, 2.989194, 0.5396421, -9.5781765, 2.989194, 0.5396421, -9.0781765, -9.260806, 0.5396421, -8.3281765, -8.760806, 0.5396421, -8.8281765, -8.760806, 0.5396421, -9.5781765, -9.260806, 0.5396421, -11.0781765, 7.989194, 0.5396421, -6.5781765, 8.489194, 0.7896421, -7.3281765, 6.239194, 0.5396421, -7.0781765, 6.239194, 0.5396421, -6.3281765, -10.260806, 0.5396421, -4.5781765, -9.010806, 0.5396421, -4.5781765, -9.260806, 0.5396421, -5.8281765, -0.5108061, 0.5396421, -6.3281765, -0.7608061, 0.5396421, -7.3281765, -2.010806, 0.5396421, -7.0781765, -2.260806, 0.5396421, -6.3281765, -2.010806, 0.5396421, -4.5781765, -0.7608061, 0.5396421, -4.5781765, 6.239194, 0.5396421, -4.3281765, 7.989194, 0.5396421, -4.0781765, 8.489194, 0.5396421, -4.5781765, -0.5108061, 0.5396421, -9.0781765, -0.5108061, 0.5396421, -9.5781765, -2.260806, 0.5396421, -9.5781765, -2.260806, 0.5396421, -8.8281765, -8.760806, 0.5396421, -6.8281765, -8.760806, 0.5396421, -6.3281765, 8.989194, 1.0396421, 0.6718235, 8.489194, 0.7896421, 0.6718235, 8.489194, 0.7896421, 1.1718235, 9.239194, 0.5396421, 1.4218235, 9.489194, 0.7896421, 2.4218235, 9.489194, 0.5396421, 5.4218235, 11.239194, 0.5396421, 7.4218235, 8.989194, 0.7896421, 6.1718235, 9.489194, 0.7896421, 6.4218235, 9.489194, 0.5396421, -4.5781765, 8.989194, 0.5396421, -4.5781765, 8.989194, 0.7896421, -3.3281765, 9.489194, 0.7896421, -3.3281765, 9.489194, 0.7896421, -1.3281765, 9.489194, 0.5396421, -0.3281765, 8.989194, 1.0396421, -1.3281765, 9.239194, 0.5396421, -2.3281765, 9.489194, 0.5396421, 7.4218235, -10.760806, 0.7896421, -4.3281765, -10.510806, 0.5396421, 4.4218235, -9.010806, 0.5396421, 4.4218235, -4.260806, 0.5396421, 4.1718235, -4.260806, 0.5396421, -4.3281765, -2.010806, 0.5396421, 5.9218235, -2.260806, 0.5396421, 6.9218235, -2.010806, 0.5396421, 7.1718235, -0.7608061, 0.5396421, 7.1718235, 7.989194, 0.5396421, 7.6718235, 8.739194, 1.0396421, 6.4218235, 7.989194, 0.7896421, 6.1718235, 6.239194, 0.5396421, 6.1718235, 6.239194, 0.5396421, 6.9218235, 6.489194, 0.5396421, 7.6718235, -2.260806, 0.5396421, 4.1718235, -0.7608061, 0.5396421, 5.9218235, 1.4891939, 0.5396421, -4.3281765, -0.5108061, 0.5396421, 4.1718235, 8.489194, 0.7896421, 4.6718235, 7.989194, 0.5396421, 3.9218235, 6.239194, 0.5396421, 4.1718235, 1.4891939, 0.5396421, 4.1718235, 7.989194, 0.5396421, 1.4218235, 7.989194, 0.7896421, 0.4218235, 7.989194, 0.5396421, -0.3281765, 7.989194, 0.5396421, -2.3281765, 8.489194, 0.5396421, -2.5781765, 8.489194, 0.7896421, -3.3281765, 8.489194, 0.7896421, 2.6718235, 7.989194, 0.7896421, 2.4218235, 8.489194, 0.5396421, -0.5781765, 8.989194, 0.7896421, 7.9218235, 9.489194, 0.7896421, 8.1718235, -9.260806, 0.5396421, 5.6718235, -10.260806, 0.5396421, 11.4218235, -8.760806, 0.5396421, 11.4218235, -9.260806, 0.5396421, 9.9218235, 11.239194, 0.5396421, 11.9218235, 9.489194, 0.5396421, 9.1718235, 8.489194, 0.5396421, 9.1718235, 6.489194, 0.5396421, 12.1718235, 6.239194, 0.5396421, 13.9218235, 11.239194, 0.5396421, 15.1718235, 4.489194, 0.5396421, 13.9218235, 4.489194, 0.5396421, 14.9218235, 11.239194, 0.5396421, 9.1718235, -2.260806, 0.5396421, 8.9218235, -8.760806, 0.5396421, 8.9218235, -8.760806, 0.5396421, 9.4218235, -2.260806, 0.5396421, 9.4218235, 6.239194, 0.5396421, 8.9218235, 6.489194, 0.5396421, 9.6718235, -9.260806, 0.5396421, 8.4218235, -2.010806, 0.5396421, 11.1718235, -0.7608061, 0.5396421, 11.1718235, -0.5108061, 0.5396421, 9.4218235, -0.5108061, 0.5396421, 8.9218235, -8.760806, 0.5396421, 6.1718235, -8.760806, 0.5396421, 6.9218235, 11.989194, 0.5396421, 9.4218235, 11.989194, 0.5396421, 11.6718235, 6.239194, 0.5396421, 11.4218235, 2.739194, 0.5396421, 11.4218235, 2.739194, 0.5396421, 11.9218235, -0.5108061, 0.5396421, 11.9218235, -10.260806, 0.5396421, 15.1718235, -0.7608061, 0.5396421, 13.6718235)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 11, 6), PackedInt32Array(6, 11, 8), PackedInt32Array(8, 11, 10), PackedInt32Array(8, 10, 9), PackedInt32Array(10, 12, 9), PackedInt32Array(13, 8, 14), PackedInt32Array(14, 8, 9), PackedInt32Array(13, 14, 15), PackedInt32Array(15, 14, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(21, 15, 22), PackedInt32Array(22, 15, 23), PackedInt32Array(23, 15, 16), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 23), PackedInt32Array(23, 24, 22), PackedInt32Array(5, 21, 4), PackedInt32Array(4, 21, 27), PackedInt32Array(28, 27, 20), PackedInt32Array(20, 27, 19), PackedInt32Array(19, 27, 22), PackedInt32Array(29, 22, 30), PackedInt32Array(30, 22, 24), PackedInt32Array(22, 27, 21), PackedInt32Array(20, 32, 28), PackedInt32Array(28, 32, 31), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(36, 33, 12), PackedInt32Array(12, 10, 36), PackedInt32Array(38, 37, 18), PackedInt32Array(18, 37, 17), PackedInt32Array(17, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(43, 42, 41), PackedInt32Array(40, 44, 39), PackedInt32Array(39, 44, 45), PackedInt32Array(46, 44, 47), PackedInt32Array(47, 44, 49), PackedInt32Array(47, 49, 48), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 40), PackedInt32Array(52, 40, 37), PackedInt32Array(54, 53, 55), PackedInt32Array(55, 53, 56), PackedInt32Array(56, 53, 45), PackedInt32Array(58, 57, 47), PackedInt32Array(47, 57, 46), PackedInt32Array(7, 54, 11), PackedInt32Array(11, 54, 55), PackedInt32Array(58, 43, 57), PackedInt32Array(57, 43, 33), PackedInt32Array(54, 31, 53), PackedInt32Array(53, 31, 32), PackedInt32Array(44, 46, 45), PackedInt32Array(45, 46, 56), PackedInt32Array(56, 34, 55), PackedInt32Array(55, 34, 35), PackedInt32Array(43, 41, 33), PackedInt32Array(33, 41, 12), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 62), PackedInt32Array(65, 64, 63), PackedInt32Array(67, 66, 64), PackedInt32Array(71, 70, 68), PackedInt32Array(68, 70, 69), PackedInt32Array(73, 72, 30), PackedInt32Array(62, 59, 73), PackedInt32Array(74, 75, 72), PackedInt32Array(72, 75, 71), PackedInt32Array(72, 71, 30), PackedInt32Array(65, 76, 67), PackedInt32Array(65, 67, 64), PackedInt32Array(68, 29, 30), PackedInt32Array(62, 73, 63), PackedInt32Array(63, 73, 65), PackedInt32Array(65, 73, 30), PackedInt32Array(71, 68, 30), PackedInt32Array(77, 41, 42), PackedInt32Array(79, 78, 80), PackedInt32Array(80, 78, 81), PackedInt32Array(81, 78, 42), PackedInt32Array(42, 78, 77), PackedInt32Array(83, 82, 84), PackedInt32Array(84, 82, 85), PackedInt32Array(90, 89, 91), PackedInt32Array(91, 89, 86), PackedInt32Array(86, 89, 88), PackedInt32Array(86, 88, 87), PackedInt32Array(85, 82, 93), PackedInt32Array(93, 82, 92), PackedInt32Array(49, 94, 48), PackedInt32Array(48, 94, 81), PackedInt32Array(81, 94, 95), PackedInt32Array(81, 95, 92), PackedInt32Array(90, 85, 89), PackedInt32Array(89, 85, 93), PackedInt32Array(96, 88, 97), PackedInt32Array(97, 88, 98), PackedInt32Array(98, 88, 89), PackedInt32Array(94, 99, 95), PackedInt32Array(95, 93, 92), PackedInt32Array(92, 80, 81), PackedInt32Array(61, 100, 60), PackedInt32Array(60, 100, 101), PackedInt32Array(101, 98, 102), PackedInt32Array(102, 98, 99), PackedInt32Array(102, 99, 50), PackedInt32Array(50, 99, 94), PackedInt32Array(104, 103, 105), PackedInt32Array(105, 103, 51), PackedInt32Array(51, 103, 50), PackedInt32Array(106, 97, 107), PackedInt32Array(107, 97, 98), PackedInt32Array(100, 107, 98), PackedInt32Array(108, 102, 103), PackedInt32Array(103, 102, 50), PackedInt32Array(101, 100, 98), PackedInt32Array(109, 76, 110), PackedInt32Array(110, 76, 65), PackedInt32Array(78, 79, 111), PackedInt32Array(114, 113, 112), PackedInt32Array(116, 115, 117), PackedInt32Array(117, 115, 118), PackedInt32Array(118, 115, 119), PackedInt32Array(119, 115, 120), PackedInt32Array(121, 119, 122), PackedInt32Array(122, 119, 120), PackedInt32Array(116, 110, 123), PackedInt32Array(123, 110, 65), PackedInt32Array(127, 126, 124), PackedInt32Array(124, 126, 125), PackedInt32Array(128, 91, 129), PackedInt32Array(129, 91, 86), PackedInt32Array(129, 86, 117), PackedInt32Array(114, 112, 130), PackedInt32Array(130, 112, 78), PackedInt32Array(124, 134, 127), PackedInt32Array(127, 134, 133), PackedInt32Array(127, 133, 132), PackedInt32Array(127, 132, 131), PackedInt32Array(134, 128, 133), PackedInt32Array(133, 128, 129), PackedInt32Array(85, 134, 84), PackedInt32Array(84, 134, 124), PackedInt32Array(136, 135, 83), PackedInt32Array(83, 135, 82), PackedInt32Array(123, 137, 116), PackedInt32Array(116, 137, 138), PackedInt32Array(116, 138, 115), PackedInt32Array(136, 130, 111), PackedInt32Array(111, 130, 78), PackedInt32Array(126, 114, 125), PackedInt32Array(125, 114, 130), PackedInt32Array(140, 139, 141), PackedInt32Array(141, 139, 118), PackedInt32Array(111, 135, 136), PackedInt32Array(139, 129, 118), PackedInt32Array(118, 129, 117), PackedInt32Array(141, 142, 140), PackedInt32Array(140, 142, 132), PackedInt32Array(132, 142, 131), PackedInt32Array(131, 142, 144), PackedInt32Array(131, 144, 113), PackedInt32Array(113, 144, 143), PackedInt32Array(143, 112, 113), PackedInt32Array(121, 122, 144), PackedInt32Array(144, 122, 143)]
+vertices = PackedVector3Array(15.489194, 0.6246521, -18.828176, 15.489194, 0.6246521, 18.921824, 21.989193, 0.6246521, 18.921824, 21.989193, 0.6246521, -18.828176, -9.260806, 0.8746521, -8.3281765, -8.760806, 0.8746521, -8.8281765, -8.760806, 0.8746521, -9.5781765, -9.260806, 0.8746521, -11.0781765, -9.010806, 0.8746521, -12.3281765, -8.760806, 0.8746521, -11.5781765, 6.239194, 0.8746521, -14.0781765, 6.489194, 0.8746521, -13.5781765, 6.739194, 0.8746521, -15.0781765, -9.260806, 0.8746521, -13.8281765, -9.010806, 0.8746521, -14.5781765, -9.260806, 0.8746521, -15.0781765, -10.260806, 0.8746521, -15.0781765, 7.489194, 0.8746521, -1.3281765, 7.989194, 0.8746521, -2.3281765, 7.489194, 0.8746521, -2.5781765, 5.739194, 0.8746521, -3.3281765, 5.989194, 0.8746521, -1.3281765, 7.489194, 0.8746521, -3.5781765, 8.239194, 0.8746521, -4.3281765, 7.489194, 0.8746521, -4.8281765, 6.239194, 0.8746521, -4.3281765, 7.489194, 0.8746521, -7.8281765, 7.989194, 0.8746521, -8.3281765, 6.489194, 0.8746521, -8.5781765, 6.239194, 0.8746521, -7.0781765, 7.489194, 0.8746521, -6.8281765, -2.010806, 0.8746521, -14.0781765, -0.7608061, 0.8746521, -13.8281765, -10.260806, 0.8746521, -4.3281765, -9.010806, 0.8746521, -4.5781765, -9.260806, 0.8746521, -5.8281765, 7.989194, 0.8746521, -6.5781765, 6.489194, 0.8746521, -6.0781765, -2.260806, 0.8746521, -11.5781765, -1.7608061, 0.8746521, -12.5781765, -2.260806, 0.8746521, -6.3281765, -2.010806, 0.8746521, -4.5781765, -0.7608061, 0.8746521, -4.5781765, -0.5108061, 0.8746521, -6.3281765, -0.7608061, 0.8746521, -7.3281765, -2.010806, 0.8746521, -7.0781765, -2.010806, 0.8746521, -9.8281765, -2.260806, 0.8746521, -8.8281765, -0.5108061, 0.8746521, -9.0781765, 2.989194, 0.8746521, -9.0781765, 2.989194, 0.8746521, -9.5781765, -0.5108061, 0.8746521, -9.5781765, -8.760806, 0.8746521, -6.8281765, -8.760806, 0.8746521, -6.3281765, 2.989194, 0.8746521, -11.5781765, 2.989194, 0.8746521, -12.0781765, -0.5108061, 0.8746521, -12.0781765, -0.7608061, 0.8746521, -11.3281765, -0.5108061, 0.8746521, -4.3281765, -0.26080608, 0.8746521, -3.0781765, 8.239194, 0.8746521, -8.8281765, 6.489194, 0.8746521, -11.3281765, 6.239194, 0.8746521, -9.5781765, 6.239194, 0.8746521, -9.0781765, 9.989194, 0.8746521, -8.5781765, 10.239194, 0.8746521, -6.8281765, 11.239194, 0.8746521, -7.0781765, 11.239194, 0.8746521, -9.3281765, 6.239194, 0.8746521, -12.0781765, 11.239194, 0.8746521, -12.0781765, 11.239194, 0.8746521, -15.0781765, 11.989194, 0.8746521, -9.5781765, 11.989194, 0.8746521, -11.8281765, 9.239194, 0.8746521, -6.5781765, 10.239194, 0.8746521, -6.0781765, 10.239194, 0.8746521, -4.8281765, 8.989194, 0.8746521, -4.5781765, 10.239194, 0.8746521, -4.0781765, 11.239194, 0.8746521, 11.9218235, 11.989194, 0.8746521, 11.6718235, 11.989194, 0.8746521, 9.4218235, 11.239194, 0.8746521, 9.1718235, 10.239194, 0.8746521, 8.9218235, 6.489194, 0.8746521, 13.6718235, 6.489194, 0.8746521, 15.1718235, 11.239194, 0.8746521, 15.1718235, 6.239194, 0.8746521, 8.9218235, 2.989194, 0.8746521, 8.9218235, 2.989194, 0.8746521, 9.4218235, 6.489194, 0.8746521, 9.6718235, 10.989194, 0.8746521, 5.9218235, 7.489194, 0.8746521, 8.9218235, 6.239194, 0.8746521, 11.4218235, 2.989194, 0.8746521, 11.4218235, 2.989194, 0.8746521, 11.9218235, 6.239194, 0.8746521, 11.9218235, -2.510806, 0.8746521, -3.3281765, -2.260806, 0.8746521, -2.0781765, -0.26080608, 0.8746521, -2.0781765, -10.260806, 0.8746521, 4.1718235, -8.510806, 0.8746521, 0.9218235, -8.510806, 0.8746521, -1.0781765, -8.260806, 0.8746521, -3.3281765, -8.510806, 0.8746521, 3.1718235, -8.760806, 0.8746521, 4.1718235, -6.260806, 0.8746521, 0.6718235, -6.260806, 0.8746521, -0.8281765, -4.010806, 0.8746521, 4.1718235, -4.010806, 0.8746521, 3.4218235, -0.7608061, 0.8746521, 7.1718235, -0.5108061, 0.8746521, 6.9218235, -0.5108061, 0.8746521, 6.1718235, -2.010806, 0.8746521, 5.9218235, -2.260806, 0.8746521, 6.9218235, -2.010806, 0.8746521, 7.1718235, -0.26080608, 0.8746521, -1.0781765, -2.760806, 0.8746521, 3.4218235, -2.260806, 0.8746521, 4.1718235, -2.760806, 0.8746521, 0.6718235, -2.510806, 0.8746521, -0.8281765, -2.260806, 0.8746521, 2.9218235, -0.5108061, 0.8746521, 4.1718235, -0.26080608, 0.8746521, 3.1718235, -2.260806, 0.8746521, 1.1718235, -0.26080608, 0.8746521, 0.9218235, 0.23919392, 0.8746521, 0.6718235, 0.23919392, 0.8746521, -0.8281765, 7.489194, 0.8746521, 5.9218235, 7.989194, 0.8746521, 5.4218235, 7.489194, 0.8746521, 5.1718235, 6.239194, 0.8746521, 6.9218235, 7.489194, 0.8746521, 2.1718235, 7.989194, 0.8746521, 1.6718235, 7.489194, 0.8746521, 1.4218235, 7.489194, 0.8746521, 0.1718235, 7.989194, 0.8746521, -0.3281765, 7.489194, 0.8746521, -0.5781765, 7.489194, 0.8746521, 4.1718235, 7.989194, 0.8746521, 3.4218235, 7.489194, 0.8746521, 3.1718235, 5.739194, 0.8746521, -0.8281765, 5.989194, 0.8746521, 3.1718235, 6.489194, 0.8746521, 4.4218235, 5.739194, 0.8746521, 0.6718235, 6.239194, 0.8746521, 6.1718235, -9.260806, 0.8746521, 9.9218235, -8.760806, 0.8746521, 9.4218235, -8.760806, 0.8746521, 8.9218235, -9.260806, 0.8746521, 8.4218235, -9.260806, 0.8746521, 4.9218235, -10.260806, 0.8746521, 15.1718235, -9.260806, 0.8746521, 15.1718235, -9.010806, 0.8746521, 14.4218235, -9.010806, 0.8746521, 14.1718235, -9.260806, 0.8746521, 12.4218235, -0.5108061, 0.8746521, 8.9218235, -2.260806, 0.8746521, 8.9218235, -0.7608061, 0.8746521, 9.6718235, -8.760806, 0.8746521, 6.1718235, -8.760806, 0.8746521, 6.9218235, -8.760806, 0.8746521, 11.4218235, -0.5108061, 0.8746521, 11.9218235, -0.5108061, 0.8746521, 11.4218235, -0.7608061, 0.8746521, 13.6718235, -2.010806, 0.8746521, 11.1718235, -2.010806, 0.8746521, 12.1718235, -1.7608061, 0.8746521, 13.9218235, -1.7608061, 0.8746521, 14.9218235, -2.010806, 0.8746521, 14.4218235, -2.260806, 0.8746521, 9.4218235)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 7, 8), PackedInt32Array(11, 10, 12), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 21), PackedInt32Array(19, 21, 20), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(25, 22, 20), PackedInt32Array(28, 27, 26), PackedInt32Array(30, 29, 26), PackedInt32Array(26, 29, 28), PackedInt32Array(13, 14, 31), PackedInt32Array(31, 14, 12), PackedInt32Array(10, 32, 12), PackedInt32Array(12, 32, 31), PackedInt32Array(35, 34, 33), PackedInt32Array(29, 30, 37), PackedInt32Array(37, 30, 36), PackedInt32Array(37, 36, 24), PackedInt32Array(24, 25, 37), PackedInt32Array(9, 8, 38), PackedInt32Array(38, 8, 39), PackedInt32Array(22, 19, 20), PackedInt32Array(45, 44, 40), PackedInt32Array(40, 44, 43), PackedInt32Array(40, 43, 42), PackedInt32Array(40, 42, 41), PackedInt32Array(46, 38, 39), PackedInt32Array(45, 47, 46), PackedInt32Array(44, 29, 43), PackedInt32Array(43, 29, 37), PackedInt32Array(8, 7, 13), PackedInt32Array(13, 7, 16), PackedInt32Array(5, 6, 47), PackedInt32Array(47, 6, 46), PackedInt32Array(51, 50, 48), PackedInt32Array(48, 50, 49), PackedInt32Array(52, 53, 35), PackedInt32Array(51, 48, 44), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 57), PackedInt32Array(52, 35, 4), PackedInt32Array(4, 35, 33), PackedInt32Array(57, 39, 56), PackedInt32Array(56, 39, 32), PackedInt32Array(32, 39, 31), PackedInt32Array(39, 57, 46), PackedInt32Array(46, 57, 51), PackedInt32Array(46, 51, 44), PackedInt32Array(46, 44, 45), PackedInt32Array(4, 33, 7), PackedInt32Array(7, 33, 16), PackedInt32Array(59, 58, 20), PackedInt32Array(20, 58, 25), PackedInt32Array(53, 52, 40), PackedInt32Array(40, 52, 45), PackedInt32Array(63, 62, 28), PackedInt32Array(28, 62, 27), PackedInt32Array(27, 62, 60), PackedInt32Array(60, 62, 61), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 67), PackedInt32Array(61, 68, 11), PackedInt32Array(11, 12, 61), PackedInt32Array(61, 12, 60), PackedInt32Array(60, 12, 69), PackedInt32Array(69, 12, 70), PackedInt32Array(72, 71, 67), PackedInt32Array(72, 67, 69), PackedInt32Array(69, 67, 64), PackedInt32Array(69, 64, 60), PackedInt32Array(63, 49, 62), PackedInt32Array(62, 49, 50), PackedInt32Array(55, 68, 54), PackedInt32Array(54, 68, 61), PackedInt32Array(74, 73, 65), PackedInt32Array(77, 76, 75), PackedInt32Array(66, 74, 65), PackedInt32Array(75, 74, 66), PackedInt32Array(81, 80, 82), PackedInt32Array(82, 80, 79), PackedInt32Array(82, 79, 78), PackedInt32Array(85, 84, 83), PackedInt32Array(77, 75, 66), PackedInt32Array(87, 86, 88), PackedInt32Array(88, 86, 89), PackedInt32Array(82, 90, 81), PackedInt32Array(89, 86, 91), PackedInt32Array(92, 89, 91), PackedInt32Array(95, 94, 92), PackedInt32Array(92, 94, 93), PackedInt32Array(82, 77, 90), PackedInt32Array(90, 77, 66), PackedInt32Array(83, 95, 92), PackedInt32Array(92, 91, 83), PackedInt32Array(83, 91, 82), PackedInt32Array(83, 82, 78), PackedInt32Array(83, 78, 85), PackedInt32Array(41, 42, 58), PackedInt32Array(59, 98, 58), PackedInt32Array(58, 98, 41), PackedInt32Array(41, 98, 96), PackedInt32Array(96, 98, 97), PackedInt32Array(101, 100, 33), PackedInt32Array(33, 100, 99), PackedInt32Array(96, 102, 41), PackedInt32Array(41, 102, 34), PackedInt32Array(104, 99, 103), PackedInt32Array(103, 99, 100), PackedInt32Array(105, 100, 106), PackedInt32Array(106, 100, 101), PackedInt32Array(34, 102, 33), PackedInt32Array(33, 102, 101), PackedInt32Array(108, 107, 103), PackedInt32Array(103, 107, 104), PackedInt32Array(110, 109, 111), PackedInt32Array(111, 109, 114), PackedInt32Array(111, 114, 113), PackedInt32Array(111, 113, 112), PackedInt32Array(97, 98, 115), PackedInt32Array(108, 116, 107), PackedInt32Array(107, 116, 117), PackedInt32Array(105, 106, 118), PackedInt32Array(118, 106, 119), PackedInt32Array(116, 120, 117), PackedInt32Array(117, 120, 121), PackedInt32Array(121, 120, 122), PackedInt32Array(117, 121, 112), PackedInt32Array(112, 121, 111), PackedInt32Array(118, 119, 123), PackedInt32Array(123, 119, 97), PackedInt32Array(123, 97, 115), PackedInt32Array(123, 115, 124), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 115), PackedInt32Array(123, 124, 120), PackedInt32Array(120, 124, 122), PackedInt32Array(128, 127, 129), PackedInt32Array(129, 127, 130), PackedInt32Array(133, 132, 131), PackedInt32Array(136, 135, 134), PackedInt32Array(139, 138, 137), PackedInt32Array(21, 17, 136), PackedInt32Array(21, 136, 140), PackedInt32Array(140, 136, 134), PackedInt32Array(142, 141, 139), PackedInt32Array(139, 141, 131), PackedInt32Array(131, 141, 143), PackedInt32Array(131, 143, 140), PackedInt32Array(86, 130, 91), PackedInt32Array(91, 130, 127), PackedInt32Array(130, 110, 144), PackedInt32Array(144, 110, 111), PackedInt32Array(143, 125, 140), PackedInt32Array(140, 125, 126), PackedInt32Array(140, 134, 133), PackedInt32Array(137, 129, 130), PackedInt32Array(140, 133, 131), PackedInt32Array(139, 137, 142), PackedInt32Array(142, 137, 144), PackedInt32Array(144, 137, 130), PackedInt32Array(122, 141, 121), PackedInt32Array(121, 141, 142), PackedInt32Array(146, 145, 147), PackedInt32Array(147, 145, 148), PackedInt32Array(99, 104, 149), PackedInt32Array(152, 151, 153), PackedInt32Array(153, 151, 150), PackedInt32Array(153, 150, 154), PackedInt32Array(148, 145, 99), PackedInt32Array(99, 145, 150), PackedInt32Array(157, 156, 155), PackedInt32Array(155, 156, 114), PackedInt32Array(155, 114, 109), PackedInt32Array(159, 158, 113), PackedInt32Array(113, 158, 112), PackedInt32Array(158, 159, 149), PackedInt32Array(149, 159, 99), PackedInt32Array(99, 159, 148), PackedInt32Array(145, 160, 154), PackedInt32Array(162, 93, 161), PackedInt32Array(161, 93, 94), PackedInt32Array(166, 165, 163), PackedInt32Array(163, 165, 164), PackedInt32Array(161, 163, 162), PackedInt32Array(162, 163, 164), PackedInt32Array(162, 164, 157), PackedInt32Array(157, 164, 156), PackedInt32Array(87, 88, 155), PackedInt32Array(155, 88, 157), PackedInt32Array(168, 166, 167), PackedInt32Array(167, 166, 163), PackedInt32Array(167, 163, 83), PackedInt32Array(167, 83, 84), PackedInt32Array(150, 145, 154), PackedInt32Array(152, 153, 168), PackedInt32Array(168, 153, 166), PackedInt32Array(164, 165, 160), PackedInt32Array(160, 165, 154), PackedInt32Array(169, 146, 156), PackedInt32Array(156, 146, 147), PackedInt32Array(164, 169, 156)]
 geometry_parsed_geometry_type = 1
+agent_max_climb = 0.05
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2xux8"]
 points = PackedVector3Array(-61.304028, -4.314027, -83.45772, 61.2745, 0.90208054, 83.45772, 61.2745, -4.314027, 83.45772, 61.2745, 0.90208054, -83.45772, -61.304028, 0.90208054, 83.45772, -61.304028, -4.314027, 83.45772, 61.2745, -4.314027, -83.45772, -61.304028, 0.90208054, -83.45772)
@@ -112,11 +113,11 @@ dof_blur_near_distance = 0.5
 [node name="BlenderMarket" type="Node3D"]
 
 [node name="StoreNavigation" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09755254, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23745745, 0)
 navigation_mesh = SubResource("NavigationMesh_lrs2g")
 
 [node name="Supermarket" parent="StoreNavigation" instance=ExtResource("1_ylb1v")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.09755254, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.23745745, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StoreNavigation/Supermarket/SM_floor" index="0"]
 
@@ -250,13 +251,13 @@ transform = Transform3D(-2.1855696e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855696e-07, -5
 transform = Transform3D(-2.1855696e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855696e-07, -55.949383, 3.094877, 76.010956)
 
 [node name="FloorFallback" type="StaticBody3D" parent="StoreNavigation"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09755254, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23745745, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StoreNavigation/FloorFallback"]
 shape = SubResource("WorldBoundaryShape3D_ylb1v")
 
 [node name="InsideArea" type="Area3D" parent="StoreNavigation"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09755254, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23745745, 0)
 script = ExtResource("6_inside_area")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StoreNavigation/InsideArea"]
@@ -264,7 +265,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("BoxShape3D_inside")
 
 [node name="light" type="Node3D" parent="StoreNavigation"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2362957, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5713058, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="StoreNavigation/light"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.102836, 4.902376, -0.58806777)
@@ -435,755 +436,1012 @@ spot_range = 17.868
 spot_angle = 99.12
 
 [node name="CheckoutCounter" parent="StoreNavigation" instance=ExtResource("2_rwwr0")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, -0.07821734, 2.377056)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, 0.25679266, 2.377056)
 
 [node name="CheckoutCounter5" parent="StoreNavigation" instance=ExtResource("2_rwwr0")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, -0.07821734, 0.40980494)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, 0.25679266, 0.40980494)
 
 [node name="CheckoutCounter6" parent="StoreNavigation" instance=ExtResource("2_rwwr0")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, -0.07821734, -1.529267)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, 0.25679266, -1.529267)
 
 [node name="CheckoutCounter7" parent="StoreNavigation" instance=ExtResource("2_rwwr0")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, -0.07821734, -3.4627445)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, 0.25679266, -3.4627445)
 
 [node name="CheckoutCounter8" parent="StoreNavigation" instance=ExtResource("2_rwwr0")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, -0.07821734, -5.6285253)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, 0.25679266, -5.6285253)
 
 [node name="CheckoutCounter9" parent="StoreNavigation" instance=ExtResource("2_rwwr0")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, -0.07821734, -7.679208)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, 0.25679266, -7.679208)
 
 [node name="CheckoutCounter2" parent="StoreNavigation" instance=ExtResource("2_rwwr0")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, -0.07821734, 4.3347015)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, 0.25679266, 4.3347015)
 
 [node name="CheckoutCounter3" parent="StoreNavigation" instance=ExtResource("2_rwwr0")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, -0.07821734, 6.178172)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, 0.25679266, 6.178172)
 
 [node name="CheckoutCounter4" parent="StoreNavigation" instance=ExtResource("2_rwwr0")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, -0.07821734, 7.999536)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.807054, 0.25679266, 7.999536)
 
 [node name="FoodStand25" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.843771, 0.14261808, 2.4084086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.843771, 0.47762805, 2.4084086)
 
 [node name="FoodStand29" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.843771, 0.14261808, 1.6928897)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.843771, 0.47762805, 1.6928897)
 
 [node name="FoodStand26" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.843771, 0.14261808, -1.7617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.843771, 0.47762805, -1.7617602)
 
 [node name="FoodStand30" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.843771, 0.14261808, -2.4772792)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.843771, 0.47762805, -2.4772792)
 
 [node name="FoodStand27" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8388219, 0.14261808, 2.4084086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8388219, 0.47762805, 2.4084086)
 
 [node name="FoodStand31" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.8388219, 0.14261808, 1.6928897)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.8388219, 0.47762805, 1.6928897)
 
 [node name="FoodStand28" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8388219, 0.14261808, -1.7617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8388219, 0.47762805, -1.7617602)
 
 [node name="FoodStand32" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.8388219, 0.14261808, -2.4772792)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.8388219, 0.47762805, -2.4772792)
 
 [node name="FoodStand33" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8328557, 0.14261808, 2.4084086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8328557, 0.47762805, 2.4084086)
 
 [node name="FoodStand34" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.8328557, 0.14261808, 1.6928897)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.8328557, 0.47762805, 1.6928897)
 
 [node name="FoodStand35" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8328557, 0.14261808, -1.7617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8328557, 0.47762805, -1.7617602)
 
 [node name="FoodStand36" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.8328557, 0.14261808, -2.4772792)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.8328557, 0.47762805, -2.4772792)
 
 [node name="FoodStand37" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8258653, 0.14261808, 2.4084086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8258653, 0.47762805, 2.4084086)
 
 [node name="FoodStand38" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.8258653, 0.14261808, 1.6928897)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.8258653, 0.47762805, 1.6928897)
 
 [node name="FoodStand39" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8258653, 0.14261808, -1.7617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8258653, 0.47762805, -1.7617602)
 
 [node name="FoodStand40" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.8258653, 0.14261808, -2.4772792)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.8258653, 0.47762805, -2.4772792)
 
 [node name="FoodStand41" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8209524, 0.14261808, 2.4084086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8209524, 0.47762805, 2.4084086)
 
 [node name="FoodStand42" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.8209524, 0.14261808, 1.6928897)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.8209524, 0.47762805, 1.6928897)
 
 [node name="FoodStand43" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8209524, 0.14261808, -1.7617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8209524, 0.47762805, -1.7617602)
 
 [node name="FoodStand44" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.8209524, 0.14261808, -2.4772792)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.8209524, 0.47762805, -2.4772792)
 
 [node name="FoodStand45" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.460332, 0.14261808, 2.4084086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.460332, 0.47762805, 2.4084086)
 
 [node name="FoodStand46" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.460332, 0.14261808, 1.6928897)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.460332, 0.47762805, 1.6928897)
 
 [node name="FoodStand47" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.460332, 0.14261808, -1.7617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.460332, 0.47762805, -1.7617602)
 
 [node name="FoodStand48" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.460332, 0.14261808, -2.4772792)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.460332, 0.47762805, -2.4772792)
 
 [node name="FoodStand49" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.465281, 0.14261808, 2.4084086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.465281, 0.47762805, 2.4084086)
 
 [node name="FoodStand50" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.465281, 0.14261808, 1.6928897)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.465281, 0.47762805, 1.6928897)
 
 [node name="FoodStand51" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.465281, 0.14261808, -1.7617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.465281, 0.47762805, -1.7617602)
 
 [node name="FoodStand52" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.465281, 0.14261808, -2.4772792)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.465281, 0.47762805, -2.4772792)
 
 [node name="FoodStand53" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.471247, 0.14261808, 2.4084086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.471247, 0.47762805, 2.4084086)
 
 [node name="FoodStand54" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.471247, 0.14261808, 1.6928897)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.471247, 0.47762805, 1.6928897)
 
 [node name="FoodStand55" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.471247, 0.14261808, -1.7617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.471247, 0.47762805, -1.7617602)
 
 [node name="FoodStand56" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.471247, 0.14261808, -2.4772792)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.471247, 0.47762805, -2.4772792)
 
 [node name="FoodStand57" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4782376, 0.14261808, 2.4084086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4782376, 0.47762805, 2.4084086)
 
 [node name="FoodStand58" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.4782376, 0.14261808, 1.6928897)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.4782376, 0.47762805, 1.6928897)
 
 [node name="FoodStand59" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4782376, 0.14261808, -1.7617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4782376, 0.47762805, -1.7617602)
 
 [node name="FoodStand60" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.4782376, 0.14261808, -2.4772792)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.4782376, 0.47762805, -2.4772792)
 
 [node name="FoodStand61" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4831505, 0.14261808, 2.4084086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4831505, 0.47762805, 2.4084086)
 
 [node name="FoodStand62" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.4831505, 0.14261808, 1.6928897)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.4831505, 0.47762805, 1.6928897)
 
 [node name="FoodStand65" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.14261808, -0.020592809)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.47762805, -0.020592809)
 
 [node name="FoodStand66" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.14261808, 0.9744576)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.47762805, 0.9744576)
 
 [node name="FoodStand70" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.14261808, -2.0243227)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.47762805, -2.0243227)
 
 [node name="FoodStand71" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.14261808, -1.0292723)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.47762805, -1.0292723)
 
 [node name="FoodStand72" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.14261808, -4.045491)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.47762805, -4.045491)
 
 [node name="FoodStand73" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.14261808, -3.0504408)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.47762805, -3.0504408)
 
 [node name="FoodStand67" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.14261808, 1.9684916)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.47762805, 1.9684916)
 
 [node name="FoodStand68" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.14261808, 2.961501)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.47762805, 2.961501)
 
 [node name="FoodStand69" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.14261808, 3.9565883)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.118483, 0.47762805, 3.9565883)
 
 [node name="FoodStand63" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4831505, 0.14261808, -1.7617602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4831505, 0.47762805, -1.7617602)
 
 [node name="FoodStand64" parent="StoreNavigation" instance=ExtResource("40_3w37c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.4831505, 0.14261808, -2.4772792)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.4831505, 0.47762805, -2.4772792)
 
 [node name="Shelf2" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.6040985, 15.608341)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.9391085, 15.608341)
 
 [node name="Shelf3" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.6040985, 15.608341)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.9391085, 15.608341)
 
 [node name="Shelf4" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.6040985, 15.608341)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.9391085, 15.608341)
 
 [node name="Shelf5" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.6040985, 15.608341)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.9391085, 15.608341)
 
 [node name="Shelf6" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.6040985, 15.608341)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.9391085, 15.608341)
 
 [node name="Shelf8" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.6040985, 12.736047)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.9391085, 12.736047)
 
 [node name="Shelf9" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.6040985, 12.736047)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.9391085, 12.736047)
 
 [node name="Shelf10" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.6040985, 12.736047)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.9391085, 12.736047)
 
 [node name="Shelf12" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.6040985, 12.736047)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.9391085, 12.736047)
 
 [node name="Shelf13" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.6040985, 12.736047)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.9391085, 12.736047)
 
 [node name="Shelf14" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.6040985, 13.15209)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.9391085, 13.15209)
 
 [node name="Shelf15" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.6040985, 13.15209)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.9391085, 13.15209)
 
 [node name="Shelf16" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.6040985, 13.15209)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.9391085, 13.15209)
 
 [node name="Shelf19" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.6040985, 13.15209)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.9391085, 13.15209)
 
 [node name="Shelf21" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.6040985, 13.15209)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.9391085, 13.15209)
 
 [node name="Shelf31" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.6040985, 10.17404)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.9391085, 10.17404)
 
 [node name="Shelf33" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.6040985, 10.17404)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.9391085, 10.17404)
 
 [node name="Shelf35" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.6040985, 10.17404)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.9391085, 10.17404)
 
 [node name="Shelf36" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.6040985, 10.17404)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.9391085, 10.17404)
 
 [node name="Shelf37" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.6040985, 10.17404)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.9391085, 10.17404)
 
 [node name="Shelf38" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.6040985, 10.590083)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.9391085, 10.590083)
 
 [node name="Shelf39" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.6040985, 10.590083)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.9391085, 10.590083)
 
 [node name="Shelf41" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.6040985, 10.590083)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.9391085, 10.590083)
 
 [node name="Shelf42" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.6040985, 10.590083)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.9391085, 10.590083)
 
 [node name="Shelf46" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.6040985, 10.590083)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.9391085, 10.590083)
 
 [node name="Shelf53" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.6040985, 7.6423664)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.9391085, 7.6423664)
 
 [node name="Shelf54" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.6040985, 7.6423664)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.9391085, 7.6423664)
 
 [node name="Shelf55" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.6040985, 7.6423664)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.9391085, 7.6423664)
 
 [node name="Shelf57" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.6040985, 7.6423664)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.9391085, 7.6423664)
 
 [node name="Shelf63" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.6040985, 7.6423664)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.9391085, 7.6423664)
 
 [node name="Shelf65" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.6040985, 8.05841)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.9391085, 8.05841)
 
 [node name="Shelf67" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.6040985, 8.05841)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.9391085, 8.05841)
 
 [node name="Shelf69" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.6040985, 8.05841)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.9391085, 8.05841)
 
 [node name="Shelf71" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.6040985, 8.05841)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.9391085, 8.05841)
 
 [node name="Shelf86" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.6040985, 8.05841)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.9391085, 8.05841)
 
 [node name="Shelf87" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.6040985, 5.0623565)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.9391085, 5.0623565)
 
 [node name="Shelf88" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.6040985, 5.0623565)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.9391085, 5.0623565)
 
 [node name="Shelf89" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.6040985, 5.0623565)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.9391085, 5.0623565)
 
 [node name="Shelf90" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.6040985, 5.0623565)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.9391085, 5.0623565)
 
 [node name="Shelf91" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.6040985, 5.0623565)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.9391085, 5.0623565)
 
 [node name="Shelf93" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.6040985, 5.4783998)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.9391085, 5.4783998)
 
 [node name="Shelf94" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.6040985, 5.4783998)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.9391085, 5.4783998)
 
 [node name="Shelf99" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.6040985, 5.4783998)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.9391085, 5.4783998)
 
 [node name="Shelf103" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.6040985, 5.4783998)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.9391085, 5.4783998)
 
 [node name="Shelf109" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.6040985, 5.4783998)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.9391085, 5.4783998)
 
 [node name="Shelf113" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.6040985, 10.17404)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.9391085, 10.17404)
 
 [node name="Shelf115" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.6040985, 10.17404)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.9391085, 10.17404)
 
 [node name="Shelf118" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.6040985, 10.17404)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.9391085, 10.17404)
 
 [node name="Shelf120" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.6040985, 10.17404)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.9391085, 10.17404)
 
 [node name="Shelf122" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.6040985, 10.17404)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.9391085, 10.17404)
 
 [node name="Shelf123" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.6040985, 10.590083)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.9391085, 10.590083)
 
 [node name="Shelf127" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.6040985, 10.590083)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.9391085, 10.590083)
 
 [node name="Shelf129" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.6040985, 10.590083)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.9391085, 10.590083)
 
 [node name="Shelf130" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.6040985, 10.590083)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.9391085, 10.590083)
 
 [node name="Shelf131" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.6040985, 10.590083)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.9391085, 10.590083)
 
 [node name="Shelf132" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.6040985, 7.6423664)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.9391085, 7.6423664)
 
 [node name="Shelf133" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.6040985, 7.6423664)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.9391085, 7.6423664)
 
 [node name="Shelf134" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.6040985, 7.6423664)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.9391085, 7.6423664)
 
 [node name="Shelf135" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.6040985, 7.6423664)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.9391085, 7.6423664)
 
 [node name="Shelf136" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.6040985, 7.6423664)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.9391085, 7.6423664)
 
 [node name="Shelf137" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.6040985, 8.05841)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.9391085, 8.05841)
 
 [node name="Shelf138" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.6040985, 8.05841)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.9391085, 8.05841)
 
 [node name="Shelf139" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.6040985, 8.05841)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.9391085, 8.05841)
 
 [node name="Shelf140" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.6040985, 8.05841)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.9391085, 8.05841)
 
 [node name="Shelf141" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.6040985, 8.05841)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.9391085, 8.05841)
 
 [node name="Shelf142" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.6040985, 5.0623565)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.9391085, 5.0623565)
 
 [node name="Shelf143" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.6040985, 5.0623565)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.9391085, 5.0623565)
 
 [node name="Shelf144" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.6040985, 5.0623565)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.9391085, 5.0623565)
 
 [node name="Shelf145" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.6040985, 5.0623565)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.9391085, 5.0623565)
 
 [node name="Shelf146" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.6040985, 5.0623565)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.9391085, 5.0623565)
 
 [node name="Shelf147" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.6040985, 5.4783998)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.9391085, 5.4783998)
 
 [node name="Shelf148" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.6040985, 5.4783998)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.9391085, 5.4783998)
 
 [node name="Shelf149" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.6040985, 5.4783998)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.9391085, 5.4783998)
 
 [node name="Shelf150" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.6040985, 5.4783998)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.9391085, 5.4783998)
 
 [node name="Shelf151" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.6040985, 5.4783998)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.9391085, 5.4783998)
 
 [node name="Shelf7" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -0.7509153, 0.6040985, 15.608341)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -0.7509153, 0.9391085, 15.608341)
 
 [node name="Shelf11" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.6040985, -5.4301357)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.9391085, -5.4301357)
 
 [node name="Shelf17" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.6040985, -5.4301357)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.9391085, -5.4301357)
 
 [node name="Shelf18" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.6040985, -5.4301357)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.9391085, -5.4301357)
 
 [node name="Shelf20" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.6040985, -5.4301357)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.9391085, -5.4301357)
 
 [node name="Shelf22" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.6040985, -5.4301357)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.9391085, -5.4301357)
 
 [node name="Shelf23" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.6040985, -8.30243)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.9391085, -8.30243)
 
 [node name="Shelf24" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.6040985, -8.30243)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.9391085, -8.30243)
 
 [node name="Shelf25" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.6040985, -8.30243)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.9391085, -8.30243)
 
 [node name="Shelf26" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.6040985, -8.30243)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.9391085, -8.30243)
 
 [node name="Shelf27" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.6040985, -8.30243)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.9391085, -8.30243)
 
 [node name="Shelf28" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.6040985, -7.886387)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.9391085, -7.886387)
 
 [node name="Shelf29" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.6040985, -7.886387)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.9391085, -7.886387)
 
 [node name="Shelf30" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.6040985, -7.886387)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.9391085, -7.886387)
 
 [node name="Shelf32" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.6040985, -7.886387)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.9391085, -7.886387)
 
 [node name="Shelf34" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.6040985, -7.886387)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.9391085, -7.886387)
 
 [node name="Shelf40" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.6040985, -10.864437)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.9391085, -10.864437)
 
 [node name="Shelf43" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.6040985, -10.864437)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.9391085, -10.864437)
 
 [node name="Shelf44" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.6040985, -10.864437)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.9391085, -10.864437)
 
 [node name="Shelf45" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.6040985, -10.864437)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.9391085, -10.864437)
 
 [node name="Shelf47" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.6040985, -10.864437)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.9391085, -10.864437)
 
 [node name="Shelf48" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.6040985, -10.448394)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.9391085, -10.448394)
 
 [node name="Shelf49" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.6040985, -10.448394)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.9391085, -10.448394)
 
 [node name="Shelf50" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.6040985, -10.448394)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.9391085, -10.448394)
 
 [node name="Shelf51" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.6040985, -10.448394)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.9391085, -10.448394)
 
 [node name="Shelf52" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.6040985, -10.448394)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.9391085, -10.448394)
 
 [node name="Shelf56" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.6040985, -13.396111)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 5.230389, 0.9391085, -13.396111)
 
 [node name="Shelf58" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.6040985, -13.396111)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 4.035005, 0.9391085, -13.396111)
 
 [node name="Shelf59" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.6040985, -13.396111)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 2.8371418, 0.9391085, -13.396111)
 
 [node name="Shelf60" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.6040985, -13.396111)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 1.6417577, 0.9391085, -13.396111)
 
 [node name="Shelf64" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.6040985, -13.396111)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, 0.44446874, 0.9391085, -13.396111)
 
 [node name="Shelf66" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.6040985, -12.980067)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.9391085, -12.980067)
 
 [node name="Shelf68" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.6040985, -12.980067)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.9391085, -12.980067)
 
 [node name="Shelf70" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.6040985, -12.980067)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.9391085, -12.980067)
 
 [node name="Shelf72" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.6040985, -12.980067)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.9391085, -12.980067)
 
 [node name="Shelf92" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.6040985, -12.980067)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.9391085, -12.980067)
 
 [node name="Shelf101" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.6040985, -15.560078)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.9391085, -15.560078)
 
 [node name="Shelf102" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.6040985, -15.560078)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.9391085, -15.560078)
 
 [node name="Shelf104" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.6040985, -15.560078)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.9391085, -15.560078)
 
 [node name="Shelf105" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.6040985, -15.560078)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.9391085, -15.560078)
 
 [node name="Shelf110" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.6040985, -15.560078)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.9391085, -15.560078)
 
 [node name="Shelf114" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.6040985, -10.864437)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.9391085, -10.864437)
 
 [node name="Shelf116" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.6040985, -10.864437)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.9391085, -10.864437)
 
 [node name="Shelf119" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.6040985, -10.864437)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.9391085, -10.864437)
 
 [node name="Shelf121" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.6040985, -10.864437)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.9391085, -10.864437)
 
 [node name="Shelf124" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.6040985, -10.864437)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.9391085, -10.864437)
 
 [node name="Shelf125" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.6040985, -10.448394)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.9391085, -10.448394)
 
 [node name="Shelf128" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.6040985, -10.448394)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.9391085, -10.448394)
 
 [node name="Shelf152" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.6040985, -10.448394)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.9391085, -10.448394)
 
 [node name="Shelf153" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.6040985, -10.448394)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.9391085, -10.448394)
 
 [node name="Shelf154" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.6040985, -10.448394)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.9391085, -10.448394)
 
 [node name="Shelf175" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.6040985, -5.484195)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.9391085, -5.484195)
 
 [node name="Shelf176" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.6040985, -5.484195)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.9391085, -5.484195)
 
 [node name="Shelf177" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.6040985, -5.484195)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.9391085, -5.484195)
 
 [node name="Shelf178" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.6040985, -5.484195)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.9391085, -5.484195)
 
 [node name="Shelf179" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.6040985, -5.484195)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.9391085, -5.484195)
 
 [node name="Shelf180" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.6040985, -5.068152)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.9391085, -5.068152)
 
 [node name="Shelf181" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.6040985, -5.068152)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.9391085, -5.068152)
 
 [node name="Shelf182" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.6040985, -5.068152)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.9391085, -5.068152)
 
 [node name="Shelf183" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.6040985, -5.068152)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.9391085, -5.068152)
 
 [node name="Shelf184" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.6040985, -5.068152)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.9391085, -5.068152)
 
 [node name="Shelf185" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.6040985, -8.064204)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -3.1551652, 0.9391085, -8.064204)
 
 [node name="Shelf186" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.6040985, -8.064204)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -4.350549, 0.9391085, -8.064204)
 
 [node name="Shelf187" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.6040985, -8.064204)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -5.5484123, 0.9391085, -8.064204)
 
 [node name="Shelf188" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.6040985, -8.064204)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -6.7437963, 0.9391085, -8.064204)
 
 [node name="Shelf189" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.6040985, -8.064204)
+transform = Transform3D(-0.6, 0, -1.888332e-08, 0, 0.694, 0, 5.2453668e-08, 0, -0.216, -7.941086, 0.9391085, -8.064204)
 
 [node name="Shelf190" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.6040985, -7.6481624)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -3.1551652, 0.9391085, -7.6481624)
 
 [node name="Shelf191" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.6040985, -7.6481624)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -4.350549, 0.9391085, -7.6481624)
 
 [node name="Shelf192" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.6040985, -7.6481624)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -5.5484123, 0.9391085, -7.6481624)
 
 [node name="Shelf193" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.6040985, -7.6481624)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -6.7437963, 0.9391085, -7.6481624)
 
 [node name="Shelf194" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.6040985, -7.6481624)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, -7.941086, 0.9391085, -7.6481624)
 
 [node name="Shelf62" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.6040985, -5.012999)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 5.230389, 0.9391085, -5.012999)
 
 [node name="Shelf73" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.6040985, -5.012999)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 4.035005, 0.9391085, -5.012999)
 
 [node name="Shelf74" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.6040985, -5.012999)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 2.8371418, 0.9391085, -5.012999)
 
 [node name="Shelf75" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.6040985, -5.012999)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 1.6417577, 0.9391085, -5.012999)
 
 [node name="Shelf76" parent="StoreNavigation" instance=ExtResource("4_1i6nv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.6040985, -5.012999)
+transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0.44446874, 0.9391085, -5.012999)
 
 [node name="freezer" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.13630858, 15.457581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.47131857, 15.457581)
 
 [node name="freezer2" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.13630858, 15.457581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.47131857, 15.457581)
 
 [node name="freezer3" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.13630858, 15.457581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.47131857, 15.457581)
 
 [node name="freezer4" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.13630858, 15.457581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.47131857, 15.457581)
 
 [node name="freezer5" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.13630858, 15.457581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.47131857, 15.457581)
 
 [node name="freezer6" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.13630858, 15.457581)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.47131857, 15.457581)
 
 [node name="freezer7" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.13630858, 13.194097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.47131857, 13.194097)
 
 [node name="freezer8" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.13630858, 13.194097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.47131857, 13.194097)
 
 [node name="freezer9" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.13630858, 13.194097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.47131857, 13.194097)
 
 [node name="freezer10" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.13630858, 13.194097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.47131857, 13.194097)
 
 [node name="freezer11" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.13630858, 13.194097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.47131857, 13.194097)
 
 [node name="freezer12" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.13630858, 13.194097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.47131857, 13.194097)
 
 [node name="freezer13" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.13630858, -13.194196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.47131857, -13.194196)
 
 [node name="freezer14" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.13630858, -13.194196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.47131857, -13.194196)
 
 [node name="freezer15" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.13630858, -13.194196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.47131857, -13.194196)
 
 [node name="freezer16" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.13630858, -13.194196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.47131857, -13.194196)
 
 [node name="freezer17" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.13630858, -13.194196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.47131857, -13.194196)
 
 [node name="freezer18" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.13630858, -13.194196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.47131857, -13.194196)
 
 [node name="freezer19" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.13630858, -15.457679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8230233, 0.47131857, -15.457679)
 
 [node name="freezer20" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.13630858, -15.457679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798738, 0.47131857, -15.457679)
 
 [node name="freezer21" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.13630858, -15.457679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9374914, 0.47131857, -15.457679)
 
 [node name="freezer22" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.13630858, -15.457679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.994342, 0.47131857, -15.457679)
 
 [node name="freezer23" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.13630858, -15.457679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0498486, 0.47131857, -15.457679)
 
 [node name="freezer24" parent="StoreNavigation" instance=ExtResource("8_lrs2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.13630858, -15.457679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.106699, 0.47131857, -15.457679)
 
 [node name="CustomerSpawn_Type1_1" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type1"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.759567, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480616, 0.33501, -12.275453)
 
 [node name="CustomerSpawn_Type1_2" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type1"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5877743, 0, 3.5664716)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480616, 0.33501, -11.115139)
 
 [node name="CustomerSpawn_Type1_3" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type1"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7510433, 0, -4.2209797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480616, 0.33501, -9.927072)
+
+[node name="CustomerSpawn_Type1_4" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type1"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480616, 0.33501, 9.909759)
+
+[node name="CustomerSpawn_Type1_5" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type1"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480616, 0.33501, 11.070073)
+
+[node name="CustomerSpawn_Type1_6" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type1"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480616, 0.33501, 12.25814)
 
 [node name="ParkedCartSpot1" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8628721, 0, -4.2209797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.058109164, 0.2827167, -2.101261)
 
 [node name="ParkedCartSpot2" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6072445, 0, -4.2209797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.776945, 0.2827167, -2.2601695)
 
 [node name="ParkedCartSpot3" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.610034, 0, -4.2209797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1851964, 0.2827167, -5.289406)
 
-[node name="CustomerSpawn_Type2_1" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type2"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.610034, 0, 3.4724364)
+[node name="ParkedCartSpot4" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.2541778, 0.2827167, -15.513984)
 
-[node name="CustomerSpawn_Type2_2" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type2"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.610034, 0, 6.3517895)
+[node name="ParkedCartSpot5" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.95524, 0.2827167, -13.376111)
 
-[node name="CustomerSpawn_Type2_3" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type2"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4668102, 0, 6.2816763)
+[node name="ParkedCartSpot6" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.95524, 0.2827167, -7.8545465)
+
+[node name="ParkedCartSpot7" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.8351345, 0.2827167, 15.511444)
+
+[node name="ParkedCartSpot8" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.7847489, 0.2827167, 15.319706)
+
+[node name="ParkedCartSpot9" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6113299, 0.2827167, 10.290045)
+
+[node name="ParkedCartSpot10" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.698282, 0.2827167, 9.103626)
+
+[node name="CustomerSpawn_Type2_5" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type2"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480814, 0.33501, 10.511977)
+
+[node name="CustomerSpawn_Type2_6" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type2"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480814, 0.33501, 9.24536)
+
+[node name="CustomerSpawn_Type2_7" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type2"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480814, 0.33501, 11.62431)
+
+[node name="CustomerSpawn_Type2_8" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type2"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480814, 0.33501, -10.546926)
+
+[node name="CustomerSpawn_Type2_9" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type2"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480814, 0.33501, -11.707585)
+
+[node name="CustomerSpawn_Type2_10" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type2"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480814, 0.33501, -9.282575)
 
 [node name="ExitPoint" type="Marker3D" parent="StoreNavigation" groups=["customer_exit"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.325192, 0, 10.734609)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.40527, 0.33501, -0.0071430206)
 
 [node name="ShelfStop1" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.928874, 0, 11.224283)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.928874, 0.33501, 11.716235)
 
 [node name="ShelfStop2" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.928874, 0, 9.44235)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.928874, 0.33501, 9.080019)
 
 [node name="ShelfStop3" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.928874, 0, 13.826411)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.928874, 0.33501, 14.370258)
 
-[node name="CustomerSpawner" type="Node3D" parent="StoreNavigation"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09755254, 0)
-script = ExtResource("9_rlft1")
-customer_scene = ExtResource("10_uhftk")
-shopping_cart_scene = ExtResource("11_85gsg")
-available_items = Array[PackedScene]([ExtResource("12_2xux8")])
+[node name="ShelfStop4" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2005191, 0.33501, 11.716235)
+
+[node name="ShelfStop5" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2005191, 0.33501, 9.080019)
+
+[node name="ShelfStop6" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2005191, 0.33501, 14.370258)
+
+[node name="ShelfStop7" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4378834, 0.33501, 11.716235)
+
+[node name="ShelfStop8" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4378834, 0.33501, 9.080019)
+
+[node name="ShelfStop9" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4378834, 0.33501, 14.370258)
+
+[node name="ShelfStop10" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4378834, 0.33501, 3.7374797)
+
+[node name="ShelfStop11" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4378834, 0.33501, 1.053511)
+
+[node name="ShelfStop12" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4378834, 0.33501, 6.391503)
+
+[node name="ShelfStop13" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4764614, 0.33501, 3.7374797)
+
+[node name="ShelfStop14" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4764614, 0.33501, 0.99265516)
+
+[node name="ShelfStop15" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4764614, 0.33501, 6.391503)
+
+[node name="ShelfStop16" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8754196, 0.33501, 3.7374797)
+
+[node name="ShelfStop17" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8754196, 0.33501, 0.8941469)
+
+[node name="ShelfStop18" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8754196, 0.33501, 6.391503)
+
+[node name="ShelfStop19" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8956351, 0.33501, 3.7374797)
+
+[node name="ShelfStop20" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8956351, 0.33501, 1.1012635)
+
+[node name="ShelfStop21" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8956351, 0.33501, 6.391503)
+
+[node name="ShelfStop22" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4514313, 0.33501, 3.7374797)
+
+[node name="ShelfStop23" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4514313, 0.33501, 1.1012635)
+
+[node name="ShelfStop24" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4514313, 0.33501, 6.391503)
+
+[node name="ShelfStop25" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7937713, 0.33501, 3.7374797)
+
+[node name="ShelfStop26" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7937713, 0.33501, 1.1012635)
+
+[node name="ShelfStop27" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7937713, 0.33501, 6.391503)
+
+[node name="ShelfStop28" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.446346, 0.33501, 3.7374797)
+
+[node name="ShelfStop29" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.446346, 0.33501, 1.1012635)
+
+[node name="ShelfStop30" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.446346, 0.33501, 6.391503)
+
+[node name="ShelfStop31" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.235121, 0.33501, 3.7374797)
+
+[node name="ShelfStop32" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.235121, 0.33501, 1.1012635)
+
+[node name="ShelfStop33" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.235121, 0.33501, 6.391503)
+
+[node name="ShelfStop34" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.18615, 0.33501, 10.983716)
+
+[node name="ShelfStop35" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.18615, 0.33501, 8.3475)
+
+[node name="ShelfStop36" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.18615, 0.33501, 13.63774)
+
+[node name="ShelfStop37" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.18615, 0.33501, -3.378705)
+
+[node name="ShelfStop38" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.18615, 0.33501, -6.014921)
+
+[node name="ShelfStop39" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.18615, 0.33501, -0.7246809)
+
+[node name="ShelfStop40" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.18615, 0.33501, -10.517088)
+
+[node name="ShelfStop41" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.18615, 0.33501, -13.153303)
+
+[node name="ShelfStop42" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.18615, 0.33501, -7.8630633)
+
+[node name="ShelfStop43" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8811674, 0.33501, -11.991339)
+
+[node name="ShelfStop44" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8811674, 0.33501, -14.627554)
+
+[node name="ShelfStop45" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8811674, 0.33501, -9.337314)
+
+[node name="ShelfStop46" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4363165, 0.33501, -11.991339)
+
+[node name="ShelfStop47" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4363165, 0.33501, -14.627554)
+
+[node name="ShelfStop48" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4363165, 0.33501, -9.337314)
+
+[node name="ShelfStop49" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.068133, 0.33501, -11.991339)
+
+[node name="ShelfStop50" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.068133, 0.33501, -14.627554)
+
+[node name="ShelfStop51" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.068133, 0.33501, -9.337314)
+
+[node name="ShelfStop52" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2688985, 0.33501, -11.991339)
+
+[node name="ShelfStop53" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2688985, 0.33501, -14.627554)
+
+[node name="ShelfStop54" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2688985, 0.33501, -9.337314)
+
+[node name="ShelfStop55" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2688985, 0.33501, -3.5123014)
+
+[node name="ShelfStop56" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2688985, 0.33501, -6.1485167)
+
+[node name="ShelfStop57" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2688985, 0.33501, -0.85827637)
+
+[node name="ShelfStop58" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1220613, 0.33501, -3.5123014)
+
+[node name="ShelfStop59" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1220613, 0.33501, -6.1485167)
+
+[node name="ShelfStop60" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1220613, 0.33501, -0.85827637)
+
+[node name="ShelfStop61" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.588579, 0.33501, -3.5123014)
+
+[node name="ShelfStop62" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.588579, 0.33501, -6.1485167)
+
+[node name="ShelfStop63" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.588579, 0.33501, -0.85827637)
+
+[node name="ShelfStop64" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5203085, 0.33501, -6.7625127)
+
+[node name="ShelfStop65" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5203085, 0.33501, -9.398727)
+
+[node name="ShelfStop66" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5203085, 0.33501, -4.1084876)
+
+[node name="ShelfStop67" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5203085, 0.33501, -6.7625127)
+
+[node name="ShelfStop68" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5203085, 0.33501, -9.398727)
+
+[node name="ShelfStop69" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5203085, 0.33501, -4.1084876)
+
+[node name="ShelfStop70" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9911556, 0.33501, -6.7625127)
+
+[node name="ShelfStop72" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9911556, 0.33501, -4.1084876)
+
+[node name="ShelfStop73" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9911556, 0.33501, -12.16628)
+
+[node name="ShelfStop74" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9911556, 0.33501, -14.802494)
+
+[node name="ShelfStop76" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9985232, 0.33501, -12.16628)
+
+[node name="ShelfStop77" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9985232, 0.33501, -14.802494)
+
+[node name="ShelfStop78" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5038843, 0.33501, -12.16628)
+
+[node name="ShelfStop79" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5038843, 0.33501, -14.802494)
+
+[node name="ShelfStop75" type="Marker3D" parent="StoreNavigation" groups=["shelf_stop_point"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9911556, 0.33501, -9.512255)
 
 [node name="FpsPlayer" parent="." instance=ExtResource("2_xmco6")]
 transform = Transform3D(-0.005270858, 0, 0.9999861, 0, 1, 0, -0.9999861, 0, -0.005270858, 25.656078, 0.6257074, 0.36274672)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0.464502, -0.511717, 0.722761, -0.185036, 0.742055, 0.644295, -11.4446, 27.8034, 30.1387)
+transform = Transform3D(-0.86602515, -0.43301326, 0.25000003, 0.4645021, -0.5117168, 0.7227612, -0.18503603, 0.7420549, 0.64429516, -11.4446, 27.8034, 30.1387)
 light_color = Color(1, 0.960784, 0.862745, 1)
 light_energy = 5.0
 shadow_enabled = true
@@ -1192,5 +1450,12 @@ directional_shadow_max_distance = 150.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xmco6")
 camera_attributes = SubResource("CameraAttributesPractical_ylb1v")
+
+[node name="CustomerSpawner" type="Node3D" parent="."]
+script = ExtResource("9_rlft1")
+customer_scene = ExtResource("10_uhftk")
+shopping_cart_scene = ExtResource("11_85gsg")
+available_items = Array[PackedScene]([ExtResource("12_2xux8")])
+max_total_customers = 15
 
 [editable path="StoreNavigation/Supermarket"]

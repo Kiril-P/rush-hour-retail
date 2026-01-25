@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.15367152, 0.01268501, -0.08646969, 0.2511, 0.2136
 
 [node name="salad" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_wjrxl")
 item_name = "Salad"
 

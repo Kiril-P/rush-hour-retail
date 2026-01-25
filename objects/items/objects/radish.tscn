@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.1761738, 0.37044275, -0.020633841, -0.1761738, 0.
 
 [node name="radish" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_dr7lm")
 item_name = "Radish"
 

@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.012424104, 0.095151246, -0.11385159, 0.0025021643
 
 [node name="onion" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_agmxs")
 item_name = "Onion"
 
@@ -19,6 +20,6 @@ transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 
 mesh = ExtResource("2_agmxs")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="item_ingredient"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_agmxs")

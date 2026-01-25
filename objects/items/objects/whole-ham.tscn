@@ -8,6 +8,7 @@ points = PackedVector3Array(0.068837635, 0.29045036, 0.37208128, -0.005308449, 0
 
 [node name="wholeham" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_erd5q")
 item_name = "Whole Ham"
 

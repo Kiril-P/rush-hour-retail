@@ -63,7 +63,6 @@ func _process(delta):
 func toggle_visibility():
 	is_visible = !is_visible
 	target_position = show_position if is_visible else hide_position
-	print("Paper list toggled: ", "VISIBLE" if is_visible else "HIDDEN")
 
 func _on_list_generated():
 	# New list generated - clear collected items tracking
@@ -79,7 +78,6 @@ func _on_item_collected(item_name: String):
 	if not collected_items.has(item_name):
 		collected_items.append(item_name)
 		_update_list_display()
-		print("✓ Marked collected on paper: ", item_name)
 
 func _update_list_display():
 	if not GameManager or not items_container:
@@ -141,5 +139,3 @@ func _update_list_display():
 		hbox.add_child(item_label)
 		items_container.add_child(hbox)
 	
-	if all_items_on_list.size() > 0:
-		print("✓ Paper list updated (", GameManager.current_shopping_list.size(), " remaining, ", collected_items.size(), " collected)")

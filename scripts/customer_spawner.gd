@@ -1,173 +1,169 @@
 extends Node3D
 
-## Customer Spawner - Spawns AI customers at round start
-## Handles both types: WITH_CART and WITHOUT_CART
-## Version without CustomerAI type casting for compatibility
+## Customer Spawner - CONTINUOUS SPAWNING
+## Spawns initial wave, then spawns new customers over time
 
-@export var customer_scene: PackedScene  # customer.tscn
-@export var shopping_cart_scene: PackedScene  # shopping_cart.tscn
-@export var available_items: Array[PackedScene] = []  # All item scenes
+@export var customer_scene: PackedScene
+@export var shopping_cart_scene: PackedScene
+@export var available_items: Array[PackedScene] = []
 
-@export_group("Spawn Settings")
-@export var type1_customers: int = 3  # WITHOUT_CART
-@export var type2_customers: int = 3  # WITH_CART
+@export_group("Initial Spawn")
+@export var type1_customers: int = 3
+@export var type2_customers: int = 3
+@export var initial_spawn_delay: float = 0.5
+
+@export_group("Continuous Spawning")
+@export var enable_continuous_spawning: bool = true
+@export var min_spawn_interval: float = 5.0  # Min seconds between spawns
+@export var max_spawn_interval: float = 20.0  # Max seconds between spawns
+@export var max_total_customers: int = 10  # Max customers in store at once
+@export var continuous_spawn_ratio: float = 0.5  # 0-1, chance of Type1 vs Type2
+
+@export_group("Cart Settings")
 @export var min_items_per_cart: int = 2
 @export var max_items_per_cart: int = 10
 
 @export_group("Spawn Timing")
 @export var spawn_on_ready: bool = true
-@export var spawn_delay: float = 0.5  # Delay between each spawn
 
-# Customer type enum (matches customer_ai.gd)
-enum CustomerType {
-	WITHOUT_CART,
-	WITH_CART
-}
+var active_customers: int = 0
+var spawning_active: bool = false
 
 func _ready():
 	if spawn_on_ready:
 		await get_tree().create_timer(1.0).timeout
-		spawn_all_customers()
+		spawn_initial_wave()
 
-func spawn_all_customers():
-	"""Spawn all customers at round start"""
-	print("\n=== CUSTOMER SPAWNER ===")
-	print("Spawning ", type1_customers, " WITHOUT_CART customers")
-	print("Spawning ", type2_customers, " WITH_CART customers")
-	print("========================\n")
+func spawn_initial_wave():
+	"""Spawn initial batch of customers"""
 	
-	# Spawn Type 1 (WITHOUT_CART)
+	# Spawn initial Type 1
 	for i in range(type1_customers):
-		await get_tree().create_timer(spawn_delay).timeout
-		_spawn_customer_without_cart(i)
+		await get_tree().create_timer(initial_spawn_delay).timeout
+		_spawn_customer_without_cart()
 	
-	# Spawn Type 2 (WITH_CART)
+	# Spawn initial Type 2
 	for i in range(type2_customers):
-		await get_tree().create_timer(spawn_delay).timeout
-		_spawn_customer_with_cart(i)
+		await get_tree().create_timer(initial_spawn_delay).timeout
+		_spawn_customer_with_cart()
 	
-	print("✅ All customers spawned!\n")
+	
+	# Start continuous spawning
+	if enable_continuous_spawning:
+		spawning_active = true
+		_continuous_spawn_loop()
 
-func _spawn_customer_without_cart(index: int):
-	"""Spawn Type 1: Customer parks cart, walks around"""
+func _continuous_spawn_loop():
+	"""Continuously spawn new customers at random intervals"""
+	while spawning_active:
+		# Wait random time
+		var wait_time = randf_range(min_spawn_interval, max_spawn_interval)
+		await get_tree().create_timer(wait_time).timeout
+		
+		# Check if we're at max capacity
+		_update_customer_count()
+		
+		
+		# Spawn random customer type
+		var spawn_type1 = randf() < continuous_spawn_ratio
+		
+		if spawn_type1:
+			_spawn_customer_without_cart()
+		else:
+			_spawn_customer_with_cart()
+		
+
+func _update_customer_count():
+	"""Count how many customers are currently active"""
+	active_customers = get_tree().get_nodes_in_group("ai_customer").size()
+
+func _spawn_customer_without_cart():
 	if not customer_scene:
-		push_error("Customer scene not assigned!")
 		return
 	
-	# Find spawn points
 	var customer_spawns = get_tree().get_nodes_in_group("customer_spawn_type1")
 	var cart_parking_spots = get_tree().get_nodes_in_group("parked_cart_spot")
 	
 	if customer_spawns.is_empty():
-		push_error("No customer_spawn_type1 markers found!")
 		return
 	
-	# Pick random spawn point
-	var spawn_point = customer_spawns[index % customer_spawns.size()]
+	var spawn_point = customer_spawns[randi() % customer_spawns.size()]
 	
-	# Spawn customer (without type casting)
 	var customer = customer_scene.instantiate()
-	customer.customer_type = CustomerType.WITHOUT_CART
+	customer.customer_type = 0  # WITHOUT_CART
+	customer.add_to_group("ai_customer")  # Track for counting
 	get_tree().current_scene.add_child(customer)
 	customer.global_position = spawn_point.global_position
 	
-	# Spawn and park cart
 	if not cart_parking_spots.is_empty() and shopping_cart_scene:
-		var parking_spot = cart_parking_spots[index % cart_parking_spots.size()]
+		var parking_spot = cart_parking_spots[randi() % cart_parking_spots.size()]
 		var cart = await _spawn_cart(parking_spot.global_position)
 		customer.attach_cart(cart)
-		
-		# Fill cart with items
 		await _fill_cart_with_items(cart)
 	
-	print("🚶 Spawned Type 1 customer: ", customer.name)
+	active_customers += 1
 
-func _spawn_customer_with_cart(index: int):
-	"""Spawn Type 2: Customer walks with cart"""
+func _spawn_customer_with_cart():
 	if not customer_scene:
-		push_error("Customer scene not assigned!")
 		return
 	
-	# Find spawn points
 	var customer_spawns = get_tree().get_nodes_in_group("customer_spawn_type2")
 	
 	if customer_spawns.is_empty():
-		push_error("No customer_spawn_type2 markers found!")
 		return
 	
-	# Pick random spawn point
-	var spawn_point = customer_spawns[index % customer_spawns.size()]
+	var spawn_point = customer_spawns[randi() % customer_spawns.size()]
 	
-	# Spawn customer (without type casting)
 	var customer = customer_scene.instantiate()
-	customer.customer_type = CustomerType.WITH_CART
+	customer.customer_type = 1  # WITH_CART
+	customer.add_to_group("ai_customer")  # Track for counting
 	get_tree().current_scene.add_child(customer)
 	customer.global_position = spawn_point.global_position
 	
-	# Spawn cart with customer
 	if shopping_cart_scene:
 		var cart = await _spawn_cart(spawn_point.global_position)
 		customer.attach_cart(cart)
-		
-		# Fill cart with items
 		await _fill_cart_with_items(cart)
 	
-	print("🛒 Spawned Type 2 customer: ", customer.name)
+	active_customers += 1
 
 func _spawn_cart(position: Vector3):
-	"""Spawn a shopping cart at position"""
 	var cart = shopping_cart_scene.instantiate()
 	get_tree().current_scene.add_child(cart)
-	
-	# Wait for cart to be ready
 	await get_tree().process_frame
-	
 	cart.global_position = position
-	
 	return cart
 
 func _fill_cart_with_items(cart):
-	"""Fill cart with random items"""
 	if available_items.is_empty():
-		print("  ⚠️ No items available to fill cart!")
 		return
 	
-	# Wait for cart's ItemStorageArea to be ready
 	await get_tree().process_frame
 	
 	var num_items = randi_range(min_items_per_cart, max_items_per_cart)
 	
-	print("  → Filling cart with ", num_items, " items...")
-	
 	for i in range(num_items):
-		# Pick random item
 		var random_item_scene = available_items[randi() % available_items.size()]
 		
-		# Check if scene is valid
 		if not random_item_scene:
-			print("  ⚠️ Item scene is null at index ", i)
 			continue
 		
-		# Instantiate item
 		var item = random_item_scene.instantiate()
-		
 		if not item:
-			print("  ⚠️ Failed to instantiate item from: ", random_item_scene.resource_path)
 			continue
 		
-		# Add to cart
 		if cart.has_method("add_item"):
-			if cart.add_item(item):
-				print("    ✓ Added ", item.name, " to cart")
-			else:
-				print("    ✗ Failed to add ", item.name)
+			if not cart.add_item(item):
 				item.queue_free()
 		else:
-			print("  ⚠️ Cart doesn't have add_item method!")
 			item.queue_free()
-			break
-	
-	if cart.has_method("get") and "stored_items" in cart:
-		print("  ✅ Cart filled with ", cart.stored_items.size(), " items")
-	else:
-		print("  ✅ Cart filled")
+
+func stop_spawning():
+	"""Stop continuous spawning"""
+	spawning_active = false
+
+func resume_spawning():
+	"""Resume continuous spawning"""
+	if not spawning_active and enable_continuous_spawning:
+		spawning_active = true
+		_continuous_spawn_loop()

@@ -87,7 +87,6 @@ var available_items: Dictionary = {
 	"Redwine": 20,
 	"Salad": 20,
 	"Sandwich": 20,
-	"Skewer with Vegetables": 20,
 	"Skewer": 20,
 	"Soda Bottle": 20,
 	"Soda Can": 20,

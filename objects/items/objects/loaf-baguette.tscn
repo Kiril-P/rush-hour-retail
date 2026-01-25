@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.36776432, 0.0064928676, -0.0710222, 0.28224346, 0
 
 [node name="loafbaguette" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_0y3r7")
 item_name = "Baguette Loaf"
 

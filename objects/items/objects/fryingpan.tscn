@@ -8,6 +8,7 @@ points = PackedVector3Array(-0.27553585, 0.04207963, 0.022210319, 0.32797423, 0.
 
 [node name="fryingpan" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_hcfp3")
 item_name = "Frying Pan"
 

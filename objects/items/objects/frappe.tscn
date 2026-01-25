@@ -8,6 +8,7 @@ points = PackedVector3Array(0.11315037, 0.3081217, 0.032696668, 0.055563048, 0.0
 
 [node name="frappe" type="RigidBody3D"]
 collision_layer = 4
+sleeping = true
 script = ExtResource("1_4xrv8")
 item_name = "Frappe"
 
