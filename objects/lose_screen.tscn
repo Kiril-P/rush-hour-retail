@@ -1,0 +1,128 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp6b7v8v8v8a"]
+
+[ext_resource type="Script" uid="uid://0r76umvjyqdy" path="res://scripts/lose_screen.gd" id="1_lose_scr"]
+
+[node name="LoseScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lose_scr")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.85)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 64
+text = "TIME'S UP!"
+horizontal_alignment = 1
+
+[node name="PercentLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "85%"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+value = 85.0
+show_percentage = false
+
+[node name="MessageLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Great job! That's a lot of groceries!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="NewRecordLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "NEW RECORD!"
+horizontal_alignment = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MoneyLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Money Collected: $347 / $500"
+horizontal_alignment = 1
+
+[node name="ItemsLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Items Found: 24"
+horizontal_alignment = 1
+
+[node name="ListsLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lists Completed: 3"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+text = "Personal Best: $420"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "PLAY AGAIN"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "MAIN MENU"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonsContainer/PlayAgainButton" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonsContainer/MainMenuButton" to="." method="_on_main_menu_pressed"]

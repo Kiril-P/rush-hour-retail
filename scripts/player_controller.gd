@@ -7,12 +7,26 @@ signal interact_object
 @onready var interaction_component = $InteractionComponent
 @onready var crosshair: TextureRect = $Camera3D/Control/TextureRect
 @onready var pause_menu = $CanvasLayer/PauseMenu
+@onready var stamina_bar: ProgressBar = $CanvasLayer/StaminaBar
+@onready var tutorial_ui = $CanvasLayer/TutorialUI
+@onready var tooltip_ui = %TooltipUI
+@onready var item_name_label = %ItemNameLabel
+@onready var item_price_label = %ItemPriceLabel
 
 const SPEED = 2
 const SPRINT_SPEED = 4
 const CROUCH_SPEED = 1.2
 const JUMP_VELOCITY = 3.0
-const CAMERA_SENS = 0.001
+
+# Dynamic settings from GameManager
+var current_mouse_sens = 0.001
+var current_base_fov = 75.0
+
+# STAMINA CONSTANTS
+const STAMINA_MAX = 100.0
+const STAMINA_DEPLETION_RATE = 20.0 # Per second while sprinting
+const STAMINA_REGEN_RATE = 15.0     # Per second while resting
+const STAMINA_REGEN_DELAY = 1.0    # Seconds before regen starts
 
 # CART/BASKET SPEED MODIFIERS
 const CART_SPEED_MULT = 0.5   # 50% speed with cart
@@ -32,8 +46,6 @@ const ACCEL = 10.0
 const FRICTION = 8.0
 const AIR_CONTROL = 0.3
 
-const BASE_FOV = 75.0
-const SPRINT_FOV = 85.0
 const LEAN_AMOUNT = 0.015
 const LANDING_DIP = 0.05
 
@@ -55,6 +67,13 @@ var jump_buffer = 0.0  # Time since jump was pressed
 var time_stuck = 0.0  # Time spent not moving with input
 var last_position = Vector3.ZERO
 
+var current_stamina = 100.0
+var stamina_regen_timer = 0.0
+
+# Screen Shake
+var shake_amount: float = 0.0
+var shake_decay: float = 5.0
+
 @onready var collision_shape_3d = $CollisionShape3D
 @onready var ground_check_ray: RayCast3D = null  # Will create in _ready
 
@@ -68,6 +87,11 @@ func _ready():
 	ground_check_ray.target_position = Vector3(0, -GROUND_PROXIMITY, 0)
 	ground_check_ray.enabled = true
 	ground_check_ray.collide_with_areas = false
+
+	# Setup Stamina Bar
+	if stamina_bar:
+		stamina_bar.max_value = STAMINA_MAX
+		stamina_bar.value = current_stamina
 	
 	await get_tree().process_frame
 	var spawn = get_tree().current_scene.find_child("PlayerSpawnPoint")
@@ -86,13 +110,18 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"): 
+		# If game is already paused or over/won, don't try to pause again
+		if get_tree().paused or not GameManager.is_game_active:
+			return
+			
 		if pause_menu:
+			print("Opening Pause Menu...")
 			pause_menu.pause()
 			get_viewport().set_input_as_handled()
 
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * CAMERA_SENS)
-		camera_3d.rotate_x(-event.relative.y * CAMERA_SENS)
+		rotate_y(-event.relative.x * current_mouse_sens)
+		camera_3d.rotate_x(-event.relative.y * current_mouse_sens)
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 	
 	# Jump buffering - remember jump input for a short time
@@ -200,15 +229,48 @@ func _get_carry_speed_multiplier() -> float:
 	return 1.0  # Normal speed
 
 func _physics_process(delta):
+	# Update from GameManager settings
+	if GameManager:
+		current_mouse_sens = GameManager.mouse_sensitivity
+		current_base_fov = GameManager.target_fov
+
 	var current_speed = SPEED
+	var is_sprinting = Input.is_action_pressed("sprint") and not is_crouching and velocity.length() > 0.1 and is_on_floor()
+	
+	if is_sprinting:
+		GameManager.mark_tutorial_complete("movement")
 	if Input.is_action_pressed("crouch"):
-		current_speed = CROUCH_SPEED
-		is_crouching = true
-	elif Input.is_action_pressed("sprint") and not is_crouching:
+		GameManager.mark_tutorial_complete("movement")
+	
+	if is_sprinting and current_stamina > 0:
 		current_speed = SPRINT_SPEED
 		is_crouching = false
+		
+		# Consume stamina
+		current_stamina -= STAMINA_DEPLETION_RATE * delta
+		stamina_regen_timer = STAMINA_REGEN_DELAY
+		if current_stamina <= 0:
+			current_stamina = 0
+			add_shake(0.1) # Tired shake
+	elif Input.is_action_pressed("crouch"):
+		current_speed = CROUCH_SPEED
+		is_crouching = true
 	else:
 		is_crouching = false
+		
+		# Regenerate stamina
+		if stamina_regen_timer > 0:
+			stamina_regen_timer -= delta
+		else:
+			current_stamina += STAMINA_REGEN_RATE * delta
+			if current_stamina > STAMINA_MAX:
+				current_stamina = STAMINA_MAX
+	
+	# Update Stamina Bar
+	if stamina_bar:
+		stamina_bar.value = current_stamina
+		# Optional: Hide if full, show if not
+		stamina_bar.visible = current_stamina < STAMINA_MAX
 	
 	# APPLY CART/BASKET SPEED MODIFIERS
 	var speed_mult = _get_carry_speed_multiplier()
@@ -295,7 +357,7 @@ func _physics_process(delta):
 	camera_3d.position.y = lerp(camera_3d.position.y, target_cam_y + bob_pos.y, delta * 12.0)
 	camera_3d.position.x = lerp(camera_3d.position.x, bob_pos.x, delta * 12.0)
 
-	var target_fov = SPRINT_FOV if (Input.is_action_pressed("sprint") and velocity.length() > 2.0) else BASE_FOV
+	var target_fov = (current_base_fov + 10.0) if (Input.is_action_pressed("sprint") and velocity.length() > 2.0) else current_base_fov
 	camera_3d.fov = lerp(camera_3d.fov, target_fov, delta * 8.0)
 
 func _head_bob(time) -> Vector3:
@@ -311,23 +373,63 @@ func _process(_delta):
 	if ray_cast_3d.is_colliding():
 		collider = ray_cast_3d.get_collider()
 		interact_object.emit(collider)
+		_update_item_tooltip(collider)
 	else: 
 		collider = null
 		interact_object.emit(null)
+		_update_item_tooltip(null)
 	
 	_update_crosshair_visual(_delta)
+	_apply_screen_shake(_delta)
+
+func _update_item_tooltip(target):
+	if not tooltip_ui: return
+	
+	var item = interaction_component._find_product(target) if target else null
+	if item and not interaction_component.is_holding_item():
+		tooltip_ui.show()
+		var name_to_show = item.get_item_name() if item.has_method("get_item_name") else item.item_name
+		
+		# Get points from GameManager
+		var points = GameManager.available_items.get(name_to_show, 10)
+		
+		item_name_label.text = name_to_show
+		item_price_label.text = "$%d" % points
+	else:
+		tooltip_ui.hide()
+
+func add_shake(amount: float):
+	shake_amount += amount
+
+func _apply_screen_shake(delta):
+	if shake_amount > 0:
+		var offset = Vector3(
+			randf_range(-1.0, 1.0) * shake_amount,
+			randf_range(-1.0, 1.0) * shake_amount,
+			0.0
+		)
+		camera_3d.h_offset = offset.x
+		camera_3d.v_offset = offset.y
+		shake_amount = lerp(shake_amount, 0.0, delta * shake_decay)
+	else:
+		camera_3d.h_offset = 0
+		camera_3d.v_offset = 0
 
 func _update_crosshair_visual(delta):
 	if not crosshair: return
 	
 	var is_interactable = false
 	if collider:
-		if collider is ShoppingCart or _find_cart_parent(collider):
+		if collider is ShoppingCart or _find_cart_parent(collider) or collider is ShoppingBasket:
 			is_interactable = true
+			GameManager.trigger_tutorial("cart_basket")
 		elif collider.has_method("pick_up"):
 			is_interactable = true
+			GameManager.trigger_tutorial("pickup")
 		elif collider.has_method("interact"):
 			is_interactable = true
+			if collider.is_in_group("checkout"):
+				GameManager.trigger_tutorial("checkout")
 		elif interaction_component._find_product(collider):
 			is_interactable = true
 		

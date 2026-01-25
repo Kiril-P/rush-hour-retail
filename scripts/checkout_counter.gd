@@ -2,6 +2,8 @@ extends StaticBody3D
 
 ## Checkout Counter - Subtle Smooth Flash!
 
+var floating_text_scene = preload("res://objects/floating_text.tscn")
+
 @onready var game_manager = get_node("/root/GameManager")
 @onready var detection_area: Area3D = null
 
@@ -51,9 +53,16 @@ func _scan_item(item) -> bool:
 	# Check with game manager FIRST
 	if game_manager.check_item_correct(item_name):
 		print("✅ CORRECT ITEM!")
+		game_manager.mark_tutorial_complete("checkout")
 		
 		# SUBTLE GREEN FLASH - Item is correct!
 		_flash_screen_smooth(Color.GREEN, 0.25)
+		
+		# FLOATING TEXT & SHAKE
+		_show_floating_text("+5s", Color.GREEN)
+		if game_manager:
+			game_manager.play_sfx("res://assets/sfx/cash_chaching.mp3")
+			game_manager.spawn_sparkles(item.global_position)
 		
 		# Tell game manager (adds score, updates list, etc.)
 		game_manager.collect_correct_item(item_name)
@@ -65,9 +74,16 @@ func _scan_item(item) -> bool:
 		
 	else:
 		print("❌ WRONG ITEM!")
+		game_manager.mark_tutorial_complete("checkout")
 		
 		# SUBTLE RED FLASH - Item is wrong!
 		_flash_screen_smooth(Color.RED, 0.35)
+		
+		# FLOATING TEXT & SHAKE
+		_show_floating_text("WRONG!", Color.RED)
+		_trigger_player_shake(0.4)
+		if game_manager:
+			game_manager.play_sfx("res://assets/sfx/error.wav")
 		
 		# Tell game manager (penalty, reset combo)
 		game_manager.collect_wrong_item(item_name)
@@ -110,3 +126,17 @@ func _flash_screen_smooth(flash_color: Color, max_intensity: float = 0.3):
 	tween.tween_callback(func():
 		canvas.queue_free()
 	)
+
+func _show_floating_text(msg: String, color: Color):
+	var text_inst = floating_text_scene.instantiate()
+	get_tree().root.add_child(text_inst)
+	
+	# Position in center of screen
+	var screen_size = get_viewport().get_visible_rect().size
+	text_inst.position = screen_size / 2
+	text_inst.setup(msg, color)
+
+func _trigger_player_shake(amount: float):
+	var player = get_tree().get_first_node_in_group("player")
+	if player and player.has_method("add_shake"):
+		player.add_shake(amount)
