@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp6b7v8v8v8d"]
+
+[ext_resource type="Script" path="res://scripts/floating_text.gd" id="1_float_tx"]
+
+[node name="FloatingText" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+pivot_offset = Vector2(20, 11)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "+10s"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_float_tx")

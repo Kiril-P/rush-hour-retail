@@ -1,0 +1,176 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7v8v8v8v8wa"]
+
+[sub_resource type="GDScript" id="GDScript_tutorial_ui"]
+script/source = "extends Control
+
+@onready var panel = $CenterContainer/PanelContainer
+@onready var prompt_label = %PromptLabel
+@onready var skip_button = %SkipButton
+
+var current_step = \"\"
+var is_hiding = false
+
+var tutorial_messages = {
+	\"goal\": \"GOAL: Collect $%d in groceries before time runs out! Check your shopping list with [TAB]!\",
+	\"pickup\": \"[LMB] Pick up items to add them to your collection.\",
+	\"drop_throw\": \"[RMB] Drop items. Hold [RMB] to throw!\",
+	\"cart_basket\": \"Carts [E] hold 10 items but are slow. Baskets [E] hold 3 but are faster!\",
+	\"checkout\": \"Go to the cashier and [LMB] with an item to turn it in for points and extra time!\",
+	\"movement\": \"Use [SHIFT] to sprint and [C] to crouch!\",
+	\"list\": \"Hold [TAB] to check your shopping list at any time!\"
+}
+
+func _ready():
+	hide()
+	panel.modulate.a = 0
+	
+	if GameManager:
+		GameManager.tutorial_step_triggered.connect(_on_tutorial_triggered)
+		GameManager.tutorial_step_completed.connect(_on_tutorial_completed)
+		
+		# Connect to game start to trigger initial tutorials
+		GameManager.list_generated.connect(_on_game_actually_started)
+
+func _on_game_actually_started():
+	# Show initial goal if enabled and not completed
+	get_tree().create_timer(1.0).timeout.connect(func():
+		if GameManager.tutorial_enabled and not GameManager.completed_tutorials.get(\"goal\", false):
+			_on_tutorial_triggered(\"goal\")
+	)
+	
+	# Suggest movement if enabled and not done
+	get_tree().create_timer(10.0).timeout.connect(func():
+		if GameManager.tutorial_enabled and not GameManager.completed_tutorials.get(\"movement\", false):
+			_on_tutorial_triggered(\"movement\")
+	)
+	
+	# Suggest list if enabled and not done
+	get_tree().create_timer(15.0).timeout.connect(func():
+		if GameManager.tutorial_enabled and not GameManager.completed_tutorials.get(\"list\", false):
+			_on_tutorial_triggered(\"list\")
+	)
+
+func _on_tutorial_triggered(step_id):
+	if not GameManager.tutorial_enabled: 
+		return
+	if GameManager.completed_tutorials.get(step_id, true): 
+		return
+	
+	# If already showing this step, ignore
+	if current_step == step_id:
+		return
+		
+	# If showing something else, hide it first
+	if current_step != \"\":
+		_hide_tutorial(false) # Hide without marking complete
+		await get_tree().create_timer(0.6).timeout
+	
+	current_step = step_id
+	is_hiding = false
+	
+	var msg = tutorial_messages.get(step_id, \"\")
+	if step_id == \"goal\":
+		msg = msg % GameManager.target_score
+	
+	prompt_label.text = msg
+	show()
+	
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(panel, \"modulate:a\", 1.0, 0.5)
+	
+	# Auto-hide non-action steps
+	if step_id == \"goal\" or step_id == \"movement\":
+		get_tree().create_timer(6.0).timeout.connect(func():
+			if current_step == step_id:
+				_hide_tutorial(true)
+		)
+
+func _on_tutorial_completed(step_id):
+	if current_step == step_id:
+		_hide_tutorial(false) # Already marked complete elsewhere
+
+func _hide_tutorial(should_mark_complete: bool = true):
+	if is_hiding: return
+	is_hiding = true
+	
+	var step_to_mark = current_step
+	var tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(panel, \"modulate:a\", 0.0, 0.4)
+	tween.tween_callback(func(): 
+		hide()
+		is_hiding = false
+		if should_mark_complete and step_to_mark != \"\":
+			GameManager.mark_tutorial_complete(step_to_mark)
+		if current_step == step_to_mark:
+			current_step = \"\"
+	)
+
+func _on_skip_button_pressed():
+	print(\"Dismissing tutorial...\")
+	# Mark CURRENT step as complete first
+	if current_step != \"\":
+		var step = current_step
+		_hide_tutorial(true)
+	
+	# Then disable all future tutorials
+	GameManager.tutorial_enabled = false
+	GameManager.save_game_data()
+"
+
+[node name="TutorialUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = SubResource("GDScript_tutorial_ui")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PromptLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Tutorial Message Here"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="SkipButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Dismiss / Don't show again"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]

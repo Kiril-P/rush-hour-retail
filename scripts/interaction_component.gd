@@ -194,13 +194,17 @@ func _find_interactable(node):
 func _find_product(node):
 	var current = node
 	while current != null:
-		if "product_data" in current:
+		# Check for the item script properties or group
+		if current.is_in_group("pickable") or "item_name" in current or "product_data" in current:
 			return current
 		current = current.get_parent()
 	return null
 
 func pick_up_object(object):
 	picked_object = object
+	
+	GameManager.mark_tutorial_complete("pickup")
+	GameManager.trigger_tutorial("drop_throw")
 	
 	if picked_object is RigidBody3D:
 		picked_object.freeze = false
@@ -216,10 +220,23 @@ func pick_up_object(object):
 		picked_object.pick_up(self)
 	
 	picked_object.global_transform = carry_marker.global_transform
+	print("  ✓ Picked up: ", object.name)
+	
+	# Sparkles for list items!
+	var item_name = ""
+	if object.has_method("get_item_name"):
+		item_name = object.get_item_name()
+	elif "item_name" in object:
+		item_name = object.item_name
+		
+	if GameManager.check_item_correct(item_name):
+		GameManager.spawn_sparkles(object.global_position)
 
 func drop_object():
 	if not picked_object: return
 	var item = picked_object
+	
+	GameManager.mark_tutorial_complete("drop_throw")
 	
 	if ray_cast_3d:
 		ray_cast_3d.remove_exception(item)
@@ -243,6 +260,8 @@ func drop_object():
 func throw_object():
 	if not picked_object: return
 	var item = picked_object
+	
+	GameManager.mark_tutorial_complete("drop_throw")
 	
 	if ray_cast_3d:
 		ray_cast_3d.remove_exception(item)

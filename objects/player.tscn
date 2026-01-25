@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmk6m5s4g0fne"]
+[gd_scene load_steps=14 format=3 uid="uid://bmk6m5s4g0fne"]
 
 [ext_resource type="Script" uid="uid://d1g214mmacjey" path="res://scripts/player_controller.gd" id="1_0yo81"]
 [ext_resource type="Texture2D" uid="uid://bjghypgf57caw" path="res://assets/ui/crosshair013.png" id="2_s4hvt"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dp6b7v8v8v8v" path="res://objects/pause_menu.tscn" id="7_s4hvt"]
 [ext_resource type="PackedScene" uid="uid://yw864doq0vnw" path="res://objects/timer_ui.tscn" id="17_s4hvt"]
 
+[ext_resource type="PackedScene" path="res://objects/lose_screen.tscn" id="18_s4hvt"]
+[ext_resource type="PackedScene" path="res://objects/win_screen.tscn" id="19_s4hvt"]
+[ext_resource type="PackedScene" uid="uid://b7v8v8v8v8v9" path="res://objects/tutorial_ui.tscn" id="20_s4hvt"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_abyao"]
 radius = 0.2
 height = 0.8
@@ -14,6 +18,20 @@ height = 0.8
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w1o2u"]
 radius = 0.2
 height = 0.8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stamina_bg"]
+bg_color = Color(0, 0, 0, 0.25098)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stamina_fill"]
+bg_color = Color(0.2, 0.8, 0.4, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="FpsPlayer" type="CharacterBody3D"]
 script = ExtResource("1_0yo81")
@@ -115,3 +133,74 @@ throw_force = 6.0
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("7_s4hvt")]
 visible = false
+
+[node name="LoseScreen" parent="CanvasLayer" instance=ExtResource("18_s4hvt")]
+visible = false
+
+[node name="WinScreen" parent="CanvasLayer" instance=ExtResource("19_s4hvt")]
+visible = false
+
+[node name="TutorialUI" parent="CanvasLayer" instance=ExtResource("20_s4hvt")]
+visible = false
+
+[node name="StaminaBar" type="ProgressBar" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 14)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_stamina_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_stamina_fill")
+value = 100.0
+show_percentage = false
+
+[node name="TooltipUI" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TooltipUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="ItemNameLabel" type="Label" parent="CanvasLayer/TooltipUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Item Name"
+
+[node name="ItemPriceLabel" type="Label" parent="CanvasLayer/TooltipUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "$10.00"

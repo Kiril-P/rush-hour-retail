@@ -7,7 +7,7 @@ extends Sprite3D
 @export var show_position: Vector3 = Vector3(-0.3, -0.2, -0.4)
 @export var hide_position: Vector3 = Vector3(-1, -0.2, -0.4)
 
-var is_visible: bool = false
+var list_is_visible: bool = false
 var target_position: Vector3
 
 var viewport: SubViewport
@@ -56,13 +56,15 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed(toggle_key):
 		toggle_visibility()
+		GameManager.mark_tutorial_complete("list")
 		# Update list when showing (in case items were collected)
-		if is_visible:
+		if list_is_visible:
 			_update_list_display()
 
 func toggle_visibility():
-	is_visible = !is_visible
-	target_position = show_position if is_visible else hide_position
+	list_is_visible = !list_is_visible
+	target_position = show_position if list_is_visible else hide_position
+	print("Paper list toggled: ", "VISIBLE" if list_is_visible else "HIDDEN")
 
 func _on_list_generated():
 	# New list generated - clear collected items tracking

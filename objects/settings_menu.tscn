@@ -1,0 +1,179 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp6b7v8v8v8c"]
+
+[ext_resource type="Script" uid="uid://cv864doq0vnw" path="res://scripts/settings_menu.gd" id="1_settings"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_settings")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="GameSettings" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "GAMEPLAY"
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings"]
+layout_mode = 2
+
+[node name="SensBox" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings/SensBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Sensitivity"
+
+[node name="SensSlider" type="HSlider" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings/SensBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 50.0
+value = 10.0
+
+[node name="FovBox" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings/FovBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "FOV"
+
+[node name="FovSlider" type="HSlider" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings/FovBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 60.0
+max_value = 110.0
+value = 75.0
+
+[node name="TutorialBox" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings/TutorialBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Tutorial Enabled"
+
+[node name="TutorialToggle" type="CheckButton" parent="ScrollContainer/MarginContainer/VBoxContainer/GameSettings/TutorialBox"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+
+[node name="AudioSettings" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "AUDIO"
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings"]
+layout_mode = 2
+
+[node name="MasterBox" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings/MasterBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="MasterVol" type="HSlider" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings/MasterBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="MusicBox" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings/MusicBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicVol" type="HSlider" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings/MusicBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 80.0
+
+[node name="SfxBox" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings/SfxBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="SfxVol" type="HSlider" parent="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings/SfxBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="ControlsSettings" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/ControlsSettings"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "CONTROLS"
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/MarginContainer/VBoxContainer/ControlsSettings"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer/ControlsSettings"]
+layout_mode = 2
+text = "[W][A][S][D] - Move
+[SHIFT] - Sprint
+[C] - Crouch
+[TAB] - Shopping List
+[LMB] - Pick up / Interact
+[RMB] - Drop
+[RMB Hold] - Throw
+[E] - Grab/Release Cart or Basket
+[ESC] - Pause"
+
+[connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/GameSettings/SensBox/SensSlider" to="." method="_on_sens_slider_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/GameSettings/FovBox/FovSlider" to="." method="_on_fov_slider_value_changed"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/GameSettings/TutorialBox/TutorialToggle" to="." method="_on_tutorial_toggle_toggled"]
+[connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings/MasterBox/MasterVol" to="." method="_on_master_vol_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings/MusicBox/MusicVol" to="." method="_on_music_vol_value_changed"]
+[connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/AudioSettings/SfxBox/SfxVol" to="." method="_on_sfx_vol_value_changed"]
