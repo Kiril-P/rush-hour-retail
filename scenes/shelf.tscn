@@ -158,37 +158,37 @@ shape = SubResource("ConcavePolygonShape3D_tyffc")
 [node name="SpawnPoints" type="Node3D" parent="."]
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.6140898, 0.4584656, 0.057701882)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.6140898, 0.20743743, 0.057701882)
 
 [node name="Marker3D2" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, 0.4584656, 0.057701882)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, 0.20743743, 0.057701882)
 
 [node name="Marker3D3" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.589592, 0.4584656, 0.057701882)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.589592, 0.20743743, 0.057701882)
 
 [node name="Marker3D4" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.6140898, 1.1915576, 0.32638556)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.6140898, 0.76789194, 0.32638556)
 
 [node name="Marker3D5" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, 1.1915576, 0.32638556)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, 0.76789194, 0.32638556)
 
 [node name="Marker3D6" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.589592, 1.1915576, 0.32638556)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.589592, 0.76789194, 0.32638556)
 
 [node name="Marker3D7" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.6140898, -0.09383059, 0.22041759)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.6140898, -0.33819142, 0.22041759)
 
 [node name="Marker3D8" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, -0.09383059, 0.22041759)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, -0.33819142, 0.22041759)
 
 [node name="Marker3D9" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.589592, -0.09383059, 0.22041759)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.589592, -0.33819142, 0.22041759)
 
 [node name="Marker3D10" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.6140898, -0.53050333, 0.32638556)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.6140898, -0.7270301, 0.32638556)
 
 [node name="Marker3D11" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, -0.53050333, 0.32638556)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, -0.7270301, 0.32638556)
 
 [node name="Marker3D12" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.589592, -0.53050333, 0.32638556)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.589592, -0.7270301, 0.32638556)

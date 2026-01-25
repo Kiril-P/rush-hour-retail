@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b6b7v8v8v8v8v"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b6b7v8v8v8v8v"]
 
 [ext_resource type="FontFile" uid="uid://b8hbe5hp7pwt6" path="res://assets/ui/kenney/Font/Kenney Future.ttf" id="1_font"]
 [ext_resource type="Texture2D" uid="uid://cxryf6epql037" path="res://assets/ui/kenney/Blue/Default/button_rectangle_flat.png" id="2_normal"]

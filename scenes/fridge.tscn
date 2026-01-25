@@ -125,28 +125,28 @@ transform = Transform3D(-3.4969126e-08, 0, 0.050000004, 0, 1.0000005, 0, -0.8000
 shape = SubResource("ConcavePolygonShape3D_ipvyg")
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.35594648, 0.51253664, 0.11681971)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.35594648, 0.32050952, 0.11681971)
 
 [node name="Marker3D2" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, 0.51253664, 0.11681971)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, 0.32050952, 0.11681971)
 
 [node name="Marker3D3" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.32458702, 0.51253664, 0.11681971)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.32458702, 0.32050952, 0.11681971)
 
 [node name="Marker3D4" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.36834884, 0.20808277, -0.0342139)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.36834884, 0.016055644, -0.0342139)
 
 [node name="Marker3D5" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, 0.20808277, -0.0342139)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, 0.016055644, -0.0342139)
 
 [node name="Marker3D6" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.31591642, 0.20808277, -0.0342139)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.31591642, 0.016055644, -0.0342139)
 
 [node name="Marker3D7" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.34950927, -0.10164404, -0.0008522868)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, -0.34950927, -0.29367116, -0.0008522868)
 
 [node name="Marker3D8" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, -0.10164404, -0.0008522868)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.004882811, -0.29367116, -0.0008522868)
 
 [node name="Marker3D9" type="Marker3D" parent="."]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.30094057, -0.10164404, -0.0008522868)
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 1, 0.30094057, -0.29367116, -0.0008522868)

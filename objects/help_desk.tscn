@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://dthkm1av6dgq1"]
 
-[ext_resource type="Script" path="res://scripts/help_desk.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dx2cag8g73kf8" path="res://scripts/help_desk.gd" id="1_script"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1"]
 size = Vector3(1.5, 1, 0.8)
@@ -9,7 +9,6 @@ size = Vector3(1.5, 1, 0.8)
 size = Vector3(1.5, 1, 0.8)
 
 [node name="HelpDesk" type="StaticBody3D"]
-collision_layer = 1
 script = ExtResource("1_script")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

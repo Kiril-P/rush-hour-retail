@@ -65,7 +65,7 @@ func _follow_player(delta):
 	
 	var player_forward = -pushing_player.global_transform.basis.z
 	var target_pos = pushing_player.global_position + (player_forward * push_distance)
-	target_pos.y = pushing_player.global_position.y + push_height
+	target_pos.y = pushing_player.global_position.y  # Same height as player's feet
 	
 	global_position = target_pos
 	rotation.y = pushing_player.rotation.y + deg_to_rad(rotation_offset)
@@ -85,27 +85,26 @@ func grab_handle(player):
 	freeze = true
 	gravity_scale = 0.0
 	
+	# Disable collision LAYERS (not shapes!) - cart won't collide while being pushed
 	collision_layer = 0
 	collision_mask = 0
-	
-	for shape in body_collision_shapes:
-		shape.disabled = true
 	
 	player.add_collision_exception_with(self)
 	
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	
+	# Position cart in front of player (not behind!)
 	var player_forward = -player.global_transform.basis.z
 	var spawn_pos = player.global_position + (player_forward * push_distance)
-	spawn_pos.y = player.global_position.y + push_height
+	spawn_pos.y = player.global_position.y  # Same height as player's feet
 	global_position = spawn_pos
 	rotation.y = player.rotation.y + deg_to_rad(rotation_offset)
 	
 	return true
 
 func release_handle():
-	"""Release cart - re-enable collision and let cart fall"""
+	"""Release cart - restore collisions and let gravity work"""
 	if not is_being_pushed:
 		return
 	
@@ -114,22 +113,21 @@ func release_handle():
 	if pushing_player:
 		pushing_player.remove_collision_exception_with(self)
 	
-	for shape in body_collision_shapes:
-		shape.disabled = false
-	
+	# Restore collision layers BEFORE unfreezing
 	collision_layer = 4
 	collision_mask = 1
 	
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	
+	# Now unfreeze and let physics take over
 	freeze = false
 	gravity_scale = 1.0
 	
 	is_being_pushed = false
 	pushing_player = null
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	if not is_being_pushed and not owner_customer:  # Only freeze if not owned by customer
 		freeze = true
 	
@@ -163,7 +161,7 @@ func add_item(item: Node3D) -> bool:
 	
 	if old_parent:
 		old_parent.remove_child(item)
-
+	
 	item_storage_area.add_child(item)
 	
 	# Calculate stack position with dynamic height
@@ -195,7 +193,7 @@ func remove_last_item() -> Node3D:
 	if stored_items.is_empty():
 		return null
 	
-	var item = stored_items.pop_back()	
+	var item = stored_items.pop_back()
 	if item.get_parent() == item_storage_area:
 		item_storage_area.remove_child(item)
 	
@@ -250,9 +248,7 @@ func get_tower_height() -> float:
 			var item_height = _get_item_half_height(item) * 2.0
 			total_height += item_height + stack_spacing
 		return total_height - stack_spacing  # Remove last spacing
-	else:
-		# Use fixed spacing
-		return base_height + (stored_items.size() * stack_spacing)
+	return base_height + (stored_items.size() * stack_spacing)
 
 func is_being_held() -> bool:
 	return is_being_pushed
