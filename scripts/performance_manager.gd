@@ -1,85 +1,97 @@
 extends Node
 
-## Performance Manager - Optimizes physics for items
-## Disables physics for items far from player or not in view
+## Performance Manager - OPTIMIZED VERSION
+## Disables physics for items far from player
 
-@export var enable_distance_culling: bool = true
+@export var enable_distance_culling: bool = false  # DISABLED FOR TESTING - Might be causing lag
 @export var culling_distance: float = 15.0  # Distance beyond which to freeze items
-@export var update_interval: float = 0.5  # How often to check (seconds)
-@export var enable_frustum_culling: bool = false  # Disable physics for items not in view
+@export var update_interval: float = 2.0  # How often to check (seconds) - increased for performance
+@export var batch_size: int = 10  # Process items in batches to prevent lag spikes (reduced)
 
 var player: Node3D = null
-var camera: Camera3D = null
 var update_timer: float = 0.0
-var all_items: Array = []
+var current_batch_index: int = 0
 
 func _ready():
 	# Wait for scene to load
 	await get_tree().create_timer(3.0).timeout
-	
-	# Find player
+	_find_player()
+
+func _find_player():
+	"""Find player in scene"""
 	player = get_tree().get_first_node_in_group("player")
-	if player and player.has_node("Camera3D"):
-		camera = player.get_node("Camera3D")
-	
-	# Cache all items
-	_refresh_item_cache()
-	
-	print("🚀 Performance Manager initialized")
-	print("  - Distance culling: ", "ENABLED" if enable_distance_culling else "DISABLED")
-	print("  - Culling distance: ", culling_distance, "m")
-	print("  - Items tracked: ", all_items.size())
 
 func _process(delta):
 	if not enable_distance_culling:
 		return
 	
+	# Validate player still exists
+	if not is_instance_valid(player) or not player.is_inside_tree():
+		_find_player()
+		return
+	
 	update_timer += delta
 	if update_timer >= update_interval:
 		update_timer = 0.0
-		_update_item_culling()
+		_update_item_culling_batched()
 
-func _refresh_item_cache():
-	"""Refresh list of all items in the scene"""
-	all_items = get_tree().get_nodes_in_group("pickable")
-
-func _update_item_culling():
-	"""Update physics state for all items based on distance"""
-	if not player:
+func _update_item_culling_batched():
+	"""Update physics state for items - BATCHED to prevent lag spikes"""
+	if not player or not is_instance_valid(player):
+		return
+	
+	# Safety check - player must be in tree
+	if not player.is_inside_tree():
 		return
 	
 	var player_pos = player.global_position
 	
-	for item in all_items:
-		if not is_instance_valid(item) or not item is RigidBody3D:
+	# Get fresh list of items each time (handles items being freed)
+	var all_items = get_tree().get_nodes_in_group("pickable")
+	
+	if all_items.is_empty():
+		return
+	
+	# Process in batches to prevent frame drops
+	var items_processed = 0
+	var start_index = current_batch_index
+	
+	for i in range(all_items.size()):
+		var index = (start_index + i) % all_items.size()
+		var item = all_items[index]
+		
+		# CRITICAL: Validate item before ANY access
+		if not is_instance_valid(item):
 			continue
 		
-		# Skip items being held/pushed
+		if not item is RigidBody3D:
+			continue
+		
+		# Must be in scene tree to access global_position
+		if not item.is_inside_tree():
+			continue
+		
+		# Skip items being held/in cart
 		if item.has_method("get_is_on_shelf"):
 			if not item.get_is_on_shelf():
 				continue
 		
+		# Now safe to access global_position
 		var distance = player_pos.distance_to(item.global_position)
 		
 		# Freeze items far from player
 		if distance > culling_distance:
 			if not item.freeze:
 				item.freeze = true
-				item.sleeping = true
 		else:
-			# Keep items near player frozen unless picked up
-			# They only unfreeze when actually interacted with
-			if item.freeze == false and item.linear_velocity.length() < 0.01:
-				# Item is near player but not moving - freeze it
+			# Keep nearby stationary items frozen for performance
+			if not item.freeze and item.linear_velocity.length() < 0.01:
 				item.freeze = true
-				item.sleeping = true
-
-func add_item(item: Node3D):
-	"""Manually add an item to tracking"""
-	if item and not all_items.has(item):
-		all_items.append(item)
-
-func remove_item(item: Node3D):
-	"""Remove an item from tracking"""
-	all_items.erase(item)
-
+		
+		items_processed += 1
+		if items_processed >= batch_size:
+			current_batch_index = (index + 1) % all_items.size()
+			return
+	
+	# Reset batch index if we processed all items
+	current_batch_index = 0

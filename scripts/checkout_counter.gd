@@ -44,7 +44,6 @@ func _scan_item(item) -> bool:
 	
 	# Check with game manager FIRST
 	if game_manager.check_item_correct(item_name):
-		print("✅ CORRECT ITEM!")
 		game_manager.mark_tutorial_complete("checkout")
 		
 		# SUBTLE GREEN FLASH - Item is correct!
@@ -65,7 +64,6 @@ func _scan_item(item) -> bool:
 		return true  # Item was correct!
 		
 	else:
-		print("❌ WRONG ITEM!")
 		game_manager.mark_tutorial_complete("checkout")
 		
 		# SUBTLE RED FLASH - Item is wrong!

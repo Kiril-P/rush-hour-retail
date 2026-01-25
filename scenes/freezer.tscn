@@ -161,7 +161,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44238257, 0.02914378, 0.085
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2053991, 0.02914378, 0.19166842)
 
 [node name="GlassPlate" parent="." instance=ExtResource("12_a2q53")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49198788, 0.33348906, 0.009380959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49198788, -0.0054124, 0.009380959)
 
 [node name="GlassPlate2" parent="." instance=ExtResource("12_a2q53")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010065675, 0.33348906, 0.009380959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010065675, -0.0054124, 0.009380959)
+sleeping = false

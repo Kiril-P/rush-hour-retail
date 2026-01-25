@@ -166,38 +166,49 @@ func handle_cart_action(action: String):
 			item.global_transform = carry_marker.global_transform
 
 func _find_interactable(node):
-	var current = node
+	"""Find interactable with optimized checks - FAST PATH FIRST"""
+	if not node:
+		return null
+	
+	# Fast path: check node directly first (most common case!)
+	if node is ShoppingCart or node is ShoppingBasket:
+		return node
+	if node.is_in_group("checkout") or node.is_in_group("pickable"):
+		return node
+	if node.has_method("interact") or node.has_method("pick_up"):
+		return node
+	
+	# Slow path: search parents (limited depth)
+	var current = node.get_parent()
 	var depth = 0
-	while current != null and depth < 5:
-		# Check for ShoppingCart OR ShoppingBasket
-		if current is ShoppingCart:
+	while current != null and depth < 3:  # Reduced from 5 to 3 for performance
+		if current is ShoppingCart or current is ShoppingBasket:
 			return current
-		
-		if current is ShoppingBasket:
-			return current
-		
-		# Check for checkout counter
 		if current.is_in_group("checkout"):
 			return current
-		
-		if current.has_method("interact"):
+		if current.has_method("interact") or current.has_method("pick_up"):
 			return current
-		
-		if current.has_method("pick_up"):
-			return current
-		
 		current = current.get_parent()
 		depth += 1
 	
 	return null
 
 func _find_product(node):
+	"""Find product with depth limit - OPTIMIZED"""
+	if not node:
+		return null
+	
+	# Fast path: direct pickable check
+	if node.is_in_group("pickable"):
+		return node
+	
 	var current = node
-	while current != null:
-		# Check for the item script properties or group
+	var depth = 0
+	while current != null and depth < 5:  # Max 5 levels to prevent infinite loops
 		if current.is_in_group("pickable") or "item_name" in current or "product_data" in current:
 			return current
 		current = current.get_parent()
+		depth += 1
 	return null
 
 func pick_up_object(object):
@@ -220,9 +231,8 @@ func pick_up_object(object):
 		picked_object.pick_up(self)
 	
 	picked_object.global_transform = carry_marker.global_transform
-	print("  ✓ Picked up: ", object.name)
 	
-	# Sparkles for list items!
+	# Sparkles for list items (optimized - only once on pickup)
 	var item_name = ""
 	if object.has_method("get_item_name"):
 		item_name = object.get_item_name()

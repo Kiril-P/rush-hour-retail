@@ -29,10 +29,24 @@ extends Node3D
 var active_customers: int = 0
 var spawning_active: bool = false
 
+# PERFORMANCE: Cache spawn points to avoid repeated get_nodes_in_group()
+var cached_type1_spawns: Array = []
+var cached_type2_spawns: Array = []
+var cached_parking_spots: Array = []
+
 func _ready():
+	# Cache spawn points once at startup (HUGE performance gain!)
+	_cache_spawn_points()
+	
 	if spawn_on_ready:
 		await get_tree().create_timer(1.0).timeout
 		spawn_initial_wave()
+
+func _cache_spawn_points():
+	"""Cache all spawn point groups to avoid repeated scene tree searches"""
+	cached_type1_spawns = get_tree().get_nodes_in_group("customer_spawn_type1")
+	cached_type2_spawns = get_tree().get_nodes_in_group("customer_spawn_type2")
+	cached_parking_spots = get_tree().get_nodes_in_group("parked_cart_spot")
 
 func spawn_initial_wave():
 	"""Spawn initial batch of customers"""
@@ -81,13 +95,11 @@ func _spawn_customer_without_cart():
 	if not customer_scene:
 		return
 	
-	var customer_spawns = get_tree().get_nodes_in_group("customer_spawn_type1")
-	var cart_parking_spots = get_tree().get_nodes_in_group("parked_cart_spot")
-	
-	if customer_spawns.is_empty():
+	# Use cached spawn points (no scene tree search!)
+	if cached_type1_spawns.is_empty():
 		return
 	
-	var spawn_point = customer_spawns[randi() % customer_spawns.size()]
+	var spawn_point = cached_type1_spawns[randi() % cached_type1_spawns.size()]
 	
 	var customer = customer_scene.instantiate()
 	customer.customer_type = 0  # WITHOUT_CART
@@ -95,11 +107,11 @@ func _spawn_customer_without_cart():
 	get_tree().current_scene.add_child(customer)
 	customer.global_position = spawn_point.global_position
 	
-	if not cart_parking_spots.is_empty() and shopping_cart_scene:
-		var parking_spot = cart_parking_spots[randi() % cart_parking_spots.size()]
+	if not cached_parking_spots.is_empty() and shopping_cart_scene:
+		var parking_spot = cached_parking_spots[randi() % cached_parking_spots.size()]
 		var cart = await _spawn_cart(parking_spot.global_position)
 		customer.attach_cart(cart)
-		await _fill_cart_with_items(cart)
+		await _fill_cart_with_items_async(cart)  # ASYNC version to prevent lag!
 	
 	active_customers += 1
 
@@ -107,12 +119,11 @@ func _spawn_customer_with_cart():
 	if not customer_scene:
 		return
 	
-	var customer_spawns = get_tree().get_nodes_in_group("customer_spawn_type2")
-	
-	if customer_spawns.is_empty():
+	# Use cached spawn points (no scene tree search!)
+	if cached_type2_spawns.is_empty():
 		return
 	
-	var spawn_point = customer_spawns[randi() % customer_spawns.size()]
+	var spawn_point = cached_type2_spawns[randi() % cached_type2_spawns.size()]
 	
 	var customer = customer_scene.instantiate()
 	customer.customer_type = 1  # WITH_CART
@@ -123,7 +134,7 @@ func _spawn_customer_with_cart():
 	if shopping_cart_scene:
 		var cart = await _spawn_cart(spawn_point.global_position)
 		customer.attach_cart(cart)
-		await _fill_cart_with_items(cart)
+		await _fill_cart_with_items_async(cart)  # ASYNC version to prevent lag!
 	
 	active_customers += 1
 
@@ -134,7 +145,8 @@ func _spawn_cart(position: Vector3):
 	cart.global_position = position
 	return cart
 
-func _fill_cart_with_items(cart):
+func _fill_cart_with_items_async(cart):
+	"""ASYNC version - spawns items over multiple frames to prevent lag spikes!"""
 	if available_items.is_empty():
 		return
 	
@@ -157,6 +169,9 @@ func _fill_cart_with_items(cart):
 				item.queue_free()
 		else:
 			item.queue_free()
+		
+		# CRITICAL FIX: Wait a frame between each item to prevent lag spike!
+		await get_tree().process_frame
 
 func stop_spawning():
 	"""Stop continuous spawning"""

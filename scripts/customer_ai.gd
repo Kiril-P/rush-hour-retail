@@ -73,14 +73,29 @@ func _ready():
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	
 	
-	# Cache markers once
-	if not markers_cached:
+	# Cache markers (with validation check for scene reloads)
+	if not markers_cached or not _validate_cached_markers():
 		_cache_markers()
 	
 	await get_tree().physics_frame
 	_pick_random_destination()
 
+func _validate_cached_markers() -> bool:
+	"""Check if cached markers are still valid (not freed after scene reload)"""
+	if cached_shelf_markers.is_empty() or cached_exit_markers.is_empty():
+		return false
+	
+	# Check if first marker is still valid
+	if cached_shelf_markers.size() > 0 and not is_instance_valid(cached_shelf_markers[0]):
+		return false
+	
+	return true
+
 func _cache_markers():
+	"""Cache markers and clear old invalid ones"""
+	cached_shelf_markers.clear()
+	cached_exit_markers.clear()
+	
 	cached_shelf_markers = get_tree().get_nodes_in_group("shelf_stop_point")
 	cached_exit_markers = get_tree().get_nodes_in_group("customer_exit")
 	markers_cached = true
@@ -165,6 +180,17 @@ func _pick_random_destination():
 		return
 	
 	var random_marker = cached_shelf_markers[randi() % cached_shelf_markers.size()]
+	
+	# SAFETY CHECK: Validate marker before accessing (fixes scene reload crash)
+	if not is_instance_valid(random_marker):
+		# Marker was freed, re-cache and try again
+		_cache_markers()
+		if cached_shelf_markers.is_empty():
+			return
+		random_marker = cached_shelf_markers[randi() % cached_shelf_markers.size()]
+		if not is_instance_valid(random_marker):
+			return
+	
 	current_target = random_marker.global_position
 	shelf_to_face = _find_nearby_shelf(random_marker)
 	nav_agent.target_position = current_target
@@ -194,6 +220,19 @@ func _start_leaving():
 		return
 	
 	var exit = cached_exit_markers[randi() % cached_exit_markers.size()]
+	
+	# SAFETY CHECK: Validate exit marker before accessing
+	if not is_instance_valid(exit):
+		# Exit was freed, re-cache and try again
+		_cache_markers()
+		if cached_exit_markers.is_empty():
+			_despawn()
+			return
+		exit = cached_exit_markers[randi() % cached_exit_markers.size()]
+		if not is_instance_valid(exit):
+			_despawn()
+			return
+	
 	nav_agent.target_position = exit.global_position
 	
 func _update_cart_position():
@@ -233,14 +272,32 @@ func attach_cart(cart: ShoppingCart):
 		cart.freeze = true
 
 func _despawn():
-	"""Remove customer and cart from scene"""
+	"""Remove customer and cart from scene - ASYNC cleanup to prevent lag"""
 	# Only delete cart if we still own it (player might have taken it)
 	if shopping_cart and is_instance_valid(shopping_cart):
 		# Check if cart is still owned by us
 		if shopping_cart.owner_customer == self:
-			shopping_cart.queue_free()
+			# ASYNC: Free cart items first, then cart
+			await _cleanup_cart_async(shopping_cart)
 	
+	# Free customer
 	queue_free()
+
+func _cleanup_cart_async(cart: ShoppingCart):
+	"""Async cart cleanup - frees items over multiple frames to prevent lag spike"""
+	if not cart or not is_instance_valid(cart):
+		return
+	
+	# Free items one by one with delays
+	var items_to_free = cart.stored_items.duplicate()
+	for item in items_to_free:
+		if is_instance_valid(item):
+			item.queue_free()
+		# Wait a frame between freeing items (prevents lag spike)
+		await get_tree().process_frame
+	
+	# Finally free the cart itself
+	cart.queue_free()
 
 func _on_velocity_computed(safe_velocity: Vector3):
 	"""Called by NavigationAgent when avoidance velocity is computed"""
@@ -278,8 +335,6 @@ func _is_another_customer_nearby(radius: float) -> bool:
 
 func cart_taken_by_player():
 	"""Called when player takes the cart from this customer"""
-	print("🛒 Customer ", name, " lost their cart to player - leaving immediately!")
-	
 	# Clear cart reference
 	shopping_cart = null
 	
@@ -292,4 +347,16 @@ func cart_taken_by_player():
 		return
 	
 	var exit = cached_exit_markers[randi() % cached_exit_markers.size()]
+	
+	# SAFETY CHECK: Validate exit marker before accessing
+	if not is_instance_valid(exit):
+		_cache_markers()
+		if cached_exit_markers.is_empty():
+			_despawn()
+			return
+		exit = cached_exit_markers[randi() % cached_exit_markers.size()]
+		if not is_instance_valid(exit):
+			_despawn()
+			return
+	
 	nav_agent.target_position = exit.global_position

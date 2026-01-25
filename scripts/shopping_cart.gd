@@ -76,7 +76,6 @@ func grab_handle(player):
 	
 	# DETACH FROM CUSTOMER IF OWNED BY ONE
 	if owner_customer:
-		print("🔓 Player taking cart from customer: ", owner_customer.name)
 		owner_customer.cart_taken_by_player()
 		owner_customer = null
 	

@@ -23,7 +23,7 @@ var is_game_active: bool = false
 var is_timer_running: bool = false
 
 # Target Score System
-var target_score: int = 30
+var target_score: int = 500
 var high_score: int = 0
 const SAVE_PATH = "user://save_data.cfg"
 
@@ -132,6 +132,7 @@ var available_items: Dictionary = {
 	"Watermelon": 20,
 	"Whitewine": 20,
 	"Whole Ham": 20,
+	"Freezer Glass": 20,
 }
 
 # NEW: Track which items actually spawned in the world
@@ -142,12 +143,6 @@ func _ready():
 	_setup_performance_manager()
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	print("\n=== GAME MANAGER WITH POINTS ===")
-	print("Available items: ", available_items.size())
-	for item_name in available_items.keys():
-		print("  - ", item_name, " (", available_items[item_name], " points)")
-	print("================================\n")
-	
 	load_game_data()
 	
 	# Scan for spawned items after a short delay (let shelves spawn first)
@@ -162,7 +157,6 @@ func _setup_performance_manager():
 		performance_manager.set_script(perf_script)
 		performance_manager.name = "PerformanceManager"
 		add_child(performance_manager)
-		print("✅ Performance Manager loaded")
 
 func save_game_data():
 	var config = ConfigFile.new()
@@ -177,7 +171,6 @@ func save_game_data():
 	config.set_value("Settings", "volume_sfx", volume_sfx)
 	
 	config.save(SAVE_PATH)
-	print("Game saved with settings.")
 
 func load_game_data():
 	var config = ConfigFile.new()
@@ -197,9 +190,6 @@ func load_game_data():
 		for key in saved_completed.keys():
 			if completed_tutorials.has(key):
 				completed_tutorials[key] = saved_completed[key]
-		print("Game loaded: High Score = ", high_score, " Tutorial Enabled = ", tutorial_enabled)
-	else:
-		print("No save file found or error loading.")
 
 func mark_tutorial_complete(step_id: String):
 	if completed_tutorials.has(step_id):
@@ -272,12 +262,10 @@ func start_game():
 	generate_shopping_list()
 	score_changed.emit(total_score)
 	target_score_changed.emit(target_score)
-	print("GAME READY! Enter the store to start the timer!")
 
 func start_timer():
 	if is_game_active and not is_timer_running:
 		is_timer_running = true
-		print("⏰ TIMER STARTED!")
 
 func generate_shopping_list():
 	current_shopping_list.clear()
@@ -337,7 +325,6 @@ func collect_correct_item(item_name: String):
 			save_game_data()
 			
 		game_won.emit()
-		print("VICTORY! Target score reached!")
 		return
 	
 	# Remove item from list
@@ -401,19 +388,46 @@ func get_total_score() -> int:
 func add_new_item(item_name: String, points: int):
 	"""Add a new item to the available items"""
 	available_items[item_name] = points
-	print("Added new item: ", item_name, " (", points, " points)")
+
+# Audio cache to prevent expensive repeated loads
+var _audio_cache: Dictionary = {}
 
 func play_sfx(path: String, bus: String = "SFX"):
-	print("🔊 PLAYING SFX: ", path)
+	# PERFORMANCE: Use cached audio stream if available
+	var audio_stream: AudioStream
+	if _audio_cache.has(path):
+		audio_stream = _audio_cache[path]
+	else:
+		audio_stream = load(path)
+		if audio_stream:
+			_audio_cache[path] = audio_stream
+		else:
+			return  # Audio file not found
+	
 	var sfx_player = AudioStreamPlayer.new()
 	sfx_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(sfx_player)
-	sfx_player.stream = load(path)
+	sfx_player.stream = audio_stream
 	sfx_player.bus = bus
 	sfx_player.play()
 	sfx_player.finished.connect(sfx_player.queue_free)
 
 func spawn_sparkles(pos: Vector3):
+	# Safety check - make sure scene exists
+	if not get_tree() or not get_tree().current_scene:
+		return
+	
 	var sparkles = sparkle_scene.instantiate()
+	if not sparkles:
+		return
+	
 	get_tree().current_scene.add_child(sparkles)
 	sparkles.global_position = pos
+	
+	# Auto-delete using built-in timer node (avoids lambda capture issues)
+	var delete_timer = Timer.new()
+	delete_timer.wait_time = 2.0
+	delete_timer.one_shot = true
+	sparkles.add_child(delete_timer)
+	delete_timer.timeout.connect(sparkles.queue_free)
+	delete_timer.start()

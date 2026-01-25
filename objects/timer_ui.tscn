@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://yw864doq0vnw"]
+[gd_scene load_steps=3 format=3 uid="uid://yw864doq0vnw"]
 
 [ext_resource type="Script" uid="uid://bljbqpcofi6no" path="res://scripts/timer_label.gd" id="1_dalq0"]
 

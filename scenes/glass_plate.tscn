@@ -88,7 +88,7 @@ points = PackedVector3Array(-1.3048437, -0.11659999, -1.5714256, -1.1999719, 0.1
 mass = 0.5
 sleeping = true
 script = ExtResource("1_qnvon")
-item_name = "Glass"
+item_name = "Freezer Glass"
 
 [node name="Cube_028" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.1824118, 0, -7.105173e-08, 0, 0.17165764, 0, 7.103377e-08, 0, -0.18245795, 0.24919546, 0.22050944, -9.735369e-08)
