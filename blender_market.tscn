@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://f7yvm33ua7up"]
+[gd_scene load_steps=92 format=4 uid="uid://f7yvm33ua7up"]
 
 [ext_resource type="PackedScene" uid="uid://dlj827880cv68" path="res://Supermarket.blend" id="1_ylb1v"]
 [ext_resource type="PackedScene" uid="uid://bmihwq7hpd1cm" path="res://scenes/fridge.tscn" id="2_i354j"]
@@ -10,8 +10,75 @@
 [ext_resource type="Script" uid="uid://ch2wuu7xf5xhj" path="res://scripts/customer_spawner.gd" id="9_rlft1"]
 [ext_resource type="PackedScene" uid="uid://8lxv6rd4ox17" path="res://objects/customer.tscn" id="10_uhftk"]
 [ext_resource type="PackedScene" uid="uid://6rffo40p1a8b" path="res://objects/items/shopping_cart.tscn" id="11_85gsg"]
-[ext_resource type="PackedScene" uid="uid://qnvrxjc6vt7s" path="res://objects/items/objects/bread.tscn" id="12_2xux8"]
+[ext_resource type="PackedScene" uid="uid://cpa5hafafgnti" path="res://objects/items/objects/avocado.tscn" id="12_2xux8"]
+[ext_resource type="PackedScene" uid="uid://mr8fmdycvje3" path="res://objects/items/objects/banana.tscn" id="13_h7dl3"]
+[ext_resource type="PackedScene" uid="uid://cr7sot45vv1tb" path="res://objects/items/objects/beet.tscn" id="14_powdi"]
+[ext_resource type="PackedScene" uid="uid://blkbjodsybh6u" path="res://objects/items/objects/BlueMilk.tscn" id="15_mql2l"]
+[ext_resource type="PackedScene" uid="uid://ddre21myavxwm" path="res://objects/items/objects/bottle_ketchup.tscn" id="16_ajtvt"]
+[ext_resource type="PackedScene" uid="uid://crluai0aux5hb" path="res://objects/items/objects/bottle_mustard.tscn" id="17_concy"]
+[ext_resource type="PackedScene" uid="uid://ce6a81r4mi2u5" path="res://objects/items/objects/bottle_oil.tscn" id="18_e8ftr"]
+[ext_resource type="PackedScene" uid="uid://cnu3lpfp6yoc1" path="res://objects/items/objects/broccoli.tscn" id="19_5e1ea"]
+[ext_resource type="PackedScene" uid="uid://b14xlrja7o5ul" path="res://objects/items/objects/cabbage.tscn" id="20_j4yb0"]
+[ext_resource type="PackedScene" uid="uid://dxmipqq6ur3gd" path="res://objects/items/objects/cake.tscn" id="21_dbmyq"]
+[ext_resource type="PackedScene" uid="uid://dccu527b0lxn" path="res://objects/items/objects/can.tscn" id="22_ghl5w"]
+[ext_resource type="PackedScene" uid="uid://begcvxe5gfg5q" path="res://objects/items/objects/carrot.tscn" id="23_l70on"]
+[ext_resource type="PackedScene" uid="uid://ticdqyrsphst" path="res://objects/items/objects/carton_small.tscn" id="24_82vwm"]
+[ext_resource type="PackedScene" uid="uid://ra3llhd1cawr" path="res://objects/items/objects/cauliflower.tscn" id="25_4n4sl"]
+[ext_resource type="PackedScene" uid="uid://bw82olk8d2wkr" path="res://objects/items/objects/cereal_box.tscn" id="26_8c50l"]
+[ext_resource type="PackedScene" uid="uid://bcou807q73qyx" path="res://objects/items/objects/cheese.tscn" id="27_7cae4"]
+[ext_resource type="PackedScene" uid="uid://cfn3nqypipclx" path="res://objects/items/objects/cherries.tscn" id="28_hm4bc"]
+[ext_resource type="PackedScene" uid="uid://dtdoosuxecbau" path="res://objects/items/objects/coconut.tscn" id="29_6qcle"]
+[ext_resource type="PackedScene" uid="uid://cyggpfoag760f" path="res://objects/items/objects/cookingknifechop.tscn" id="30_8633q"]
+[ext_resource type="PackedScene" uid="uid://c64qt07c2sy0p" path="res://objects/items/objects/corn.tscn" id="31_scnpt"]
+[ext_resource type="PackedScene" uid="uid://b4pyjv7halssa" path="res://objects/items/objects/croissant.tscn" id="32_3cmuu"]
+[ext_resource type="PackedScene" uid="uid://b6duiyic1i10e" path="res://objects/items/objects/cupcake.tscn" id="33_c1tm6"]
+[ext_resource type="PackedScene" uid="uid://cn12wo42fmdxx" path="res://objects/items/objects/cuttingboard.tscn" id="34_fxug3"]
+[ext_resource type="PackedScene" uid="uid://drpfkduxtl14e" path="res://objects/items/objects/donut.tscn" id="35_ispcq"]
+[ext_resource type="PackedScene" uid="uid://cm5acb4i11wj3" path="res://objects/items/objects/donut-chocolate.tscn" id="36_r68aq"]
+[ext_resource type="PackedScene" uid="uid://bmo2a7q583qpx" path="res://objects/items/objects/donut-sprinkles.tscn" id="37_r68aq"]
+[ext_resource type="PackedScene" uid="uid://bwkxaqr885mc8" path="res://objects/items/objects/egg.tscn" id="38_i354j"]
+[ext_resource type="PackedScene" uid="uid://cf6xonpyoeyu6" path="res://objects/items/objects/eggplant.tscn" id="39_3w37c"]
 [ext_resource type="PackedScene" uid="uid://drayu72idmc6r" path="res://scenes/food_stand.tscn" id="40_3w37c"]
+[ext_resource type="PackedScene" uid="uid://lhq8k6oykei5" path="res://objects/items/objects/fish.tscn" id="40_nta5h"]
+[ext_resource type="PackedScene" uid="uid://vhr4awwfd3dh" path="res://objects/items/objects/frappe.tscn" id="41_nta5h"]
+[ext_resource type="PackedScene" uid="uid://b8mgyg7wfpk27" path="res://objects/items/objects/fryingpan.tscn" id="42_2x1n8"]
+[ext_resource type="PackedScene" uid="uid://b3onl7raor30x" path="res://objects/items/objects/glass.tscn" id="43_udppl"]
+[ext_resource type="PackedScene" uid="uid://cj2gl75kei5m5" path="res://objects/items/objects/glasswine.tscn" id="44_g8vlv"]
+[ext_resource type="PackedScene" uid="uid://dyxxlia3c8teg" path="res://objects/items/objects/grapes.tscn" id="45_p8bb5"]
+[ext_resource type="PackedScene" uid="uid://diydp86hhxcxa" path="res://objects/items/objects/honey.tscn" id="46_7q8io"]
+[ext_resource type="PackedScene" uid="uid://8y3lwdqydbng" path="res://objects/items/objects/leek.tscn" id="47_t80f7"]
+[ext_resource type="PackedScene" uid="uid://dffca87nged20" path="res://objects/items/objects/lemon.tscn" id="48_44gcg"]
+[ext_resource type="PackedScene" uid="uid://blofj0ag1qgok" path="res://objects/items/objects/loaf-baguette.tscn" id="49_mfe1n"]
+[ext_resource type="PackedScene" uid="uid://xg4pja178mbv" path="res://objects/items/objects/meat-raw.tscn" id="50_v6jyb"]
+[ext_resource type="PackedScene" uid="uid://c7nl3rdbixllk" path="res://objects/items/objects/meat-sausage.tscn" id="51_2toh2"]
+[ext_resource type="PackedScene" uid="uid://duen75fhf2nge" path="res://objects/items/objects/mushroom.tscn" id="52_hxs5n"]
+[ext_resource type="PackedScene" uid="uid://bo5yc3rfgat15" path="res://objects/items/objects/mussel.tscn" id="53_vpngx"]
+[ext_resource type="PackedScene" uid="uid://bxwungsmbqvqf" path="res://objects/items/objects/onion.tscn" id="54_en71o"]
+[ext_resource type="PackedScene" uid="uid://did7tmt1khvna" path="res://objects/items/objects/orange.tscn" id="55_54rmk"]
+[ext_resource type="PackedScene" uid="uid://bp2ty58ddtqbj" path="res://objects/items/objects/paprika.tscn" id="56_430se"]
+[ext_resource type="PackedScene" uid="uid://dp7sk6y53ldrj" path="res://objects/items/objects/peanutbutter.tscn" id="57_feh75"]
+[ext_resource type="PackedScene" uid="uid://byv540633ry18" path="res://objects/items/objects/pear.tscn" id="58_rrv5u"]
+[ext_resource type="PackedScene" uid="uid://cnv32cni6hi2c" path="res://objects/items/objects/pepper.tscn" id="59_ndhyq"]
+[ext_resource type="PackedScene" uid="uid://chnpdpj7fliw6" path="res://objects/items/objects/pie.tscn" id="60_b7jfa"]
+[ext_resource type="PackedScene" uid="uid://b4gje1pfkwxj4" path="res://objects/items/objects/pineapple.tscn" id="61_h5vdn"]
+[ext_resource type="PackedScene" uid="uid://cm6emdqspvv2d" path="res://objects/items/objects/pizza.tscn" id="62_ujube"]
+[ext_resource type="PackedScene" uid="uid://dyu4utexci6ax" path="res://objects/items/objects/pot.tscn" id="63_pdh1g"]
+[ext_resource type="PackedScene" uid="uid://by7vshmux6k60" path="res://objects/items/objects/pumpkin.tscn" id="64_gpf37"]
+[ext_resource type="PackedScene" uid="uid://bkytk2xrdvs2l" path="res://objects/items/objects/PurpleMilk.tscn" id="65_whe0j"]
+[ext_resource type="PackedScene" uid="uid://dh8hflfy6wdpp" path="res://objects/items/objects/radish.tscn" id="66_534t8"]
+[ext_resource type="PackedScene" uid="uid://cqk2mi18ip3qg" path="res://objects/items/objects/redwine.tscn" id="67_r0eok"]
+[ext_resource type="PackedScene" uid="uid://dtcg3617xxhag" path="res://objects/items/objects/salad.tscn" id="68_cn3lv"]
+[ext_resource type="PackedScene" uid="uid://cub3or3gfv1ae" path="res://objects/items/objects/sandwich.tscn" id="69_10ilv"]
+[ext_resource type="PackedScene" uid="uid://jcy5rexrlghw" path="res://objects/items/objects/skewer.tscn" id="70_uftsv"]
+[ext_resource type="PackedScene" uid="uid://dl8sog8ioefxf" path="res://objects/items/objects/soda-can.tscn" id="71_5k748"]
+[ext_resource type="PackedScene" uid="uid://bp2tpg0ygyu1i" path="res://objects/items/objects/soda-bottle.tscn" id="72_742qc"]
+[ext_resource type="PackedScene" uid="uid://c36apc761syna" path="res://objects/items/objects/strawberry.tscn" id="73_1kyrf"]
+[ext_resource type="PackedScene" uid="uid://j888puo5eu0m" path="res://objects/items/objects/taco.tscn" id="74_vdyjr"]
+[ext_resource type="PackedScene" uid="uid://7fea8hnjesrt" path="res://objects/items/objects/tomato.tscn" id="75_vdyjr"]
+[ext_resource type="PackedScene" uid="uid://b0xjsaivds4k0" path="res://objects/items/objects/turkey.tscn" id="76_ud4av"]
+[ext_resource type="PackedScene" uid="uid://evo6uk31ij7n" path="res://objects/items/objects/watermelon.tscn" id="77_j55n4"]
+[ext_resource type="PackedScene" uid="uid://dih1ot0qa7gtc" path="res://objects/items/objects/whitewine.tscn" id="78_tl4yl"]
+[ext_resource type="PackedScene" uid="uid://dtio0o4ei3bne" path="res://objects/items/objects/whole-ham.tscn" id="79_0tt02"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_lrs2g"]
 vertices = PackedVector3Array(15.489194, 0.6246521, -18.828176, 15.489194, 0.6246521, 18.921824, 21.989193, 0.6246521, 18.921824, 21.989193, 0.6246521, -18.828176, -9.260806, 0.8746521, -8.3281765, -8.760806, 0.8746521, -8.8281765, -8.760806, 0.8746521, -9.5781765, -9.260806, 0.8746521, -11.0781765, -9.010806, 0.8746521, -12.3281765, -8.760806, 0.8746521, -11.5781765, 6.239194, 0.8746521, -14.0781765, 6.489194, 0.8746521, -13.5781765, 6.739194, 0.8746521, -15.0781765, -9.260806, 0.8746521, -13.8281765, -9.010806, 0.8746521, -14.5781765, -9.260806, 0.8746521, -15.0781765, -10.260806, 0.8746521, -15.0781765, 7.489194, 0.8746521, -1.3281765, 7.989194, 0.8746521, -2.3281765, 7.489194, 0.8746521, -2.5781765, 5.739194, 0.8746521, -3.3281765, 5.989194, 0.8746521, -1.3281765, 7.489194, 0.8746521, -3.5781765, 8.239194, 0.8746521, -4.3281765, 7.489194, 0.8746521, -4.8281765, 6.239194, 0.8746521, -4.3281765, 7.489194, 0.8746521, -7.8281765, 7.989194, 0.8746521, -8.3281765, 6.489194, 0.8746521, -8.5781765, 6.239194, 0.8746521, -7.0781765, 7.489194, 0.8746521, -6.8281765, -2.010806, 0.8746521, -14.0781765, -0.7608061, 0.8746521, -13.8281765, -10.260806, 0.8746521, -4.3281765, -9.010806, 0.8746521, -4.5781765, -9.260806, 0.8746521, -5.8281765, 7.989194, 0.8746521, -6.5781765, 6.489194, 0.8746521, -6.0781765, -2.260806, 0.8746521, -11.5781765, -1.7608061, 0.8746521, -12.5781765, -2.260806, 0.8746521, -6.3281765, -2.010806, 0.8746521, -4.5781765, -0.7608061, 0.8746521, -4.5781765, -0.5108061, 0.8746521, -6.3281765, -0.7608061, 0.8746521, -7.3281765, -2.010806, 0.8746521, -7.0781765, -2.010806, 0.8746521, -9.8281765, -2.260806, 0.8746521, -8.8281765, -0.5108061, 0.8746521, -9.0781765, 2.989194, 0.8746521, -9.0781765, 2.989194, 0.8746521, -9.5781765, -0.5108061, 0.8746521, -9.5781765, -8.760806, 0.8746521, -6.8281765, -8.760806, 0.8746521, -6.3281765, 2.989194, 0.8746521, -11.5781765, 2.989194, 0.8746521, -12.0781765, -0.5108061, 0.8746521, -12.0781765, -0.7608061, 0.8746521, -11.3281765, -0.5108061, 0.8746521, -4.3281765, -0.26080608, 0.8746521, -3.0781765, 8.239194, 0.8746521, -8.8281765, 6.489194, 0.8746521, -11.3281765, 6.239194, 0.8746521, -9.5781765, 6.239194, 0.8746521, -9.0781765, 9.989194, 0.8746521, -8.5781765, 10.239194, 0.8746521, -6.8281765, 11.239194, 0.8746521, -7.0781765, 11.239194, 0.8746521, -9.3281765, 6.239194, 0.8746521, -12.0781765, 11.239194, 0.8746521, -12.0781765, 11.239194, 0.8746521, -15.0781765, 11.989194, 0.8746521, -9.5781765, 11.989194, 0.8746521, -11.8281765, 9.239194, 0.8746521, -6.5781765, 10.239194, 0.8746521, -6.0781765, 10.239194, 0.8746521, -4.8281765, 8.989194, 0.8746521, -4.5781765, 10.239194, 0.8746521, -4.0781765, 11.239194, 0.8746521, 11.9218235, 11.989194, 0.8746521, 11.6718235, 11.989194, 0.8746521, 9.4218235, 11.239194, 0.8746521, 9.1718235, 10.239194, 0.8746521, 8.9218235, 6.489194, 0.8746521, 13.6718235, 6.489194, 0.8746521, 15.1718235, 11.239194, 0.8746521, 15.1718235, 6.239194, 0.8746521, 8.9218235, 2.989194, 0.8746521, 8.9218235, 2.989194, 0.8746521, 9.4218235, 6.489194, 0.8746521, 9.6718235, 10.989194, 0.8746521, 5.9218235, 7.489194, 0.8746521, 8.9218235, 6.239194, 0.8746521, 11.4218235, 2.989194, 0.8746521, 11.4218235, 2.989194, 0.8746521, 11.9218235, 6.239194, 0.8746521, 11.9218235, -2.510806, 0.8746521, -3.3281765, -2.260806, 0.8746521, -2.0781765, -0.26080608, 0.8746521, -2.0781765, -10.260806, 0.8746521, 4.1718235, -8.510806, 0.8746521, 0.9218235, -8.510806, 0.8746521, -1.0781765, -8.260806, 0.8746521, -3.3281765, -8.510806, 0.8746521, 3.1718235, -8.760806, 0.8746521, 4.1718235, -6.260806, 0.8746521, 0.6718235, -6.260806, 0.8746521, -0.8281765, -4.010806, 0.8746521, 4.1718235, -4.010806, 0.8746521, 3.4218235, -0.7608061, 0.8746521, 7.1718235, -0.5108061, 0.8746521, 6.9218235, -0.5108061, 0.8746521, 6.1718235, -2.010806, 0.8746521, 5.9218235, -2.260806, 0.8746521, 6.9218235, -2.010806, 0.8746521, 7.1718235, -0.26080608, 0.8746521, -1.0781765, -2.760806, 0.8746521, 3.4218235, -2.260806, 0.8746521, 4.1718235, -2.760806, 0.8746521, 0.6718235, -2.510806, 0.8746521, -0.8281765, -2.260806, 0.8746521, 2.9218235, -0.5108061, 0.8746521, 4.1718235, -0.26080608, 0.8746521, 3.1718235, -2.260806, 0.8746521, 1.1718235, -0.26080608, 0.8746521, 0.9218235, 0.23919392, 0.8746521, 0.6718235, 0.23919392, 0.8746521, -0.8281765, 7.489194, 0.8746521, 5.9218235, 7.989194, 0.8746521, 5.4218235, 7.489194, 0.8746521, 5.1718235, 6.239194, 0.8746521, 6.9218235, 7.489194, 0.8746521, 2.1718235, 7.989194, 0.8746521, 1.6718235, 7.489194, 0.8746521, 1.4218235, 7.489194, 0.8746521, 0.1718235, 7.989194, 0.8746521, -0.3281765, 7.489194, 0.8746521, -0.5781765, 7.489194, 0.8746521, 4.1718235, 7.989194, 0.8746521, 3.4218235, 7.489194, 0.8746521, 3.1718235, 5.739194, 0.8746521, -0.8281765, 5.989194, 0.8746521, 3.1718235, 6.489194, 0.8746521, 4.4218235, 5.739194, 0.8746521, 0.6718235, 6.239194, 0.8746521, 6.1718235, -9.260806, 0.8746521, 9.9218235, -8.760806, 0.8746521, 9.4218235, -8.760806, 0.8746521, 8.9218235, -9.260806, 0.8746521, 8.4218235, -9.260806, 0.8746521, 4.9218235, -10.260806, 0.8746521, 15.1718235, -9.260806, 0.8746521, 15.1718235, -9.010806, 0.8746521, 14.4218235, -9.010806, 0.8746521, 14.1718235, -9.260806, 0.8746521, 12.4218235, -0.5108061, 0.8746521, 8.9218235, -2.260806, 0.8746521, 8.9218235, -0.7608061, 0.8746521, 9.6718235, -8.760806, 0.8746521, 6.1718235, -8.760806, 0.8746521, 6.9218235, -8.760806, 0.8746521, 11.4218235, -0.5108061, 0.8746521, 11.9218235, -0.5108061, 0.8746521, 11.4218235, -0.7608061, 0.8746521, 13.6718235, -2.010806, 0.8746521, 11.1718235, -2.010806, 0.8746521, 12.1718235, -1.7608061, 0.8746521, 13.9218235, -1.7608061, 0.8746521, 14.9218235, -2.010806, 0.8746521, 14.4218235, -2.260806, 0.8746521, 9.4218235)
@@ -1180,7 +1247,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.7
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.6113299, 0.2827167, 10.290045)
 
 [node name="ParkedCartSpot10" type="Marker3D" parent="StoreNavigation" groups=["parked_cart_spot"]]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.698282, 0.2827167, 9.103626)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.372599, 0.2827167, 15.485986)
 
 [node name="CustomerSpawn_Type2_5" type="Marker3D" parent="StoreNavigation" groups=["customer_spawn_type2"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.480814, 0.33501, 10.511977)
@@ -1455,7 +1522,9 @@ camera_attributes = SubResource("CameraAttributesPractical_ylb1v")
 script = ExtResource("9_rlft1")
 customer_scene = ExtResource("10_uhftk")
 shopping_cart_scene = ExtResource("11_85gsg")
-available_items = Array[PackedScene]([ExtResource("12_2xux8")])
+available_items = Array[PackedScene]([ExtResource("12_2xux8"), ExtResource("13_h7dl3"), ExtResource("14_powdi"), ExtResource("15_mql2l"), ExtResource("16_ajtvt"), ExtResource("17_concy"), ExtResource("18_e8ftr"), ExtResource("19_5e1ea"), ExtResource("20_j4yb0"), ExtResource("21_dbmyq"), ExtResource("22_ghl5w"), ExtResource("23_l70on"), ExtResource("24_82vwm"), ExtResource("25_4n4sl"), ExtResource("26_8c50l"), ExtResource("27_7cae4"), ExtResource("28_hm4bc"), ExtResource("29_6qcle"), ExtResource("30_8633q"), ExtResource("31_scnpt"), ExtResource("32_3cmuu"), ExtResource("33_c1tm6"), ExtResource("34_fxug3"), ExtResource("35_ispcq"), ExtResource("36_r68aq"), ExtResource("37_r68aq"), ExtResource("38_i354j"), ExtResource("39_3w37c"), ExtResource("40_nta5h"), ExtResource("41_nta5h"), ExtResource("42_2x1n8"), ExtResource("43_udppl"), ExtResource("44_g8vlv"), ExtResource("45_p8bb5"), ExtResource("46_7q8io"), ExtResource("47_t80f7"), ExtResource("48_44gcg"), ExtResource("49_mfe1n"), ExtResource("50_v6jyb"), ExtResource("51_2toh2"), ExtResource("52_hxs5n"), ExtResource("53_vpngx"), ExtResource("54_en71o"), ExtResource("55_54rmk"), ExtResource("56_430se"), ExtResource("57_feh75"), ExtResource("58_rrv5u"), ExtResource("59_ndhyq"), ExtResource("60_b7jfa"), ExtResource("61_h5vdn"), ExtResource("62_ujube"), ExtResource("63_pdh1g"), ExtResource("64_gpf37"), ExtResource("65_whe0j"), ExtResource("66_534t8"), ExtResource("67_r0eok"), ExtResource("68_cn3lv"), ExtResource("69_10ilv"), ExtResource("70_uftsv"), ExtResource("71_5k748"), ExtResource("72_742qc"), ExtResource("73_1kyrf"), ExtResource("74_vdyjr"), ExtResource("75_vdyjr"), ExtResource("76_ud4av"), ExtResource("77_j55n4"), ExtResource("78_tl4yl"), ExtResource("79_0tt02")])
+type1_customers = 5
+type2_customers = 5
 max_total_customers = 15
 
 [editable path="StoreNavigation/Supermarket"]

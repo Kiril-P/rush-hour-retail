@@ -68,7 +68,6 @@ func handle_interaction(collider, hold_duration, is_secondary: bool = false):
 	
 	# PRIORITY 4: Clicking checkout counter while holding item
 	if picked_object and interact_target and interact_target.is_in_group("checkout"):
-		print("→ CASE: Clicking checkout with item!")
 		if interact_target.has_method("interact"):
 			# Pass the held item to checkout counter!
 			var was_correct = interact_target.interact(picked_object)
@@ -76,9 +75,6 @@ func handle_interaction(collider, hold_duration, is_secondary: bool = false):
 			# ONLY clear picked_object if item was CORRECT!
 			if was_correct:
 				picked_object = null
-				print("  ✓ Item was correct, cleared from hand")
-			else:
-				print("  ✗ Item was wrong, keeping in hand")
 		return
 	
 	# PRIORITY 5: Already holding item → Try to use it on target
@@ -134,32 +130,20 @@ func _take_item_from_cart(item):
 	
 	active_cart._restack_items()
 	
-	print("  ✓ Took item from cart: ", item.name)
 
 func _add_item_to_cart(cart):
-	print("  → Adding item to cart/basket: ", picked_object.name)
 	
 	if cart.add_item(picked_object):
 		picked_object = null
-		print("  ✓ Item added successfully!")
-	else:
-		print("  ✗ Failed to add item")
 
 func _handle_cart_interaction(cart):
-	print("  → Cart/basket interaction")
-	print("  → Calling interact() on: ", cart.name)
 	
 	if active_cart == cart:
-		print("  → Releasing (same as active)")
 		cart.release_handle()
 		active_cart = null
 	elif active_cart == null:
-		print("  → Grabbing (no active cart)")
 		if cart.grab_handle(player_node):
 			active_cart = cart
-			print("  ✓ Now holding: ", cart.name)
-	else:
-		print("  → Already holding different cart/basket")
 
 func handle_cart_action(action: String):
 	if not active_cart:
@@ -216,7 +200,6 @@ func _find_product(node):
 	return null
 
 func pick_up_object(object):
-	print("  → Picking up object: ", object.name)
 	picked_object = object
 	
 	if picked_object is RigidBody3D:
@@ -233,7 +216,6 @@ func pick_up_object(object):
 		picked_object.pick_up(self)
 	
 	picked_object.global_transform = carry_marker.global_transform
-	print("  ✓ Picked up: ", object.name)
 
 func drop_object():
 	if not picked_object: return

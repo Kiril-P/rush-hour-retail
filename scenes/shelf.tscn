@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cawx2yoe16l5o"]
+[gd_scene load_steps=32 format=4 uid="uid://cawx2yoe16l5o"]
 
 [ext_resource type="Script" uid="uid://7ypl17cat0nc" path="res://scripts/shelf_spawner.gd" id="1_eyi4x"]
 [ext_resource type="PackedScene" uid="uid://blkbjodsybh6u" path="res://objects/items/objects/BlueMilk.tscn" id="2_nl3ju"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://cm5acb4i11wj3" path="res://objects/items/objects/donut-chocolate.tscn" id="13_qpfdg"]
 [ext_resource type="PackedScene" uid="uid://bmo2a7q583qpx" path="res://objects/items/objects/donut-sprinkles.tscn" id="14_oreud"]
 [ext_resource type="PackedScene" uid="uid://b8mgyg7wfpk27" path="res://objects/items/objects/fryingpan.tscn" id="15_famq6"]
-[ext_resource type="PackedScene" uid="uid://b3onl7raor30x" path="res://objects/items/objects/glass.tscn" id="16_xascu"]
 [ext_resource type="PackedScene" uid="uid://cj2gl75kei5m5" path="res://objects/items/objects/glasswine.tscn" id="17_mon7c"]
 [ext_resource type="PackedScene" uid="uid://diydp86hhxcxa" path="res://objects/items/objects/honey.tscn" id="18_pv0c1"]
 [ext_resource type="PackedScene" uid="uid://blofj0ag1qgok" path="res://objects/items/objects/loaf-baguette.tscn" id="19_w0qxd"]
@@ -129,7 +128,7 @@ data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1,
 [node name="Shelf" type="StaticBody3D"]
 transform = Transform3D(0.6, 0, 0, 0, 0.694, 0, 0, 0, 0.216, 0, 0, 0)
 script = ExtResource("1_eyi4x")
-allowed_products = Array[PackedScene]([ExtResource("2_nl3ju"), ExtResource("3_rm377"), ExtResource("4_7omqp"), ExtResource("5_h1dwa"), ExtResource("6_pb500"), ExtResource("7_4qg5k"), ExtResource("8_ilsen"), ExtResource("9_8cv5b"), ExtResource("10_xn73h"), ExtResource("11_7uudr"), ExtResource("12_j5mx7"), ExtResource("13_qpfdg"), ExtResource("14_oreud"), ExtResource("15_famq6"), ExtResource("16_xascu"), ExtResource("17_mon7c"), ExtResource("18_pv0c1"), ExtResource("19_w0qxd"), ExtResource("20_qpfdg"), ExtResource("21_oreud"), ExtResource("22_famq6"), ExtResource("23_xascu"), ExtResource("24_pv0c1"), ExtResource("25_w0qxd"), ExtResource("26_e46ch")])
+allowed_products = Array[PackedScene]([ExtResource("2_nl3ju"), ExtResource("3_rm377"), ExtResource("4_7omqp"), ExtResource("5_h1dwa"), ExtResource("6_pb500"), ExtResource("7_4qg5k"), ExtResource("8_ilsen"), ExtResource("9_8cv5b"), ExtResource("10_xn73h"), ExtResource("11_7uudr"), ExtResource("12_j5mx7"), ExtResource("13_qpfdg"), ExtResource("14_oreud"), ExtResource("15_famq6"), ExtResource("17_mon7c"), ExtResource("18_pv0c1"), ExtResource("19_w0qxd"), ExtResource("20_qpfdg"), ExtResource("21_oreud"), ExtResource("22_famq6"), ExtResource("23_xascu"), ExtResource("24_pv0c1"), ExtResource("25_w0qxd"), ExtResource("26_e46ch")])
 
 [node name="shelf" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.9420587, 0, 0, 0, 0.135806, 0, 0, 0, 0.99332184, -0.001522541, -0.8752186, 0.016348839)

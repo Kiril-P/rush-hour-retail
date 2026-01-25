@@ -1,6 +1,6 @@
 extends Node
 
-## Game Manager - With Points & Score System!
+## Game Manager - With Points & Score System + PERFORMANCE!
 ## Only generates shopping lists from items that actually spawned!
 
 signal time_changed(seconds_remaining)
@@ -9,6 +9,9 @@ signal list_completed(list_number)
 signal list_generated()
 signal item_collected(item_name)
 signal score_changed(new_score)
+
+# Performance Manager
+var performance_manager: Node = null
 
 # Timer System
 var time_remaining: float = 60.0
@@ -61,7 +64,7 @@ var available_items: Dictionary = {
 	"Fish": 20,
 	"Frappe": 20,
 	"Frying Pan": 20,
-	"Glass": 20,
+	"Cup": 20,
 	"Wine Glass": 20,
 	"Grapes": 20,
 	"Honey": 20,
@@ -97,28 +100,33 @@ var available_items: Dictionary = {
 	"Watermelon": 20,
 	"Whitewine": 20,
 	"Whole Ham": 20,
-	
 }
 
 # NEW: Track which items actually spawned in the world
 var spawned_items_in_world: Array[String] = []
 
 func _ready():
-	print("\n=== GAME MANAGER WITH POINTS ===")
-	print("Available items: ", available_items.size())
-	for item_name in available_items.keys():
-		print("  - ", item_name, " (", available_items[item_name], " points)")
-	print("================================\n")
+	# Initialize performance manager
+	_setup_performance_manager()
 	
 	# Scan for spawned items after a short delay (let shelves spawn first)
 	await get_tree().create_timer(2.0).timeout
 	_scan_spawned_items()
 
+func _setup_performance_manager():
+	"""Create and configure performance manager for physics optimization"""
+	var perf_script = load("res://scripts/performance_manager.gd")
+	if perf_script:
+		performance_manager = Node.new()
+		performance_manager.set_script(perf_script)
+		performance_manager.name = "PerformanceManager"
+		add_child(performance_manager)
+		print("✅ Performance Manager loaded")
+
 func _scan_spawned_items():
 	"""Scan the scene to see which items actually spawned"""
 	spawned_items_in_world.clear()
 	
-	print("\n=== SCANNING SPAWNED ITEMS ===")
 	
 	# Find all items in the scene
 	var items = get_tree().get_nodes_in_group("item")
@@ -130,10 +138,6 @@ func _scan_spawned_items():
 			if not spawned_items_in_world.has(product_name):
 				spawned_items_in_world.append(product_name)
 	
-	print("Found ", spawned_items_in_world.size(), " unique items spawned:")
-	for item_name in spawned_items_in_world:
-		print("  ✓ ", item_name)
-	print("================================\n")
 
 func _process(delta):
 	if is_game_active:
@@ -144,10 +148,6 @@ func _process(delta):
 			time_remaining = 0
 			is_game_active = false
 			game_over.emit()
-			print("GAME OVER!")
-			print("Final Score: ", total_score)
-			print("Lists Completed: ", total_lists_completed)
-			print("Items Collected: ", total_items_collected)
 
 func start_game():
 	time_remaining = 60.0
@@ -160,7 +160,6 @@ func start_game():
 	best_combo = 0
 	generate_shopping_list()
 	score_changed.emit(total_score)
-	print("GAME STARTED! Get ready to shop!")
 
 func generate_shopping_list():
 	current_shopping_list.clear()
@@ -177,17 +176,15 @@ func generate_shopping_list():
 			var random_item = items_to_pick_from[randi() % items_to_pick_from.size()]
 			current_shopping_list.append(random_item)
 	
-	print("\nGenerated shopping list #", current_list_number, " with ", list_size, " items:")
+	
 	for item in current_shopping_list:
 		var points = available_items[item] if available_items.has(item) else 10
-		print("  - ", item, " (", points, " points)")
 	
 	list_generated.emit()
 
 func add_time_bonus(seconds: float):
 	time_remaining += seconds
 	time_changed.emit(time_remaining)
-	print("⏰ TIME BONUS: +", seconds, " seconds!")
 
 func check_item_correct(item_name: String) -> bool:
 	"""Check if the item is on the current shopping list"""
@@ -222,10 +219,6 @@ func collect_correct_item(item_name: String):
 	# Time bonus per item
 	add_time_bonus(5.0)
 	
-	print("✓ CORRECT! ", item_name)
-	print("  Points: ", total_points, " (", points, " × ", "%.1f" % combo_multiplier, ")")
-	print("  Combo: x", current_combo)
-	print("  Total Score: ", total_score)
 	
 	# Emit signal for UI
 	item_collected.emit(item_name)
@@ -245,10 +238,6 @@ func collect_wrong_item(item_name: String):
 		time_remaining = 0
 	time_changed.emit(time_remaining)
 	
-	print("✗ WRONG ITEM: ", item_name, " not on list!")
-	if lost_combo > 0:
-		print("  Lost combo: x", lost_combo)
-	print("  Time penalty: -5 seconds")
 
 func complete_list():
 	"""All items collected! Give big bonus and generate new list"""
@@ -265,10 +254,6 @@ func complete_list():
 	
 	list_completed.emit(current_list_number)
 	
-	print("\n🎉 LIST COMPLETED!")
-	print("  Time bonus: +", time_bonus, " seconds")
-	print("  Score bonus: +", completion_bonus, " points")
-	print("  Total Score: ", total_score)
 	
 	# Generate next harder list
 	current_list_number += 1
@@ -285,4 +270,3 @@ func get_total_score() -> int:
 func add_new_item(item_name: String, points: int):
 	"""Add a new item to the available items"""
 	available_items[item_name] = points
-	print("Added new item: ", item_name, " (", points, " points)")

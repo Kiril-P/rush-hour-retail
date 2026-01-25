@@ -61,7 +61,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.5)
 
 [node name="ShoppingListPaper" type="Sprite3D" parent="Camera3D"]
 pixel_size = 0.0008
-shaded = true
 script = ExtResource("3_i825w")
 
 [node name="SubViewport" type="SubViewport" parent="Camera3D/ShoppingListPaper"]

@@ -77,12 +77,6 @@ func _ready():
 	
 	last_position = global_position
 	
-	print("\n=== PLAYER READY ===")
-	print("Checking input actions...")
-	print("'cart_add_item' exists: ", InputMap.has_action("cart_add_item"))
-	print("'cart_remove_item' exists: ", InputMap.has_action("cart_remove_item"))
-	print("Anti-stuck mechanics enabled: Coyote time, Jump buffer, Ground proximity check")
-	print("====================\n")
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"): 
@@ -117,16 +111,13 @@ func _input(event):
 	
 	# E key - NEW BEHAVIOR!
 	if event.is_action_pressed("cart_add_item"):
-		print("\n>>> E KEY PRESSED <<<")
 		
 		# Priority 1: If pushing cart, release it
 		if interaction_component.is_pushing_cart():
-			print("Releasing cart with E key...")
 			interaction_component.release_cart_if_active()
 		
 		# Priority 2: If looking at cart with empty hands, take out item
 		elif _is_looking_at_cart() and not interaction_component.is_holding_item():
-			print("Taking item from cart with E key...")
 			var cart = _get_cart_in_view()
 			if cart and not cart.is_empty():
 				var item = cart.remove_last_item()
@@ -139,20 +130,14 @@ func _input(event):
 						if interaction_component.active_cart:
 							item.add_collision_exception_with(interaction_component.active_cart)
 					item.global_transform = interaction_component.carry_marker.global_transform
-					print("✓ Picked up item from cart with E key")
-			else:
-				print("Cart is empty!")
 		
 		# Priority 3: If holding item, add to cart
 		elif interaction_component.is_holding_item():
 			interaction_component.handle_cart_action("add_item")
 		
-		else:
-			print("E key: Nothing to do")
 	
 	# R key - Remove item from cart (when pushing cart)
 	if event.is_action_pressed("cart_remove_item"):
-		print("\n>>> R KEY PRESSED <<<")
 		interaction_component.handle_cart_action("remove_item")
 
 func _is_looking_at_cart() -> bool:
@@ -262,14 +247,11 @@ func _physics_process(delta):
 		elif time_stuck > UNSTUCK_CHECK_TIME and (Input.is_action_just_pressed("ui_accept") or jump_buffer > 0):
 			can_jump = true
 			jump_reason = "unstuck"
-			print("🚨 Emergency unstuck jump activated!")
 	
 	if can_jump:
 		velocity.y = JUMP_VELOCITY
 		jump_buffer = 0  # Consume the buffer
 		time_stuck = 0  # Reset stuck timer
-		if jump_reason != "normal":
-			print("Jump assist: ", jump_reason)
 
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

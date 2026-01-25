@@ -13,8 +13,9 @@ signal cart_released
 @export var follow_speed: float = 10.0
 @export var rotation_offset: float = 180.0
 @export var max_items: int = 10
-@export var stack_spacing: float = 0.2
+@export var stack_spacing: float = 0  # Small gap between items (was 0.2)
 @export var base_height: float = -0.1
+@export var use_dynamic_stacking: bool = true  # Use actual item sizes for stacking
 
 @onready var item_storage_area: Node3D = $ItemStorageArea
 
@@ -23,18 +24,13 @@ var is_being_pushed: bool = false
 var pushing_player = null
 var body_collision_shapes: Array = []
 var handle_collision_shapes: Array = []
+var owner_customer: CustomerAI = null  # Track which customer owns this cart
 
 func _ready():
 	mass = 2.0
 	gravity_scale = 1.0
 	
 	_find_collision_shapes(self)
-	
-	print("=== CART READY ===")
-	print("Max tower height: ", max_items, " items")
-	print("Stack spacing: ", stack_spacing, "m per item")
-	print("Base height (first item): ", base_height, "m")
-	print("ItemStorageArea: ", item_storage_area)
 	
 	collision_layer = 4
 	collision_mask = 1
@@ -47,7 +43,6 @@ func _ready():
 	freeze = true
 	freeze_mode = FREEZE_MODE_STATIC
 	
-	print("==================\n")
 
 func _find_collision_shapes(node: Node):
 	if node is CollisionShape3D:
@@ -79,7 +74,11 @@ func grab_handle(player):
 	if is_being_pushed:
 		return false
 	
-	print("\n=== GRABBING CART ===")
+	# DETACH FROM CUSTOMER IF OWNED BY ONE
+	if owner_customer:
+		print("🔓 Player taking cart from customer: ", owner_customer.name)
+		owner_customer.cart_taken_by_player()
+		owner_customer = null
 	
 	is_being_pushed = true
 	pushing_player = player
@@ -104,9 +103,6 @@ func grab_handle(player):
 	global_position = spawn_pos
 	rotation.y = player.rotation.y + deg_to_rad(rotation_offset)
 	
-	print("✓ CART GRABBED")
-	print("=====================\n")
-	
 	return true
 
 func release_handle():
@@ -114,7 +110,7 @@ func release_handle():
 	if not is_being_pushed:
 		return
 	
-	print("\n=== RELEASING CART ===")
+	# Cart remains detached from customer (owner_customer stays null)
 	
 	if pushing_player:
 		pushing_player.remove_collision_exception_with(self)
@@ -135,13 +131,10 @@ func release_handle():
 	pushing_player = null
 	
 	await get_tree().create_timer(0.5).timeout
-	if not is_being_pushed:
+	if not is_being_pushed and not owner_customer:  # Only freeze if not owned by customer
 		freeze = true
 	
 	cart_released.emit()
-	
-	print("✓ CART RELEASED")
-	print("======================\n")
 
 func interact():
 	"""Called when player clicks cart"""
@@ -153,67 +146,47 @@ func interact():
 			grab_handle(player)
 
 func add_item(item: Node3D) -> bool:
-	"""Add item to TOP of stack - WITH DEBUG!"""
-	print("\n  === CART.ADD_ITEM() CALLED ===")
-	print("  Item received: ", item)
-	print("  Item name: ", item.name if item else "NULL")
-	print("  Current items in cart: ", stored_items.size())
-	print("  Max items: ", max_items)
-	print("  ItemStorageArea: ", item_storage_area)
+	"""Add item to TOP of stack - WITH DYNAMIC STACKING!"""
 	
 	# Check 1: Max capacity
 	if stored_items.size() >= max_items:
-		print("  ✗ FAILED: Cart is full! (", stored_items.size(), "/", max_items, ")")
 		return false
 	
 	# Check 2: Item is valid
 	if not item:
-		print("  ✗ FAILED: Item is null!")
 		return false
-	
-	print("  ✓ Checks passed, adding item...")
 	
 	# Add to array
 	stored_items.append(item)
-	print("  → Added to stored_items array. New size: ", stored_items.size())
 	
 	# Reparent to cart
 	var old_parent = item.get_parent()
-	print("  → Item's old parent: ", old_parent.name if old_parent else "None")
 	
 	if old_parent:
-		print("  → Removing from old parent...")
 		old_parent.remove_child(item)
-		print("  → Removed from old parent")
-	
-	print("  → Adding to ItemStorageArea...")
+
 	item_storage_area.add_child(item)
-	print("  → Added to ItemStorageArea")
-	print("  → Item's new parent: ", item.get_parent().name if item.get_parent() else "None")
 	
-	# Stack position
-	var height = base_height + (stored_items.size() * stack_spacing)
-	print("  → Calculated height: ", height, "m")
-	print("  → Setting position to: ", Vector3(0, height, 0))
+	# Calculate stack position with dynamic height
+	var height: float
+	if use_dynamic_stacking and stored_items.size() > 1:
+		# Stack on top of previous items based on their actual sizes
+		height = _calculate_next_stack_position(item)
+	else:
+		# Use fixed spacing (original method)
+		height = base_height + (stored_items.size() * stack_spacing)
 	
-	item.position = Vector3(0, height, 0)
+	# Get item's half-height to position it correctly
+	var item_half_height = _get_item_half_height(item)
+	var final_y = height + item_half_height
+	
+	item.position = Vector3(0, final_y, 0)
 	item.rotation = Vector3.ZERO
-	
-	print("  → Position set: ", item.position)
-	print("  → Rotation set: ", item.rotation)
 	
 	# Freeze item
 	if item is RigidBody3D:
-		print("  → Item is RigidBody3D, freezing...")
 		item.freeze = true
 		item.freeze_mode = FREEZE_MODE_STATIC
-		print("  → Item frozen")
-	else:
-		print("  → Item is NOT RigidBody3D (type: ", item.get_class(), ")")
-	
-	print("  ✓ Item successfully added to cart!")
-	print("  Final tower height: ", stored_items.size(), " items (", get_tower_height(), "m)")
-	print("  ================================\n")
 	
 	item_added.emit(item)
 	return true
@@ -221,13 +194,9 @@ func add_item(item: Node3D) -> bool:
 func remove_last_item() -> Node3D:
 	"""Remove TOP item from stack (LIFO)"""
 	if stored_items.is_empty():
-		print("Tower is empty!")
 		return null
 	
-	var item = stored_items.pop_back()
-	
-	print("✓ Removed TOP item: ", item.name, " (", stored_items.size(), " items left)")
-	
+	var item = stored_items.pop_back()	
 	if item.get_parent() == item_storage_area:
 		item_storage_area.remove_child(item)
 	
@@ -243,13 +212,23 @@ func remove_last_item() -> Node3D:
 	return item
 
 func _restack_items():
-	"""Restack items after removal"""
-	print("  → Restacking ", stored_items.size(), " items...")
+	"""Restack items after removal with dynamic heights"""
+	
+	var cumulative_height = base_height
+	
 	for i in range(stored_items.size()):
 		var item = stored_items[i]
-		var height = base_height + ((i + 1) * stack_spacing)
-		item.position = Vector3(0, height, 0)
-		print("    Item ", i+1, ": ", item.name, " at ", height, "m")
+		var item_half_height = _get_item_half_height(item)
+		
+		# Position item at cumulative height + its half height
+		var final_y = cumulative_height + item_half_height
+		item.position = Vector3(0, final_y, 0)
+				
+		# Add this item's full height + gap for next item
+		if use_dynamic_stacking:
+			cumulative_height += (item_half_height * 2) + stack_spacing
+		else:
+			cumulative_height += stack_spacing
 
 func get_item_count() -> int:
 	return stored_items.size()
@@ -261,9 +240,102 @@ func is_empty() -> bool:
 	return stored_items.is_empty()
 
 func get_tower_height() -> float:
+	"""Get total height of item stack"""
 	if stored_items.is_empty():
 		return 0.0
-	return base_height + (stored_items.size() * stack_spacing)
+	
+	if use_dynamic_stacking:
+		# Calculate actual cumulative height
+		var total_height = base_height
+		for item in stored_items:
+			var item_height = _get_item_half_height(item) * 2.0
+			total_height += item_height + stack_spacing
+		return total_height - stack_spacing  # Remove last spacing
+	else:
+		# Use fixed spacing
+		return base_height + (stored_items.size() * stack_spacing)
 
 func is_being_held() -> bool:
 	return is_being_pushed
+
+func set_owner_customer(customer: CustomerAI):
+	"""Set which customer owns this cart"""
+	owner_customer = customer
+
+func _get_item_half_height(item: Node3D) -> float:
+	"""Get half the height of an item using its AABB (bounding box)"""
+	var aabb = _get_item_aabb(item)
+	if aabb:
+		var height = aabb.size.y
+		return height / 2.0
+	
+	# Fallback to default spacing if we can't get AABB
+	return stack_spacing / 2.0
+
+func _get_item_aabb(item: Node3D) -> AABB:
+	"""Get the AABB (bounding box) of an item by checking its visual and collision children"""
+	var combined_aabb = AABB()
+	var has_aabb = false
+	
+	# Check for MeshInstance3D children
+	for child in item.get_children():
+		if child is MeshInstance3D:
+			var mesh_aabb = child.get_aabb()
+			var global_aabb = AABB(
+				child.global_position + mesh_aabb.position - item.global_position,
+				mesh_aabb.size
+			)
+			
+			if not has_aabb:
+				combined_aabb = global_aabb
+				has_aabb = true
+			else:
+				combined_aabb = combined_aabb.merge(global_aabb)
+		
+		# Also check CollisionShape3D for more accurate bounds
+		elif child is CollisionShape3D and child.shape:
+			var shape = child.shape
+			var shape_size = Vector3.ZERO
+			
+			if shape is BoxShape3D:
+				shape_size = shape.size
+			elif shape is SphereShape3D:
+				var radius = shape.radius
+				shape_size = Vector3(radius * 2, radius * 2, radius * 2)
+			elif shape is CapsuleShape3D:
+				var radius = shape.radius
+				shape_size = Vector3(radius * 2, shape.height, radius * 2)
+			elif shape is CylinderShape3D:
+				var radius = shape.radius
+				shape_size = Vector3(radius * 2, shape.height, radius * 2)
+			
+			if shape_size != Vector3.ZERO:
+				var shape_aabb = AABB(
+					child.position - shape_size / 2.0,
+					shape_size
+				)
+				
+				if not has_aabb:
+					combined_aabb = shape_aabb
+					has_aabb = true
+				else:
+					combined_aabb = combined_aabb.merge(shape_aabb)
+	
+	# If no children found, check item itself
+	if not has_aabb and item is MeshInstance3D:
+		combined_aabb = item.get_aabb()
+		has_aabb = true
+	
+	return combined_aabb if has_aabb else AABB(Vector3.ZERO, Vector3(0.1, 0.1, 0.1))
+
+func _calculate_next_stack_position(new_item: Node3D) -> float:
+	"""Calculate where to place the next item based on actual heights of existing items"""
+	var cumulative_height = base_height
+	
+	# Add heights of all previous items (excluding the one we just added)
+	for i in range(stored_items.size() - 1):
+		var item = stored_items[i]
+		var item_full_height = _get_item_half_height(item) * 2.0
+		cumulative_height += item_full_height + stack_spacing
+	
+	return cumulative_height

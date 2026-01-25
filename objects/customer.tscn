@@ -27,4 +27,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fu7rw")
 shape = SubResource("CapsuleShape3D_xqo2o")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 2.0
 path_height_offset = 0.5
+path_max_distance = 10.01

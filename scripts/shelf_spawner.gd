@@ -14,6 +14,7 @@ extends Node3D
 
 @export_group("Performance")
 @export var spawn_delay_per_item: float = 0.02  # Delay between each item (prevents lag)
+@export var disable_physics_culling: bool = false  # Set true to disable culling optimization
 
 var spawn_points: Array[Marker3D] = []
 var spawned_items: Array = []
@@ -95,17 +96,26 @@ func _spawn_item_at_marker(product_scene: PackedScene, marker: Marker3D):
 	item.global_position = spawn_pos
 	item.global_rotation = Vector3.ZERO
 	
+	# OPTIMIZED PHYSICS SETUP
 	if item is RigidBody3D:
+		# ALWAYS freeze items on shelves for maximum performance
+		item.freeze = true
+		item.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
+		item.sleeping = true
+		
+		# Ensure performance settings
+		item.continuous_cd = false
+		item.contact_monitor = false
+		item.max_contacts_reported = 0
+		
+		# Optional drop animation (but still freeze after)
 		if drop_items:
+			# Brief unfreeze for visual drop
 			item.freeze = false
-			item.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
 			item.linear_velocity = Vector3.ZERO
 			item.angular_velocity = Vector3.ZERO
-			item.linear_damp = 2.0
-			item.angular_damp = 2.0
-		else:
-			item.freeze = true
-			item.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
+			item.linear_damp = 3.0
+			item.angular_damp = 3.0
 	
 	spawned_items.append(item)
 

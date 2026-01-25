@@ -6,7 +6,6 @@ extends StaticBody3D
 @onready var detection_area: Area3D = null
 
 func _ready():
-	print("Checkout Counter Ready - Subtle Flash Version")
 	
 	# Add to group so interaction system can find us
 	add_to_group("checkout")
@@ -15,20 +14,16 @@ func _ready():
 func _on_body_entered(body):
 	"""Handles items THROWN into the checkout area"""
 	if body.is_in_group("pickable"):
-		print("📦 Item thrown into checkout area!")
 		_scan_item(body)
 
 func interact(item_held = null):
 	"""Called when player CLICKS the checkout counter"""
-	print("\n🖱️ Player clicked checkout counter!")
 	
 	# If player is holding an item, scan it!
 	if item_held:
-		print("📦 Player is holding an item!")
 		var result = _scan_item(item_held)
 		return result  # Return true only if correct item!
 	else:
-		print("⚠️ Player clicked checkout but not holding an item!")
 		_flash_screen_smooth(Color.GRAY, 0.15)
 		return false
 
@@ -42,15 +37,11 @@ func _scan_item(item) -> bool:
 	elif "item_name" in item:
 		item_name = item.item_name
 	else:
-		print("⚠️ Item has no name!")
 		_flash_screen_smooth(Color.GRAY, 0.15)
 		return false
 	
-	print("\n🛒 SCANNING: ", item_name)
-	
 	# Check with game manager FIRST
 	if game_manager.check_item_correct(item_name):
-		print("✅ CORRECT ITEM!")
 		
 		# SUBTLE GREEN FLASH - Item is correct!
 		_flash_screen_smooth(Color.GREEN, 0.25)
@@ -64,7 +55,6 @@ func _scan_item(item) -> bool:
 		return true  # Item was correct!
 		
 	else:
-		print("❌ WRONG ITEM!")
 		
 		# SUBTLE RED FLASH - Item is wrong!
 		_flash_screen_smooth(Color.RED, 0.35)
