@@ -17,15 +17,19 @@ extends Node3D
 @export var disable_physics_culling: bool = false  # Set true to disable culling optimization
 
 var spawn_points: Array[Marker3D] = []
-var spawned_items: Array = []
+var spawned_items: Array[Node] = []
 var selected_products: Array[PackedScene] = []
 
 func _ready():
 	_find_spawn_points()
 	
 	if spawn_on_ready:
-		# Spawn asynchronously - doesn't block!
-		spawn_items_async()
+		# Register with LoadingManager if it exists, otherwise spawn normally
+		var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
+		if loading_manager:
+			loading_manager.register_loading_task(spawn_items_async, 1, "Stocking shelf...")
+		else:
+			spawn_items_async()
 
 func _find_spawn_points():
 	spawn_points.clear()
@@ -56,17 +60,14 @@ func spawn_items_async():
 	
 	spawn_list.shuffle()
 	
-	# Spawn items ONE AT A TIME with delays
+	# Spawn all items for this shelf instantly (it's fast enough)
 	for i in range(min(spawn_points.size(), spawn_list.size())):
 		_spawn_item_at_marker(spawn_list[i], spawn_points[i])
-		
-		# Wait before spawning next item (prevents lag spike!)
-		if spawn_delay_per_item > 0:
-			await get_tree().create_timer(spawn_delay_per_item).timeout
 	
-	# Drop all at once after spawning
+	# Optional: Wait one frame if dropping items to let physics start
 	if drop_items:
-		await get_tree().create_timer(drop_time).timeout
+		# Use a very short wait or process_frame for maximum speed
+		await get_tree().process_frame
 		_freeze_all_items()
 
 func _select_items_for_shelf():
@@ -84,11 +85,18 @@ func _spawn_item_at_marker(product_scene: PackedScene, marker: Marker3D):
 	if not product_scene:
 		return
 	
-	var item = product_scene.instantiate()
+	var item = null
+	var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
+	if loading_manager:
+		item = loading_manager.request_item(product_scene)
+	else:
+		item = product_scene.instantiate()
+		
 	if not item:
 		return
 	
-	get_tree().current_scene.add_child(item)
+	if not item.is_inside_tree():
+		get_tree().current_scene.add_child(item)
 	
 	var spawn_pos = marker.global_position
 	spawn_pos.y += spawn_height_offset
@@ -127,9 +135,13 @@ func _freeze_all_items():
 			item.angular_velocity = Vector3.ZERO
 
 func clear_items():
+	var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
 	for item in spawned_items:
 		if is_instance_valid(item):
-			item.queue_free()
+			if loading_manager:
+				loading_manager.despawn_item(item)
+			else:
+				item.queue_free()
 	spawned_items.clear()
 
 func respawn_items():

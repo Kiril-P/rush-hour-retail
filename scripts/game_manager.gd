@@ -145,8 +145,13 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	load_game_data()
 	
-	# Scan for spawned items after a short delay (let shelves spawn first)
-	await get_tree().create_timer(2.0).timeout
+	# Scan for spawned items after loading is complete
+	var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
+	if loading_manager and loading_manager.is_loading():
+		await loading_manager.loading_finished
+	else:
+		await get_tree().create_timer(1.0).timeout
+		
 	_scan_spawned_items()
 
 func _setup_performance_manager():
@@ -226,7 +231,7 @@ func _scan_spawned_items():
 	
 
 func _process(delta):
-	if is_game_active and is_timer_running:
+	if is_game_active and is_timer_running and not get_tree().paused:
 		time_remaining -= delta
 		time_changed.emit(time_remaining)
 		

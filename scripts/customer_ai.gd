@@ -284,19 +284,23 @@ func _despawn():
 	queue_free()
 
 func _cleanup_cart_async(cart: ShoppingCart):
-	"""Async cart cleanup - frees items over multiple frames to prevent lag spike"""
+	"""Async cart cleanup - returns items to pool over multiple frames"""
 	if not cart or not is_instance_valid(cart):
 		return
 	
-	# Free items one by one with delays
+	# Return items to pool
+	var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
 	var items_to_free = cart.stored_items.duplicate()
 	for item in items_to_free:
 		if is_instance_valid(item):
-			item.queue_free()
+			if loading_manager:
+				loading_manager.despawn_item(item)
+			else:
+				item.queue_free()
 		# Wait a frame between freeing items (prevents lag spike)
 		await get_tree().process_frame
 	
-	# Finally free the cart itself
+	# Finally free the cart itself (we could pool carts too, but items are the main lag)
 	cart.queue_free()
 
 func _on_velocity_computed(safe_velocity: Vector3):

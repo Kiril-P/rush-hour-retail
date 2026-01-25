@@ -39,8 +39,12 @@ func _ready():
 	_cache_spawn_points()
 	
 	if spawn_on_ready:
-		await get_tree().create_timer(1.0).timeout
-		spawn_initial_wave()
+		var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
+		if loading_manager:
+			loading_manager.register_loading_task(spawn_initial_wave, 5, "Preparing customers...")
+		else:
+			await get_tree().create_timer(1.0).timeout
+			spawn_initial_wave()
 
 func _cache_spawn_points():
 	"""Cache all spawn point groups to avoid repeated scene tree searches"""
@@ -51,14 +55,19 @@ func _cache_spawn_points():
 func spawn_initial_wave():
 	"""Spawn initial batch of customers"""
 	
+	# Use shorter delay when loading
+	var delay = initial_spawn_delay if not LoadingManager.is_loading() else 0.05
+	
 	# Spawn initial Type 1
 	for i in range(type1_customers):
-		await get_tree().create_timer(initial_spawn_delay).timeout
+		if delay > 0:
+			await get_tree().create_timer(delay).timeout
 		_spawn_customer_without_cart()
 	
 	# Spawn initial Type 2
 	for i in range(type2_customers):
-		await get_tree().create_timer(initial_spawn_delay).timeout
+		if delay > 0:
+			await get_tree().create_timer(delay).timeout
 		_spawn_customer_with_cart()
 	
 	
@@ -138,11 +147,12 @@ func _spawn_customer_with_cart():
 	
 	active_customers += 1
 
-func _spawn_cart(position: Vector3):
+func _spawn_cart(spawn_pos: Vector3):
 	var cart = shopping_cart_scene.instantiate()
+	if not is_inside_tree(): return null
 	get_tree().current_scene.add_child(cart)
 	await get_tree().process_frame
-	cart.global_position = position
+	cart.global_position = spawn_pos
 	return cart
 
 func _fill_cart_with_items_async(cart):
@@ -150,19 +160,34 @@ func _fill_cart_with_items_async(cart):
 	if available_items.is_empty():
 		return
 	
+	if not is_inside_tree(): return
 	await get_tree().process_frame
 	
 	var num_items = randi_range(min_items_per_cart, max_items_per_cart)
 	
+	var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
+	var is_loading = loading_manager.is_loading() if loading_manager else false
+	
 	for i in range(num_items):
+		if not is_instance_valid(cart) or not is_inside_tree():
+			return
+			
 		var random_item_scene = available_items[randi() % available_items.size()]
 		
 		if not random_item_scene:
 			continue
 		
-		var item = random_item_scene.instantiate()
+		var item = null
+		if loading_manager:
+			item = loading_manager.request_item(random_item_scene)
+		else:
+			item = random_item_scene.instantiate()
+			
 		if not item:
 			continue
+		
+		if not item.is_inside_tree():
+			get_tree().current_scene.add_child(item)
 		
 		if cart.has_method("add_item"):
 			if not cart.add_item(item):
@@ -170,8 +195,10 @@ func _fill_cart_with_items_async(cart):
 		else:
 			item.queue_free()
 		
-		# CRITICAL FIX: Wait a frame between each item to prevent lag spike!
-		await get_tree().process_frame
+		# Only yield if not loading and we've spawned a few
+		if not is_loading and i % 3 == 0:
+			if not is_inside_tree(): return
+			await get_tree().process_frame
 
 func stop_spawning():
 	"""Stop continuous spawning"""

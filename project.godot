@@ -19,6 +19,9 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 GameManager="*res://scripts/game_manager.gd"
 MusicManager="*res://scripts/music_manager.gd"
 SceneTransition="*res://objects/scene_transition.tscn"
+LoadingManager="*res://scripts/loading_manager.gd"
+LoadingScreen="*res://objects/loading_screen.tscn"
+HelpDeskUI="*res://objects/help_desk_ui.tscn"
 
 [display]
 

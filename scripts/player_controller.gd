@@ -209,23 +209,26 @@ func _physics_process(delta):
 		current_mouse_sens = GameManager.mouse_sensitivity
 		current_base_fov = GameManager.target_fov
 
+	# Crouching and Sprinting logic
+	is_crouching = Input.is_action_pressed("crouch")
+	var is_sprinting = Input.is_action_pressed("sprint")
 	var current_speed = SPEED
 	
-	# Sprint logic - simple, no stamina
-	var is_sprinting = Input.is_action_pressed("sprint") and not is_crouching
-	
 	if is_sprinting:
 		GameManager.mark_tutorial_complete("movement")
-	if Input.is_action_pressed("crouch"):
+	if is_crouching:
 		GameManager.mark_tutorial_complete("movement")
 	
-	# Apply speed
-	if is_sprinting:
+	# Determine speed
+	if is_sprinting and not is_crouching:
 		current_speed = SPRINT_SPEED
-		is_crouching = false
-	elif Input.is_action_pressed("crouch"):
+	elif is_crouching:
 		current_speed = CROUCH_SPEED
-		is_crouching = true
+		# Allow a bit faster crouch-sprint if desired
+		if is_sprinting:
+			current_speed = (SPRINT_SPEED + CROUCH_SPEED) / 1.5
+	else:
+		current_speed = SPEED
 	
 	# APPLY CART/BASKET SPEED MODIFIERS
 	var speed_mult = _get_carry_speed_multiplier()
@@ -233,6 +236,8 @@ func _physics_process(delta):
 
 	var target_height = CROUCH_HEIGHT if is_crouching else STAND_HEIGHT
 	var target_cam_y = CROUCH_CAM_Y if is_crouching else STAND_CAM_Y
+	
+	# Handle collision shape height (need to adjust position too or use centered shape)
 	collision_shape_3d.shape.height = lerp(collision_shape_3d.shape.height, target_height, delta * 12.0)
 	
 	# Update coyote time and jump buffer
@@ -259,26 +264,25 @@ func _physics_process(delta):
 	var can_jump = false
 	var jump_reason = ""
 	
-	if not is_crouching:
-		# Standard jump
-		if is_on_floor() and (Input.is_action_just_pressed("ui_accept") or jump_buffer > 0):
-			can_jump = true
-			jump_reason = "normal"
-		
-		# Coyote time jump
-		elif time_left_ground > 0 and Input.is_action_just_pressed("ui_accept"):
-			can_jump = true
-			jump_reason = "coyote"
-		
-		# Ground proximity jump (for when stuck between objects)
-		elif _is_near_ground() and (Input.is_action_just_pressed("ui_accept") or jump_buffer > 0):
-			can_jump = true
-			jump_reason = "proximity"
-		
-		# Emergency unstuck jump
-		elif time_stuck > UNSTUCK_CHECK_TIME and (Input.is_action_just_pressed("ui_accept") or jump_buffer > 0):
-			can_jump = true
-			jump_reason = "unstuck"
+	# Standard jump
+	if is_on_floor() and (Input.is_action_just_pressed("ui_accept") or jump_buffer > 0):
+		can_jump = true
+		jump_reason = "normal"
+	
+	# Coyote time jump
+	elif time_left_ground > 0 and Input.is_action_just_pressed("ui_accept"):
+		can_jump = true
+		jump_reason = "coyote"
+	
+	# Ground proximity jump (for when stuck between objects)
+	elif _is_near_ground() and (Input.is_action_just_pressed("ui_accept") or jump_buffer > 0):
+		can_jump = true
+		jump_reason = "proximity"
+	
+	# Emergency unstuck jump
+	elif time_stuck > UNSTUCK_CHECK_TIME and (Input.is_action_just_pressed("ui_accept") or jump_buffer > 0):
+		can_jump = true
+		jump_reason = "unstuck"
 	
 	if can_jump:
 		velocity.y = JUMP_VELOCITY
@@ -346,6 +350,16 @@ func _update_item_tooltip(target):
 	if not tooltip_ui: 
 		return
 	
+	# Check for special interactables first (like Help Desk)
+	if target and target.has_method("interact") and not target.is_in_group("pickable") and not target.is_in_group("checkout"):
+		tooltip_ui.show()
+		item_name_label.text = "Help Desk"
+		if target.has_method("get_cooldown_text"):
+			item_price_label.text = target.get_cooldown_text()
+		else:
+			item_price_label.text = "Press Left Click to Use"
+		return
+
 	# Use cached result if available (HUGE performance win!)
 	var item = cached_tooltip_item
 	if item == null and target:
@@ -356,6 +370,12 @@ func _update_item_tooltip(target):
 		tooltip_ui.show()
 		var name_to_show = item.get_item_name() if item.has_method("get_item_name") else item.item_name
 		
+		# SPECIAL CASE: Help Desk
+		if target.has_method("interact") and not target.is_in_group("pickable") and not target.is_in_group("checkout"):
+			item_name_label.text = "Help Desk"
+			item_price_label.text = "Press Left Click to Use"
+			return
+
 		# Get points from GameManager
 		var points = GameManager.available_items.get(name_to_show, 10)
 		

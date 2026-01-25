@@ -15,7 +15,14 @@ func change_scene(target_path: String):
 	await fade_out().finished
 	get_tree().change_scene_to_file(target_path)
 	get_tree().paused = false
-	await get_tree().process_frame # Wait for new scene to load
+	
+	# Wait for LoadingManager to finish if it's active
+	var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
+	if loading_manager and loading_manager.is_loading():
+		await loading_manager.loading_finished
+	else:
+		await get_tree().process_frame
+		
 	await fade_in().finished
 
 func reload_scene():
@@ -23,5 +30,12 @@ func reload_scene():
 	await fade_out().finished
 	get_tree().reload_current_scene()
 	get_tree().paused = false
-	await get_tree().process_frame
+	
+	# Wait for LoadingManager to finish if it's active
+	var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
+	if loading_manager and loading_manager.is_loading():
+		await loading_manager.loading_finished
+	else:
+		await get_tree().process_frame
+		
 	await fade_in().finished
