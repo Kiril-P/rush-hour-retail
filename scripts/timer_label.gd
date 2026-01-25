@@ -25,6 +25,8 @@ func _ready():
 	if GameManager:
 		GameManager.time_changed.connect(_on_time_changed)
 		GameManager.game_over.connect(_on_game_over)
+		# Initial display
+		_on_time_changed(GameManager.time_remaining)
 	
 	original_position = position
 	

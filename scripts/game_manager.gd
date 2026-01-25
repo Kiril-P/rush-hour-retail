@@ -5,14 +5,46 @@ extends Node
 
 signal time_changed(seconds_remaining)
 signal game_over()
+signal game_won()
 signal list_completed(list_number)
 signal list_generated()
 signal item_collected(item_name)
 signal score_changed(new_score)
+signal target_score_changed(new_target)
+
+var sparkle_scene = preload("res://objects/sparkle_particles.tscn")
 
 # Timer System
 var time_remaining: float = 60.0
 var is_game_active: bool = false
+var is_timer_running: bool = false
+
+# Target Score System
+var target_score: int = 30
+var high_score: int = 0
+const SAVE_PATH = "user://save_data.cfg"
+
+# Tutorial System
+var tutorial_enabled: bool = true
+
+# Settings
+var mouse_sensitivity: float = 0.001
+var target_fov: float = 75.0
+var volume_master: float = 1.0
+var volume_music: float = 0.8
+var volume_sfx: float = 1.0
+
+var completed_tutorials: Dictionary = {
+	"goal": false,
+	"pickup": false,
+	"drop_throw": false,
+	"cart_basket": false,
+	"checkout": false,
+	"movement": false,
+	"list": false
+}
+signal tutorial_step_triggered(step_id)
+signal tutorial_step_completed(step_id)
 
 # Shopping List System
 var current_list_number: int = 1
@@ -105,15 +137,73 @@ var available_items: Dictionary = {
 var spawned_items_in_world: Array[String] = []
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	print("\n=== GAME MANAGER WITH POINTS ===")
 	print("Available items: ", available_items.size())
 	for item_name in available_items.keys():
 		print("  - ", item_name, " (", available_items[item_name], " points)")
 	print("================================\n")
 	
+	load_game_data()
+	
 	# Scan for spawned items after a short delay (let shelves spawn first)
 	await get_tree().create_timer(2.0).timeout
 	_scan_spawned_items()
+
+func save_game_data():
+	var config = ConfigFile.new()
+	config.set_value("Player", "high_score", high_score)
+	config.set_value("Tutorial", "tutorial_enabled", tutorial_enabled)
+	config.set_value("Tutorial", "completed_tutorials", completed_tutorials)
+	
+	config.set_value("Settings", "mouse_sensitivity", mouse_sensitivity)
+	config.set_value("Settings", "target_fov", target_fov)
+	config.set_value("Settings", "volume_master", volume_master)
+	config.set_value("Settings", "volume_music", volume_music)
+	config.set_value("Settings", "volume_sfx", volume_sfx)
+	
+	config.save(SAVE_PATH)
+	print("Game saved with settings.")
+
+func load_game_data():
+	var config = ConfigFile.new()
+	var err = config.load(SAVE_PATH)
+	if err == OK:
+		high_score = config.get_value("Player", "high_score", 0)
+		tutorial_enabled = config.get_value("Tutorial", "tutorial_enabled", true)
+		
+		mouse_sensitivity = config.get_value("Settings", "mouse_sensitivity", 0.001)
+		target_fov = config.get_value("Settings", "target_fov", 75.0)
+		volume_master = config.get_value("Settings", "volume_master", 1.0)
+		volume_music = config.get_value("Settings", "volume_music", 0.8)
+		volume_sfx = config.get_value("Settings", "volume_sfx", 1.0)
+		
+		var saved_completed = config.get_value("Tutorial", "completed_tutorials", completed_tutorials)
+		# Merge to ensure new tutorial steps are included if we update the game
+		for key in saved_completed.keys():
+			if completed_tutorials.has(key):
+				completed_tutorials[key] = saved_completed[key]
+		print("Game loaded: High Score = ", high_score, " Tutorial Enabled = ", tutorial_enabled)
+	else:
+		print("No save file found or error loading.")
+
+func mark_tutorial_complete(step_id: String):
+	if completed_tutorials.has(step_id):
+		completed_tutorials[step_id] = true
+		tutorial_step_completed.emit(step_id)
+		save_game_data()
+
+func trigger_tutorial(step_id: String):
+	if tutorial_enabled and completed_tutorials.has(step_id) and not completed_tutorials[step_id]:
+		tutorial_step_triggered.emit(step_id)
+
+func get_performance_message(percent: float) -> String:
+	if percent >= 100: return "SUPERMARKET LEGEND! You cleaned them out!"
+	if percent >= 80: return "Incredible! Almost everything is in the cart!"
+	if percent >= 60: return "Great job! That's a lot of groceries!"
+	if percent >= 40: return "Not bad at all! You're getting faster!"
+	if percent >= 20: return "Keep it up! Every item counts."
+	return "Tough day at the market? You'll get them next time!"
 
 func _scan_spawned_items():
 	"""Scan the scene to see which items actually spawned"""
@@ -137,13 +227,22 @@ func _scan_spawned_items():
 	print("================================\n")
 
 func _process(delta):
-	if is_game_active:
+	if is_game_active and is_timer_running:
 		time_remaining -= delta
 		time_changed.emit(time_remaining)
 		
 		if time_remaining <= 0:
 			time_remaining = 0
 			is_game_active = false
+			is_timer_running = false
+			
+			# Check for new high score
+			var is_new_record = false
+			if total_score > high_score:
+				high_score = total_score
+				is_new_record = true
+				save_game_data()
+			
 			game_over.emit()
 			print("GAME OVER!")
 			print("Final Score: ", total_score)
@@ -151,8 +250,14 @@ func _process(delta):
 			print("Items Collected: ", total_items_collected)
 
 func start_game():
+	# Reset tutorials so they show every run if enabled
+	if tutorial_enabled:
+		for key in completed_tutorials.keys():
+			completed_tutorials[key] = false
+	
 	time_remaining = 60.0
 	is_game_active = true
+	is_timer_running = false # Wait for InsideArea!
 	current_list_number = 1
 	total_score = 0
 	total_items_collected = 0
@@ -161,7 +266,13 @@ func start_game():
 	best_combo = 0
 	generate_shopping_list()
 	score_changed.emit(total_score)
-	print("GAME STARTED! Get ready to shop!")
+	target_score_changed.emit(target_score)
+	print("GAME READY! Enter the store to start the timer!")
+
+func start_timer():
+	if is_game_active and not is_timer_running:
+		is_timer_running = true
+		print("⏰ TIMER STARTED!")
 
 func generate_shopping_list():
 	current_shopping_list.clear()
@@ -213,6 +324,19 @@ func collect_correct_item(item_name: String):
 	total_score += total_points
 	score_changed.emit(total_score)
 	
+	# Check for win condition
+	if total_score >= target_score and is_game_active:
+		is_game_active = false
+		
+		# Check for new high score on win too!
+		if total_score > high_score:
+			high_score = total_score
+			save_game_data()
+			
+		game_won.emit()
+		print("VICTORY! Target score reached!")
+		return
+	
 	# Remove item from list
 	current_shopping_list.erase(item_name)
 	total_items_collected += 1
@@ -241,11 +365,11 @@ func collect_wrong_item(item_name: String):
 	var lost_combo = current_combo
 	current_combo = 0
 	
-	# Time penalty
-	time_remaining -= 5.0
-	if time_remaining < 0:
-		time_remaining = 0
-	time_changed.emit(time_remaining)
+	# Time penalty REMOVED as per request, but keeping feedback logic
+	# time_remaining -= 5.0
+	# if time_remaining < 0:
+	# 	time_remaining = 0
+	# time_changed.emit(time_remaining)
 	
 	print("✗ WRONG ITEM: ", item_name, " not on list!")
 	if lost_combo > 0:
@@ -288,3 +412,18 @@ func add_new_item(item_name: String, points: int):
 	"""Add a new item to the available items"""
 	available_items[item_name] = points
 	print("Added new item: ", item_name, " (", points, " points)")
+
+func play_sfx(path: String, bus: String = "SFX"):
+	print("🔊 PLAYING SFX: ", path)
+	var sfx_player = AudioStreamPlayer.new()
+	sfx_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(sfx_player)
+	sfx_player.stream = load(path)
+	sfx_player.bus = bus
+	sfx_player.play()
+	sfx_player.finished.connect(sfx_player.queue_free)
+
+func spawn_sparkles(pos: Vector3):
+	var sparkles = sparkle_scene.instantiate()
+	get_tree().current_scene.add_child(sparkles)
+	sparkles.global_position = pos

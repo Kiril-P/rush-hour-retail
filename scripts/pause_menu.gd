@@ -4,8 +4,13 @@ func _ready():
 	hide()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+@onready var main_container = $CenterContainer
+@onready var settings_container = $SettingsContainer
+
 func pause():
 	show()
+	main_container.show()
+	settings_container.hide()
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
@@ -16,6 +21,18 @@ func resume():
 
 func _on_resume_button_pressed():
 	resume()
+
+func _on_settings_button_pressed():
+	main_container.hide()
+	settings_container.show()
+
+func _on_settings_back_pressed():
+	settings_container.hide()
+	main_container.show()
+
+func _on_restart_button_pressed():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 func _on_main_menu_button_pressed():
 	get_tree().paused = false

@@ -248,6 +248,7 @@ environment = SubResource("Environment_xmco6")
 camera_attributes = SubResource("CameraAttributesPractical_ylb1v")
 
 [node name="InsideArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9980407, 0, 0)
 script = ExtResource("6_inside_area")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InsideArea"]

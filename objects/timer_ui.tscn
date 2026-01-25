@@ -1,6 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://yw864doq0vnw"]
+[gd_scene load_steps=4 format=3 uid="uid://yw864doq0vnw"]
 
 [ext_resource type="Script" uid="uid://bljbqpcofi6no" path="res://scripts/timer_label.gd" id="1_dalq0"]
+
+[sub_resource type="GDScript" id="GDScript_money_hud"]
+script/source = "extends Label
+
+var current_score = 0
+var target_score = 500
+
+func _ready():
+	GameManager.score_changed.connect(_on_score_changed)
+	GameManager.target_score_changed.connect(_on_target_score_changed)
+	pivot_offset = size / 2
+	# Pull initial values
+	current_score = GameManager.total_score
+	target_score = GameManager.target_score
+	_update_display()
+
+func _on_score_changed(new_score):
+	current_score = new_score
+	_update_display()
+	
+	# Pop effect
+	var tween = create_tween()
+	tween.tween_property(self, \"scale\", Vector2(1.2, 1.2), 0.1)
+	tween.tween_property(self, \"scale\", Vector2(1.0, 1.0), 0.1)
+
+func _on_target_score_changed(new_target):
+	target_score = new_target
+	_update_display()
+
+func _update_display():
+	text = \"$%d / $%d\" % [current_score, target_score]
+"
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -9,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TimerLabel" type="Label" parent="."]
 layout_mode = 1
@@ -21,3 +54,29 @@ text = "
 "
 horizontal_alignment = 1
 script = ExtResource("1_dalq0")
+
+[node name="MoneyHUD" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 100.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MoneyHUD"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MoneyLabel" type="Label" parent="MoneyHUD/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_font_sizes/font_size = 32
+text = "$0 / $500"
+horizontal_alignment = 2
+script = SubResource("GDScript_money_hud")

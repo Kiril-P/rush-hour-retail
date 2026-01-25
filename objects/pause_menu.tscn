@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp6b7v8v8v8v"]
+[gd_scene load_steps=4 format=3 uid="uid://dp6b7v8v8v8v"]
 
 [ext_resource type="Script" uid="uid://ssuo4uaa48rp" path="res://scripts/pause_menu.gd" id="1_pause_script"]
 [ext_resource type="Theme" uid="uid://b6b7v8v8v8v8v" path="res://assets/ui/kenney_theme.tres" id="2_theme"]
+[ext_resource type="PackedScene" uid="uid://dp6b7v8v8v8c" path="res://objects/settings_menu.tscn" id="3_settings"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -32,7 +33,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,23 +46,88 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(300, 70)
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 24
 text = "RESUME"
 
-[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(300, 70)
+[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 24
+text = "RESTART"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "SETTINGS"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "MAIN MENU"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(300, 70)
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 24
 text = "QUIT"
 
+[node name="SettingsContainer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="ColorRect" parent="SettingsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.862745)
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="SettingsContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="SettingsMenu" parent="SettingsContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_settings")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" type="Button" parent="SettingsContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="SettingsContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_settings_back_pressed"]
