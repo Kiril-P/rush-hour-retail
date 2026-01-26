@@ -65,7 +65,7 @@ func _follow_player(delta):
 	
 	var player_forward = -pushing_player.global_transform.basis.z
 	var target_pos = pushing_player.global_position + (player_forward * push_distance)
-	target_pos.y = pushing_player.global_position.y  # Same height as player's feet
+	target_pos.y = pushing_player.global_position.y + push_height  # Lowered by push_height
 	
 	global_position = target_pos
 	rotation.y = pushing_player.rotation.y + deg_to_rad(rotation_offset)
@@ -97,7 +97,7 @@ func grab_handle(player):
 	# Position cart in front of player (not behind!)
 	var player_forward = -player.global_transform.basis.z
 	var spawn_pos = player.global_position + (player_forward * push_distance)
-	spawn_pos.y = player.global_position.y  # Same height as player's feet
+	spawn_pos.y = player.global_position.y + push_height  # Lowered by push_height
 	global_position = spawn_pos
 	rotation.y = player.rotation.y + deg_to_rad(rotation_offset)
 	

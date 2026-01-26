@@ -52,7 +52,9 @@ func _find_ui_elements():
 					vbox.add_child(items_container)
 
 func _process(delta):
-	position = position.lerp(target_position, delta * 12.0)
+	# PERFORMANCE FIX: Only lerp if not at target position
+	if position.distance_to(target_position) > 0.001:
+		position = position.lerp(target_position, delta * 12.0)
 	
 	if Input.is_action_just_pressed(toggle_key):
 		toggle_visibility()

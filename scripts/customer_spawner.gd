@@ -38,6 +38,9 @@ func _ready():
 	# Cache spawn points once at startup (HUGE performance gain!)
 	_cache_spawn_points()
 	
+	# PERFORMANCE FIX: Preload all customer models before spawning to avoid lag spikes
+	CustomerAI.preload_all_models()
+	
 	if spawn_on_ready:
 		var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
 		if loading_manager:

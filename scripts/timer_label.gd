@@ -45,15 +45,17 @@ func _ready():
 	scale = Vector2.ONE
 
 func _process(delta):
-	# Smooth color transition (gradient effect)
-	modulate = modulate.lerp(target_color, delta * 3.0)
+	# PERFORMANCE FIX: Only lerp color if not close to target
+	if not modulate.is_equal_approx(target_color):
+		modulate = modulate.lerp(target_color, delta * 3.0)
 	
-	# Smooth shadow/glow transition
+	# PERFORMANCE FIX: Only update shadow if it needs to change
 	var current_shadow = get_theme_color("font_shadow_color")
-	var new_shadow = current_shadow.lerp(target_shadow_color, delta * 4.0)
-	add_theme_color_override("font_shadow_color", new_shadow)
+	if not current_shadow.is_equal_approx(target_shadow_color):
+		var new_shadow = current_shadow.lerp(target_shadow_color, delta * 4.0)
+		add_theme_color_override("font_shadow_color", new_shadow)
 	
-	# Pulse the glow size for urgency
+	# Pulse the glow size for urgency (only when glow is active)
 	if glow_size > 0:
 		var pulse = sin(Time.get_ticks_msec() / 150.0) * 0.5 + 0.5  # 0 to 1
 		var size = int(glow_size + pulse * glow_size * 0.5)
@@ -67,7 +69,7 @@ func _process(delta):
 			cos(shake_timer * 6.0) * shake_intensity
 		)
 		position = original_position + shake_offset
-	else:
+	elif position != original_position:
 		position = original_position
 
 func _on_time_changed(seconds_remaining: float):
