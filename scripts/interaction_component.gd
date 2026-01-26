@@ -16,10 +16,9 @@ func _ready():
 func _process(delta):
 	if picked_object:
 		_move_held_object_smoothly(delta)
-		# PERFORMANCE FIX: Removed _update_raycast_exceptions() - now done once on pickup
+		_update_raycast_exceptions()
 
 func _update_raycast_exceptions():
-	# PERFORMANCE FIX: This is now only called once when picking up, not every frame
 	if picked_object and ray_cast_3d:
 		ray_cast_3d.add_exception(picked_object)
 
@@ -84,15 +83,12 @@ func handle_interaction(collider, hold_duration, is_secondary: bool = false):
 			interact_target.interact()
 		return
 	
-	# PRIORITY 6: Not holding anything → Pick up, interact, or PUNCH
+	# PRIORITY 6: Not holding anything → Pick up or interact
 	if interact_target:
 		if interact_target.has_method("pick_up"):
 			pick_up_object(interact_target)
 		elif interact_target.has_method("interact"):
 			interact_target.interact()
-		# FIX: Add punch support for punchable targets (customers)
-		elif interact_target.is_in_group("punchable") and interact_target.has_method("apply_knockback"):
-			interact_target.apply_knockback(player_node.global_position, 1.0)
 
 func _is_item_in_cart(node) -> bool:
 	if not node:
@@ -179,9 +175,6 @@ func _find_interactable(node):
 		return node
 	if node.is_in_group("checkout") or node.is_in_group("pickable"):
 		return node
-	# FIX: Add punchable group check for customers
-	if node.is_in_group("punchable"):
-		return node
 	if node.has_method("interact") or node.has_method("pick_up"):
 		return node
 	
@@ -192,9 +185,6 @@ func _find_interactable(node):
 		if current is ShoppingCart or current is ShoppingBasket:
 			return current
 		if current.is_in_group("checkout"):
-			return current
-		# FIX: Add punchable group check for customers
-		if current.is_in_group("punchable"):
 			return current
 		if current.has_method("interact") or current.has_method("pick_up"):
 			return current
@@ -223,9 +213,6 @@ func _find_product(node):
 
 func pick_up_object(object):
 	picked_object = object
-	
-	# PERFORMANCE FIX: Add raycast exception once here instead of every frame
-	_update_raycast_exceptions()
 	
 	GameManager.mark_tutorial_complete("pickup")
 	GameManager.trigger_tutorial("drop_throw")

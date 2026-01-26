@@ -1,35 +1,25 @@
 extends Node
 
-## Performance Manager - RE-ENABLED AND OPTIMIZED
-## Disables physics for items far from player and manages overall performance
+## Performance Manager - OPTIMIZED VERSION
+## Disables physics for items far from player
 
-@export var enable_distance_culling: bool = true  # RE-ENABLED - Freezes far items
-@export var culling_distance: float = 20.0  # Distance beyond which to freeze items (increased for safety)
-@export var update_interval: float = 0.5  # How often to check (seconds) - more frequent for responsiveness
-@export var batch_size: int = 30  # Process more items per batch (increased efficiency)
+@export var enable_distance_culling: bool = false  # DISABLED FOR TESTING - Might be causing lag
+@export var culling_distance: float = 15.0  # Distance beyond which to freeze items
+@export var update_interval: float = 2.0  # How often to check (seconds) - increased for performance
+@export var batch_size: int = 10  # Process items in batches to prevent lag spikes (reduced)
 
 var player: Node3D = null
 var update_timer: float = 0.0
 var current_batch_index: int = 0
 
-# PERFORMANCE: Cache the items array, update less frequently
-var _cached_items: Array = []
-var _items_cache_timer: float = 0.0
-const ITEMS_CACHE_INTERVAL: float = 2.0  # Rebuild item list every 2 seconds
-
 func _ready():
 	# Wait for scene to load
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	_find_player()
-	_rebuild_items_cache()
 
 func _find_player():
 	"""Find player in scene"""
 	player = get_tree().get_first_node_in_group("player")
-
-func _rebuild_items_cache():
-	"""Rebuild cached items list - called periodically, not every frame"""
-	_cached_items = get_tree().get_nodes_in_group("pickable")
 
 func _process(delta):
 	if not enable_distance_culling:
@@ -39,12 +29,6 @@ func _process(delta):
 	if not is_instance_valid(player) or not player.is_inside_tree():
 		_find_player()
 		return
-	
-	# PERFORMANCE: Rebuild item cache periodically, not every culling pass
-	_items_cache_timer += delta
-	if _items_cache_timer >= ITEMS_CACHE_INTERVAL:
-		_items_cache_timer = 0.0
-		_rebuild_items_cache()
 	
 	update_timer += delta
 	if update_timer >= update_interval:
@@ -62,18 +46,19 @@ func _update_item_culling_batched():
 	
 	var player_pos = player.global_position
 	
-	# Use cached items instead of querying scene tree every time
-	if _cached_items.is_empty():
+	# Get fresh list of items each time (handles items being freed)
+	var all_items = get_tree().get_nodes_in_group("pickable")
+	
+	if all_items.is_empty():
 		return
 	
 	# Process in batches to prevent frame drops
 	var items_processed = 0
 	var start_index = current_batch_index
-	var total_items = _cached_items.size()
 	
-	for i in range(total_items):
-		var index = (start_index + i) % total_items
-		var item = _cached_items[index]
+	for i in range(all_items.size()):
+		var index = (start_index + i) % all_items.size()
+		var item = all_items[index]
 		
 		# CRITICAL: Validate item before ANY access
 		if not is_instance_valid(item):
@@ -86,30 +71,26 @@ func _update_item_culling_batched():
 		if not item.is_inside_tree():
 			continue
 		
-		# Skip items being held/in cart (they need physics)
+		# Skip items being held/in cart
 		if item.has_method("get_is_on_shelf"):
 			if not item.get_is_on_shelf():
-				# Item is being held - make sure it's not frozen!
-				if item.freeze and item.freeze_mode == RigidBody3D.FREEZE_MODE_KINEMATIC:
-					continue  # Already being held properly
 				continue
 		
 		# Now safe to access global_position
 		var distance = player_pos.distance_to(item.global_position)
 		
-		# Freeze items far from player (but don't unfreeze them - let pickup handle that)
+		# Freeze items far from player
 		if distance > culling_distance:
 			if not item.freeze:
 				item.freeze = true
-				item.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
-		# Near items: only freeze if they're not moving
-		elif not item.freeze and item.linear_velocity.length_squared() < 0.0001:
-			item.freeze = true
-			item.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
+		else:
+			# Keep nearby stationary items frozen for performance
+			if not item.freeze and item.linear_velocity.length() < 0.01:
+				item.freeze = true
 		
 		items_processed += 1
 		if items_processed >= batch_size:
-			current_batch_index = (index + 1) % total_items
+			current_batch_index = (index + 1) % all_items.size()
 			return
 	
 	# Reset batch index if we processed all items

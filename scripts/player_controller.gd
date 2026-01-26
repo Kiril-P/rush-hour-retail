@@ -22,7 +22,7 @@ var current_mouse_sens = 0.001
 var current_base_fov = 75.0
 
 # CART/BASKET SPEED MODIFIERS
-const CART_SPEED_MULT = 1.0   # No slowdown with cart
+const CART_SPEED_MULT = 0.5   # 50% speed with cart
 const BASKET_SPEED_MULT = 0.8 # 80% speed with basket
 
 const BOB_FREQ = 3.0
@@ -45,10 +45,8 @@ const LANDING_DIP = 0.05
 # ANTI-STUCK MECHANICS
 const COYOTE_TIME = 0.15  # Seconds after leaving ground where jump still works
 const JUMP_BUFFER_TIME = 0.1  # Seconds before landing where jump input is remembered
-const UNSTUCK_CHECK_TIME = 0.2  # Reduced - How long stuck before allowing emergency measures
+const UNSTUCK_CHECK_TIME = 0.5  # How long stuck before allowing emergency jump
 const GROUND_PROXIMITY = 0.5  # Distance from ground to allow jumping
-const UNSTUCK_PUSH_FORCE = 3.0  # Force to push player when stuck on ground
-const STUCK_POSITION_THRESHOLD = 0.02  # How little movement counts as "stuck"
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var collider = null
@@ -58,7 +56,6 @@ var was_on_floor = true
 
 # PERFORMANCE: Cache to prevent redundant lookups
 var cached_collider = null
-var cached_collider_id: int = 0
 var cached_interactable = null
 var cached_tooltip_item = null
 
@@ -73,9 +70,16 @@ var shake_amount: float = 0.0
 var shake_decay: float = 5.0
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # ⚡ PERFORMANCE FIX: Throttle raycast
 var _raycast_timer: float = 0.0
 const RAYCAST_INTERVAL: float = 0.066  # ~15 FPS instead of 60
+=======
+# Player Stun System
+var is_stunned: bool = false
+var stun_duration: float = 0.0
+var stun_vignette_amount: float = 0.0
+>>>>>>> parent of c1b5b66b (no customers shit version)
 
 =======
 >>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
@@ -124,6 +128,13 @@ func _input(event):
 
 	# Left click
 	if event.is_action_pressed("interact"):
+		# Check if looking at a customer
+		if ray_cast_3d.is_colliding():
+			var hit = ray_cast_3d.get_collider()
+			if hit and hit is CustomerAI:
+				_punch_customer(hit)
+				return  # Don't do regular interaction if we punched
+		
 		interact_button_pressed_time = Time.get_ticks_msec()
 	
 	if event.is_action_released("interact"):
@@ -218,6 +229,22 @@ func _physics_process(delta):
 	if GameManager:
 		current_mouse_sens = GameManager.mouse_sensitivity
 		current_base_fov = GameManager.target_fov
+	
+	# Update stun effect
+	_update_stun_effect(delta)
+	
+	# If stunned, don't process normal movement
+	if is_stunned:
+		# Apply gravity while stunned
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		
+		# Reduce knockback velocity
+		velocity.x = lerp(velocity.x, 0.0, delta * 5.0)
+		velocity.z = lerp(velocity.z, 0.0, delta * 5.0)
+		
+		move_and_slide()
+		return
 
 	# Crouching and Sprinting logic
 	is_crouching = Input.is_action_pressed("crouch")
@@ -336,36 +363,25 @@ func _head_bob(time) -> Vector3:
 func _apply_landing_effects():
 	camera_3d.position.y -= LANDING_DIP
 
-func _process(delta):
-	# ⚡ PERFORMANCE FIX: Throttle raycast to 15 times/sec
-	_raycast_timer += delta
-	if _raycast_timer < RAYCAST_INTERVAL:
-		# Still update visuals smoothly
-		_apply_screen_shake(delta)
-		return
-	
-	_raycast_timer = 0.0
-	
-	# Get current collider (only 15 times/sec!)
+func _process(_delta):
+	# Get current collider
 	var new_collider = ray_cast_3d.get_collider() if ray_cast_3d.is_colliding() else null
 	
-	# OPTIMIZATION: Only update if collider changed
-	var new_id = new_collider.get_instance_id() if new_collider else 0
-	if new_id != cached_collider_id:
+	# OPTIMIZATION: Only update if collider actually changed!
+	if new_collider != cached_collider:
 		collider = new_collider
 		cached_collider = new_collider
-		cached_collider_id = new_id
 		
-		# Clear caches
+		# Clear caches when collider changes
 		cached_interactable = null
 		cached_tooltip_item = null
 		
-		# Update UI
+		# Emit signal and update UI (expensive operations only when needed!)
 		interact_object.emit(collider)
 		_update_item_tooltip(collider)
-		_update_crosshair_visual(delta)
+		_update_crosshair_visual(_delta)
 	
-	_apply_screen_shake(delta)
+	_apply_screen_shake(_delta)
 
 func _update_item_tooltip(target):
 	if not tooltip_ui: 
@@ -446,6 +462,13 @@ func _update_crosshair_visual(delta):
 	if not crosshair: 
 		return
 	
+	# Check if looking at a customer (punchable!)
+	var looking_at_customer = false
+	if ray_cast_3d.is_colliding():
+		var hit = ray_cast_3d.get_collider()
+		if hit and hit is CustomerAI:
+			looking_at_customer = true
+	
 	# Use cached result (only calculated when collider changes!)
 	var is_interactable = cached_interactable
 	if is_interactable == null:
@@ -455,8 +478,12 @@ func _update_crosshair_visual(delta):
 	var target_color = Color.WHITE
 	var target_scale = Vector2(1.0, 1.0)
 	
-	if is_interactable:
-		target_color = Color(0.2, 1.0, 0.8)
+	# Priority: Customer (punchable) overrides regular interactable
+	if looking_at_customer:
+		target_color = Color(1.0, 0.3, 0.3)  # Red for punch
+		target_scale = Vector2(1.3, 1.3)
+	elif is_interactable:
+		target_color = Color(0.2, 1.0, 0.8)  # Cyan for interact
 		target_scale = Vector2(1.2, 1.2)
 	
 	crosshair.modulate = crosshair.modulate.lerp(target_color, delta * 20.0)
@@ -510,25 +537,14 @@ func _find_cart_parent(node) -> ShoppingCart:
 	return null
 
 func _check_if_stuck(delta):
-	"""Detect if player is stuck (has input but not moving) - IMPROVED"""
+	"""Detect if player is stuck (has input but not moving)"""
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var has_input = input_dir.length() > 0.1
-	var horizontal_delta = Vector2(global_position.x - last_position.x, global_position.z - last_position.z).length()
-	
-	# Check if stuck - works both on floor and in air now
-	var is_stuck = has_input and horizontal_delta < STUCK_POSITION_THRESHOLD
+	var position_delta = global_position.distance_to(last_position)
+	var is_stuck = has_input and position_delta < 0.01 and not is_on_floor()
 	
 	if is_stuck:
 		time_stuck += delta
-		
-		# ANTI-STUCK: If stuck for too long, apply push in movement direction
-		if time_stuck > UNSTUCK_CHECK_TIME and is_on_floor():
-			var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-			# Push player up and in their intended direction
-			velocity.y = JUMP_VELOCITY * 0.5  # Small hop
-			velocity.x += direction.x * UNSTUCK_PUSH_FORCE
-			velocity.z += direction.z * UNSTUCK_PUSH_FORCE
-			time_stuck = 0  # Reset after push
 	else:
 		time_stuck = 0
 	
@@ -541,42 +557,73 @@ func _is_near_ground() -> bool:
 	return false
 <<<<<<< HEAD
 
-func take_customer_attack(knockback_force: Vector3, from_position: Vector3):
+func _punch_customer(customer: CustomerAI):
+	"""Punch/push a customer, applying knockback"""
+	if not customer or not is_instance_valid(customer):
+		return
+	
+	# Can't punch while stunned
+	if is_stunned:
+		return
+	
+	# Apply knockback from player's position
+	customer.apply_knockback(global_position, 1.0)
+	
+	# Screen shake for impact feedback (use existing shake system)
+	shake_amount += 0.3
+	
+	# TODO: Add hitmarker visual in a future update
+
+func take_customer_attack(knockback_velocity: Vector3, from_position: Vector3):
 	"""Called when an aggressive customer attacks the player"""
-	# Apply knockback to player
-	velocity += knockback_force
-	velocity.y = JUMP_VELOCITY * 0.7  # Small upward push
+	if is_stunned:
+		return  # Already stunned
 	
-	# Screen shake effect
-	add_shake(1.5)
+	# Apply knockback
+	velocity = knockback_velocity
 	
-	# Visual feedback - red flash
-	_flash_damage()
+	# Stun the player
+	is_stunned = true
+	stun_duration = 1.0
+	
+	# Heavy screen shake
+	shake_amount += 0.8
 	
 	# Play hit sound
-	if GameManager:
-		GameManager.play_sfx("res://assets/sfx/MLG Hitmarker Sound Effect.mp3")
+	_play_player_hit_sound()
 
-# PERFORMANCE: Reusable damage flash overlay (created once, reused)
-var _damage_flash_canvas: CanvasLayer = null
-var _damage_flash_rect: ColorRect = null
-
-func _flash_damage():
-	"""Flash screen red when taking damage from customer - OPTIMIZED"""
-	# Create overlay once, reuse it
-	if _damage_flash_canvas == null:
-		_damage_flash_canvas = CanvasLayer.new()
-		_damage_flash_canvas.layer = 100
-		get_tree().root.add_child(_damage_flash_canvas)
-		
-		_damage_flash_rect = ColorRect.new()
-		_damage_flash_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		_damage_flash_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		_damage_flash_canvas.add_child(_damage_flash_rect)
+func _play_player_hit_sound():
+	"""Play sound when player gets hit"""
+	var audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
 	
+<<<<<<< HEAD
 	# Just animate the existing rect
 	_damage_flash_rect.color = Color(1, 0, 0, 0.4)
 	var tween = create_tween()
 	tween.tween_property(_damage_flash_rect, "color:a", 0.0, 0.3)
 =======
 >>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
+=======
+	var hit_sound = load("res://assets/sfx/MLG Hitmarker Sound Effect.mp3")
+	if hit_sound:
+		audio_player.stream = hit_sound
+		audio_player.volume_db = 5
+		audio_player.play()
+		
+		# Auto-delete after playing
+		await audio_player.finished
+		audio_player.queue_free()
+
+func _update_stun_effect(delta):
+	"""Handle stun timer and effects"""
+	if is_stunned:
+		stun_duration -= delta
+		stun_vignette_amount = lerp(stun_vignette_amount, 1.0, delta * 10.0)
+		
+		if stun_duration <= 0:
+			is_stunned = false
+			stun_duration = 0
+	else:
+		stun_vignette_amount = lerp(stun_vignette_amount, 0.0, delta * 5.0)
+>>>>>>> parent of c1b5b66b (no customers shit version)

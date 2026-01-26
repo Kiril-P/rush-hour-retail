@@ -90,46 +90,10 @@ var selected_variant_index: int = -1
 var idle_anim_name: String = ""
 var walk_anim_name: String = ""
 var shopping_cart: RigidBody3D = null
-var _current_animation_type: String = "" 
 
 static var cached_shelf_markers: Array = []
 static var cached_exit_markers: Array = []
 static var markers_cached: bool = false
-
-# PERFORMANCE FIX: Preload audio to prevent frame spikes from runtime loading
-static var _hit_sound_cached: AudioStream = null
-static var _angry_sound_cached: AudioStream = null
-
-# ANTI-STUCK: Track position to detect when customer is stuck
-var _last_position: Vector3 = Vector3.ZERO
-var _stuck_time: float = 0.0
-const STUCK_THRESHOLD: float = 0  # How little movement counts as stuck (reduced)
-const STUCK_TELEPORT_TIME: float = 3.5  # How long stuck before teleporting (increased from 2.0)
-const TELEPORT_DISTANCE: float = 0.8  # How far to teleport forward (reduced)
-
-# PERFORMANCE FIX: Throttle navigation updates to reduce frame spikes
-var _path_update_timer: float = 0.0
-var _cached_path_position: Vector3 = Vector3.ZERO
-const PATH_UPDATE_INTERVAL: float = 2.0  # Update path every 2 seconds for performance
-
-# PERFORMANCE FIX: Store computed velocity to apply in _physics_process instead of callback
-var _avoidance_velocity: Vector3 = Vector3.ZERO
-var _has_avoidance_velocity: bool = false
-
-# Cache player reference
-static var _cached_player: CharacterBody3D = null
-static var _player_cache_valid: bool = false
-
-# Path calculation queue - limits how many paths are calculated per frame
-static var _path_queue: Array[CustomerAI] = []
-static var _exit_queue: Array[CustomerAI] = []
-static var _last_queue_process_frame: int = -1
-const MAX_PATH_CALCS_PER_FRAME: int = 3
-
-# Preloaded character models
-static var _models_preloaded: bool = false
-static var _preloaded_models: Array[PackedScene] = []
-static var _preloaded_anims: Dictionary = {}
 
 func _ready():
 	# Add to customer group for avoidance detection
@@ -147,19 +111,25 @@ func _ready():
 	nav_agent.path_desired_distance = randf_range(0.4, 0.6)
 	nav_agent.target_desired_distance = randf_range(0.4, 0.6)
 	
-	# PERFORMANCE FIX: DISABLE AVOIDANCE COMPLETELY
-	# The NavigationServer avoidance system is expensive and causes cascading lag
-	# We'll use simple direct movement instead - customers will clip through each other
-	# but this is MUCH faster and prevents the lag spikes
-	nav_agent.avoidance_enabled = false
+	# PROPER AVOIDANCE SETUP
+	nav_agent.avoidance_enabled = true
+	nav_agent.radius = 0.5  # Slightly larger collision radius
+	nav_agent.neighbor_distance = 3.0  # How far to look for neighbors
+	nav_agent.max_neighbors = 10  # How many neighbors to avoid
+	nav_agent.time_horizon_agents = 1.0  # Time to predict collisions with agents
+	nav_agent.time_horizon_obstacles = 0.5  # Time to predict collisions with obstacles
 	nav_agent.max_speed = movement_speed
 	
-	# Set up collision - NO collision with anything except world geometry
-	# This prevents physics cascade when player moves through crowds
-	collision_layer = 2  # Customers are on layer 2
-	collision_mask = 1   # Only collide with world (layer 1), not player or other customers
+	# Set avoidance layers (bit 1 = customers avoid each other)
+	nav_agent.set_avoidance_layers(1)
+	nav_agent.set_avoidance_mask(1)
 	
-	# NOTE: velocity_computed signal no longer connected since avoidance is disabled
+	# Set up collision
+	collision_layer = 2
+	collision_mask = 1 + 2
+	
+	# Connect velocity computed signal for proper avoidance
+	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	
 	
 	# Cache markers (with validation check for scene reloads)
@@ -169,49 +139,8 @@ func _ready():
 	await get_tree().physics_frame
 	_pick_random_destination()
 
-static func preload_all_models():
-	"""PERFORMANCE FIX: Preload all character models at game start to avoid runtime spikes.
-	Call this during a loading screen for best results."""
-	if _models_preloaded:
-		return
-	
-	print("CustomerAI: Preloading all character models...")
-	
-	# Preload all model scenes
-	for i in range(CHARACTER_VARIANTS.size()):
-		var variant = CHARACTER_VARIANTS[i]
-		
-		# Preload main model
-		var model_scene = load(variant["model"])
-		if model_scene:
-			_preloaded_models.append(model_scene)
-		else:
-			_preloaded_models.append(null)
-		
-		# Preload all animation FBX files
-		_preloaded_anims[i] = {
-			"idle": load(variant["idle"]),
-			"walk": load(variant["walk"]),
-			"walk_cart": load(variant["walk_cart"]),
-			"fall": load(variant["fall"]),
-			"run": load(variant["run"])
-		}
-	
-	# Also preload audio
-	if _hit_sound_cached == null:
-		_hit_sound_cached = load("res://assets/sfx/MLG Hitmarker Sound Effect.mp3")
-	if _angry_sound_cached == null:
-		_angry_sound_cached = load("res://assets/sfx/Roblox Angry Sound Effect.mp3")
-	
-	_models_preloaded = true
-	print("CustomerAI: All models preloaded!")
-
 func _setup_character_model():
 	"""Load character model and apply animations from separate FBX files"""
-	# PERFORMANCE FIX: Ensure models are preloaded (first customer triggers this)
-	if not _models_preloaded:
-		preload_all_models()
-	
 	# Pick a random character variant
 	selected_variant_index = randi() % CHARACTER_VARIANTS.size()
 	var variant = CHARACTER_VARIANTS[selected_variant_index]
@@ -243,6 +172,7 @@ func _setup_character_model():
 		return
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	# PERFORMANCE FIX: Use preloaded model instead of loading at runtime
 	var model_scene = _preloaded_models[selected_variant_index] if selected_variant_index < _preloaded_models.size() else null
 	if not model_scene:
@@ -253,6 +183,10 @@ func _setup_character_model():
 	print("Loading model: ", variant["model"])
 	var model_scene = load(variant["model"])
 >>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
+=======
+	# Load the character model FBX (contains mesh and skeleton)
+	var model_scene = load(variant["model"])
+>>>>>>> parent of c1b5b66b (no customers shit version)
 	if not model_scene:
 		push_error("Failed to load character model!")
 		return
@@ -289,6 +223,7 @@ func _setup_character_model():
 		print("Set AnimationPlayer root to: ", relative_path)
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	# PERFORMANCE FIX: Use preloaded animations instead of loading at runtime
 	var preloaded = _preloaded_anims.get(selected_variant_index, {})
 	_load_animation_from_fbx_cached(preloaded.get("idle"), variant["idle"], "idle", skeleton)
@@ -304,6 +239,14 @@ func _setup_character_model():
 	print("Loading walk animation: ", variant["walk"])
 	_load_animation_from_fbx(variant["walk"], "walk", skeleton)
 >>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
+=======
+	# Load and merge animations from separate FBX files
+	_load_animation_from_fbx(variant["idle"], "idle", skeleton)
+	_load_animation_from_fbx(variant["walk"], "walk", skeleton)
+	_load_animation_from_fbx(variant["walk_cart"], "walk_cart", skeleton)
+	_load_animation_from_fbx(variant["fall"], "fall", skeleton)
+	_load_animation_from_fbx(variant["run"], "run", skeleton)
+>>>>>>> parent of c1b5b66b (no customers shit version)
 	
 	# Wait a frame for everything to be set up
 	await get_tree().process_frame
@@ -395,10 +338,6 @@ func _find_skeleton(node: Node) -> Skeleton3D:
 func _load_animation_from_fbx(fbx_path: String, anim_prefix: String, target_skeleton: Skeleton3D):
 	"""Load animation from a separate FBX file and add it to the AnimationPlayer"""
 	var anim_scene = load(fbx_path)
-	_load_animation_from_fbx_cached(anim_scene, fbx_path, anim_prefix, target_skeleton)
-
-func _load_animation_from_fbx_cached(anim_scene: PackedScene, fbx_path: String, anim_prefix: String, target_skeleton: Skeleton3D):
-	"""PERFORMANCE FIX: Load animation from preloaded scene (avoids runtime load() calls)"""
 	if not anim_scene:
 		push_error("Failed to load animation FBX: ", fbx_path)
 		return
@@ -495,6 +434,7 @@ func _print_node_hierarchy(node: Node, indent: int):
 func _play_animation(anim_type: String):
 <<<<<<< HEAD
 	"""Play the specified animation type (idle or walk or fall or run)"""
+<<<<<<< HEAD
 	# PERFORMANCE FIX: Skip if already playing this animation type
 	if anim_type == _current_animation_type:
 		return
@@ -504,6 +444,8 @@ func _play_animation(anim_type: String):
 =======
 	"""Play the specified animation type (idle or walk)"""
 >>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
+=======
+>>>>>>> parent of c1b5b66b (no customers shit version)
 	# If using pre-configured character model, use its methods
 	if character_model and character_model is CustomerCharacterModel:
 		if anim_type == "idle":
@@ -512,18 +454,24 @@ func _play_animation(anim_type: String):
 			character_model.play_walk()
 		return
 	
+	# Otherwise use direct AnimationPlayer control (fallback/old method)
 	if not animation_player:
 		return
 	
-	var target_anim: String
+	var target_anim = ""
 	
 	match anim_type:
 		"idle":
 			target_anim = idle_anim_name
 		"walk":
 <<<<<<< HEAD
+<<<<<<< HEAD
 			# Use cart animation if customer has a cart (check shopping_cart directly, avoid is_instance_valid)
 			if customer_type == CustomerType.WITH_CART and shopping_cart:
+=======
+			# Use shopping cart animation if customer has a cart
+			if customer_type == CustomerType.WITH_CART and shopping_cart and is_instance_valid(shopping_cart):
+>>>>>>> parent of c1b5b66b (no customers shit version)
 				target_anim = walk_cart_anim_name
 			else:
 				target_anim = walk_anim_name
@@ -531,6 +479,7 @@ func _play_animation(anim_type: String):
 			target_anim = fall_anim_name
 		"run":
 			target_anim = run_anim_name
+<<<<<<< HEAD
 		_:
 			return
 =======
@@ -539,12 +488,20 @@ func _play_animation(anim_type: String):
 	if target_anim == "":
 		return
 >>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
+=======
+	
+	if target_anim == "":
+		return
+>>>>>>> parent of c1b5b66b (no customers shit version)
 	
 	# Only change animation if different from current
 	if target_anim != last_animation:
 		if animation_player.has_animation(target_anim):
 			animation_player.play(target_anim)
 			last_animation = target_anim
+		else:
+			if get_tree().get_frame() % 120 == 0:  # Don't spam console
+				print("Animation not found: ", target_anim)
 
 func _validate_cached_markers() -> bool:
 	"""Check if cached markers are still valid (not freed after scene reload)"""
@@ -568,19 +525,11 @@ func _cache_markers():
 	
 
 func _physics_process(delta):
-	# Don't process if despawning
-	if current_state == "DESPAWNING":
-		return
-	
-	# Process path queue once per frame (first customer to run this does it)
-	var current_frame = Engine.get_physics_frames()
-	if current_frame != _last_queue_process_frame:
-		_process_path_queues()
-	
-	# Simple state machine
 	match current_state:
 		"IDLE":
 			_state_idle(delta)
+		"WALKING":
+			_state_walking(delta)
 		"STOPPING":
 			_state_stopping(delta)
 		"LEAVING":
@@ -590,15 +539,38 @@ func _state_idle(delta):
 	_play_animation("idle")
 	current_state = "WALKING"
 
-
+func _state_walking(delta):
+	_play_animation("walk")
+	if nav_agent.is_navigation_finished():
+		if current_stops < stops_before_leaving:
+			_start_stopping()
+		else:
+			_start_leaving()
+		return
+	
+	var next_path_pos = nav_agent.get_next_path_position()
+	var direction = (next_path_pos - global_position).normalized()
+	
+	# USE NAVIGATION AGENT VELOCITY FOR AVOIDANCE
+	var desired_velocity = direction * movement_speed
+	nav_agent.velocity = desired_velocity
+	# The actual movement happens in _on_velocity_computed()
+	
+	if direction.length() > 0.1:
+		var target_rotation = atan2(direction.x, direction.z)
+		rotation.y = lerp_angle(rotation.y, target_rotation, delta * rotation_speed)
+	
+	if customer_type == CustomerType.WITH_CART and shopping_cart:
+		_update_cart_position()
 
 func _state_stopping(delta):
 	_play_animation("idle")
 	velocity = Vector3.ZERO
+	move_and_slide()
 	
 	if shelf_to_face:
 		var direction = (shelf_to_face.global_position - global_position).normalized()
-		if direction.length_squared() > 0.01:
+		if direction.length() > 0.1:
 			var target_rotation = atan2(direction.x, direction.z)
 			rotation.y = lerp_angle(rotation.y, target_rotation, delta * rotation_speed)
 	
@@ -610,93 +582,109 @@ func _state_stopping(delta):
 		_pick_random_destination()
 
 func _state_leaving(delta):
+	_play_animation("walk")
 	if nav_agent.is_navigation_finished():
-		current_state = "DESPAWNING"
 		_despawn()
 		return
 	
-	# ⚡ SIMPLE MOVEMENT: Update path every 2 seconds
-	_path_update_timer += delta
-	if _path_update_timer >= PATH_UPDATE_INTERVAL:
-		_path_update_timer = 0.0
-		_cached_path_position = nav_agent.get_next_path_position()
+	var next_path_pos = nav_agent.get_next_path_position()
+	var direction = (next_path_pos - global_position).normalized()
 	
-	# Move toward cached path position
-	var direction = (_cached_path_position - global_position).normalized()
-	velocity = direction * movement_speed
-	move_and_slide()
+	# USE NAVIGATION AGENT VELOCITY FOR AVOIDANCE
+	var desired_velocity = direction * movement_speed
+	nav_agent.velocity = desired_velocity
+	# The actual movement happens in _on_velocity_computed()
 	
-	# Rotate toward movement direction
-	if direction.length_squared() > 0.01:
+	if direction.length() > 0.1:
 		var target_rotation = atan2(direction.x, direction.z)
 		rotation.y = lerp_angle(rotation.y, target_rotation, delta * rotation_speed)
 	
-	# Update cart position if has cart
 	if customer_type == CustomerType.WITH_CART and shopping_cart:
 		_update_cart_position()
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of c1b5b66b (no customers shit version)
 func _state_falling(delta):
-	"""Handle knockback/falling state"""
+	"""Handle knockback/falling state - minimal movement, focus on animation"""
 	_play_animation("fall")
 	
+	# Apply knockback velocity (but decay it very quickly)
 	if knockback_timer > 0:
 		knockback_timer -= delta
 		velocity = knockback_velocity
-		knockback_velocity = knockback_velocity.lerp(Vector3.ZERO, delta * 10.0)
 		move_and_slide()
+		
+		# Rapidly reduce knockback to almost nothing
+		knockback_velocity = knockback_velocity.lerp(Vector3.ZERO, delta * 10.0)
 	else:
+		# Knockback finished, stop all movement immediately
 		velocity = Vector3.ZERO
 		knockback_velocity = Vector3.ZERO
+		move_and_slide()
 		
 		recovery_timer -= delta
 		if recovery_timer <= 0:
+			# Recovery complete, return to previous state
 			is_knocked_back = false
 			current_state = previous_state
+			
+			# If they were navigating, resume navigation
+			if current_state == "WALKING" or current_state == "LEAVING":
+				if nav_agent.target_position != Vector3.ZERO:
+					# Re-enable navigation
+					nav_agent.set_velocity(Vector3.ZERO)
 
 func _state_aggressive(delta):
 	"""Chase the player aggressively"""
 	_play_animation("run")
 	
+	# Find player if we don't have a reference
 	if not target_player or not is_instance_valid(target_player):
-		target_player = _get_cached_player()
-		if not target_player:
+		var players = get_tree().get_nodes_in_group("player")
+		if players.size() > 0:
+			target_player = players[0]
+		else:
+			# No player found, calm down
 			_become_calm()
 			return
 	
+	# Check distance to player
 	var distance_to_player = global_position.distance_to(target_player.global_position)
 	
+	# Too far away? Calm down
 	if distance_to_player > lose_player_distance:
 		aggression_timer += delta
 		if aggression_timer > calm_down_time:
 			_become_calm()
 			return
 	else:
-		aggression_timer = 0
+		aggression_timer = 0  # Reset timer if player is nearby
 	
+	# Close enough to attack?
 	if distance_to_player < attack_range and not has_attacked:
 		current_state = "ATTACKING"
 		has_attacked = true
 		_attack_player()
 		return
 	
-	# Throttle path updates
-	_path_update_timer -= delta
-	if _path_update_timer <= 0:
-		nav_agent.target_position = target_player.global_position
-		_path_update_timer = PATH_UPDATE_INTERVAL
+	# Update navigation to chase player
+	nav_agent.target_position = target_player.global_position
 	
 	if not nav_agent.is_navigation_finished():
 		var next_path_pos = nav_agent.get_next_path_position()
 		var direction = (next_path_pos - global_position).normalized()
 		
-		velocity = direction * chase_speed
-		move_and_slide()
+		# Move faster when aggressive
+		var desired_velocity = direction * chase_speed
+		nav_agent.velocity = desired_velocity
 		
-		if direction.length_squared() > 0.01:
+		# Face player
+		if direction.length() > 0.1:
 			var target_rotation = atan2(direction.x, direction.z)
-			rotation.y = lerp_angle(rotation.y, target_rotation, delta * rotation_speed)
+			rotation.y = lerp_angle(rotation.y, target_rotation, delta * rotation_speed * 1.5)
 
 func _state_attacking(delta):
 	"""Playing attack animation"""
@@ -710,13 +698,6 @@ func _state_attacking(delta):
 =======
 >>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
 func _pick_random_destination():
-	"""Queue a path calculation - actual work done in _do_pick_random_destination"""
-	if cached_shelf_markers.is_empty():
-		return
-	_queue_path_calculation()
-
-func _do_pick_random_destination():
-	"""Actually pick a destination - called from queue processor"""
 	if cached_shelf_markers.is_empty():
 		return
 	
@@ -756,15 +737,6 @@ func _start_leaving():
 	"""Customer finished shopping, heading to exit"""
 	current_state = "LEAVING"
 	
-	if cached_exit_markers.is_empty():
-		_despawn()
-		return
-	
-	# Queue the exit destination calculation
-	_queue_exit_calculation()
-
-func _do_set_exit_destination():
-	"""Actually set exit destination - called from queue processor"""
 	if cached_exit_markers.is_empty():
 		_despawn()
 		return
@@ -822,22 +794,45 @@ func attach_cart(cart: ShoppingCart):
 		cart.freeze = true
 
 func _despawn():
-	"""Remove customer and cart from scene"""
-	# Only delete cart if we still own it
-	if shopping_cart and shopping_cart.owner_customer == self:
-		# Just free the cart and its items directly
-		for item in shopping_cart.stored_items:
-			if item:
-				item.queue_free()
-		shopping_cart.queue_free()
-		shopping_cart = null
+	"""Remove customer and cart from scene - ASYNC cleanup to prevent lag"""
+	# Only delete cart if we still own it (player might have taken it)
+	if shopping_cart and is_instance_valid(shopping_cart):
+		# Check if cart is still owned by us
+		if shopping_cart.owner_customer == self:
+			# ASYNC: Free cart items first, then cart
+			await _cleanup_cart_async(shopping_cart)
 	
+	# Free customer
 	queue_free()
 
-func _on_velocity_computed(_safe_velocity: Vector3):
-	"""NO LONGER USED - Avoidance is disabled for performance.
-	Keeping this function in case avoidance is re-enabled later."""
-	pass
+func _cleanup_cart_async(cart: ShoppingCart):
+	"""Async cart cleanup - returns items to pool over multiple frames"""
+	if not cart or not is_instance_valid(cart):
+		return
+	
+	# Return items to pool
+	var loading_manager = get_tree().root.get_node_or_null("LoadingManager")
+	var items_to_free = cart.stored_items.duplicate()
+	for item in items_to_free:
+		if is_instance_valid(item):
+			if loading_manager:
+				loading_manager.despawn_item(item)
+			else:
+				item.queue_free()
+		# Wait a frame between freeing items (prevents lag spike)
+		await get_tree().process_frame
+	
+	# Finally free the cart itself (we could pool carts too, but items are the main lag)
+	cart.queue_free()
+
+func _on_velocity_computed(safe_velocity: Vector3):
+	"""Called by NavigationAgent when avoidance velocity is computed"""
+	# This is the velocity adjusted to avoid other agents
+	velocity = safe_velocity
+	move_and_slide()
+	
+	# BACKUP: Handle physical collisions if avoidance fails
+	_handle_collision_push()
 
 func _handle_collision_push():
 	"""Push customers apart if they physically collide (backup to avoidance)"""
@@ -854,98 +849,15 @@ func _handle_collision_push():
 			var push_force = push_direction * 0.5
 			velocity += push_force
 
-func _is_another_customer_nearby(_radius: float) -> bool:
-	"""PERFORMANCE FIX: Removed expensive iteration through all customers.
-	Navigation avoidance already handles spacing, this check was redundant."""
-	# Always return false - let navigation avoidance handle spacing
-	# This eliminates O(n²) behavior when multiple customers reach destinations
+func _is_another_customer_nearby(radius: float) -> bool:
+	"""Check if another customer is within the given radius"""
+	var customers = get_tree().get_nodes_in_group("customer")
+	for customer in customers:
+		if customer != self and customer is CustomerAI:
+			var distance = global_position.distance_to(customer.global_position)
+			if distance < radius:
+				return true
 	return false
-
-func _get_cached_player() -> CharacterBody3D:
-	"""PERFORMANCE FIX: Get player with caching to avoid get_nodes_in_group every frame"""
-	if _player_cache_valid and _cached_player and is_instance_valid(_cached_player):
-		return _cached_player
-	
-	# Cache miss - find player once
-	var players = get_tree().get_nodes_in_group("player")
-	if players.size() > 0:
-		_cached_player = players[0]
-		_player_cache_valid = true
-		return _cached_player
-	
-	_player_cache_valid = false
-	return null
-
-static func _process_path_queues():
-	"""PERFORMANCE FIX: Process path calculation queues - call this once per frame"""
-	var current_frame = Engine.get_physics_frames()
-	if current_frame == _last_queue_process_frame:
-		return  # Already processed this frame
-	_last_queue_process_frame = current_frame
-	
-	var processed = 0
-	
-	# Process path queue (customers picking new destinations)
-	while not _path_queue.is_empty() and processed < MAX_PATH_CALCS_PER_FRAME:
-		var customer = _path_queue.pop_front()
-		if is_instance_valid(customer):
-			customer._do_pick_random_destination()
-			processed += 1
-	
-	# Process exit queue (customers heading to exit)
-	while not _exit_queue.is_empty() and processed < MAX_PATH_CALCS_PER_FRAME:
-		var customer = _exit_queue.pop_front()
-		if is_instance_valid(customer):
-			customer._do_set_exit_destination()
-			processed += 1
-
-func _queue_path_calculation():
-	"""Add this customer to the path calculation queue"""
-	if self not in _path_queue:
-		_path_queue.append(self)
-
-func _queue_exit_calculation():
-	"""Add this customer to the exit destination queue"""
-	if self not in _exit_queue:
-		_exit_queue.append(self)
-
-func _check_if_stuck(delta: float, intended_direction: Vector3):
-	"""ANTI-STUCK: Detect if customer is stuck and teleport them forward"""
-	var horizontal_pos = Vector2(global_position.x, global_position.z)
-	var last_horizontal = Vector2(_last_position.x, _last_position.z)
-	var movement = horizontal_pos.distance_to(last_horizontal)
-	
-	# Check if barely moving
-	if movement < STUCK_THRESHOLD:
-		_stuck_time += delta
-		
-		# If stuck for too long, teleport forward
-		if _stuck_time >= STUCK_TELEPORT_TIME:
-			_teleport_unstuck(intended_direction)
-			_stuck_time = 0.0
-	else:
-		_stuck_time = 0.0
-	
-	_last_position = global_position
-
-func _teleport_unstuck(direction: Vector3):
-	"""Teleport customer forward to unstuck them"""
-	if direction.length_squared() < 0.1:
-		# No clear direction, pick a random one
-		var angle = randf() * TAU
-		direction = Vector3(cos(angle), 0, sin(angle))
-	
-	# Teleport forward in intended direction
-	var teleport_pos = global_position + direction.normalized() * TELEPORT_DISTANCE
-	teleport_pos.y = global_position.y  # Keep same height
-	
-	# PERFORMANCE FIX: Skip expensive navmesh query, just teleport directly
-	# The navigation system will correct the position on the next path update anyway
-	global_position = teleport_pos
-	
-	# Update cart position if we have one
-	if customer_type == CustomerType.WITH_CART and shopping_cart:
-		_update_cart_position()
 
 func cart_taken_by_player():
 	"""Called when player takes the cart from this customer"""
@@ -961,8 +873,25 @@ func cart_taken_by_player():
 		return
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	# Queue the exit destination calculation
 	_queue_exit_calculation()
+=======
+	var exit = cached_exit_markers[randi() % cached_exit_markers.size()]
+	
+	# SAFETY CHECK: Validate exit marker before accessing
+	if not is_instance_valid(exit):
+		_cache_markers()
+		if cached_exit_markers.is_empty():
+			_despawn()
+			return
+		exit = cached_exit_markers[randi() % cached_exit_markers.size()]
+		if not is_instance_valid(exit):
+			_despawn()
+			return
+	
+	nav_agent.target_position = exit.global_position
+>>>>>>> parent of c1b5b66b (no customers shit version)
 
 func apply_knockback(from_position: Vector3, force_multiplier: float = 1.0):
 	"""Apply knockback to customer from a punch/push"""
@@ -1008,8 +937,10 @@ func _become_aggressive():
 		shopping_cart.set_owner_customer(null)
 		shopping_cart = null
 	
-	# PERFORMANCE FIX: Use cached player lookup
-	target_player = _get_cached_player()
+	# Find player
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		target_player = players[0]
 	
 	# Play angry sound
 	_play_angry_sound()
@@ -1024,11 +955,10 @@ func _become_calm():
 	target_player = null
 	aggression_timer = 0.0
 	
-	# PERFORMANCE FIX: Reset character tint instead of freeing particles
-	if character_model:
-		var tween = create_tween()
-		tween.tween_property(character_model, "modulate", Color(1, 1, 1, 1), 0.3)
-	anger_particle = null
+	# Remove anger particles
+	if anger_particle:
+		anger_particle.queue_free()
+		anger_particle = null
 	
 	# Return to walking state and pick a new destination
 	current_state = "WALKING"
@@ -1050,14 +980,12 @@ func _attack_player():
 
 func _play_hit_sound():
 	"""Play the MLG hitmarker sound effect"""
-	# PERFORMANCE FIX: Use cached audio instead of loading at runtime
-	if _hit_sound_cached == null:
-		_hit_sound_cached = load("res://assets/sfx/MLG Hitmarker Sound Effect.mp3")
+	var audio_player = AudioStreamPlayer3D.new()
+	add_child(audio_player)
 	
-	if _hit_sound_cached:
-		var audio_player = AudioStreamPlayer3D.new()
-		add_child(audio_player)
-		audio_player.stream = _hit_sound_cached
+	var hit_sound = load("res://assets/sfx/MLG Hitmarker Sound Effect.mp3")
+	if hit_sound:
+		audio_player.stream = hit_sound
 		audio_player.volume_db = 0
 		audio_player.max_distance = 20.0
 		audio_player.play()
@@ -1068,14 +996,12 @@ func _play_hit_sound():
 
 func _play_angry_sound():
 	"""Play angry Roblox sound effect"""
-	# PERFORMANCE FIX: Use cached audio instead of loading at runtime
-	if _angry_sound_cached == null:
-		_angry_sound_cached = load("res://assets/sfx/Roblox Angry Sound Effect.mp3")
+	var audio_player = AudioStreamPlayer3D.new()
+	add_child(audio_player)
 	
-	if _angry_sound_cached:
-		var audio_player = AudioStreamPlayer3D.new()
-		add_child(audio_player)
-		audio_player.stream = _angry_sound_cached
+	var angry_sound = load("res://assets/sfx/Roblox Angry Sound Effect.mp3")
+	if angry_sound:
+		audio_player.stream = angry_sound
 		audio_player.volume_db = 5
 		audio_player.max_distance = 25.0
 		audio_player.play()
@@ -1085,15 +1011,42 @@ func _play_angry_sound():
 		audio_player.queue_free()
 
 func _spawn_impact_particles():
-	"""PERFORMANCE FIX: Use simple visual feedback instead of heavy CPUParticles3D"""
-	# Instead of particles, just do a quick model flash/scale effect
-	if character_model:
-		var tween = create_tween()
-		# Quick flash white then back to normal
-		tween.tween_property(character_model, "modulate", Color(2, 2, 2, 1), 0.05)
-		tween.tween_property(character_model, "modulate", Color(1, 1, 1, 1), 0.15)
+	"""Spawn impact particles at hit location"""
+	# Create simple particle burst
+	var particles = CPUParticles3D.new()
+	add_child(particles)
+	particles.position = Vector3(0, 1, 0)  # At chest height
+	
+	# Configure particles
+	particles.emitting = true
+	particles.one_shot = true
+	particles.explosiveness = 1.0
+	particles.amount = 20
+	particles.lifetime = 0.5
+	particles.emission_shape = CPUParticles3D.EMISSION_SHAPE_SPHERE
+	particles.emission_sphere_radius = 0.2
+	
+	# Particle properties
+	particles.direction = Vector3(0, 1, 0)
+	particles.spread = 180
+	particles.initial_velocity_min = 2.0
+	particles.initial_velocity_max = 4.0
+	particles.gravity = Vector3(0, -9.8, 0)
+	particles.scale_amount_min = 0.1
+	particles.scale_amount_max = 0.2
+	
+	# Color (orange/red impact effect)
+	var gradient = Gradient.new()
+	gradient.add_point(0.0, Color(1, 0.5, 0, 1))  # Orange
+	gradient.add_point(1.0, Color(1, 0, 0, 0))     # Fade to transparent red
+	particles.color_ramp = gradient
+	
+	# Auto-delete after particles finish
+	await get_tree().create_timer(particles.lifetime + 0.1).timeout
+	particles.queue_free()
 
 func _spawn_anger_particles():
+<<<<<<< HEAD
 	"""PERFORMANCE FIX: Use simple red tint instead of heavy CPUParticles3D"""
 	# Instead of particles, tint the character red while aggressive
 	if character_model:
@@ -1117,3 +1070,34 @@ func _spawn_anger_particles():
 	
 	nav_agent.target_position = exit.global_position
 >>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
+=======
+	"""Spawn exclamation mark / anger effect above customer's head"""
+	# Create particle effect that stays active
+	var particles = CPUParticles3D.new()
+	add_child(particles)
+	particles.position = Vector3(0, 2, 0)  # Above head
+	anger_particle = particles
+	
+	# Configure continuous anger particles
+	particles.emitting = true
+	particles.amount = 8
+	particles.lifetime = 0.8
+	particles.emission_shape = CPUParticles3D.EMISSION_SHAPE_SPHERE
+	particles.emission_sphere_radius = 0.3
+	
+	# Particle properties - floating upward
+	particles.direction = Vector3(0, 1, 0)
+	particles.spread = 20
+	particles.initial_velocity_min = 0.5
+	particles.initial_velocity_max = 1.0
+	particles.gravity = Vector3(0, 0.5, 0)  # Slight upward float
+	particles.scale_amount_min = 0.15
+	particles.scale_amount_max = 0.25
+	
+	# Red angry color
+	var gradient = Gradient.new()
+	gradient.add_point(0.0, Color(1, 0, 0, 1))      # Bright red
+	gradient.add_point(0.5, Color(1, 0.3, 0, 1))    # Orange-red
+	gradient.add_point(1.0, Color(0.8, 0, 0, 0))    # Fade out
+	particles.color_ramp = gradient
+>>>>>>> parent of c1b5b66b (no customers shit version)

@@ -7,12 +7,6 @@ extends Control
 
 var game_instance = null
 
-# Available maps - randomly selected when playing
-const AVAILABLE_MAPS = [
-	"res://blender_market.tscn",
-	"res://blender_market2.tscn"
-]
-
 func _ready():
 	# Initially hide settings
 	if settings_container:
@@ -23,11 +17,8 @@ func _ready():
 	if music_manager:
 		music_manager.play_music(load("res://assets/music/Swing-Machine-chosic.com_.mp3"))
 
-	# PERFORMANCE FIX: Don't load the game scene until player clicks play!
-	# Just pick a random map and load it when needed
-	randomize()  # Seed the random number generator
-	var random_map = AVAILABLE_MAPS[randi() % AVAILABLE_MAPS.size()]
-	var game_scene = load(random_map)
+	# Instance the market scene but don't start the game yet
+	var game_scene = load("res://blender_market.tscn")
 	game_instance = game_scene.instantiate()
 	game_scene_container.add_child(game_instance)
 	

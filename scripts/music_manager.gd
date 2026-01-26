@@ -61,45 +61,40 @@ func _on_game_won():
 	if GameManager:
 		GameManager.play_sfx("res://assets/sfx/win_sfx.wav")
 
-var _cached_bus_idx: int = -2  # -2 = not cached yet
-var _cached_effect: AudioEffectLowPassFilter = null
-
 func _process(delta):
-	# PERFORMANCE FIX: Only process if values need to change
-	var cutoff_diff = abs(current_cutoff - target_cutoff)
-	var pitch_diff = abs(current_pitch - target_pitch)
+	# Smoothly transition filter cutoff
+	var current_scene = get_tree().current_scene
+	if current_scene == null: return
 	
-	# Skip processing if already at target values
-	if cutoff_diff < 1.0 and pitch_diff < 0.001:
-		return
+	var is_main_menu = current_scene.name == "MainMenu"
 	
-	# Smoothly transition values
-	if cutoff_diff >= 1.0:
-		current_cutoff = lerp(current_cutoff, target_cutoff, delta * 4.0)
-		
-		# PERFORMANCE FIX: Cache bus index and effect reference
-		if _cached_bus_idx == -2:
-			_cached_bus_idx = AudioServer.get_bus_index("Music")
-			if _cached_bus_idx != -1 and AudioServer.get_bus_effect_count(_cached_bus_idx) > 0:
-				var effect = AudioServer.get_bus_effect(_cached_bus_idx, 0)
-				if effect is AudioEffectLowPassFilter:
-					_cached_effect = effect
-		
-		if _cached_effect:
-			_cached_effect.cutoff_hz = current_cutoff
+	if is_inside and not is_main_menu:
+		target_cutoff = 20000.0
+	elif not is_inside and not is_main_menu:
+		target_cutoff = 1200.0 # "Muffled" effect
+	else:
+		# Main Menu or other state
+		target_cutoff = 20000.0
 	
-	if pitch_diff >= 0.001:
-		current_pitch = lerp(current_pitch, target_pitch, delta * 2.0)
-		if music_player:
-			music_player.pitch_scale = current_pitch
+	current_cutoff = lerp(current_cutoff, target_cutoff, delta * 4.0)
+	current_pitch = lerp(current_pitch, target_pitch, delta * 2.0)
+	
+	# Update the effect in the AudioServer
+	var bus_idx = AudioServer.get_bus_index("Music")
+	if bus_idx != -1 and AudioServer.get_bus_effect_count(bus_idx) > 0:
+		var effect = AudioServer.get_bus_effect(bus_idx, 0)
+		if effect is AudioEffectLowPassFilter:
+			effect.cutoff_hz = current_cutoff
+	
+	if music_player:
+		music_player.pitch_scale = current_pitch
 
 func set_inside(inside: bool):
 	is_inside = inside
-	# PERFORMANCE FIX: Set target cutoff here instead of checking every frame
 	if is_inside:
-		target_cutoff = 20000.0
+		print("Player is INSIDE - Music normal")
 	else:
-		target_cutoff = 1200.0
+		print("Player is OUTSIDE - Music muffled")
 
 func play_music(stream: AudioStream):
 	music_player.stream = stream
