@@ -355,6 +355,13 @@ func _apply_landing_effects():
 	camera_3d.position.y -= LANDING_DIP
 
 func _process(_delta):
+	# WEB FIX: Detect when Escape is pressed and browser releases mouse
+	if OS.has_feature("web"):
+		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE and not get_tree().paused and GameManager and GameManager.is_game_active:
+			if pause_menu:
+				print("Web: Mouse released, pausing game...")
+				pause_menu.pause()
+
 	# Get current collider
 	var new_collider = ray_cast_3d.get_collider() if ray_cast_3d.is_colliding() else null
 	
