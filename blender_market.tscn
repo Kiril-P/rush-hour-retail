@@ -1542,6 +1542,6 @@ type2_customers = 5
 max_total_customers = 15
 
 [node name="HelpDesk" parent="." instance=ExtResource("80_8f14g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.075729, 0.58470154, 15.452074)
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 9.422087, 0.4672948, 15.476361)
 
 [editable path="StoreNavigation/Supermarket"]

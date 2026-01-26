@@ -18,7 +18,11 @@ func _ready():
 		music_manager.play_music(load("res://assets/music/Swing-Machine-chosic.com_.mp3"))
 
 	# Instance the market scene but don't start the game yet
-	var game_scene = load("res://blender_market.tscn")
+	# Randomly choose between the two maps
+	var map_options = ["res://blender_market.tscn", "res://blender_market2.tscn"]
+	var selected_map = map_options[randi() % map_options.size()]
+	print("Loading map: ", selected_map)
+	var game_scene = load(selected_map)
 	game_instance = game_scene.instantiate()
 	game_scene_container.add_child(game_instance)
 	

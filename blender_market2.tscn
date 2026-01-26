@@ -981,6 +981,9 @@ transform = Transform3D(-2.6226834e-08, 0, 0.216, 0, 0.694, 0, -0.6, 0, -9.44166
 [node name="Shelf289" parent="StoreNavigation" instance=ExtResource("6_u7748")]
 transform = Transform3D(-2.6226834e-08, 0, 0.216, 0, 0.694, 0, -0.6, 0, -9.44166e-09, -3.3546643, 0.9391085, 8.214687)
 
+[node name="Shelf315" parent="StoreNavigation" instance=ExtResource("6_u7748")]
+transform = Transform3D(-2.6226834e-08, 0, 0.216, 0, 0.694, 0, -0.6, 0, -9.44166e-09, -3.3546643, 0.9391085, 9.340448)
+
 [node name="Shelf290" parent="StoreNavigation" instance=ExtResource("6_u7748")]
 transform = Transform3D(7.1549286e-09, 0, -0.216, 0, 0.694, 0, 0.6, 0, 2.5757743e-09, -3.78334, 0.9391085, 12.712809)
 
@@ -1653,7 +1656,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0880034, 0.33501, -9.031482
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32417, 0.33501, -8.281839)
 
 [node name="HelpDesk" parent="StoreNavigation" instance=ExtResource("80_2p6n5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.499239, 0.822159, -0.0054661036)
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 11.154177, 0.7040226, -0.0054661036)
 
 [node name="FpsPlayer" parent="." instance=ExtResource("8_bdlnp")]
 transform = Transform3D(-0.005270858, 0, 0.9999861, 0, 1, 0, -0.9999861, 0, -0.005270858, 25.656078, 0.6257074, 0.36274672)
