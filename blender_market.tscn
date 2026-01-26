@@ -1537,8 +1537,9 @@ script = ExtResource("9_rlft1")
 customer_scene = ExtResource("10_uhftk")
 shopping_cart_scene = ExtResource("11_85gsg")
 available_items = Array[PackedScene]([ExtResource("12_2xux8"), ExtResource("13_h7dl3"), ExtResource("14_powdi"), ExtResource("15_mql2l"), ExtResource("16_ajtvt"), ExtResource("17_concy"), ExtResource("18_e8ftr"), ExtResource("19_5e1ea"), ExtResource("20_j4yb0"), ExtResource("21_dbmyq"), ExtResource("22_ghl5w"), ExtResource("23_l70on"), ExtResource("24_82vwm"), ExtResource("25_4n4sl"), ExtResource("26_8c50l"), ExtResource("27_7cae4"), ExtResource("28_hm4bc"), ExtResource("29_6qcle"), ExtResource("30_8633q"), ExtResource("31_scnpt"), ExtResource("32_3cmuu"), ExtResource("33_c1tm6"), ExtResource("34_fxug3"), ExtResource("35_ispcq"), ExtResource("36_r68aq"), ExtResource("37_r68aq"), ExtResource("38_i354j"), ExtResource("39_3w37c"), ExtResource("40_nta5h"), ExtResource("41_nta5h"), ExtResource("42_2x1n8"), ExtResource("43_udppl"), ExtResource("44_g8vlv"), ExtResource("45_p8bb5"), ExtResource("46_7q8io"), ExtResource("47_t80f7"), ExtResource("48_44gcg"), ExtResource("49_mfe1n"), ExtResource("50_v6jyb"), ExtResource("51_2toh2"), ExtResource("52_hxs5n"), ExtResource("53_vpngx"), ExtResource("54_en71o"), ExtResource("55_54rmk"), ExtResource("56_430se"), ExtResource("57_feh75"), ExtResource("58_rrv5u"), ExtResource("59_ndhyq"), ExtResource("60_b7jfa"), ExtResource("61_h5vdn"), ExtResource("62_ujube"), ExtResource("63_pdh1g"), ExtResource("64_gpf37"), ExtResource("65_whe0j"), ExtResource("66_534t8"), ExtResource("67_r0eok"), ExtResource("68_cn3lv"), ExtResource("69_10ilv"), ExtResource("70_uftsv"), ExtResource("71_5k748"), ExtResource("72_742qc"), ExtResource("73_1kyrf"), ExtResource("74_vdyjr"), ExtResource("75_vdyjr"), ExtResource("76_ud4av"), ExtResource("77_j55n4"), ExtResource("78_tl4yl"), ExtResource("79_0tt02")])
-type1_customers = 16
-type2_customers = 7
+type1_customers = 5
+type2_customers = 5
+max_total_customers = 15
 
 [node name="HelpDesk" parent="." instance=ExtResource("80_8f14g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.075729, 0.58470154, 15.452074)
