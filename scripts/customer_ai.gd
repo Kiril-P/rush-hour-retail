@@ -20,35 +20,12 @@ enum CustomerType {
 	WITH_CART
 }
 
-enum CustomerState {
-	IDLE,
-	WALKING,
-	STOPPING,
-	LEAVING,
-	FALLING,  # Being knocked back
-	AGGRESSIVE,  # Chasing player
-	ATTACKING  # Attacking player
-}
-
 @export var customer_type: CustomerType = CustomerType.WITHOUT_CART
 @export var movement_speed: float = 1.5
 @export var rotation_speed: float = 5.0
 @export var min_stop_time: float = 2.0
 @export var max_stop_time: float = 10.0
 @export var stops_before_leaving: int = 4
-
-@export_group("Knockback Settings")
-@export var knockback_force: float = 2.0  # Reduced - just a small push to trigger fall animation
-@export var knockback_duration: float = 0.3  # Shorter duration
-@export var fall_recovery_time: float = 1.5
-
-@export_group("Aggression Settings")
-@export var aggression_chance: float = 0.4  # 40% chance to get angry when punched
-@export var chase_speed: float = 3.0  # Faster than normal walk
-@export var attack_range: float = 1.5  # Distance to attack player
-@export var attack_knockback: float = 10.0  # Knockback force to player
-@export var calm_down_time: float = 15.0  # Time before calming down if lose player
-@export var lose_player_distance: float = 20.0  # Distance where they lose track of player
 
 @export_group("Visual Adjustments")
 @export var ground_height_offset: float = 0.0  # Adjust if floating/clipping
@@ -63,37 +40,25 @@ const CHARACTER_VARIANTS = [
 		"name": "Black Guy",
 		"model": "res://assets/customer_char/black guy/LowPolyCharacter_BLACK.fbx",
 		"idle": "res://assets/customer_char/black guy/Happy Idle.fbx",
-		"walk": "res://assets/customer_char/black guy/Happy Walk.fbx",
-		"walk_cart": "res://assets/customer_char/black guy/shopping_cart_walk.fbx",
-		"fall": "res://assets/customer_char/black guy/Sweep Fall.fbx",
-		"run": "res://assets/customer_char/black guy/Injured Run.fbx"
+		"walk": "res://assets/customer_char/black guy/Happy Walk.fbx"
 	},
 	{
 		"name": "Gustave",
 		"model": "res://assets/customer_char/gustave/LowPolyCharacter_GUSTAVE.fbx",
 		"idle": "res://assets/customer_char/gustave/Breathing Idle.fbx",
-		"walk": "res://assets/customer_char/gustave/Walking.fbx",
-		"walk_cart": "res://assets/customer_char/gustave/shopping_cart_walk.fbx",
-		"fall": "res://assets/customer_char/gustave/Sweep Fall.fbx",
-		"run": "res://assets/customer_char/gustave/Injured Run.fbx"
+		"walk": "res://assets/customer_char/gustave/Walking.fbx"
 	},
 	{
 		"name": "Jew Hat",
 		"model": "res://assets/customer_char/jew hat/LowPolyCharacter2_JEW.fbx",
 		"idle": "res://assets/customer_char/jew hat/Dwarf Idle.fbx",
-		"walk": "res://assets/customer_char/jew hat/Dwarf Walk.fbx",
-		"walk_cart": "res://assets/customer_char/jew hat/shopping_cart_walk.fbx",
-		"fall": "res://assets/customer_char/jew hat/Sweep Fall.fbx",
-		"run": "res://assets/customer_char/jew hat/Injured Run.fbx"
+		"walk": "res://assets/customer_char/jew hat/Dwarf Walk.fbx"
 	},
 	{
 		"name": "Woman",
 		"model": "res://assets/customer_char/woman/LowPolyCharacter_WOMAN.fbx",
 		"idle": "res://assets/customer_char/woman/Dwarf Idle.fbx",
-		"walk": "res://assets/customer_char/woman/Female Tough Walk.fbx",
-		"walk_cart": "res://assets/customer_char/woman/shopping_cart_walk.fbx",
-		"fall": "res://assets/customer_char/woman/Sweep Fall.fbx",
-		"run": "res://assets/customer_char/woman/Injured Run.fbx"
+		"walk": "res://assets/customer_char/woman/Female Tough Walk.fbx"
 	}
 ]
 
@@ -124,25 +89,8 @@ var shelf_to_face: Node3D = null
 var selected_variant_index: int = -1
 var idle_anim_name: String = ""
 var walk_anim_name: String = ""
-var walk_cart_anim_name: String = ""  # Animation for walking with shopping cart
-var fall_anim_name: String = ""  # Animation for falling/being knocked back
-var run_anim_name: String = ""  # Animation for aggressive running
 var shopping_cart: RigidBody3D = null
 var _current_animation_type: String = "" 
-
-# Knockback state variables
-var is_knocked_back: bool = false
-var knockback_velocity: Vector3 = Vector3.ZERO
-var knockback_timer: float = 0.0
-var recovery_timer: float = 0.0
-var previous_state: String = "IDLE"
-
-# Aggression state variables
-var is_aggressive: bool = false
-var target_player: CharacterBody3D = null
-var aggression_timer: float = 0.0
-var has_attacked: bool = false
-var anger_particle: Node3D = null
 
 static var cached_shelf_markers: Array = []
 static var cached_exit_markers: Array = []
@@ -186,7 +134,6 @@ static var _preloaded_anims: Dictionary = {}
 func _ready():
 	# Add to customer group for avoidance detection
 	add_to_group("customer")
-	add_to_group("punchable")  # For player interaction
 	
 	spawn_position = global_position
 	
@@ -269,9 +216,12 @@ func _setup_character_model():
 	selected_variant_index = randi() % CHARACTER_VARIANTS.size()
 	var variant = CHARACTER_VARIANTS[selected_variant_index]
 	
+	print("=== SETTING UP CHARACTER: ", variant["name"], " ===")
+	
 	# Try to load pre-configured scene first (if it exists)
 	var scene_path = CHARACTER_VARIANT_SCENES[selected_variant_index]
 	if ResourceLoader.exists(scene_path):
+		print("Loading pre-configured scene: ", scene_path)
 		var character_scene = load(scene_path)
 		character_model = character_scene.instantiate()
 		add_child(character_model)
@@ -292,11 +242,17 @@ func _setup_character_model():
 			placeholder_mesh.visible = false
 		return
 	
+<<<<<<< HEAD
 	# PERFORMANCE FIX: Use preloaded model instead of loading at runtime
 	var model_scene = _preloaded_models[selected_variant_index] if selected_variant_index < _preloaded_models.size() else null
 	if not model_scene:
 		# Fallback to loading if preload failed
 		model_scene = load(variant["model"])
+=======
+	# Load the character model FBX (contains mesh and skeleton)
+	print("Loading model: ", variant["model"])
+	var model_scene = load(variant["model"])
+>>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
 	if not model_scene:
 		push_error("Failed to load character model!")
 		return
@@ -318,6 +274,9 @@ func _setup_character_model():
 		push_error("No AnimationPlayer found in model!")
 		return
 	
+	print("Found Skeleton with ", skeleton.get_bone_count(), " bones")
+	print("Found AnimationPlayer")
+	
 	# Configure AnimationPlayer
 	animation_player.active = true
 	animation_player.process_mode = Node.PROCESS_MODE_INHERIT
@@ -327,7 +286,9 @@ func _setup_character_model():
 	if armature:
 		var relative_path = animation_player.get_path_to(armature)
 		animation_player.root_node = relative_path
+		print("Set AnimationPlayer root to: ", relative_path)
 	
+<<<<<<< HEAD
 	# PERFORMANCE FIX: Use preloaded animations instead of loading at runtime
 	var preloaded = _preloaded_anims.get(selected_variant_index, {})
 	_load_animation_from_fbx_cached(preloaded.get("idle"), variant["idle"], "idle", skeleton)
@@ -335,12 +296,21 @@ func _setup_character_model():
 	_load_animation_from_fbx_cached(preloaded.get("walk_cart"), variant["walk_cart"], "walk_cart", skeleton)
 	_load_animation_from_fbx_cached(preloaded.get("fall"), variant["fall"], "fall", skeleton)
 	_load_animation_from_fbx_cached(preloaded.get("run"), variant["run"], "run", skeleton)
+=======
+	# Load and merge animations from separate FBX files
+	print("Loading idle animation: ", variant["idle"])
+	_load_animation_from_fbx(variant["idle"], "idle", skeleton)
+	
+	print("Loading walk animation: ", variant["walk"])
+	_load_animation_from_fbx(variant["walk"], "walk", skeleton)
+>>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
 	
 	# Wait a frame for everything to be set up
 	await get_tree().process_frame
 	
 	# Find the animations we just loaded
 	var anim_list = animation_player.get_animation_list()
+	print("Available animations: ", anim_list)
 	
 	# Detect idle and walk animations (skip RESET)
 	for anim_name in anim_list:
@@ -350,14 +320,10 @@ func _setup_character_model():
 		var lower = anim_name.to_lower()
 		if "idle" in lower and idle_anim_name == "":
 			idle_anim_name = anim_name
-		elif "walk_cart" in lower and walk_cart_anim_name == "":
-			walk_cart_anim_name = anim_name
+			print("Set idle animation: ", idle_anim_name)
 		elif ("walk" in lower or "locomotion" in lower) and walk_anim_name == "":
 			walk_anim_name = anim_name
-		elif ("fall" in lower or "sweep" in lower) and fall_anim_name == "":
-			fall_anim_name = anim_name
-		elif ("run" in lower or "injured" in lower) and run_anim_name == "":
-			run_anim_name = anim_name
+			print("Set walk animation: ", walk_anim_name)
 	
 	# Fallback to first available animations
 	if idle_anim_name == "" and anim_list.size() > 0:
@@ -368,22 +334,14 @@ func _setup_character_model():
 	
 	if walk_anim_name == "":
 		for anim in anim_list:
-			if not "RESET" in anim.to_upper() and anim != idle_anim_name and anim != walk_cart_anim_name:
+			if not "RESET" in anim.to_upper() and anim != idle_anim_name:
 				walk_anim_name = anim
 				break
 	
 	if walk_anim_name == "":
 		walk_anim_name = idle_anim_name
 	
-	# Fallback for cart animation
-	if walk_cart_anim_name == "":
-		walk_cart_anim_name = walk_anim_name  # Use regular walk if no cart animation
-	
-	if fall_anim_name == "":
-		fall_anim_name = idle_anim_name  # Fallback to idle if no fall animation
-	
-	if run_anim_name == "":
-		run_anim_name = walk_anim_name  # Fallback to walk if no run animation
+	print("Final animations - idle: '", idle_anim_name, "', walk: '", walk_anim_name, "'")
 	
 	# Set animations to loop
 	if animation_player.has_animation(idle_anim_name):
@@ -400,30 +358,10 @@ func _setup_character_model():
 			if anim:
 				anim.loop_mode = Animation.LOOP_LINEAR
 	
-	if animation_player.has_animation(walk_cart_anim_name):
-		var lib = animation_player.get_animation_library("")
-		if lib:
-			var anim = lib.get_animation(walk_cart_anim_name)
-			if anim:
-				anim.loop_mode = Animation.LOOP_LINEAR
-	
-	if animation_player.has_animation(fall_anim_name):
-		var lib = animation_player.get_animation_library("")
-		if lib:
-			var anim = lib.get_animation(fall_anim_name)
-			if anim:
-				anim.loop_mode = Animation.LOOP_NONE  # Fall animation shouldn't loop
-	
-	if animation_player.has_animation(run_anim_name):
-		var lib = animation_player.get_animation_library("")
-		if lib:
-			var anim = lib.get_animation(run_anim_name)
-			if anim:
-				anim.loop_mode = Animation.LOOP_LINEAR  # Run animation should loop
-	
 	# Start playing idle animation
 	if animation_player.has_animation(idle_anim_name):
 		animation_player.play(idle_anim_name)
+		print("Started playing: ", idle_anim_name)
 		last_animation = idle_anim_name
 	
 	# Hide placeholder
@@ -499,8 +437,8 @@ func _load_animation_from_fbx_cached(anim_scene: PackedScene, fbx_path: String, 
 			# Duplicate the animation so we can modify it
 			var anim_copy = animation.duplicate()
 			
-			# Remove root motion from walk and run animations (keep character in place)
-			if anim_prefix == "walk" or anim_prefix == "walk_cart" or anim_prefix == "run":
+			# Remove root motion from walk animations (keep character in place)
+			if anim_prefix == "walk":
 				_remove_root_motion(anim_copy)
 			
 			# Get or create the animation library in our main AnimationPlayer
@@ -514,6 +452,7 @@ func _load_animation_from_fbx_cached(anim_scene: PackedScene, fbx_path: String, 
 			# Add the animation
 			if not main_library.has_animation(new_anim_name):
 				main_library.add_animation(new_anim_name, anim_copy)
+				print("  Added animation: ", new_anim_name, " (", animation.get_track_count(), " tracks)")
 	
 	temp_instance.queue_free()
 
@@ -540,6 +479,8 @@ func _remove_root_motion(animation: Animation):
 						var current_pos = animation.track_get_key_value(track_idx, key_idx)
 						var new_pos = Vector3(first_pos.x, current_pos.y, first_pos.z)
 						animation.track_set_key_value(track_idx, key_idx, new_pos)
+					
+					print("  Removed root motion from Hips track (kept vertical bob)")
 				break
 
 func _print_node_hierarchy(node: Node, indent: int):
@@ -552,6 +493,7 @@ func _print_node_hierarchy(node: Node, indent: int):
 		_print_node_hierarchy(child, indent + 1)
 
 func _play_animation(anim_type: String):
+<<<<<<< HEAD
 	"""Play the specified animation type (idle or walk or fall or run)"""
 	# PERFORMANCE FIX: Skip if already playing this animation type
 	if anim_type == _current_animation_type:
@@ -559,6 +501,9 @@ func _play_animation(anim_type: String):
 	
 	_current_animation_type = anim_type
 	
+=======
+	"""Play the specified animation type (idle or walk)"""
+>>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
 	# If using pre-configured character model, use its methods
 	if character_model and character_model is CustomerCharacterModel:
 		if anim_type == "idle":
@@ -576,6 +521,7 @@ func _play_animation(anim_type: String):
 		"idle":
 			target_anim = idle_anim_name
 		"walk":
+<<<<<<< HEAD
 			# Use cart animation if customer has a cart (check shopping_cart directly, avoid is_instance_valid)
 			if customer_type == CustomerType.WITH_CART and shopping_cart:
 				target_anim = walk_cart_anim_name
@@ -587,6 +533,12 @@ func _play_animation(anim_type: String):
 			target_anim = run_anim_name
 		_:
 			return
+=======
+			target_anim = walk_anim_name
+	
+	if target_anim == "":
+		return
+>>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
 	
 	# Only change animation if different from current
 	if target_anim != last_animation:
@@ -633,12 +585,6 @@ func _physics_process(delta):
 			_state_stopping(delta)
 		"LEAVING":
 			_state_leaving(delta)
-		"FALLING":
-			_state_falling(delta)
-		"AGGRESSIVE":
-			_state_aggressive(delta)
-		"ATTACKING":
-			_state_attacking(delta)
 
 func _state_idle(delta):
 	_play_animation("idle")
@@ -689,6 +635,7 @@ func _state_leaving(delta):
 	if customer_type == CustomerType.WITH_CART and shopping_cart:
 		_update_cart_position()
 
+<<<<<<< HEAD
 
 func _state_falling(delta):
 	"""Handle knockback/falling state"""
@@ -760,6 +707,8 @@ func _state_attacking(delta):
 	await get_tree().create_timer(0.5).timeout
 	_become_calm()
 
+=======
+>>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
 func _pick_random_destination():
 	"""Queue a path calculation - actual work done in _do_pick_random_destination"""
 	if cached_shelf_markers.is_empty():
@@ -1011,6 +960,7 @@ func cart_taken_by_player():
 		_despawn()
 		return
 	
+<<<<<<< HEAD
 	# Queue the exit destination calculation
 	_queue_exit_calculation()
 
@@ -1151,3 +1101,19 @@ func _spawn_anger_particles():
 		tween.tween_property(character_model, "modulate", Color(1.5, 0.5, 0.5, 1), 0.3)
 		# Store reference so we can reset it later
 		anger_particle = character_model  # Reuse this variable to track that we're angry
+=======
+	var exit = cached_exit_markers[randi() % cached_exit_markers.size()]
+	
+	# SAFETY CHECK: Validate exit marker before accessing
+	if not is_instance_valid(exit):
+		_cache_markers()
+		if cached_exit_markers.is_empty():
+			_despawn()
+			return
+		exit = cached_exit_markers[randi() % cached_exit_markers.size()]
+		if not is_instance_valid(exit):
+			_despawn()
+			return
+	
+	nav_agent.target_position = exit.global_position
+>>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)

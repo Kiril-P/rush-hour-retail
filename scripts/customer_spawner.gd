@@ -8,16 +8,16 @@ extends Node3D
 @export var available_items: Array[PackedScene] = []
 
 @export_group("Initial Spawn")
-@export var type1_customers: int = 12
-@export var type2_customers: int = 4
+@export var type1_customers: int = 3
+@export var type2_customers: int = 3
 @export var initial_spawn_delay: float = 0.5
 
 @export_group("Continuous Spawning")
 @export var enable_continuous_spawning: bool = true
-@export var min_spawn_interval: float = 3.0  # Min seconds between spawns
-@export var max_spawn_interval: float = 10.0  # Max seconds between spawns
-@export var max_total_customers: int = 25  # Max customers in store at once
-@export var continuous_spawn_ratio: float = 0.4  # 0-1, chance of Type1 vs Type2
+@export var min_spawn_interval: float = 5.0  # Min seconds between spawns
+@export var max_spawn_interval: float = 20.0  # Max seconds between spawns
+@export var max_total_customers: int = 10  # Max customers in store at once
+@export var continuous_spawn_ratio: float = 0.5  # 0-1, chance of Type1 vs Type2
 
 @export_group("Cart Settings")
 @export var min_items_per_cart: int = 2

@@ -72,10 +72,13 @@ var last_position = Vector3.ZERO
 var shake_amount: float = 0.0
 var shake_decay: float = 5.0
 
+<<<<<<< HEAD
 # ⚡ PERFORMANCE FIX: Throttle raycast
 var _raycast_timer: float = 0.0
 const RAYCAST_INTERVAL: float = 0.066  # ~15 FPS instead of 60
 
+=======
+>>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
 @onready var collision_shape_3d = $CollisionShape3D
 @onready var ground_check_ray: RayCast3D = null  # Will create in _ready
 
@@ -536,6 +539,7 @@ func _is_near_ground() -> bool:
 	if ground_check_ray and ground_check_ray.is_colliding():
 		return true
 	return false
+<<<<<<< HEAD
 
 func take_customer_attack(knockback_force: Vector3, from_position: Vector3):
 	"""Called when an aggressive customer attacks the player"""
@@ -574,3 +578,5 @@ func _flash_damage():
 	_damage_flash_rect.color = Color(1, 0, 0, 0.4)
 	var tween = create_tween()
 	tween.tween_property(_damage_flash_rect, "color:a", 0.0, 0.3)
+=======
+>>>>>>> parent of cf8fb6eb (more animations, hitting, aggression)
