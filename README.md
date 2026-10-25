@@ -2,7 +2,7 @@
 
 An impossible shopping list, a hypermarket, and a clock that's already running.
 
-**[▶ Play in browser](https://kpetrovski.me/play/rush-hour-retail/)** · [itch.io](https://kirilp.itch.io/rush-hour-retail)
+**[▶ Play on itch.io](https://kirilp.itch.io/rush-hour-retail)**
 
 ## How to play
 
